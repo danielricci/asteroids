@@ -14,6 +14,8 @@
 		032589C0245D1E310047CF7D /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 032589BF245D1E310047CF7D /* libSDL2_ttf.a */; };
 		0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 0350F2B123A324FB0038A52E /* CollisionComponent.hpp */; };
 		035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* Entity.cpp */; };
+		0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0364021B246A3B11008684B8 /* SoundComponent.cpp */; };
+		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
@@ -46,6 +48,9 @@
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
+		0364021B246A3B11008684B8 /* SoundComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComponent.cpp; sourceTree = "<group>"; };
+		0364021C246A3B11008684B8 /* SoundComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundComponent.hpp; sourceTree = "<group>"; };
+		0364021E246A3BE7008684B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03784F77245D361800C16FD8 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		03784F78245D361800C16FD8 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */,
 				032589C0245D1E310047CF7D /* libSDL2_ttf.a in Frameworks */,
 				0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */,
 			);
@@ -86,6 +92,8 @@
 		031E7777246A34A20088854F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0364021B246A3B11008684B8 /* SoundComponent.cpp */,
+				0364021C246A3B11008684B8 /* SoundComponent.hpp */,
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
 				03987B54239559A60004639E /* RenderComponent.hpp */,
@@ -143,6 +151,7 @@
 		0389AD7E2396F4CA005EEC22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0364021E246A3BE7008684B8 /* libSDL2_mixer.a */,
 				032589BF245D1E310047CF7D /* libSDL2_ttf.a */,
 				0389AD7F2396F4CA005EEC22 /* libSDL2.a */,
 			);
@@ -153,12 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				03830797243597E100F39FC0 /* .gitignore */,
-				03830796243597E100F39FC0 /* LICENSE */,
 				0317C67F2352500C00D43455 /* Asteroids */,
+				03830796243597E100F39FC0 /* LICENSE */,
 				037280BD234F9A0D008472B1 /* README.md */,
+				039E6C15234E30B0004CCD78 /* Asteroids */,
 				0389AD7E2396F4CA005EEC22 /* Frameworks */,
 				03784F76245D35DF00C16FD8 /* Resources */,
-				039E6C15234E30B0004CCD78 /* Asteroids */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */,
 				032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
 				032589BE245D19240047CF7D /* TextComponent.cpp in Sources */,

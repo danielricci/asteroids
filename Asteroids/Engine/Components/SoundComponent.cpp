@@ -22,21 +22,29 @@
 * SOFTWARE.
 */
 
-#pragma once
+#include "Engine/Components/SoundComponent.hpp"
 
-#include "Game/Components/CollisionComponent.hpp"
-#include "Game/Components/RenderComponent.hpp"
-#include "Game/GameObjects/GameObject.hpp"
+#include <iostream>
 
-class PaddleObject : public GameObject {
-public:
-    // TODO Get rid of this
-    inline static const int WIDTH { 6 };
-    inline static const int HEIGHT { 100 };
+SoundComponent::SoundComponent(Entity* entity, const std::string& path) : Component(entity), path(path) {
+    chunk = Mix_LoadWAV(path.c_str());
+    if(chunk == nullptr) {
+        std::cerr << "Could not load sound at path " << path << "because of error:" << Mix_GetError() << std::endl;
+    }
+}
 
-    PaddleObject(int x, int y);
-    ~PaddleObject() = default;
-private:
-    CollisionComponent* collisionComponent = new CollisionComponent();
-    RenderComponent* renderComponent = new RenderComponent();
-};
+SoundComponent::~SoundComponent() {
+    if(chunk != nullptr) {
+        Mix_FreeChunk(chunk);
+        chunk = nullptr;
+    }
+}
+
+void SoundComponent::play(int loops) const {
+    if(chunk != nullptr) {
+        Mix_PlayChannel(-1, chunk, loops);
+    }
+    else {
+        std::cerr << "Could not play sound, invalid chunk" << std::endl;
+    }
+}
