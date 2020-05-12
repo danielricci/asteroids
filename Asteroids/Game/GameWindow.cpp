@@ -29,8 +29,6 @@
 #include <SDL_ttf.h>
 
 GameWindow::GameWindow(const char* title, int width, int height) {
-        
-    std::cout << "Snake Version 1.0\n" << "Created by Daniel Ricci <thedanny09@icloud.com> May 2020" << std::endl;
     if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL video initialization failed: " << SDL_GetError() << std::endl;
         return;
