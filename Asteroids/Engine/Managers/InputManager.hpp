@@ -32,15 +32,14 @@
 
 class InputManager {
 public:
+    ~InputManager();
+
     static InputManager* getInstance() {
-        static InputManager instance;
-        return &instance;
+        static InputManager* instance = new InputManager();
+        return instance;
     }
     void process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const;
-    void terminate();
 private:
     InputManager();
-    ~InputManager();
-    
     SDL_GameController* gameController { nullptr };
 };

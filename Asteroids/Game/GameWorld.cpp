@@ -28,11 +28,6 @@
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     InputManager::getInstance();
-    
-    int width = 0;
-    int height = 0;
-    SDL_GetWindowSize(&window, &width, &height);
-        
     initialize();
 }
 
@@ -48,14 +43,11 @@ void GameWorld::clean() {
         }
     }
     entities.clear();
-    
-    isGameRunning = true;
-    isGameQuit = false;
 }
 
 void GameWorld::destroy() {
-    InputManager::getInstance()->terminate();
     clean();
+    delete InputManager::getInstance();
 }
 
 void GameWorld::initialize() {

@@ -79,10 +79,7 @@ private:
     void clean();
     void initialize();
     void destroy();
-    
-    bool isGameQuit = false;
-    bool isGameRunning = false;
-    
+
     std::list<Entity*> entities;
     
     SDL_Window& window;

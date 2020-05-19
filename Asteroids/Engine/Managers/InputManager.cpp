@@ -31,7 +31,6 @@ InputManager::InputManager() {
         std::cerr << "SDL joystick initialization failed: " << SDL_GetError() << std::endl;
     }
     
-    // Note: For now the first joystick is the one that is used
     if(SDL_NumJoysticks() > 0) {
         gameController = SDL_GameControllerOpen(0);
         if(gameController == nullptr) {
@@ -41,7 +40,12 @@ InputManager::InputManager() {
 }
 
 InputManager::~InputManager() {
-    terminate();
+    if(gameController != nullptr) {
+        SDL_GameControllerClose(gameController);
+        gameController = nullptr;
+    }
+    
+    SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }
 
 void InputManager::process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const {
@@ -61,13 +65,4 @@ void InputManager::process(const SDL_Event& event, const std::list<InputComponen
             break;
         }
     }
-}
-
-void InputManager::terminate() {
-    if(gameController != nullptr) {
-        SDL_GameControllerClose(gameController);
-        gameController = nullptr;
-    }
-    
-    SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }
