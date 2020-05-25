@@ -53,7 +53,6 @@
 		0364021E246A3BE7008684B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03784F77245D361800C16FD8 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
-		03784F78245D361800C16FD8 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		03830796243597E100F39FC0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
@@ -143,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				03784F77245D361800C16FD8 /* Fonts */,
-				03784F78245D361800C16FD8 /* Sounds */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
