@@ -24,8 +24,6 @@
 
 #include "Game/GameWindow.hpp"
 
-#include <SDL.h>
-
 int main(int argc, char** argv) {
     GameWindow("Asteroids", 600, 600).show();
 }

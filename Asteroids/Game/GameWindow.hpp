@@ -34,9 +34,8 @@ public:
     ~GameWindow();
     void show() const;
 private:
-    SDL_Window* window { nullptr };
-    SDL_Renderer* renderer { nullptr };
-    GameWorld* world { nullptr };
+    SDL_Window* window = nullptr;
+    SDL_Renderer* renderer = nullptr;
     
-    bool ready { false };
+    GameWorld* gameWorld = nullptr;
 };

@@ -40,7 +40,7 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
     
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    renderer = SDL_CreateRenderer(window, -1, 0);
     if(renderer == nullptr) {
         std::cerr << "SDL renderer could not be created: " << SDL_GetError() << std::endl;
         return;
@@ -51,18 +51,14 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
     
-    world = new GameWorld(*window, *renderer);
-    ready = true;
+    gameWorld = new GameWorld(*window, *renderer);
 }
 
 GameWindow::~GameWindow() {
-    if(world != nullptr) {
-        delete world;
-        world = nullptr;
+    if(gameWorld != nullptr) {
+        delete gameWorld;
+        gameWorld = nullptr;
     }
-
-    // Note: Gets done after the world because the world has to close TTF related references
-    TTF_Quit();
 
     if(renderer != nullptr) {
         SDL_DestroyRenderer(renderer);
@@ -73,12 +69,13 @@ GameWindow::~GameWindow() {
         SDL_DestroyWindow(window);
         window = nullptr;
     }
-    
+
+    TTF_Quit();
     SDL_Quit();
 }
 
 void GameWindow::show() const {
-    if(ready && world != nullptr) {
-        world->run();
+    if(gameWorld != nullptr) {
+        gameWorld->run();
     }
 }
