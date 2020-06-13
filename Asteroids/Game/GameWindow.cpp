@@ -46,6 +46,7 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
 
+    // TODO Should this be moved to a different area of the code, like how input for the game controller is done?
     if(TTF_Init() < 0) {
         std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
         return;

@@ -54,6 +54,15 @@ void GameWorld::initialize() {
 }
 
 void GameWorld::run() {
+    while(true) {
+        SDL_Event event;
+        while(SDL_PollEvent(&event)) {
+            if(event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+                return;
+            }
+        }
+        
+    }
 }
 
 void GameWorld::draw() const {
