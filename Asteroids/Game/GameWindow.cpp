@@ -40,7 +40,7 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
     
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if(renderer == nullptr) {
         std::cerr << "SDL renderer could not be created: " << SDL_GetError() << std::endl;
         return;

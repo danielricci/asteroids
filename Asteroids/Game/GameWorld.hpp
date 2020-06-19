@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include "Engine/Core/Clock.hpp"
 #include "Engine/Entities/Entity.hpp"
 
 #include "Game/GameWindow.hpp"
@@ -39,8 +40,6 @@ public:
     
     void run();
 private:
-    void draw() const;
-    
     template<typename T> T* getEntity() {
         for(Entity* entity : entities) {
             T* object = dynamic_cast<T*>(entity);
@@ -76,12 +75,20 @@ private:
         return components;
     }
     
+    void processInput();
+    void render() const;
+    void update(float deltaTime) const;
+    
     void clean();
-    void initialize();
     void destroy();
+    void initialize();
 
     std::list<Entity*> entities;
     
     SDL_Window& window;
     SDL_Renderer& renderer;
+    
+    Clock gameWorldClock;
+    
+    bool isRunning = false;
 };
