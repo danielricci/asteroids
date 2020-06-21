@@ -54,7 +54,6 @@
 		0364021E246A3BE7008684B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03784F77245D361800C16FD8 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
-		03830796243597E100F39FC0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0387FD81249AAA160019BE47 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
 		0387FD82249AAA160019BE47 /* Clock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clock.hpp; sourceTree = "<group>"; };
@@ -174,7 +173,6 @@
 			children = (
 				03830797243597E100F39FC0 /* .gitignore */,
 				0317C67F2352500C00D43455 /* Asteroids */,
-				03830796243597E100F39FC0 /* LICENSE */,
 				037280BD234F9A0D008472B1 /* README.md */,
 				039E6C15234E30B0004CCD78 /* Asteroids */,
 				0389AD7E2396F4CA005EEC22 /* Frameworks */,
