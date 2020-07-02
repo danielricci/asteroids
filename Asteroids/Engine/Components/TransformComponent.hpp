@@ -10,7 +10,7 @@ public:
     TransformComponent(Entity* entity) : Component(entity) {
     }
     
-    TransformComponent(Entity* entity, int x, int y, int width, int height) : TransformComponent(entity) {
+    TransformComponent(Entity* entity, float x, float y, float width, float height) : TransformComponent(entity) {
         this->positionVector.x() = x;
         this->positionVector.y() = y;
         this->dimensionVector.x() = width;
@@ -29,7 +29,7 @@ public:
     Eigen::Vector2f getWorldPositionVector() {
         // TODO Eventually it will be required to go up the parent chain to gather all positions
         Eigen::Vector2f positionVector = this->positionVector;
-        positionVector += this->getEntity()->getComponent<TransformComponent>()->positionVector;
+        positionVector += this->getParentEntity()->getComponent<TransformComponent>()->positionVector;
         return positionVector;
     }
     

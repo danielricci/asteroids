@@ -17,7 +17,11 @@
 		0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0364021B246A3B11008684B8 /* SoundComponent.cpp */; };
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
 		0387FD83249AAA160019BE47 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD81249AAA160019BE47 /* Clock.cpp */; };
+		0387FD8724A59CE70019BE47 /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8524A59CE70019BE47 /* MenuItem.cpp */; };
+		0387FD8B24A78D220019BE47 /* StartMenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8924A78D220019BE47 /* StartMenuItem.cpp */; };
+		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
+		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
 /* End PBXBuildFile section */
@@ -57,7 +61,16 @@
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0387FD81249AAA160019BE47 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
 		0387FD82249AAA160019BE47 /* Clock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clock.hpp; sourceTree = "<group>"; };
+		0387FD8524A59CE70019BE47 /* MenuItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItem.cpp; sourceTree = "<group>"; };
+		0387FD8624A59CE70019BE47 /* MenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItem.hpp; sourceTree = "<group>"; };
+		0387FD8924A78D220019BE47 /* StartMenuItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StartMenuItem.cpp; sourceTree = "<group>"; };
+		0387FD8A24A78D220019BE47 /* StartMenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StartMenuItem.hpp; sourceTree = "<group>"; };
+		0387FD8F24A94C530019BE47 /* UIManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
+		0387FD9024A94C530019BE47 /* UIManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIManager.hpp; sourceTree = "<group>"; };
+		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
+		0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManagerHelper.cpp; sourceTree = "<group>"; };
+		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
 		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
@@ -83,10 +96,11 @@
 		031E7776246A348A0088854F /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				0387FD80249AA9FD0019BE47 /* Core */,
-				03219D442406B07A0050588A /* Managers */,
-				031E7778246A34AA0088854F /* Entities */,
 				031E7777246A34A20088854F /* Components */,
+				0387FD80249AA9FD0019BE47 /* Core */,
+				031E7778246A34AA0088854F /* Entities */,
+				03219D442406B07A0050588A /* Managers */,
+				0387FD8424A59BD10019BE47 /* UI */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -123,6 +137,11 @@
 			children = (
 				03219D452406B5F70050588A /* InputManager.cpp */,
 				03219D462406B5F70050588A /* InputManager.hpp */,
+				0387FD8F24A94C530019BE47 /* UIManager.cpp */,
+				0387FD9024A94C530019BE47 /* UIManager.hpp */,
+				0387FD9324A96AC60019BE47 /* Manager.hpp */,
+				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
+				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -130,13 +149,14 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				032220192380FF9D004B0BD1 /* GameWindow.cpp */,
+				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
+				039E6C16234E30B0004CCD78 /* main.cpp */,
+				0322201A2380FF9D004B0BD1 /* GameWindow.hpp */,
+				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
 				03EFD235237E48BA006EF2A5 /* Entities */,
-				032220192380FF9D004B0BD1 /* GameWindow.cpp */,
-				0322201A2380FF9D004B0BD1 /* GameWindow.hpp */,
-				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
-				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
-				039E6C16234E30B0004CCD78 /* main.cpp */,
+				0387FD8824A5A5280019BE47 /* UI */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -156,6 +176,24 @@
 				0387FD82249AAA160019BE47 /* Clock.hpp */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		0387FD8424A59BD10019BE47 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0387FD8524A59CE70019BE47 /* MenuItem.cpp */,
+				0387FD8624A59CE70019BE47 /* MenuItem.hpp */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0387FD8824A5A5280019BE47 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0387FD8924A78D220019BE47 /* StartMenuItem.cpp */,
+				0387FD8A24A78D220019BE47 /* StartMenuItem.hpp */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		0389AD7E2396F4CA005EEC22 /* Frameworks */ = {
@@ -284,10 +322,14 @@
 			files = (
 				0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */,
 				032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */,
+				0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
 				032589BE245D19240047CF7D /* TextComponent.cpp in Sources */,
+				0387FD8B24A78D220019BE47 /* StartMenuItem.cpp in Sources */,
 				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
+				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
+				0387FD8724A59CE70019BE47 /* MenuItem.cpp in Sources */,
 				0387FD83249AAA160019BE47 /* Clock.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */,
 				0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */,

@@ -31,7 +31,7 @@ public:
         registerActionBinding(action, functor);
     }
     
-    void handleEvent(const SDL_Event& event) {
+    void processEvent(const SDL_Event& event) {
         InputBindingsMap::const_iterator inputIterator = inputBindings.find(event.key.keysym.sym);
         if(inputIterator == inputBindings.end()) {
             inputIterator = inputBindings.find(event.caxis.axis);

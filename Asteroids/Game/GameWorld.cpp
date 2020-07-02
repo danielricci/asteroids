@@ -1,10 +1,9 @@
-#include "Engine/Managers/InputManager.hpp"
-
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/GameWindow.hpp"
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
-    InputManager::getInstance();
     initialize();
+    startMenuItem = new StartMenuItem();
 }
 
 GameWorld::~GameWorld() {
@@ -12,27 +11,31 @@ GameWorld::~GameWorld() {
 }
 
 void GameWorld::clean() {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            delete entity;
-            entity = nullptr;
-        }
-    }
-    entities.clear();
+    ManagerHelper::clean();
+//    for(Entity* entity : entities) {
+//        if(entity != nullptr) {
+//            delete entity;
+//            entity = nullptr;
+//        }
+//    }
+//    entities.clear();
 }
 
 void GameWorld::destroy() {
     clean();
-    delete InputManager::getInstance();
 }
 
 void GameWorld::initialize() {
+    ManagerHelper::initialize(renderer);
 }
 
 void GameWorld::run() {
     isRunning = true;
     while(isRunning) {
-        processInput();
+        SDL_Event event;
+        while(SDL_PollEvent(&event)) {
+            processEvent(event);
+        }
         if(isRunning) {
             update(gameWorldClock.sample());
             render();
@@ -40,11 +43,13 @@ void GameWorld::run() {
     }
 }
 
-void GameWorld::processInput() {
-    SDL_Event event;
-    while(SDL_PollEvent(&event)) {
-        if(event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+void GameWorld::processEvent(const SDL_Event& event) {
+    switch(event.type) {
+        case SDL_QUIT:
             isRunning = false;
+            break;
+        default: {
+            ManagerHelper::processEvent(event);
             break;
         }
     }
@@ -63,5 +68,7 @@ void GameWorld::update(float deltaTime) const {
 void GameWorld::render() const {
     SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(&renderer);
+    SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
+    startMenuItem->getComponent<TextRenderComponent>()->render();
     SDL_RenderPresent(&renderer);
 }

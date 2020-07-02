@@ -1,3 +1,4 @@
+#include "Engine/Components/InputComponent.hpp"
 #include "Engine/Managers/InputManager.hpp"
 
 #include <iostream>
@@ -24,7 +25,7 @@ InputManager::~InputManager() {
     SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }
 
-void InputManager::process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const {
+void InputManager::processEvent(const SDL_Event& event) {
     switch(event.type) {
         case SDL_CONTROLLERAXISMOTION: {
             if(gameController == nullptr) {
@@ -33,11 +34,11 @@ void InputManager::process(const SDL_Event& event, const std::list<InputComponen
         }
         case SDL_KEYDOWN:
         case SDL_KEYUP: {
-            for(InputComponent* inputComponent : inputComponents) {
-                if(inputComponent != nullptr) {
-                    inputComponent->handleEvent(event);
-                }
-            }
+//            for(Entity* entity : entities) {
+//                if(entity != nullptr) {
+//                    entity->getComponent<InputComponent>()->processEvent(event);
+//                }
+//            }
             break;
         }
     }

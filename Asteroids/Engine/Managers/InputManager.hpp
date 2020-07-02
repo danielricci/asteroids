@@ -1,21 +1,17 @@
 #pragma once
 
-#include "Engine/Components/InputComponent.hpp"
+#include "Engine/Entities/Entity.hpp"
+#include "Engine/Managers/Manager.hpp"
 
 #include <SDL.h>
 
 #include <list>
 
-class InputManager {
+class InputManager : public Manager {
 public:
-    ~InputManager();
-
-    static InputManager* getInstance() {
-        static InputManager* instance = new InputManager();
-        return instance;
-    }
-    void process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const;
-private:
     InputManager();
-    SDL_GameController* gameController { nullptr };
+    ~InputManager();
+    virtual void processEvent(const SDL_Event& event) override;
+private:
+    SDL_GameController* gameController = nullptr;
 };

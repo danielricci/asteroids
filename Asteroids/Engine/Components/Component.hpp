@@ -33,14 +33,16 @@ public:
         return component;
     }
     
-    inline Entity* getEntity() const { return this->entity; }
+    inline Entity* getParentEntity() const { return this->parentEntity; }
     
     bool isEnabled = true;
 protected:
     Component(Entity* entity) {
-        this->entity = entity;
+        this->parentEntity = entity;
     }
 private:
-    Entity* entity = nullptr;
+    // NOTE: What happens if a component is added to another component
+    // TODO: Is that parent properly calculated, need to verify this
+    Entity* parentEntity = nullptr;
     std::list<Component*> components;
 };
