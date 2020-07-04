@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TextRenderComponent::render():TextRenderComponent.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "textComponent-&gt;font.c_str()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Clock::sample():Clock.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "nowTime-lastTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

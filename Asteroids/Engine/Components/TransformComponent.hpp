@@ -25,14 +25,7 @@ public:
         rectangle.h = dimensionVector.y();
         return rectangle;
     }
-    
-    Eigen::Vector2f getWorldPositionVector() {
-        // TODO Eventually it will be required to go up the parent chain to gather all positions
-        Eigen::Vector2f positionVector = this->positionVector;
-        positionVector += this->getParentEntity()->getComponent<TransformComponent>()->positionVector;
-        return positionVector;
-    }
-    
+        
     Eigen::Vector2f dimensionVector { 0, 0 };
     Eigen::Vector2f positionVector { 0, 0 };
     Eigen::Vector2f velocityVector { 0, 0 };

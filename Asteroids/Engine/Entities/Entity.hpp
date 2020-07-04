@@ -2,6 +2,8 @@
 
 #include "Engine/Components/Component.hpp"
 
+#include <SDL.h>
+
 #include <list>
 
 class Component;
@@ -19,6 +21,8 @@ public:
         }
         return myComponent;
     }
+    
+    virtual void processEvent(const SDL_Event& event);
     
     Component* addComponent(Component* component);
 protected:

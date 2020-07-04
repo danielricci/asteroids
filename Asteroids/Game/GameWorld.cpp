@@ -1,9 +1,11 @@
+#include "Engine/Components/TextRenderComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/UIManager.hpp"
 #include "Game/GameWindow.hpp"
+#include "Game/Entities/StartMenuEntity.hpp"
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     initialize();
-    startMenuItem = new StartMenuItem();
 }
 
 GameWorld::~GameWorld() {
@@ -69,6 +71,7 @@ void GameWorld::render() const {
     SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(&renderer);
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
-    startMenuItem->getComponent<TextRenderComponent>()->render();
+    // TODO - How do we render the Menu System?
+    ManagerHelper::get<UIManager>()->startMenuEntity->getComponent<TextRenderComponent>()->render();
     SDL_RenderPresent(&renderer);
 }

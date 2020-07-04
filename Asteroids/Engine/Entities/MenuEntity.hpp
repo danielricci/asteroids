@@ -5,12 +5,14 @@
 
 #include <string>
 
-class MenuItem : public Entity {
+class MenuEntity : public Entity {
 protected:
-    MenuItem(int size, std::string text);
-    virtual ~MenuItem() = default;
+    MenuEntity(int size, std::string text);
+    virtual ~MenuEntity() = default;
     
     virtual void onEntered() = 0;
     virtual void onExited() = 0;
     virtual void onExecute() = 0;
+private:
+    
 };

@@ -1,11 +1,8 @@
 #pragma once
 
-#include "Engine/Components/TextComponent.hpp"
-#include "Engine/Components/TextRenderComponent.hpp"
 #include "Engine/Core/Clock.hpp"
 #include "Engine/Entities/Entity.hpp"
 #include "Game/GameWindow.hpp"
-#include "Game/UI/StartMenuItem.hpp"
 #include <SDL.h>
 #include <list>
 
@@ -66,6 +63,4 @@ private:
     Clock gameWorldClock;
     
     bool isRunning = false;
-
-    StartMenuItem* startMenuItem = nullptr;;
 };

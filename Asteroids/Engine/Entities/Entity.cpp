@@ -17,3 +17,6 @@ Component* Entity::addComponent(Component* component) {
     components.push_back(component);
     return component;
 }
+
+void Entity::processEvent(const SDL_Event &event) {
+}

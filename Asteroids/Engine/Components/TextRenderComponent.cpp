@@ -27,6 +27,10 @@ void TextRenderComponent::clean() {
 }
 
 void TextRenderComponent::render() {
+    if(!this->isVisible) {
+        return;
+    }
+    
     clean();
     
     TextComponent* textComponent = this->getParentEntity()->getComponent<TextComponent>();
@@ -47,8 +51,18 @@ void TextRenderComponent::render() {
         std::cerr << "Could not create the texture from the specified surface" << std::endl;
         return;
     }
+    TransformComponent* transformComponent = this->getParentEntity()->getComponent<TransformComponent>();
+    SDL_Rect rectangle = transformComponent->getRectangle();
+    if((rectangle.w == 0 || rectangle.h == 0)) {
+        SDL_QueryTexture(texture, nullptr, nullptr, &rectangle.w, &rectangle.h);
+        // HACK: Set the transform width and height if the rectangle has
+        //       not been specified for a width or a height.
+        // NOTE: I do not like the fact that the dimension is set at render time
+        //       because it leaves room open for improperly calculated collisions.
+        // TODO: Is there is a way to get the dimension earlier at collision detected time?
+        transformComponent->dimensionVector.x() = rectangle.w;
+        transformComponent->dimensionVector.y() = rectangle.h;
+    }
     
-    SDL_Rect rectangle = this->getParentEntity()->getComponent<TransformComponent>()->getRectangle();
-    SDL_QueryTexture(texture, nullptr, nullptr, &rectangle.w, &rectangle.h);
     SDL_RenderCopy(&renderer, texture, nullptr, &rectangle);
 }
