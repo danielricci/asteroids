@@ -1,8 +1,8 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Entities/Entity.hpp"
 
-Entity::Entity(int x, int y, int width, int height) {
-    this->addComponent(new TransformComponent(this, x, y, width, height));
+Entity::Entity() {
+    this->addComponent(new TransformComponent());
 }
 
 Entity::~Entity() {
@@ -18,5 +18,5 @@ Component* Entity::addComponent(Component* component) {
     return component;
 }
 
-void Entity::processEvent(const SDL_Event &event) {
+void Entity::update(const SDL_Event &event) {
 }

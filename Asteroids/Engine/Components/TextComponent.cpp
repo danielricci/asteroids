@@ -1,4 +1,6 @@
 #include "Engine/Components/TextComponent.hpp"
+#include "Engine/Components/TransformComponent.hpp"
 
-TextComponent::TextComponent(Entity* entity, int size, const std::string& text) : Component(entity), size(size), text(text) {
+TextComponent::TextComponent(int size, const SDL_Color& color, const std::string& font, const std::string& text) : size(size), color(color), font(font), text(text) {
+    this->addComponent(new TransformComponent());
 }

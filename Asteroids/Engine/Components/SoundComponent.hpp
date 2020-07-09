@@ -8,7 +8,7 @@
 
 class SoundComponent : public Component {
 public:
-    SoundComponent(Entity* entity, const std::string& path);
+    SoundComponent(const std::string& path);
     ~SoundComponent();
     
     void play(int loops = 0) const;

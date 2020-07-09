@@ -10,8 +10,7 @@
 class InputComponent : public Component {
 
 public:
-    InputComponent(Entity* entity) : Component(entity) {
-    }
+    InputComponent() = default;
     
     void addBinding(SDL_Keycode keyCode, const std::string& action) {
         inputBindings.emplace(keyCode, action);
@@ -31,7 +30,7 @@ public:
         registerActionBinding(action, functor);
     }
     
-    void processEvent(const SDL_Event& event) {
+    void update(const SDL_Event& event) {
         InputBindingsMap::const_iterator inputIterator = inputBindings.find(event.key.keysym.sym);
         if(inputIterator == inputBindings.end()) {
             inputIterator = inputBindings.find(event.caxis.axis);

@@ -16,9 +16,11 @@
 		035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* Entity.cpp */; };
 		0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0364021B246A3B11008684B8 /* SoundComponent.cpp */; };
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
+		036E505224B1750A00426EBA /* MenuComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036E505024B1750A00426EBA /* MenuComponent.cpp */; };
+		036E505624B17BB800426EBA /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036E505424B17BB800426EBA /* Node.cpp */; };
+		036E505824B23BA700426EBA /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036E505724B23BA700426EBA /* Component.cpp */; };
 		0387FD83249AAA160019BE47 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD81249AAA160019BE47 /* Clock.cpp */; };
-		0387FD8724A59CE70019BE47 /* MenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8524A59CE70019BE47 /* MenuEntity.cpp */; };
-		0387FD8B24A78D220019BE47 /* StartMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8924A78D220019BE47 /* StartMenuEntity.cpp */; };
+		0387FD8B24A78D220019BE47 /* MainMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */; };
 		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
 		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
@@ -56,15 +58,19 @@
 		0364021B246A3B11008684B8 /* SoundComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComponent.cpp; sourceTree = "<group>"; };
 		0364021C246A3B11008684B8 /* SoundComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundComponent.hpp; sourceTree = "<group>"; };
 		0364021E246A3BE7008684B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
+		036E505024B1750A00426EBA /* MenuComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuComponent.cpp; sourceTree = "<group>"; };
+		036E505124B1750A00426EBA /* MenuComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuComponent.hpp; sourceTree = "<group>"; };
+		036E505424B17BB800426EBA /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		036E505524B17BB800426EBA /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
+		036E505724B23BA700426EBA /* Component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03784F77245D361800C16FD8 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0387FD81249AAA160019BE47 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
 		0387FD82249AAA160019BE47 /* Clock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clock.hpp; sourceTree = "<group>"; };
-		0387FD8524A59CE70019BE47 /* MenuEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuEntity.cpp; sourceTree = "<group>"; };
 		0387FD8624A59CE70019BE47 /* MenuEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuEntity.hpp; sourceTree = "<group>"; };
-		0387FD8924A78D220019BE47 /* StartMenuEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StartMenuEntity.cpp; sourceTree = "<group>"; };
-		0387FD8A24A78D220019BE47 /* StartMenuEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StartMenuEntity.hpp; sourceTree = "<group>"; };
+		0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuEntity.cpp; sourceTree = "<group>"; };
+		0387FD8A24A78D220019BE47 /* MainMenuEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainMenuEntity.hpp; sourceTree = "<group>"; };
 		0387FD8F24A94C530019BE47 /* UIManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
 		0387FD9024A94C530019BE47 /* UIManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIManager.hpp; sourceTree = "<group>"; };
 		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 		031E7776246A348A0088854F /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				036E505324B17B9A00426EBA /* System */,
 				031E7777246A34A20088854F /* Components */,
 				0387FD80249AA9FD0019BE47 /* Core */,
 				031E7778246A34AA0088854F /* Entities */,
@@ -107,17 +114,20 @@
 		031E7777246A34A20088854F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0350F2B123A324FB0038A52E /* CollisionComponent.hpp */,
+				036E505724B23BA700426EBA /* Component.cpp */,
+				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
+				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
+				036E505024B1750A00426EBA /* MenuComponent.cpp */,
+				036E505124B1750A00426EBA /* MenuComponent.hpp */,
+				03987B54239559A60004639E /* RenderComponent.hpp */,
 				0364021B246A3B11008684B8 /* SoundComponent.cpp */,
 				0364021C246A3B11008684B8 /* SoundComponent.hpp */,
-				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
-				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
-				03987B54239559A60004639E /* RenderComponent.hpp */,
-				0350F2B123A324FB0038A52E /* CollisionComponent.hpp */,
-				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
 				032589BB245D19240047CF7D /* TextComponent.cpp */,
 				032589BC245D19240047CF7D /* TextComponent.hpp */,
 				032589BA245D19240047CF7D /* TextRenderComponent.cpp */,
 				032589B9245D19240047CF7D /* TextRenderComponent.hpp */,
+				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -125,7 +135,6 @@
 		031E7778246A34AA0088854F /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				0387FD8524A59CE70019BE47 /* MenuEntity.cpp */,
 				0387FD8624A59CE70019BE47 /* MenuEntity.hpp */,
 				035DB9DF238B75D90025B2F7 /* Entity.cpp */,
 				03EFD237237E48D9006EF2A5 /* Entity.hpp */,
@@ -159,6 +168,15 @@
 				03EFD235237E48BA006EF2A5 /* Entities */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		036E505324B17B9A00426EBA /* System */ = {
+			isa = PBXGroup;
+			children = (
+				036E505424B17BB800426EBA /* Node.cpp */,
+				036E505524B17BB800426EBA /* Node.hpp */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 		03784F76245D35DF00C16FD8 /* Resources */ = {
@@ -212,8 +230,8 @@
 		03EFD235237E48BA006EF2A5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				0387FD8924A78D220019BE47 /* StartMenuEntity.cpp */,
-				0387FD8A24A78D220019BE47 /* StartMenuEntity.hpp */,
+				0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */,
+				0387FD8A24A78D220019BE47 /* MainMenuEntity.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -309,15 +327,17 @@
 				0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
 				032589BE245D19240047CF7D /* TextComponent.cpp in Sources */,
-				0387FD8B24A78D220019BE47 /* StartMenuEntity.cpp in Sources */,
+				0387FD8B24A78D220019BE47 /* MainMenuEntity.cpp in Sources */,
 				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
 				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
-				0387FD8724A59CE70019BE47 /* MenuEntity.cpp in Sources */,
 				0387FD83249AAA160019BE47 /* Clock.cpp in Sources */,
+				036E505224B1750A00426EBA /* MenuComponent.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */,
 				0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
+				036E505824B23BA700426EBA /* Component.cpp in Sources */,
+				036E505624B17BB800426EBA /* Node.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

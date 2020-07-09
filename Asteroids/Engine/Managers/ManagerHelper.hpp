@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Engine/Managers/Manager.hpp"
-
 #include <SDL.h>
-
 #include <list>
 
 class ManagerHelper {
@@ -17,13 +15,14 @@ public:
         }
         return nullptr;
     }
-    static void processEvent(const SDL_Event& event);
-    static void initialize(SDL_Renderer& renderer);
+    
+    static void initialize();
     static void clean();
+    
+    static void update(const SDL_Event& event);
+    static void render(SDL_Renderer& renderer);
 private:
     ManagerHelper() = default;
-    ~ManagerHelper() {
-        clean();
-    }
+    ~ManagerHelper();
     static std::list<Manager*> managers;
 };

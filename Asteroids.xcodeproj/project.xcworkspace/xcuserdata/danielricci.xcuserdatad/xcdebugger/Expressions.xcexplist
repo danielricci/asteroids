@@ -18,5 +18,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "MainMenuEntity::MainMenuEntity():MainMenuEntity.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Component::Component():Component.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "(TransformComponent*)this == nullptr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

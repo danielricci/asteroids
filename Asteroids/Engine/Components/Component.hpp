@@ -1,21 +1,12 @@
 #pragma once
 
-#include "Engine/Entities/Entity.hpp"
-
+#include "Engine/System/Node.hpp"
+#include <Eigen/Dense>
 #include <list>
 
-class Entity;
-
-class Component {
+class Component : public Node {
 public:
-    virtual ~Component() {
-        for(Component* component : components) {
-            delete component;
-            component = nullptr;
-        }
-        components.clear();
-    }
-
+    virtual ~Component();
     template<typename T> T* getComponent() {
         T* myComponent = nullptr;
         for(Component* component : components) {
@@ -26,23 +17,10 @@ public:
         return myComponent;
     }
     
-    Component* addComponent(Component* component) {
-        if(component != nullptr) {
-            components.push_back(component);
-        }
-        return component;
-    }
-    
-    inline Entity* getParentEntity() const { return this->parentEntity; }
-    
-    bool isEnabled = true;
+    void addComponent(Component* component);
+    void setPosition(const Eigen::Vector2f& position);    
 protected:
-    Component(Entity* entity) {
-        this->parentEntity = entity;
-    }
+    Component() = default;
 private:
-    // NOTE: What happens if a component is added to another component
-    // TODO: Is that parent properly calculated, need to verify this
-    Entity* parentEntity = nullptr;
     std::list<Component*> components;
 };

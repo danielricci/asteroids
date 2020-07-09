@@ -49,9 +49,9 @@ private:
 //        return components;
 //    }
     
-    void processEvent(const SDL_Event& event);
-    void render() const;
+    void update(const SDL_Event& event);
     void update(float deltaTime) const;
+    void render() const;
     
     void clean();
     void destroy();

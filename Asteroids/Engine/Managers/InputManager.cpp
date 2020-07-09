@@ -1,6 +1,4 @@
-#include "Engine/Components/InputComponent.hpp"
 #include "Engine/Managers/InputManager.hpp"
-
 #include <iostream>
 
 InputManager::InputManager() {
@@ -25,7 +23,10 @@ InputManager::~InputManager() {
     SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }
 
-void InputManager::processEvent(const SDL_Event& event) {
+void InputManager::render(SDL_Renderer& renderer) {
+}
+
+void InputManager::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_CONTROLLERAXISMOTION: {
             if(gameController == nullptr) {
@@ -34,11 +35,7 @@ void InputManager::processEvent(const SDL_Event& event) {
         }
         case SDL_KEYDOWN:
         case SDL_KEYUP: {
-//            for(Entity* entity : entities) {
-//                if(entity != nullptr) {
-//                    entity->getComponent<InputComponent>()->processEvent(event);
-//                }
-//            }
+            // TODO
             break;
         }
     }

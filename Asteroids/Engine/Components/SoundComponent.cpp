@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-SoundComponent::SoundComponent(Entity* entity, const std::string& path) : Component(entity), path(path) {
+SoundComponent::SoundComponent(const std::string& path) : path(path) {
     chunk = Mix_LoadWAV(path.c_str());
     if(chunk == nullptr) {
         std::cerr << "Could not load sound at path " << path << "because of error:" << Mix_GetError() << std::endl;

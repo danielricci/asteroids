@@ -4,8 +4,6 @@
 
 class RenderComponent : public Component {
 public:
-    RenderComponent(Entity* entity) : Component(entity) {
-    }
-    
+    RenderComponent() = default;
     bool isVisible { true };
 };

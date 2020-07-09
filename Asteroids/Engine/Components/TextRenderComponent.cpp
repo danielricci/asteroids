@@ -4,9 +4,6 @@
 
 #include <iostream>
 
-TextRenderComponent::TextRenderComponent(Entity* entity, SDL_Renderer& renderer) : RenderComponent(entity), renderer(renderer) {
-}
-
 TextRenderComponent::~TextRenderComponent() {
     clean();
 }
@@ -26,32 +23,32 @@ void TextRenderComponent::clean() {
     }
 }
 
-void TextRenderComponent::render() {
+void TextRenderComponent::render(SDL_Renderer& renderer) {
     if(!this->isVisible) {
         return;
     }
     
     clean();
     
-    TextComponent* textComponent = this->getParentEntity()->getComponent<TextComponent>();
+    TextComponent* textComponent = dynamic_cast<TextComponent*>(this->getParentNode());
     font = TTF_OpenFont(textComponent->font.c_str(), textComponent->size);
     if(font == nullptr) {
         std::cerr << "Could not open the specified font" << std::endl;
         return;
     }
-    
+
     surface = TTF_RenderText_Blended(font, textComponent->text.c_str(), textComponent->color);
     if(surface == nullptr) {
         std::cerr << "Could not create the surface from the specified font" << std::endl;
         return;
     }
-    
+
     texture = SDL_CreateTextureFromSurface(&renderer, surface);
     if(texture == nullptr) {
         std::cerr << "Could not create the texture from the specified surface" << std::endl;
         return;
     }
-    TransformComponent* transformComponent = this->getParentEntity()->getComponent<TransformComponent>();
+    TransformComponent* transformComponent = textComponent->getComponent<TransformComponent>();
     SDL_Rect rectangle = transformComponent->getRectangle();
     if((rectangle.w == 0 || rectangle.h == 0)) {
         SDL_QueryTexture(texture, nullptr, nullptr, &rectangle.w, &rectangle.h);
@@ -63,6 +60,7 @@ void TextRenderComponent::render() {
         transformComponent->dimensionVector.x() = rectangle.w;
         transformComponent->dimensionVector.y() = rectangle.h;
     }
-    
+
+    // TODO: We need to get the world position
     SDL_RenderCopy(&renderer, texture, nullptr, &rectangle);
 }

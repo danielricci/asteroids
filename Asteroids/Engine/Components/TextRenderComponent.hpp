@@ -6,10 +6,10 @@
 
 class TextRenderComponent : public RenderComponent {
 public:
-    TextRenderComponent(Entity* entity, SDL_Renderer& renderer);
+    TextRenderComponent() = default;
     ~TextRenderComponent();
       
-    void render();
+    void render(SDL_Renderer& renderer);
 private:
     void clean();
     
@@ -18,5 +18,5 @@ private:
     SDL_Texture* texture = nullptr;
     SDL_Surface* surface = nullptr;
     
-    SDL_Renderer& renderer;
+    
 };

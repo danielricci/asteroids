@@ -4,9 +4,10 @@
 
 #include <SDL.h>
 
-class StartMenuEntity : public MenuEntity {
+class MainMenuEntity : public MenuEntity {
 public:
-    StartMenuEntity(SDL_Renderer& renderer);
+    MainMenuEntity();
+    void render(SDL_Renderer& renderer);
 protected:
     virtual void onEntered() override;
     virtual void onExited() override;

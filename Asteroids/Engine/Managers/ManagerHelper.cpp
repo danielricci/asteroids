@@ -4,6 +4,10 @@
 
 std::list<Manager*> ManagerHelper::managers {};
 
+ManagerHelper::~ManagerHelper() {
+    clean();
+}
+
 void ManagerHelper::clean() {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
@@ -14,16 +18,24 @@ void ManagerHelper::clean() {
     managers.clear();
 }
 
-void ManagerHelper::initialize(SDL_Renderer& renderer) {
+void ManagerHelper::initialize() {
     clean();
     managers.push_back(new InputManager());
-    managers.push_back(new UIManager(renderer));
+    managers.push_back(new UIManager());
 }
 
-void ManagerHelper::processEvent(const SDL_Event& event) {
+void ManagerHelper::render(SDL_Renderer &renderer) {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
-            manager->processEvent(event);
+            manager->render(renderer);
+        }
+    }
+}
+
+void ManagerHelper::update(const SDL_Event& event) {
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            manager->update(event);
         }
     }
 }

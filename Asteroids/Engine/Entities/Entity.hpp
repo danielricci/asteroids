@@ -1,17 +1,15 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
-
+#include "Engine/System/Node.hpp"
 #include <SDL.h>
-
 #include <list>
 
 class Component;
 
-class Entity {
+class Entity : public Node {
 public:
     virtual ~Entity();
-    
     template<typename T> T* getComponent() const {
         T* myComponent = nullptr;
         for(Component* component : components) {
@@ -22,11 +20,10 @@ public:
         return myComponent;
     }
     
-    virtual void processEvent(const SDL_Event& event);
-    
+    virtual void update(const SDL_Event& event);
     Component* addComponent(Component* component);
 protected:
-    Entity(int x = 0, int y = 0, int width = 0, int height = 0);
+    Entity();
 private:
     std::list<Component*> components;
 };

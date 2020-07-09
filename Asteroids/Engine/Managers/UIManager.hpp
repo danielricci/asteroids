@@ -1,15 +1,14 @@
 #pragma once
 
 #include "Engine/Managers/Manager.hpp"
-#include "Game/Entities/StartMenuEntity.hpp"
+#include "Game/Entities/MainMenuEntity.hpp"
 
 class UIManager : public Manager {
 public:
-    UIManager(SDL_Renderer& renderer);
+    UIManager() = default;
     virtual ~UIManager();
-    virtual void processEvent(const SDL_Event& event) override;
-
-    SDL_Renderer& renderer;
-    StartMenuEntity* startMenuEntity = new StartMenuEntity(renderer);
+    virtual void update(const SDL_Event& event) override;
+    virtual void render(SDL_Renderer& renderer) override;
 private:
+    MainMenuEntity* startMenuEntity = new MainMenuEntity();
 };

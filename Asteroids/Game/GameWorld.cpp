@@ -2,7 +2,7 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/UIManager.hpp"
 #include "Game/GameWindow.hpp"
-#include "Game/Entities/StartMenuEntity.hpp"
+#include "Game/Entities/MainMenuEntity.hpp"
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     initialize();
@@ -14,13 +14,6 @@ GameWorld::~GameWorld() {
 
 void GameWorld::clean() {
     ManagerHelper::clean();
-//    for(Entity* entity : entities) {
-//        if(entity != nullptr) {
-//            delete entity;
-//            entity = nullptr;
-//        }
-//    }
-//    entities.clear();
 }
 
 void GameWorld::destroy() {
@@ -28,7 +21,7 @@ void GameWorld::destroy() {
 }
 
 void GameWorld::initialize() {
-    ManagerHelper::initialize(renderer);
+    ManagerHelper::initialize();
 }
 
 void GameWorld::run() {
@@ -36,7 +29,7 @@ void GameWorld::run() {
     while(isRunning) {
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
-            processEvent(event);
+            update(event);
         }
         if(isRunning) {
             update(gameWorldClock.sample());
@@ -45,13 +38,13 @@ void GameWorld::run() {
     }
 }
 
-void GameWorld::processEvent(const SDL_Event& event) {
+void GameWorld::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_QUIT:
             isRunning = false;
             break;
         default: {
-            ManagerHelper::processEvent(event);
+            ManagerHelper::update(event);
             break;
         }
     }
@@ -65,13 +58,13 @@ void GameWorld::update(float deltaTime) const {
     if(deltaTime < 0.0083 || deltaTime > 1) {
         deltaTime = 1.f / 60.f;
     }
+    deltaTime = deltaTime; // Just to shut up xcode
 }
 
 void GameWorld::render() const {
     SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(&renderer);
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
-    // TODO - How do we render the Menu System?
-    ManagerHelper::get<UIManager>()->startMenuEntity->getComponent<TextRenderComponent>()->render();
+    ManagerHelper::render(renderer);
     SDL_RenderPresent(&renderer);
 }
