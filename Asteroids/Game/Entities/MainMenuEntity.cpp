@@ -5,18 +5,27 @@
 #include "Game/Entities/MainMenuEntity.hpp"
 #include <Eigen/Dense>
 #include <iostream>
-
+#include <list>
 
 MainMenuEntity::MainMenuEntity() {
-    TextComponent* startGame = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Start Game");
-    startGame->setPosition(Eigen::Vector2f(300, 100));
-    startGame->addComponent(new TextRenderComponent());
-    this->addComponent(startGame);
+//    TextComponent* startGame = new TextComponent(24, {0xFF, 0x00, 0x00}, "Fonts/Verdana.ttf", "Start Game");
+//    this->addComponent(startGame);
+//    
+//    TextComponent* settings = new TextComponent(24, {0x00, 0xFF, 0x00}, "Fonts/Verdana.ttf", "Settings");
+//    this->addComponent(settings);
+//    
+//    TextComponent* highScores = new TextComponent(24, {0x00, 0x00, 0xFF}, "Fonts/Verdana.ttf", "High Scores");
+//    this->addComponent(highScores);
+//    
+//    TextComponent* exitGame = new TextComponent(24, {0xFF, 0x00, 0xFF}, "Fonts/Verdana.ttf", "Exit Game");
+//    this->addComponent(exitGame);
 }
 
 void MainMenuEntity::render(SDL_Renderer& renderer) {
-    TextComponent* tc = this->getComponent<TextComponent>();
-    tc->getComponent<TextRenderComponent>()->render(renderer);
+    //std::list<TextComponent*> textComponents = this->getAll<TextComponent>();
+//    for(TextComponent* textComponent : textComponents) {
+//
+//    }
 }
 
 void MainMenuEntity::onEntered() {

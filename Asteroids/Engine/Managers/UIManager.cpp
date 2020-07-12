@@ -3,14 +3,14 @@
 #include <iostream>
 
 UIManager::~UIManager() {
-    if(startMenuEntity != nullptr) {
-        delete startMenuEntity;
-        startMenuEntity = nullptr;
+    if(mainMenuEntity != nullptr) {
+        delete mainMenuEntity;
+        mainMenuEntity = nullptr;
     }
 }
 
 void UIManager::render(SDL_Renderer &renderer) {
-    startMenuEntity->render(renderer);
+    mainMenuEntity->render(renderer);
 }
 
 void UIManager::update(const SDL_Event& event) {
@@ -20,12 +20,12 @@ void UIManager::update(const SDL_Event& event) {
         case SDL_MOUSEBUTTONUP:
         case SDL_KEYDOWN:
         case SDL_KEYUP:
-            startMenuEntity->update(event);
+            mainMenuEntity->update(event);
             SDL_Point point;
             point.x = event.motion.x;
             point.y = event.motion.y;
             
-            SDL_Rect rectangle = startMenuEntity->getComponent<TransformComponent>()->getRectangle();
+            SDL_Rect rectangle = mainMenuEntity->get<TransformComponent>()->getRectangle();
             if(SDL_PointInRect(&point, &rectangle)) {
                 std::cout << "Mouse Entered" << std::endl;
             }

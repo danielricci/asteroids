@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Engine/System/Node.hpp"
 #include <Eigen/Dense>
 #include <list>
 
-class Component : public Node {
+class Component {
 public:
     virtual ~Component();
-    template<typename T> T* getComponent() {
+    template<typename T> T* get() const {
         T* myComponent = nullptr;
         for(Component* component : components) {
             if((myComponent = dynamic_cast<T*>(component)) != nullptr) {
@@ -16,9 +15,18 @@ public:
         }
         return myComponent;
     }
-    
+    template<typename T> std::list<T*> getAll() const {
+        std::list<T*> componentList;
+        for(Component* component : components) {
+            T* myComponent = dynamic_cast<T*>(component);
+            if(myComponent != nullptr) {
+                componentList.push_back(component);
+            }
+        }
+        return componentList;
+    }
     void addComponent(Component* component);
-    void setPosition(const Eigen::Vector2f& position);    
+    
 protected:
     Component() = default;
 private:

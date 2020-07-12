@@ -9,16 +9,6 @@ Component::~Component() {
     components.clear();
 }
 
-void Component::setPosition(const Eigen::Vector2f& position) {
-    TransformComponent* transform = this->getComponent<TransformComponent>();
-    if(transform != nullptr) {
-        transform->positionVector = position;
-    }
-}
-
 void Component::addComponent(Component* component) {
-    if(component != nullptr) {
-        component->setParentNode(this);
-        components.push_back(component);
-    }
+    components.push_back(component);
 }

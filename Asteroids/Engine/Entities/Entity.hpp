@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
-#include "Engine/System/Node.hpp"
+#include <Eigen/Dense>
 #include <SDL.h>
 #include <list>
 
 class Component;
 
-class Entity : public Node {
+class Entity {
 public:
     virtual ~Entity();
-    template<typename T> T* getComponent() const {
+    template<typename T> T* get() const {
         T* myComponent = nullptr;
         for(Component* component : components) {
             if((myComponent = dynamic_cast<T*>(component)) != nullptr) {
@@ -21,7 +21,8 @@ public:
     }
     
     virtual void update(const SDL_Event& event);
-    Component* addComponent(Component* component);
+    void addComponent(Component* component);
+        
 protected:
     Entity();
 private:

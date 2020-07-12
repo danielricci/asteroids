@@ -13,10 +13,12 @@ Entity::~Entity() {
     }
 }
 
-Component* Entity::addComponent(Component* component) {
-    components.push_back(component);
-    return component;
+void Entity::addComponent(Component* component) {
+    if(component != nullptr) {
+        components.push_back(component);
+    }
 }
 
 void Entity::update(const SDL_Event &event) {
+    // TODO: Entity::update(const SDL_Event &event)
 }
