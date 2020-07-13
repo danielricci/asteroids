@@ -1,28 +1,16 @@
 #include "Engine/Entities/Entity.hpp"
 
 Entity::Entity() {
-    TransformComponent* transformComponent = new TransformComponent();
-    this->addComponent(transformComponent);
+    this->addNode(new TransformComponent());
 }
 
-Entity::~Entity() {
-    for(Component* component : components) {
-        if(component != nullptr) {
-            delete component;
-            component = nullptr;
-        }
-    }
-    components.clear();
-}
-
-void Entity::addComponent(Component* component) {
-    if(component != nullptr) {
-        components.push_back(component);
-    }
+Eigen::Vector2f Entity::getPosition() const {
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->positionVector;
 }
 
 void Entity::setPosition(float x, float y) {
-    TransformComponent* transformComponent = this->getComponent<TransformComponent>();
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
     if(transformComponent != nullptr) {
         transformComponent->positionVector = Eigen::Vector2f(x, y);
     }
@@ -31,3 +19,4 @@ void Entity::setPosition(float x, float y) {
 void Entity::update(const SDL_Event &event) {
     // TODO: Entity::update(const SDL_Event &event)
 }
+
