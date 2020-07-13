@@ -8,24 +8,20 @@
 #include <list>
 
 MainMenuEntity::MainMenuEntity() {
-//    TextComponent* startGame = new TextComponent(24, {0xFF, 0x00, 0x00}, "Fonts/Verdana.ttf", "Start Game");
-//    this->addComponent(startGame);
-//    
-//    TextComponent* settings = new TextComponent(24, {0x00, 0xFF, 0x00}, "Fonts/Verdana.ttf", "Settings");
-//    this->addComponent(settings);
-//    
-//    TextComponent* highScores = new TextComponent(24, {0x00, 0x00, 0xFF}, "Fonts/Verdana.ttf", "High Scores");
-//    this->addComponent(highScores);
-//    
-//    TextComponent* exitGame = new TextComponent(24, {0xFF, 0x00, 0xFF}, "Fonts/Verdana.ttf", "Exit Game");
-//    this->addComponent(exitGame);
+    this->addComponent(new TextComponent(24, {0xFF, 0x00, 0x00}, "Fonts/Verdana.ttf", "Start Game"));
+    this->addComponent(new TextComponent(24, {0x00, 0xFF, 0x00}, "Fonts/Verdana.ttf", "Settings"));
+    this->addComponent(new TextComponent(24, {0x00, 0x00, 0xFF}, "Fonts/Verdana.ttf", "High Scores"));
+    this->addComponent(new TextComponent(24, {0xFF, 0x00, 0xFF}, "Fonts/Verdana.ttf", "Exit Game"));
+    this->addComponent(new TextRenderComponent());
 }
 
 void MainMenuEntity::render(SDL_Renderer& renderer) {
-    //std::list<TextComponent*> textComponents = this->getAll<TextComponent>();
-//    for(TextComponent* textComponent : textComponents) {
-//
-//    }
+    TextRenderComponent* textRenderComponent = this->getComponent<TextRenderComponent>();
+    for(TextComponent* textComponent : this->getAllComponents<TextComponent>()) {
+        if(textComponent != nullptr) {
+            textRenderComponent->render(renderer, *textComponent);
+        }
+    }
 }
 
 void MainMenuEntity::onEntered() {

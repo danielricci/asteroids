@@ -25,7 +25,7 @@ void UIManager::update(const SDL_Event& event) {
             point.x = event.motion.x;
             point.y = event.motion.y;
             
-            SDL_Rect rectangle = mainMenuEntity->get<TransformComponent>()->getRectangle();
+            SDL_Rect rectangle = mainMenuEntity->getComponent<TransformComponent>()->getRectangle();
             if(SDL_PointInRect(&point, &rectangle)) {
                 std::cout << "Mouse Entered" << std::endl;
             }

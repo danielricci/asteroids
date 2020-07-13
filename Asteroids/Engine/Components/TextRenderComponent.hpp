@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Components/RenderComponent.hpp"
+#include "Engine/Components/TextComponent.hpp"
 #include <SDL_ttf.h>
 #include <SDL.h>
 
@@ -9,7 +10,7 @@ public:
     TextRenderComponent() = default;
     ~TextRenderComponent();
       
-    void render(SDL_Renderer& renderer);
+    void render(SDL_Renderer& renderer, const TextComponent& textComponent);
 private:
     void clean();
     
