@@ -9,9 +9,7 @@
 
 class Entity : public Node {
 public:
-    virtual Eigen::Vector2f getPosition() const override;
-    void setPosition(float x, float y);
-    
+    virtual Eigen::Vector2f getPosition() const override;    
     virtual void update(const SDL_Event& event);
 protected:
     Entity();

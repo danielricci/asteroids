@@ -8,20 +8,23 @@
 #include <list>
 
 MainMenuEntity::MainMenuEntity() {
-    this->setPosition(100, 100);
+    
+    this->setPosition(Eigen::Vector2f(240, 200));
     
     TextComponent* startGame = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Start Game");
-    startGame->setPosition({3, 5});
     this->addNode(startGame);
     
-//    TextComponent* settings = new TextComponent(24, {0xFF, 0xFF, 0x00}, "Fonts/Verdana.ttf", "Settings");
-//    this->addNode(settings);
-//
-//    TextComponent* highScores = new TextComponent(24, {0xFF, 0x00, 0xFF}, "Fonts/Verdana.ttf", "High Scores");
-//    this->addNode(highScores);
-//
-//    TextComponent* exit = new TextComponent(24, {0xFF, 0x0F, 0x0F}, "Fonts/Verdana.ttf", "Exit");
-//    this->addNode(exit);
+    TextComponent* settings = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Settings");
+    settings->setPosition(Eigen::Vector2f(0, 50));
+    this->addNode(settings);
+    
+    TextComponent* highScores = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "High Scores");
+    highScores->setPosition(Eigen::Vector2f(0, 100));
+    this->addNode(highScores);
+    
+    TextComponent* exit = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Exit");
+    exit->setPosition(Eigen::Vector2f(0, 150));
+    this->addNode(exit);
         
     this->addNode(new TextRenderComponent());
 }
