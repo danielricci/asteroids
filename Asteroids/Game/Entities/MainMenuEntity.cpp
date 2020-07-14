@@ -8,10 +8,21 @@
 #include <list>
 
 MainMenuEntity::MainMenuEntity() {
-    this->addNode(new TextComponent(24, {0xFF, 0x00, 0x00}, "Fonts/Verdana.ttf", "Start Game"));
-    this->addNode(new TextComponent(24, {0x00, 0xFF, 0x00}, "Fonts/Verdana.ttf", "Settings"));
-    this->addNode(new TextComponent(24, {0x00, 0x00, 0xFF}, "Fonts/Verdana.ttf", "High Scores"));
-    this->addNode(new TextComponent(24, {0xFF, 0x00, 0xFF}, "Fonts/Verdana.ttf", "Exit Game"));
+    this->setPosition(100, 100);
+    
+    TextComponent* startGame = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Start Game");
+    startGame->setPosition({3, 5});
+    this->addNode(startGame);
+    
+//    TextComponent* settings = new TextComponent(24, {0xFF, 0xFF, 0x00}, "Fonts/Verdana.ttf", "Settings");
+//    this->addNode(settings);
+//
+//    TextComponent* highScores = new TextComponent(24, {0xFF, 0x00, 0xFF}, "Fonts/Verdana.ttf", "High Scores");
+//    this->addNode(highScores);
+//
+//    TextComponent* exit = new TextComponent(24, {0xFF, 0x0F, 0x0F}, "Fonts/Verdana.ttf", "Exit");
+//    this->addNode(exit);
+        
     this->addNode(new TextRenderComponent());
 }
 

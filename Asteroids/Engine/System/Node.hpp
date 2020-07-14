@@ -27,11 +27,13 @@ public:
         }
         return nodes;
     }
-protected:
-    Node() = default;
-
+    
+    Eigen::Vector2f getWorldPosition() const;
     virtual Eigen::Vector2f getPosition() const;
     virtual void setPosition(Eigen::Vector2f position);
+protected:
+    Node() = default;
+    Node* getParentNode() const;
 private:
     std::list<Node*> nodes;
     Node* parentNode = nullptr;

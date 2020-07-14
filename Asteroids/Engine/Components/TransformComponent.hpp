@@ -9,7 +9,7 @@ public:
     TransformComponent() = default;
             
     SDL_Rect getRectangle() const;
-    Eigen::Vector2f getWorldPosition() const;
+    //Eigen::Vector2f getWorldPosition() const;
         
     Eigen::Vector2f dimensionVector { 0, 0 };
     Eigen::Vector2f positionVector { 0, 0 };

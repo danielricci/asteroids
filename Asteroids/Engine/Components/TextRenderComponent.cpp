@@ -46,5 +46,17 @@ void TextRenderComponent::render(SDL_Renderer& renderer, const TextComponent& te
         std::cerr << "Could not create the texture from the specified surface" << std::endl;
         return;
     }
-    SDL_RenderCopy(&renderer, texture, nullptr, nullptr);
+    
+    TransformComponent* transformComponent = textComponent.getNode<TransformComponent>();
+    SDL_Rect rectangle = transformComponent->getRectangle();
+    Eigen::Vector2f worldPosition = transformComponent->getWorldPosition();
+    rectangle.x = worldPosition.x();
+    rectangle.y = worldPosition.y();
+        if((rectangle.w == 0 || rectangle.h == 0)) {
+            SDL_QueryTexture(texture, nullptr, nullptr, &rectangle.w, &rectangle.h);
+            transformComponent->dimensionVector.x() = rectangle.w;
+            transformComponent->dimensionVector.y() = rectangle.h;
+        }
+    
+    SDL_RenderCopy(&renderer, texture, nullptr, &rectangle);
 }

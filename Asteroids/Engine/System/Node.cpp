@@ -23,9 +23,30 @@ Eigen::Vector2f Node::getPosition() const {
     return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->positionVector;
 }
 
+Eigen::Vector2f Node::getWorldPosition() const {
+    Eigen::Vector2f position = this->getPosition();
+    if(this->parentNode == nullptr) {
+        return position;
+    }
+    
+    Node* parentNode = this->getParentNode();
+    while(parentNode != nullptr) {
+        position += parentNode->getPosition();
+        parentNode = parentNode->getParentNode();
+    }
+    return position;
+}
+
 void Node::setPosition(Eigen::Vector2f position) {
     TransformComponent* transformComponent = this->getNode<TransformComponent>();
-    if(transformComponent != nullptr) {
-        transformComponent->positionVector = position;
+    if(transformComponent == nullptr) {
+        transformComponent = new TransformComponent();
+        this->addNode(transformComponent);
     }
+    
+    transformComponent->positionVector = position;
+}
+
+Node* Node::getParentNode() const {
+    return this->parentNode;
 }
