@@ -7,9 +7,9 @@
 class MainMenuEntity : public MenuEntity {
 public:
     MainMenuEntity();
-    void render(SDL_Renderer& renderer);
+    //void render(SDL_Renderer& renderer);
 protected:
-    virtual void onEntered() override;
-    virtual void onExited() override;
-    virtual void onExecute() override;
+    //virtual void onEntered() override;
+    //virtual void onExited() override;
+    //virtual void onExecute() override;
 };
