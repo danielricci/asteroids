@@ -14,8 +14,8 @@
             filePath = "Asteroids/Game/Entities/MainMenuEntity.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "MainMenuEntity::MainMenuEntity()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Asteroids/Game/Entities/MainMenuEntity.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
             landmarkName = "MainMenuEntity::MainMenuEntity()"
             landmarkType = "7">
          </BreakpointContent>
@@ -79,6 +79,22 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "TextRenderComponent::render(renderer, textComponent)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60FF0487-56C5-4436-840A-2B39846BBC6D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Asteroids/Game/Entities/MainMenuEntity.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "MainMenuEntity::render(renderer)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

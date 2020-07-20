@@ -6,8 +6,6 @@
 class Node {
 public:
     virtual ~Node();
-    void addNode(Node* node);
-    
     template<typename T> T* getNode() const {
         T* myNode = nullptr;
         for(Node* node : nodes) {
@@ -34,6 +32,7 @@ public:
 protected:
     Node() = default;
     Node* getParentNode() const;
+    void addNode(Node* node);
 private:
     std::list<Node*> nodes;
     Node* parentNode = nullptr;

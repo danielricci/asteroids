@@ -1,15 +1,10 @@
 #pragma once
 
-#include "Engine/Entities/MenuEntity.hpp"
-
+#include "Engine/Entities/Entity.hpp"
 #include <SDL.h>
 
-class MainMenuEntity : public MenuEntity {
+class MainMenuEntity : public Entity {
 public:
     MainMenuEntity();
-    //void render(SDL_Renderer& renderer);
-protected:
-    //virtual void onEntered() override;
-    //virtual void onExited() override;
-    //virtual void onExecute() override;
+    virtual void render(SDL_Renderer& renderer) override;
 };
