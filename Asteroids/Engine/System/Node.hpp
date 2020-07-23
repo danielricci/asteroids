@@ -29,6 +29,7 @@ public:
     Eigen::Vector2f getWorldPosition() const;
     virtual Eigen::Vector2f getPosition() const;
     virtual void setPosition(Eigen::Vector2f position);
+    virtual Eigen::Vector2f getDimension() const;
 protected:
     Node() = default;
     Node* getParentNode() const;

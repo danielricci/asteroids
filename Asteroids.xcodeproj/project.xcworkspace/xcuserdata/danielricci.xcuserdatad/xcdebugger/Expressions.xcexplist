@@ -3,6 +3,22 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MenuControlEntity::update(SDL_Event const&amp;):MenuControlEntity.hpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "functor == nullptr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuControlEntity::update(SDL_Event const&amp;):MenuControlEntity.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "position">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "TextRenderComponent::render():TextRenderComponent.cpp">
          <PersistentStrings>
             <PersistentString

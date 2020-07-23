@@ -15,14 +15,6 @@ void TextMenuEntity::render(SDL_Renderer& renderer) {
     }
 }
 
-//void TextMenuEntity::onEntered() {
-////    std::cout << "StartMenuEntity::onEntered" << std::endl;
-//}
-//
-//void TextMenuEntity::onExited() {
-//  //  std::cout << "StartMenuEntity::onExited" << std::endl;
-//}
-//
-//void TextMenuEntity::onExecute() {
-//    //std::cout << "StartMenuEntity::onExecute" << std::endl;
-//}
+Eigen::Vector2f TextMenuEntity::getDimension() const {
+    return this->getNode<TextComponent>()->getDimension();
+}

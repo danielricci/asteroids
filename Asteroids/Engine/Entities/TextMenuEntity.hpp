@@ -9,9 +9,6 @@ class TextMenuEntity : public MenuControlEntity {
 public:
     TextMenuEntity(std::string text, int size);
     virtual void render(SDL_Renderer& renderer) override;
-    //virtual void onExecute2(std::function<void()> functor) override;
+    virtual Eigen::Vector2f getDimension() const override;
 protected:
-//    virtual void onEntered() override;
-//    virtual void onExited() override;
-//    virtual void onExecute() override;
 };

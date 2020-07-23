@@ -48,7 +48,7 @@ void TextRenderComponent::render(SDL_Renderer& renderer, const TextComponent& te
     }
     
     TransformComponent* transformComponent = textComponent.getNode<TransformComponent>(); // TODO - do we need this?
-    SDL_Rect rectangle = transformComponent->getRectangle();
+    SDL_Rect rectangle = transformComponent->toRectangle();
     Eigen::Vector2f worldPosition = transformComponent->getWorldPosition();
     rectangle.x = worldPosition.x();
     rectangle.y = worldPosition.y();

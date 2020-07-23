@@ -50,3 +50,8 @@ void Node::setPosition(Eigen::Vector2f position) {
 Node* Node::getParentNode() const {
     return this->parentNode;
 }
+
+Eigen::Vector2f Node::getDimension() const {
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->dimensionVector;
+}

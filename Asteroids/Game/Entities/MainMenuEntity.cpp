@@ -1,29 +1,46 @@
 #include "Engine/Components/TextRenderComponent.hpp"
 #include "Engine/Entities/TextMenuEntity.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
+#include <iostream>
 
 MainMenuEntity::MainMenuEntity() {
     TextMenuEntity* startGameMenuEntity = new TextMenuEntity("Start Game", 24);
+    startGameMenuEntity->setPosition(Eigen::Vector2f(0, 0));
+    startGameMenuEntity->onExecute([]() {
+        std::cout << "Start Game" << std::endl;
+    });
     this->addNode(startGameMenuEntity);
 
-    
-    
-    //    this->setPosition(Eigen::Vector2f(240, 200));
-//
-//
-//    TextComponent* settings = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Settings");
-//    settings->setPosition(Eigen::Vector2f(0, 50));
-//    this->addNode(settings);
-//
-//    TextComponent* highScores = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "High Scores");
-//    highScores->setPosition(Eigen::Vector2f(0, 100));
-//    this->addNode(highScores);
-//
-//    TextComponent* exit = new TextComponent(24, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", "Exit");
-//    exit->setPosition(Eigen::Vector2f(0, 150));
-//    this->addNode(exit);
-//
-//    this->addNode(new TextRenderComponent());
+    TextMenuEntity* settingsMenuEntity = new TextMenuEntity("Settings", 24);
+    settingsMenuEntity->setPosition(Eigen::Vector2f(0, 50));
+    settingsMenuEntity->onExecute([]() {
+        std::cout << "Settings" << std::endl;
+    });
+    this->addNode(settingsMenuEntity);
+
+    TextMenuEntity* highScoresMenuEntity = new TextMenuEntity("High Scores", 24);
+    highScoresMenuEntity->setPosition(Eigen::Vector2f(0, 100));
+    highScoresMenuEntity->onExecute([]() {
+        std::cout << "High Scores" << std::endl;
+    });
+    this->addNode(highScoresMenuEntity);
+
+    TextMenuEntity* exitMenuEntity = new TextMenuEntity("Exit", 24);
+    exitMenuEntity->setPosition(Eigen::Vector2f(0, 150));
+    exitMenuEntity->onExecute([]() {
+        std::cout << "Exit" << std::endl;
+    });
+    this->addNode(exitMenuEntity);
+
+    this->setPosition(Eigen::Vector2f(220, 175));
+}
+
+void MainMenuEntity::update(const SDL_Event& event) {
+    for(TextMenuEntity* entity : this->getNodes<TextMenuEntity>()) {
+        if(entity != nullptr) {
+            entity->update(event);
+        }
+    }
 }
 
 void MainMenuEntity::render(SDL_Renderer& renderer) {
@@ -33,17 +50,3 @@ void MainMenuEntity::render(SDL_Renderer& renderer) {
         }
     }
 }
-
-//
-//
-//void MainMenuEntity::onEntered() {
-//    std::cout << "StartMenuEntity::onEntered" << std::endl;
-//}
-//
-//void MainMenuEntity::onExited() {
-//    std::cout << "StartMenuEntity::onExited" << std::endl;
-//}
-//
-//void MainMenuEntity::onExecute() {
-//    std::cout << "StartMenuEntity::onExecute" << std::endl;
-//}
