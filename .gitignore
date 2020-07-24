@@ -33,3 +33,6 @@
 
 # XCode
 .DS_Store
+Breakpoints_v2.xcbkptlist
+Expressions.xcexplist
+UserInterfaceState.xcuserstate
