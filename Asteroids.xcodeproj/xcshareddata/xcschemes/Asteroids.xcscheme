@@ -38,7 +38,7 @@
       region = "CA"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      customWorkingDirectory = "/Users/danielricci/Library/Mobile Documents/com~apple~CloudDocs/Computer Science/Github Repositories/asteroids/resources"
+      customWorkingDirectory = ""
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "NO"
       debugXPCServices = "NO"
