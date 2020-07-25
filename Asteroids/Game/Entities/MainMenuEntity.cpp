@@ -28,10 +28,11 @@ MainMenuEntity::MainMenuEntity() {
     TextMenuEntity* exitMenuEntity = new TextMenuEntity("Exit", 24);
     exitMenuEntity->setPosition(Eigen::Vector2f(0, 150));
     exitMenuEntity->onExecute([]() {
-        std::cout << "Exit" << std::endl;
+        SDL_Event event;
+        event.type = SDL_QUIT;
+        SDL_PushEvent(&event);
     });
     this->addNode(exitMenuEntity);
-
     this->setPosition(Eigen::Vector2f(220, 175));
 }
 
