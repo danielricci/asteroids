@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/System/Node.hpp"
-#include <Eigen/Dense>
 
 class Component : public Node {
 public:

@@ -1,4 +1,3 @@
-#include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/UIManager.hpp"
 
 UIManager::~UIManager() {

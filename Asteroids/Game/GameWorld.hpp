@@ -1,10 +1,7 @@
 #pragma once
 
 #include "Engine/Core/Clock.hpp"
-#include "Engine/Entities/Entity.hpp"
-#include "Game/GameWindow.hpp"
 #include <SDL.h>
-#include <list>
 
 class GameWorld {
 public:
@@ -13,42 +10,6 @@ public:
     
     void run();
 private:
-//    std::list<Entity*> entities;
-//    template<typename T> T* getEntity() {
-//        for(Entity* entity : entities) {
-//            T* object = dynamic_cast<T*>(entity);
-//            if(object != nullptr) {
-//                return object;
-//            }
-//        }
-//        return nullptr;
-//    }
-//
-//    template<typename T> std::list<T*> getEntities() {
-//        std::list<T*> objects;
-//        for(Entity* entity : entities) {
-//            T* object = dynamic_cast<T*>(entity);
-//            if(object != nullptr) {
-//                objects.push_back(object);
-//            }
-//        }
-//        return objects;
-//    }
-//
-//    template<typename T, typename U> std::list<U*> getGameComponents() {
-//        std::list<U*> components;
-//        for(Entity* entity : entities) {
-//            T* object = dynamic_cast<T*>(entity);
-//            if(object != nullptr) {
-//                U* component = entity->getComponent<U>();
-//                if(component != nullptr) {
-//                    components.push_back(component);
-//                }
-//            }
-//        }
-//        return components;
-//    }
-    
     void update(const SDL_Event& event);
     void update(float deltaTime) const;
     void render() const;

@@ -1,7 +1,7 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/System/Node.hpp"
 
-Node::~Node() {
+Node::~Node() {    
     for(Node* node : nodes) {
        if(node != nullptr) {
            delete node;

@@ -1,5 +1,4 @@
 #include "Engine/Core/Clock.hpp"
-
 #include <SDL.h>
 
 float Clock::sample() {

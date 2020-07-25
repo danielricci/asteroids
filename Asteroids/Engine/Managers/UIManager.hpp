@@ -2,6 +2,7 @@
 
 #include "Engine/Managers/Manager.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
+#include <SDL.h>
 
 class UIManager : public Manager {
 public:

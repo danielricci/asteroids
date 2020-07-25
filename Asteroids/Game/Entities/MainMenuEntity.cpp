@@ -1,4 +1,3 @@
-#include "Engine/Components/TextRenderComponent.hpp"
 #include "Engine/Entities/TextMenuEntity.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
 #include <iostream>

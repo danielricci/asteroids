@@ -1,5 +1,4 @@
 #include "Engine/Components/SoundComponent.hpp"
-
 #include <iostream>
 
 SoundComponent::SoundComponent(const std::string& path) : path(path) {

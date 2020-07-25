@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Game/GameWorld.hpp"
-
 #include <SDL.h>
 
 class GameWindow {

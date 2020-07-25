@@ -27,6 +27,8 @@
 		03B6C8A224C8CD6C0067D03C /* MenuControlEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */; };
 		03D597B624C5FA3A001CE9CC /* TextMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */; };
 		03EE9C6524CBCD6600302287 /* Fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03784F77245D361800C16FD8 /* Fonts */; };
+		03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6624CC760400302287 /* CollisionComponent.cpp */; };
+		03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6824CC784600302287 /* InputComponent.cpp */; };
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
 		03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextMenuEntity.cpp; sourceTree = "<group>"; };
 		03D597B524C5FA3A001CE9CC /* TextMenuEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextMenuEntity.hpp; sourceTree = "<group>"; };
+		03EE9C6624CC760400302287 /* CollisionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionComponent.cpp; sourceTree = "<group>"; };
+		03EE9C6824CC784600302287 /* InputComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputComponent.cpp; sourceTree = "<group>"; };
 		03EFD232237D004B006EF2A5 /* GameWorld.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
 		03EFD233237D004B006EF2A5 /* GameWorld.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameWorld.hpp; sourceTree = "<group>"; };
 		03EFD237237E48D9006EF2A5 /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
@@ -118,8 +122,10 @@
 		031E7777246A34A20088854F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				03EE9C6624CC760400302287 /* CollisionComponent.cpp */,
 				0350F2B123A324FB0038A52E /* CollisionComponent.hpp */,
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
+				03EE9C6824CC784600302287 /* InputComponent.cpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
 				03987B54239559A60004639E /* RenderComponent.hpp */,
 				0364021B246A3B11008684B8 /* SoundComponent.cpp */,
@@ -137,12 +143,12 @@
 		031E7778246A34AA0088854F /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */,
-				03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */,
-				03D597B524C5FA3A001CE9CC /* TextMenuEntity.hpp */,
-				0387FD8624A59CE70019BE47 /* MenuControlEntity.hpp */,
 				035DB9DF238B75D90025B2F7 /* Entity.cpp */,
 				03EFD237237E48D9006EF2A5 /* Entity.hpp */,
+				03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */,
+				0387FD8624A59CE70019BE47 /* MenuControlEntity.hpp */,
+				03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */,
+				03D597B524C5FA3A001CE9CC /* TextMenuEntity.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -152,11 +158,11 @@
 			children = (
 				03219D452406B5F70050588A /* InputManager.cpp */,
 				03219D462406B5F70050588A /* InputManager.hpp */,
-				0387FD8F24A94C530019BE47 /* UIManager.cpp */,
-				0387FD9024A94C530019BE47 /* UIManager.hpp */,
 				0387FD9324A96AC60019BE47 /* Manager.hpp */,
 				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
 				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+				0387FD8F24A94C530019BE47 /* UIManager.cpp */,
+				0387FD9024A94C530019BE47 /* UIManager.hpp */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -164,13 +170,13 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				032220192380FF9D004B0BD1 /* GameWindow.cpp */,
-				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
-				039E6C16234E30B0004CCD78 /* main.cpp */,
-				0322201A2380FF9D004B0BD1 /* GameWindow.hpp */,
-				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
 				03EFD235237E48BA006EF2A5 /* Entities */,
+				032220192380FF9D004B0BD1 /* GameWindow.cpp */,
+				0322201A2380FF9D004B0BD1 /* GameWindow.hpp */,
+				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
+				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
+				039E6C16234E30B0004CCD78 /* main.cpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */,
 				0308C7BF24BD5811005DA3BB /* Node.cpp in Sources */,
 				0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */,
 				032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */,
@@ -344,6 +351,7 @@
 				03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */,
 				0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
+				03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 class TextRenderComponent : public RenderComponent {
 public:
     TextRenderComponent() = default;
-    ~TextRenderComponent();
+    virtual ~TextRenderComponent();
       
     void render(SDL_Renderer& renderer, const TextComponent& textComponent);
 private:
