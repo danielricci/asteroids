@@ -4,6 +4,5 @@
 
 class RenderComponent : public Component {
 public:
-    RenderComponent() = default;
     bool isVisible { true };
 };
