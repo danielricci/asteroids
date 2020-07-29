@@ -4,9 +4,9 @@
 #include <SDL.h>
 #include <string>
 
-class TextMenuEntity : public MenuControlEntity {
+class TextMenuControlEntity : public MenuControlEntity {
 public:
-    TextMenuEntity(std::string text, int size);
+    TextMenuControlEntity(std::string text, int size);
     virtual void render(SDL_Renderer& renderer) override;
     virtual Eigen::Vector2f getDimension() const override;
 };

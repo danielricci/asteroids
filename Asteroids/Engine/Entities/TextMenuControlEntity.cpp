@@ -1,13 +1,13 @@
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/TextRenderComponent.hpp"
-#include "Engine/Entities/TextMenuEntity.hpp"
+#include "Engine/Entities/TextMenuControlEntity.hpp"
 
-TextMenuEntity::TextMenuEntity(std::string text, int size) {
+TextMenuControlEntity::TextMenuControlEntity(std::string text, int size) {
     this->addNode(new TextComponent(size, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", text));
     this->addNode(new TextRenderComponent());
 }
 
-void TextMenuEntity::render(SDL_Renderer& renderer) {
+void TextMenuControlEntity::render(SDL_Renderer& renderer) {
     TextComponent* textComponent = this->getNode<TextComponent>();
     TextRenderComponent* textRenderComponent = this->getNode<TextRenderComponent>();
     if(textComponent != nullptr && textRenderComponent != nullptr) {
@@ -15,6 +15,6 @@ void TextMenuEntity::render(SDL_Renderer& renderer) {
     }
 }
 
-Eigen::Vector2f TextMenuEntity::getDimension() const {
+Eigen::Vector2f TextMenuControlEntity::getDimension() const {
     return this->getNode<TextComponent>()->getDimension();
 }

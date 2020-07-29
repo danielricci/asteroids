@@ -1,5 +1,8 @@
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/UIManager.hpp"
+#include "Game/Entities/MainMenuEntity.hpp"
 #include "Game/GameWindow.hpp"
+
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     initialize();
@@ -19,6 +22,7 @@ void GameWorld::destroy() {
 
 void GameWorld::initialize() {
     ManagerHelper::initialize();
+    ManagerHelper::get<UIManager>()->addUIElement(new MainMenuEntity());
 }
 
 void GameWorld::run() {

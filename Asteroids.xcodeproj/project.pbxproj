@@ -25,7 +25,7 @@
 		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03B6C8A224C8CD6C0067D03C /* MenuControlEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */; };
-		03D597B624C5FA3A001CE9CC /* TextMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */; };
+		03D597B624C5FA3A001CE9CC /* TextMenuControlEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D597B424C5FA3A001CE9CC /* TextMenuControlEntity.cpp */; };
 		03EE9C6524CBCD6600302287 /* Fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03784F77245D361800C16FD8 /* Fonts */; };
 		03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6624CC760400302287 /* CollisionComponent.cpp */; };
 		03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6824CC784600302287 /* InputComponent.cpp */; };
@@ -84,8 +84,8 @@
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuControlEntity.cpp; sourceTree = "<group>"; };
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
-		03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextMenuEntity.cpp; sourceTree = "<group>"; };
-		03D597B524C5FA3A001CE9CC /* TextMenuEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextMenuEntity.hpp; sourceTree = "<group>"; };
+		03D597B424C5FA3A001CE9CC /* TextMenuControlEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextMenuControlEntity.cpp; sourceTree = "<group>"; };
+		03D597B524C5FA3A001CE9CC /* TextMenuControlEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextMenuControlEntity.hpp; sourceTree = "<group>"; };
 		03EE9C6624CC760400302287 /* CollisionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionComponent.cpp; sourceTree = "<group>"; };
 		03EE9C6824CC784600302287 /* InputComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputComponent.cpp; sourceTree = "<group>"; };
 		03EFD232237D004B006EF2A5 /* GameWorld.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 				03EFD237237E48D9006EF2A5 /* Entity.hpp */,
 				03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */,
 				0387FD8624A59CE70019BE47 /* MenuControlEntity.hpp */,
-				03D597B424C5FA3A001CE9CC /* TextMenuEntity.cpp */,
-				03D597B524C5FA3A001CE9CC /* TextMenuEntity.hpp */,
+				03D597B424C5FA3A001CE9CC /* TextMenuControlEntity.cpp */,
+				03D597B524C5FA3A001CE9CC /* TextMenuControlEntity.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				0308C7BF24BD5811005DA3BB /* Node.cpp in Sources */,
 				0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */,
 				032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */,
-				03D597B624C5FA3A001CE9CC /* TextMenuEntity.cpp in Sources */,
+				03D597B624C5FA3A001CE9CC /* TextMenuControlEntity.cpp in Sources */,
 				0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */,
 				036E505D24B87FC900426EBA /* TransformComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
