@@ -5,7 +5,6 @@ void GameManager::render(SDL_Renderer& renderer) {
 }
 
 void GameManager::update(float deltaTime) {
-
 }
 
 void GameManager::update(const SDL_Event& event) {

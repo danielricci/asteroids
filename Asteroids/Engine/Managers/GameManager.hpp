@@ -19,8 +19,8 @@ public:
     bool isGamePaused() const;
 private:
     enum class GameState : char {
-        STARTED,
         STOPPED,
+        STARTED,
         PAUSED
     };
 
