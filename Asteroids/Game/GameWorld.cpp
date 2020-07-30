@@ -59,7 +59,7 @@ void GameWorld::update(float deltaTime) const {
     if(deltaTime < 0.0083 || deltaTime > 1) {
         deltaTime = 1.f / 60.f;
     }
-    deltaTime = deltaTime; // Just to shut up xcode
+    ManagerHelper::update(deltaTime);
 }
 
 void GameWorld::render() const {

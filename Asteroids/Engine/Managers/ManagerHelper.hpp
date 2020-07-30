@@ -18,7 +18,7 @@ public:
     
     static void initialize();
     static void clean();
-    
+    static void update(float deltaTime);
     static void update(const SDL_Event& event);
     static void render(SDL_Renderer& renderer);
 private:

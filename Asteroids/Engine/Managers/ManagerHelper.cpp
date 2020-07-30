@@ -1,3 +1,4 @@
+#include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/UIManager.hpp"
@@ -20,6 +21,7 @@ void ManagerHelper::clean() {
 
 void ManagerHelper::initialize() {
     clean();
+    managers.push_back(new GameManager());
     managers.push_back(new InputManager());
     managers.push_back(new UIManager());
 }
@@ -28,6 +30,14 @@ void ManagerHelper::render(SDL_Renderer &renderer) {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->render(renderer);
+        }
+    }
+}
+
+void ManagerHelper::update(float deltaTime) {
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            manager->update(deltaTime);
         }
     }
 }

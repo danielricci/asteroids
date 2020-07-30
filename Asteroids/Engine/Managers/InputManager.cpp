@@ -27,6 +27,10 @@ void InputManager::render(SDL_Renderer& renderer) {
     // TODO: Should the manager class not force you to override render and update??
 }
 
+void InputManager::update(float DeltaTime) {
+    
+}
+
 void InputManager::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_CONTROLLERAXISMOTION: {

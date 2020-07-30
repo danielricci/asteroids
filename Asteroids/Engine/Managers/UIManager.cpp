@@ -16,6 +16,12 @@ void UIManager::render(SDL_Renderer& renderer) {
     }
 }
 
+void UIManager::update(float deltaTime) {
+    for(Entity* entity : entities) {
+        entity->update(deltaTime);
+    }
+}
+
 void UIManager::update(const SDL_Event& event) {
     for(Entity* entity : entities) {
         entity->update(event);

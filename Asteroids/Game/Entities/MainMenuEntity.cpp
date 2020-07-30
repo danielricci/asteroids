@@ -1,5 +1,7 @@
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Entities/TextMenuControlEntity.hpp"
+#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
 #include <iostream>
 
@@ -7,25 +9,25 @@ MainMenuEntity::MainMenuEntity() {
     TextMenuControlEntity* startGameMenuEntity = new TextMenuControlEntity("Start Game", 24);
     startGameMenuEntity->setPosition(Eigen::Vector2f(0, 0));
     startGameMenuEntity->onExecute([this]() {
-        this->getNode<RenderComponent>()->isVisible = false;
+        ManagerHelper::get<GameManager>()->startGame();
     });
     this->addNode(startGameMenuEntity);
 
     TextMenuControlEntity* settingsMenuEntity = new TextMenuControlEntity("Settings", 24);
     settingsMenuEntity->setPosition(Eigen::Vector2f(0, 50));
     settingsMenuEntity->onExecute([]() {
-        std::cout << "Settings" << std::endl;
+        std::cout << "TODO: Settings" << std::endl;
     });
     this->addNode(settingsMenuEntity);
 
     TextMenuControlEntity* highScoresMenuEntity = new TextMenuControlEntity("High Scores", 24);
     highScoresMenuEntity->setPosition(Eigen::Vector2f(0, 100));
     highScoresMenuEntity->onExecute([]() {
-        std::cout << "High Scores" << std::endl;
+        std::cout << "TODO: High Scores" << std::endl;
     });
     this->addNode(highScoresMenuEntity);
 
-    TextMenuControlEntity* exitMenuEntity = new TextMenuControlEntity("Exit", 24);
+    TextMenuControlEntity* exitMenuEntity = new TextMenuControlEntity("Quit Game", 24);
     exitMenuEntity->setPosition(Eigen::Vector2f(0, 150));
     exitMenuEntity->onExecute([]() {
         SDL_Event event;
@@ -37,13 +39,12 @@ MainMenuEntity::MainMenuEntity() {
     this->addNode(new RenderComponent());
 }
 
+void MainMenuEntity::update(float deltaTime) {
+    this->getNode<RenderComponent>()->isVisible = !ManagerHelper::get<GameManager>()->isGameStarted();
+}
+
 void MainMenuEntity::update(const SDL_Event& event) {
-    RenderComponent* renderComponent = this->getNode<RenderComponent>();
-    if(event.key.keysym.sym == SDLK_ESCAPE && event.type == SDL_KEYUP) {
-        renderComponent->isVisible = !renderComponent->isVisible;
-    }
-    
-    if(renderComponent->isVisible) {
+    if(!ManagerHelper::get<GameManager>()->isGameStarted()) {
         for(TextMenuControlEntity* entity : this->getNodes<TextMenuControlEntity>()) {
             if(entity != nullptr) {
                 entity->update(event);
