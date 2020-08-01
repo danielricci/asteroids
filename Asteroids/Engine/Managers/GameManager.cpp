@@ -2,9 +2,19 @@
 #include <iostream>
 
 void GameManager::render(SDL_Renderer& renderer) {
+    for(Entity* entity : entities) {
+        if(entity != nullptr) {
+            entity->render(renderer);
+        }
+    }
 }
 
 void GameManager::update(float deltaTime) {
+    for(Entity* entity : entities) {
+        if(entity != nullptr) {
+            entity->update(deltaTime);
+        }
+    }
 }
 
 void GameManager::update(const SDL_Event& event) {
@@ -25,6 +35,11 @@ void GameManager::update(const SDL_Event& event) {
             default: {
                 std::cout << "GameManager::update not properly handling gameState = " << static_cast<int>(gameState) << std::endl;
             }
+        }
+    }
+    for(Entity* entity : entities) {
+        if(entity != nullptr) {
+            entity->update(event);
         }
     }
 }
@@ -51,4 +66,8 @@ void GameManager::startGame() {
 
 bool GameManager::isGameStarted() const {
     return this->gameState == GameState::STARTED;
+}
+
+void GameManager::addEntity(Entity* entity) {
+    this->entities.push_back(entity);
 }

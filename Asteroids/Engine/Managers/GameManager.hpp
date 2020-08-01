@@ -1,7 +1,9 @@
 #pragma once
 
+#include "Engine/Entities/Entity.hpp"
 #include "Engine/Managers/Manager.hpp"
 #include <SDL.h>
+#include <list>
 
 class GameManager : public Manager {
 public:
@@ -17,6 +19,8 @@ public:
     
     void pauseGame();
     bool isGamePaused() const;
+    
+    void addEntity(Entity* entity);
 private:
     enum class GameState : char {
         STOPPED,
@@ -25,4 +29,6 @@ private:
     };
 
     GameState gameState = GameState::STOPPED;
+    
+    std::list<Entity*> entities;
 };

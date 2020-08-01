@@ -27,7 +27,8 @@ MainMenuEntity::MainMenuEntity() {
     });
     this->addNode(highScoresMenuEntity);
 
-    TextMenuControlEntity* exitMenuEntity = new TextMenuControlEntity("Quit Game", 24);
+    // TODO: Quit Game should be used when the game is actually being played
+    TextMenuControlEntity* exitMenuEntity = new TextMenuControlEntity("Exit", 24);
     exitMenuEntity->setPosition(Eigen::Vector2f(0, 150));
     exitMenuEntity->onExecute([]() {
         SDL_Event event;
