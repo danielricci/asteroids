@@ -1,10 +1,7 @@
-#include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/UIManager.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
-#include "Game/Entities/PlayerEntity.hpp"
-#include "Game/GameWindow.hpp"
-
+#include "Game/GameWorld.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     initialize();
@@ -24,8 +21,8 @@ void GameWorld::destroy() {
 
 void GameWorld::initialize() {
     ManagerHelper::initialize();
-    ManagerHelper::get<UIManager>()->addUIElement(new MainMenuEntity());
-    ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+    // TODO: Move this somewhere else?
+    ManagerHelper::get<UIManager>()->addEntity(new MainMenuEntity());
 }
 
 void GameWorld::run() {
@@ -55,12 +52,8 @@ void GameWorld::update(const SDL_Event& event) {
 }
 
 void GameWorld::update(float deltaTime) const {
-    // For now values of delta times that are greater than 1
-    // or less than 120hz are clamped to 1/60. Issues arise when
-    // the application first opens, and when the window is fully behind
-    // another window, the deltaTime gets very very fast
-    if(deltaTime < 0.0083 || deltaTime > 1) {
-        deltaTime = 1.f / 60.f;
+    if(deltaTime < minDeltaTime || deltaTime > maxDeltaTime) {
+        deltaTime = deltaTimeClamp;
     }
     ManagerHelper::update(deltaTime);
 }

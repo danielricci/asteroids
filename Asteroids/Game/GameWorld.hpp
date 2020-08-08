@@ -24,4 +24,7 @@ private:
     Clock gameWorldClock;
     
     bool isRunning = false;
+    const float deltaTimeClamp = 1.f / 60.f;
+    const float minDeltaTime = 1.f / 120.f;
+    const float maxDeltaTime = 1.f;
 };

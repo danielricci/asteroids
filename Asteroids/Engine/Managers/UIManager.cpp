@@ -27,7 +27,3 @@ void UIManager::update(const SDL_Event& event) {
         entity->update(event);
     }
 }
-
-void UIManager::addUIElement(Entity* entity) {
-    this->entities.push_back(entity);
-}

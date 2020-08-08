@@ -1,18 +1,23 @@
 #include "Engine/Managers/GameManager.hpp"
-#include <iostream>
+#include "Engine/System/Engine.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 
 void GameManager::render(SDL_Renderer& renderer) {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            entity->render(renderer);
+    if(this->gameState == GameState::STARTED) {
+        for(Entity* entity : entities) {
+            if(entity != nullptr) {
+                entity->render(renderer);
+            }
         }
     }
 }
 
 void GameManager::update(float deltaTime) {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            entity->update(deltaTime);
+    if(this->gameState == GameState::STARTED) {
+        for(Entity* entity : entities) {
+            if(entity != nullptr) {
+                entity->update(deltaTime);
+            }
         }
     }
 }
@@ -21,53 +26,62 @@ void GameManager::update(const SDL_Event& event) {
     if(event.key.keysym.sym == SDLK_ESCAPE && event.type == SDL_KEYUP) {
         switch(gameState) {
             case GameState::STARTED: {
-                this->pauseGame();
+                this->setGameState(GameManager::GameState::PAUSED);
                 break;
             }
             case GameState::PAUSED: {
-                this->startGame();
+                this->setGameState(GameManager::GameState::STARTED);
                 break;
             }
             case GameState::STOPPED: {
-                // No implementation as of yet
+                SDL_Event event;
+                event.type = SDL_QUIT;
+                SDL_PushEvent(&event);
                 break;
             }
-            default: {
-                std::cout << "GameManager::update not properly handling gameState = " << static_cast<int>(gameState) << std::endl;
+        }
+    }
+
+    // TODO - check event, if its a user event to set the game state?
+    
+    if(this->gameState == GameState::STARTED) {
+        for(Entity* entity : entities) {
+            if(entity != nullptr) {
+                entity->update(event);
             }
         }
     }
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            entity->update(event);
+}
+
+void GameManager::setGameState(GameManager::GameState gameState) {
+    GameManager::GameState oldState = this->gameState;
+    this->gameState = gameState;
+    
+    switch(gameState) {
+        case GameState::STOPPED: {
+            break;
+        }
+        case GameState::STARTED: {
+            if(oldState == GameState::STOPPED) {
+                SDL_UserEvent userEvent;
+                userEvent.type = SDL_USEREVENT;
+                userEvent.code = static_cast<int>(Engine::EngineEvents::EVENT_ENGINE_START_GAME);
+                SDL_Event event;
+                event.type = SDL_USEREVENT;
+                event.user = userEvent;
+                SDL_PushEvent(&event);
+            }
+            break;
+        }
+        case GameState::PAUSED: {
+            if(oldState == GameState::STARTED) {
+                // Need to pause the game world
+            }
+            break;
         }
     }
 }
 
-void GameManager::stopGame() {
-    this->gameState = GameState::STOPPED;
-}
-
-bool GameManager::isGameStopped() const {
-    return this->gameState == GameState::STOPPED;
-}
-
-void GameManager::pauseGame() {
-    this->gameState = GameState::PAUSED;
-}
-
-bool GameManager::isGamePaused() const {
-    return this->gameState == GameState::PAUSED;
-}
-
-void GameManager::startGame() {
-    this->gameState = GameState::STARTED;
-}
-
-bool GameManager::isGameStarted() const {
-    return this->gameState == GameState::STARTED;
-}
-
-void GameManager::addEntity(Entity* entity) {
-    this->entities.push_back(entity);
+GameManager::GameState GameManager::getGameState() const {
+    return this->gameState;
 }
