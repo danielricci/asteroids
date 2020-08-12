@@ -1,7 +1,10 @@
-#include "Engine/Managers/UIManager.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/GameWorld.hpp"
+#include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/UIManager.hpp"
+#include "Engine/System/Engine.hpp"
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     initialize();
@@ -45,6 +48,15 @@ void GameWorld::update(const SDL_Event& event) {
             isRunning = false;
             break;
         default: {
+            if(event.type == SDL_USEREVENT) {
+                SDL_UserEvent userEvent = event.user;
+                switch(userEvent.code) {
+                    case static_cast<int>(Engine::EngineEvents::EVENT_ENGINE_START_GAME): {
+                        ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+                        break;
+                    }
+                }
+            }
             ManagerHelper::update(event);
             break;
         }
