@@ -2,9 +2,15 @@
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/SettingsManager.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
 
 MainMenuEntity::MainMenuEntity() {
+    int width = 0;
+    int height = 0;
+    ManagerHelper::get<SettingsManager>()->getWindowSize(width, height);
+    this->setPosition(Eigen::Vector2f(width/2, height/2));
+    
     TextMenuControlEntity* startGameMenuEntity = new TextMenuControlEntity("Start Game", 24);
     startGameMenuEntity->onExecute([this]() {
         ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);
@@ -31,7 +37,6 @@ MainMenuEntity::MainMenuEntity() {
         SDL_PushEvent(&event);
     });
     this->addNode(exitMenuEntity);
-    this->setPosition(Eigen::Vector2f(220, 175));
     this->addNode(new RenderComponent());
 }
 

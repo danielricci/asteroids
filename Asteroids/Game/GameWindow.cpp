@@ -1,6 +1,5 @@
 #include "Game/GameWindow.hpp"
 #include <iostream>
-#include <SDL_ttf.h>
 
 GameWindow::GameWindow(const char* title, int width, int height) {
     if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
@@ -20,12 +19,7 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
 
-    // TODO: Should this be moved to a different area of the code, like how input for the game controller is done?
-    if(TTF_Init() < 0) {
-        std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
-        return;
-    }
-    
+    // TODO: Should this be moved to a different area of the code, like how input for the game controller is done?    
     gameWorld = new GameWorld(*window, *renderer);
 }
 
@@ -45,7 +39,6 @@ GameWindow::~GameWindow() {
         window = nullptr;
     }
 
-    TTF_Quit();
     SDL_Quit();
 }
 

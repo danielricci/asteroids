@@ -41,9 +41,6 @@ void GameManager::update(const SDL_Event& event) {
             }
         }
     }
-
-    // TODO - check event, if its a user event to set the game state?
-    
     if(this->gameState == GameState::STARTED) {
         for(Entity* entity : entities) {
             if(entity != nullptr) {

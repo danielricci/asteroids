@@ -22,10 +22,6 @@ public:
     void stopGame();
     void startGame();
     void pauseGame();
-    
-    void foo(const std::string& poo) {
-        
-    }
 private:
     GameState gameState = GameState::STOPPED;
 };

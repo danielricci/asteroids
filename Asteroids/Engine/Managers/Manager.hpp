@@ -6,6 +6,7 @@
 
 class Manager {
 public:
+    Manager() = default;
     virtual ~Manager() = default;
     
     virtual void update(float deltaTime);

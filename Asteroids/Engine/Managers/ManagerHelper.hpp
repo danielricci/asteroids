@@ -16,7 +16,7 @@ public:
         return nullptr;
     }
     
-    static void initialize();
+    static void initialize(SDL_Window& window);
     static void clean();
     static void update(float deltaTime);
     static void update(const SDL_Event& event);

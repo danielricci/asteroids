@@ -18,6 +18,8 @@ private:
     void destroy();
     void initialize();
 
+    void constructGameWorld();
+    
     SDL_Window& window;
     SDL_Renderer& renderer;
     

@@ -23,7 +23,7 @@ void GameWorld::destroy() {
 }
 
 void GameWorld::initialize() {
-    ManagerHelper::initialize();
+    ManagerHelper::initialize(window);
     // TODO: Move this somewhere else?
     ManagerHelper::get<UIManager>()->addEntity(new MainMenuEntity());
 }
@@ -52,7 +52,7 @@ void GameWorld::update(const SDL_Event& event) {
                 SDL_UserEvent userEvent = event.user;
                 switch(userEvent.code) {
                     case static_cast<int>(Engine::EngineEvents::EVENT_ENGINE_START_GAME): {
-                        ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+                        this->constructGameWorld();
                         break;
                     }
                 }
@@ -76,4 +76,15 @@ void GameWorld::render() const {
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     ManagerHelper::render(renderer);
     SDL_RenderPresent(&renderer);
+}
+
+// TODO - should we instead take the update and render stuff and keep it within the game window
+// and actually have gameworld specific to the world of the game itself?
+void GameWorld::constructGameWorld() {
+    PlayerEntity* playerEntity = new PlayerEntity();
+    int width = 0;
+    int height = 0;
+    SDL_GetWindowSize(&window, &width, &height);
+    playerEntity->setPosition({width/2, height/2});
+    ManagerHelper::get<GameManager>()->addEntity(playerEntity);
 }

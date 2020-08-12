@@ -1,12 +1,14 @@
 #pragma once
 
+#include "Engine/Components/Component.hpp"
 #include <vector>
 #include "SDL.h"
 
-class Shape {
+class ShapeComponent : public Component {
 public:
-    Shape() = default;
-    Shape(std::initializer_list<SDL_Point> vertices);
+    ShapeComponent();
+    ShapeComponent(std::initializer_list<SDL_Point> vertices);
+
     void addVertex(const SDL_Point& point);
     void render(SDL_Renderer& renderer);
 private:
