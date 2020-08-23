@@ -54,8 +54,8 @@ void TextRenderComponent::render(SDL_Renderer& renderer, const TextComponent& te
     rectangle.y = worldPosition.y();
         if((rectangle.w == 0 || rectangle.h == 0)) {
             SDL_QueryTexture(texture, nullptr, nullptr, &rectangle.w, &rectangle.h);
-            transformComponent->dimensionVector.x() = rectangle.w;
-            transformComponent->dimensionVector.y() = rectangle.h;
+            transformComponent->dimension.x() = rectangle.w;
+            transformComponent->dimension.y() = rectangle.h;
         }
     
     SDL_RenderCopy(&renderer, texture, nullptr, &rectangle);

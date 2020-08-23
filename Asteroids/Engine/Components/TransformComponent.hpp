@@ -9,16 +9,16 @@ public:
     TransformComponent() = default;
             
     SDL_Rect toRectangle() const;
-    static SDL_Rect toRectangle(const Eigen::Vector2f& positionVector, const Eigen::Vector2f& dimensionVector) {
+    static SDL_Rect toRectangle(const Eigen::Vector2f& position, const Eigen::Vector2f& dimension) {
         SDL_Rect rectangle;
-        rectangle.x = positionVector.x();
-        rectangle.y = positionVector.y();
-        rectangle.w = dimensionVector.x();
-        rectangle.h = dimensionVector.y();
+        rectangle.x = position.x();
+        rectangle.y = position.y();
+        rectangle.w = dimension.x();
+        rectangle.h = dimension.y();
         return rectangle;
     }
-        
-    Eigen::Vector2f dimensionVector { 0, 0 };
-    Eigen::Vector2f positionVector { 0, 0 };
-    Eigen::Vector2f velocityVector { 0, 0 };
+    
+    Eigen::Vector2f origin { 0, 0 };
+    Eigen::Vector2f dimension { 0, 0 };
+    Eigen::Vector2f position { 0, 0 };
 };

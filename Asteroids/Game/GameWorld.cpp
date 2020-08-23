@@ -24,7 +24,6 @@ void GameWorld::destroy() {
 
 void GameWorld::initialize() {
     ManagerHelper::initialize(window);
-    // TODO: Move this somewhere else?
     ManagerHelper::get<UIManager>()->addEntity(new MainMenuEntity());
 }
 

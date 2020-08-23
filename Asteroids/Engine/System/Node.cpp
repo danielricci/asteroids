@@ -20,7 +20,7 @@ void Node::addNode(Node* node) {
 
 Eigen::Vector2f Node::getPosition() const {
     TransformComponent* transformComponent = this->getNode<TransformComponent>();
-    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->positionVector;
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->position;
 }
 
 Eigen::Vector2f Node::getWorldPosition() const {
@@ -37,14 +37,23 @@ Eigen::Vector2f Node::getWorldPosition() const {
     return position;
 }
 
-void Node::setPosition(Eigen::Vector2f position) {
+void Node::setPosition(const Eigen::Vector2f& position) {
     TransformComponent* transformComponent = this->getNode<TransformComponent>();
     if(transformComponent == nullptr) {
         transformComponent = new TransformComponent();
         this->addNode(transformComponent);
     }
     
-    transformComponent->positionVector = position;
+    transformComponent->position = position;
+}
+
+void Node::setOrigin(const Eigen::Vector2f& origin) {
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+    if(transformComponent == nullptr) {
+        transformComponent = new TransformComponent();
+        this->addNode(transformComponent);
+    }
+    transformComponent->origin = origin;
 }
 
 Node* Node::getParentNode() const {
@@ -53,5 +62,5 @@ Node* Node::getParentNode() const {
 
 Eigen::Vector2f Node::getDimension() const {
     TransformComponent* transformComponent = this->getNode<TransformComponent>();
-    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->dimensionVector;
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->dimension;
 }
