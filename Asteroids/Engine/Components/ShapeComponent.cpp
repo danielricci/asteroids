@@ -15,7 +15,7 @@ ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : Shap
 void ShapeComponent::addVertex(const SDL_Point& point) {
     this->vertices.push_back(point);
     SDL_Point center = this->getShapeCenter();
-    this->getNode<TransformComponent>()->setOrigin({center.x, center.y});
+    this->setOrigin({center.x, center.y});
 }
 
 SDL_Point ShapeComponent::getShapeCenter() const {
