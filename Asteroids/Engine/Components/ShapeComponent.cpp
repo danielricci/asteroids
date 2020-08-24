@@ -17,6 +17,13 @@ void ShapeComponent::addVertex(const SDL_Point& point) {
     SDL_Point center = this->getShapeCenter();
     this->setOrigin({center.x, center.y});
 }
+SDL_Point& ShapeComponent::operator[](int index) {
+    return this->vertices.at(index);
+}
+
+unsigned long ShapeComponent::getSize() const {
+    return this->vertices.size();
+}
 
 SDL_Point ShapeComponent::getShapeCenter() const {
     if(vertices.size() == 0) {
@@ -25,7 +32,6 @@ SDL_Point ShapeComponent::getShapeCenter() const {
     else if(vertices.size() == 1) {
         return vertices.at(0);
     }
-    
     
     int xMax = 0;
     int yMax = 0;

@@ -56,6 +56,11 @@ void Node::setOrigin(const Eigen::Vector2f& origin) {
     transformComponent->origin = origin;
 }
 
+Eigen::Vector2f Node::getOrigin() const {
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->origin;
+}
+
 Node* Node::getParentNode() const {
     return this->parentNode;
 }

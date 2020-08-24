@@ -9,6 +9,9 @@ public:
     ShapeComponent();
     ShapeComponent(std::initializer_list<SDL_Point> vertices);
     
+    SDL_Point& operator[](int index);
+    unsigned long getSize() const;
+    
     void addVertex(const SDL_Point& point);
     void render(SDL_Renderer& renderer);
 private:
