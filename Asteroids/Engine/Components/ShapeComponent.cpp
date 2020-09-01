@@ -8,14 +8,10 @@ ShapeComponent::ShapeComponent() {
 
 ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : ShapeComponent() {
     this->vertices.insert(this->vertices.cbegin(), vertices);
-    SDL_Point center = this->getShapeCenter();
-    this->setOrigin({center.x, center.y});
 }
 
 void ShapeComponent::addVertex(const SDL_Point& point) {
     this->vertices.push_back(point);
-    SDL_Point center = this->getShapeCenter();
-    this->setOrigin({center.x, center.y});
 }
 SDL_Point& ShapeComponent::operator[](int index) {
     return this->vertices.at(index);
@@ -48,7 +44,7 @@ void ShapeComponent::render(SDL_Renderer& renderer) {
     std::vector<SDL_Point> updatedPositions;
     for(auto& vertex : this->vertices) {
         SDL_Point point {
-            vertex.x + static_cast<int>(worldPosition.x()) ,
+            vertex.x + static_cast<int>(worldPosition.x()),
             vertex.y + static_cast<int>(worldPosition.y())
         };
         updatedPositions.push_back(point);
