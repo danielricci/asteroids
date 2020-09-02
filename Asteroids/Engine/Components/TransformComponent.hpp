@@ -18,8 +18,8 @@ public:
         return rectangle;
     }
     
+    int orientation = 0;
     Eigen::Vector2f origin { 0, 0 };
     Eigen::Vector2f dimension { 0, 0 };
     Eigen::Vector2f position { 0, 0 };
-    Eigen::Vector2f direction { 0, 0 };
 };
