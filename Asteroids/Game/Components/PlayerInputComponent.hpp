@@ -8,11 +8,17 @@ public:
     enum class PlayerAction {
         NONE = 0,
         ROTATE_LEFT,
-        ROTATE_RIGHT
+        ROTATE_RIGHT,
+        THRUST
     };
-    PlayerAction getPlayerAction() const;
+    
     PlayerInputComponent();
+    PlayerAction getRotationAction() const;
+    PlayerAction getThrustAction() const;
 private:
     void onRotate(const SDL_Event& event);
-    PlayerAction playerAction = PlayerAction::NONE;
+    void onThrust(const SDL_Event& event);
+    
+    PlayerAction rotationAction = PlayerAction::NONE;
+    PlayerAction thrustAction = PlayerAction::NONE;
 };

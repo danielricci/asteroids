@@ -22,4 +22,5 @@ public:
     Eigen::Vector2f origin { 0, 0 };
     Eigen::Vector2f dimension { 0, 0 };
     Eigen::Vector2f position { 0, 0 };
+    Eigen::Vector2f velocity {0, 0};
 };

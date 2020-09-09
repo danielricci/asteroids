@@ -19,6 +19,8 @@ PlayerEntity::PlayerEntity() {
     }
     this->addNode(shapeComponent);
     this->addNode(new PlayerInputComponent());
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+    transformComponent->velocity = Eigen::Vector2f(1, 1);
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
@@ -42,20 +44,34 @@ void PlayerEntity::update(float deltaTime) {
     PlayerInputComponent* playerInputComponent = this->getNode<PlayerInputComponent>();
     if(playerInputComponent != nullptr) {
         ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
-        switch(playerInputComponent->getPlayerAction()) {
+        TransformComponent* transformComponent = shapeComponent->getNode<TransformComponent>();
+        switch(playerInputComponent->getRotationAction()) {
             case PlayerInputComponent::PlayerAction::NONE: {
                 break;
             }
             case PlayerInputComponent::PlayerAction::ROTATE_LEFT: {
-                TransformComponent* transformComponent = shapeComponent->getNode<TransformComponent>();
                 transformComponent->orientation = (static_cast<int>(transformComponent->orientation - (deltaTime * 360)) % 360);
                 std::cout << transformComponent->orientation << std::endl;
                 break;
             }
             case PlayerInputComponent::PlayerAction::ROTATE_RIGHT: {
-                TransformComponent* transformComponent = shapeComponent->getNode<TransformComponent>();
                 transformComponent->orientation = (static_cast<int>(transformComponent->orientation + (deltaTime * 360)) % 360);
                 std::cout << transformComponent->orientation << std::endl;
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+        
+        switch(playerInputComponent->getThrustAction()) {
+            case PlayerInputComponent::PlayerAction::THRUST: {
+                //Eigen::Vector2 position = this->getPosition();
+//                for(int i = 0; i < shapeComponent->getSize(); ++i) {
+//                }
+                break;
+            }
+            default: {
                 break;
             }
         }
