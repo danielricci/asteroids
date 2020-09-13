@@ -2,13 +2,14 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
-
+#include <cmath>
 #include <Eigen/Dense>
 #include <iostream>
 
 PlayerEntity::PlayerEntity() {
     ShapeComponent* shapeComponent = new ShapeComponent{{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}};
     shapeComponent->getNode<TransformComponent>()->orientation = -90;
+    shapeComponent->getNode<TransformComponent>()->velocity = Eigen::Vector2f(275, 275);
     
     // Offset the position of the shape w.r.t the center of the shape, making the
     // center the actual origin rather than the top-left
@@ -19,8 +20,6 @@ PlayerEntity::PlayerEntity() {
     }
     this->addNode(shapeComponent);
     this->addNode(new PlayerInputComponent());
-    TransformComponent* transformComponent = this->getNode<TransformComponent>();
-    transformComponent->velocity = Eigen::Vector2f(1, 1);
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
@@ -66,9 +65,14 @@ void PlayerEntity::update(float deltaTime) {
         
         switch(playerInputComponent->getThrustAction()) {
             case PlayerInputComponent::PlayerAction::THRUST: {
-                //Eigen::Vector2 position = this->getPosition();
-//                for(int i = 0; i < shapeComponent->getSize(); ++i) {
-//                }
+                ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
+                TransformComponent* transformComponent = shapeComponent->getNode<TransformComponent>();
+                double radians = transformComponent->orientation * M_PI / 180;
+                
+                Eigen::Vector2f position = this->getPosition();
+                position.x() += (std::cos(radians) * transformComponent->velocity.x() * deltaTime);
+                position.y() += (std::sin(radians) * transformComponent->velocity.y() * deltaTime);
+                this->setPosition(position);
                 break;
             }
             default: {
