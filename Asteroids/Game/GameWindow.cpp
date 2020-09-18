@@ -19,7 +19,6 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
 
-    // TODO: Should this be moved to a different area of the code, like how input for the game controller is done?    
     gameWorld = new GameWorld(*window, *renderer);
 }
 

@@ -1,15 +1,14 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/GameSettingsManager.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
-#include <Eigen/Dense>
-#include <iostream>
 
 PlayerEntity::PlayerEntity() {
     ShapeComponent* shapeComponent = new ShapeComponent{{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}};
-    shapeComponent->getNode<TransformComponent>()->orientation = -90;
-    shapeComponent->getNode<TransformComponent>()->velocity = Eigen::Vector2f(275, 275);
+    shapeComponent->getNode<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
     
     // Offset the position of the shape w.r.t the center of the shape, making the
     // center the actual origin rather than the top-left
@@ -42,20 +41,17 @@ void PlayerEntity::update(const SDL_Event& event) {
 void PlayerEntity::update(float deltaTime) {
     PlayerInputComponent* playerInputComponent = this->getNode<PlayerInputComponent>();
     if(playerInputComponent != nullptr) {
-        ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
-        TransformComponent* transformComponent = shapeComponent->getNode<TransformComponent>();
+        TransformComponent* transformComponent = this->getNode<ShapeComponent>()->getNode<TransformComponent>();
         switch(playerInputComponent->getRotationAction()) {
             case PlayerInputComponent::PlayerAction::NONE: {
                 break;
             }
             case PlayerInputComponent::PlayerAction::ROTATE_LEFT: {
                 transformComponent->orientation = (static_cast<int>(transformComponent->orientation - (deltaTime * 360)) % 360);
-                std::cout << transformComponent->orientation << std::endl;
                 break;
             }
             case PlayerInputComponent::PlayerAction::ROTATE_RIGHT: {
                 transformComponent->orientation = (static_cast<int>(transformComponent->orientation + (deltaTime * 360)) % 360);
-                std::cout << transformComponent->orientation << std::endl;
                 break;
             }
             default: {
@@ -65,19 +61,45 @@ void PlayerEntity::update(float deltaTime) {
         
         switch(playerInputComponent->getThrustAction()) {
             case PlayerInputComponent::PlayerAction::THRUST: {
-                ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
-                TransformComponent* transformComponent = shapeComponent->getNode<TransformComponent>();
                 double radians = transformComponent->orientation * M_PI / 180;
-                
-                Eigen::Vector2f position = this->getPosition();
-                position.x() += (std::cos(radians) * transformComponent->velocity.x() * deltaTime);
-                position.y() += (std::sin(radians) * transformComponent->velocity.y() * deltaTime);
-                this->setPosition(position);
+                Eigen::Vector2f velocity = transformComponent->velocity;
+                velocity.x() += (std::cos(radians) * acceleration);
+                velocity.y() += (std::sin(radians) * acceleration);
+                transformComponent->velocity = velocity;
                 break;
             }
             default: {
                 break;
             }
         }
+        
+        Eigen::Vector2f position = this->getPosition();
+        position.x() += (transformComponent->velocity.x() * deltaTime);
+        position.y() += (transformComponent->velocity.y() * deltaTime);
+        this->setPosition(position);
     }
+}
+
+void PlayerEntity::setPosition(const Eigen::Vector2f& position) {
+    Eigen::Vector2f normalizedPosition = position;
+    
+    int width = 0;
+    int height = 0;
+    ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+    
+    if(normalizedPosition.x() < 0) {
+        normalizedPosition.x() = width;
+    }
+    else if(normalizedPosition.x() > width) {
+        normalizedPosition.x() = 0;
+    }
+    
+    if(normalizedPosition.y() < 0) {
+        normalizedPosition.y() = height;
+    }
+    else if(normalizedPosition.y() > height) {
+        normalizedPosition.y() = 0;
+    }
+    
+    Entity::setPosition(normalizedPosition);
 }

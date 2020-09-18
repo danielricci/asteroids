@@ -1,7 +1,7 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/SettingsManager.hpp"
+#include "Engine/Managers/GameSettingsManager.hpp"
 #include "Engine/Managers/UIManager.hpp"
 
 std::list<Manager*> ManagerHelper::managers {};
@@ -24,7 +24,7 @@ void ManagerHelper::initialize(SDL_Window& window) {
     clean();
     managers.push_back(new GameManager());
     managers.push_back(new InputManager());
-    managers.push_back(new SettingsManager(window));
+    managers.push_back(new GameSettingsManager(window));
     managers.push_back(new UIManager());
 }
 

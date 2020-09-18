@@ -60,7 +60,6 @@ void ShapeComponent::render(SDL_Renderer& renderer) {
     for(SDL_Point& vertex : finalPosition) {
         vertex.x += static_cast<int>(worldPosition.x());
         vertex.y += static_cast<int>(worldPosition.y());
-    //    SDL_RenderDrawPoint(&renderer, vertex.x, vertex.y);
     }
 
     SDL_RenderDrawLines(&renderer, &finalPosition.front(), static_cast<int>(finalPosition.size()));

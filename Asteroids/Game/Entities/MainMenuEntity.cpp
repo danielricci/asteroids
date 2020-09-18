@@ -2,13 +2,13 @@
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/SettingsManager.hpp"
+#include "Engine/Managers/GameSettingsManager.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
 
 MainMenuEntity::MainMenuEntity() {
     int width = 0;
     int height = 0;
-    ManagerHelper::get<SettingsManager>()->getWindowSize(width, height);
+    ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
     // TODO - can the hardcoded `centering` be done automatically?
     this->setPosition(Eigen::Vector2f(width/2 - 50, height/2 - 95));
     

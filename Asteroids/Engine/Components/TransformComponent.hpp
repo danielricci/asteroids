@@ -17,6 +17,7 @@ public:
         rectangle.h = dimension.y();
         return rectangle;
     }
+    static const int ORIENTATION_NORTH = -90;
     
     int orientation = 0;
     Eigen::Vector2f origin { 0, 0 };

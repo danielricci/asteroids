@@ -27,7 +27,7 @@
 		0387FD8B24A78D220019BE47 /* MainMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */; };
 		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
-		03928B9F24E439C4008F4381 /* SettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03928B9D24E439C4008F4381 /* SettingsManager.cpp */; };
+		03928B9F24E439C4008F4381 /* GameSettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03928B9D24E439C4008F4381 /* GameSettingsManager.cpp */; };
 		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03B6C8A224C8CD6C0067D03C /* MenuControlEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */; };
@@ -93,8 +93,8 @@
 		0387FD9024A94C530019BE47 /* UIManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIManager.hpp; sourceTree = "<group>"; };
 		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
-		03928B9D24E439C4008F4381 /* SettingsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingsManager.cpp; sourceTree = "<group>"; };
-		03928B9E24E439C4008F4381 /* SettingsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SettingsManager.hpp; sourceTree = "<group>"; };
+		03928B9D24E439C4008F4381 /* GameSettingsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSettingsManager.cpp; sourceTree = "<group>"; };
+		03928B9E24E439C4008F4381 /* GameSettingsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSettingsManager.hpp; sourceTree = "<group>"; };
 		0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManagerHelper.cpp; sourceTree = "<group>"; };
 		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
 		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
@@ -177,8 +177,8 @@
 		03219D442406B07A0050588A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				03928B9D24E439C4008F4381 /* SettingsManager.cpp */,
-				03928B9E24E439C4008F4381 /* SettingsManager.hpp */,
+				03928B9D24E439C4008F4381 /* GameSettingsManager.cpp */,
+				03928B9E24E439C4008F4381 /* GameSettingsManager.hpp */,
 				0354B9F524D2602A0027E766 /* GameManager.cpp */,
 				0354B9F624D2602A0027E766 /* GameManager.hpp */,
 				03219D452406B5F70050588A /* InputManager.cpp */,
@@ -381,7 +381,7 @@
 				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
 				033CD2D424EB72EB00EBA382 /* PlayerInputComponent.cpp in Sources */,
 				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
-				03928B9F24E439C4008F4381 /* SettingsManager.cpp in Sources */,
+				03928B9F24E439C4008F4381 /* GameSettingsManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
 				0387FD83249AAA160019BE47 /* Clock.cpp in Sources */,
 				03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */,

@@ -77,8 +77,6 @@ void GameWorld::render() const {
     SDL_RenderPresent(&renderer);
 }
 
-// TODO - should we instead take the update and render stuff and keep it within the game window
-// and actually have gameworld specific to the world of the game itself?
 void GameWorld::constructGameWorld() {
     PlayerEntity* playerEntity = new PlayerEntity();
     int width = 0;

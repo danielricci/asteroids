@@ -3,9 +3,9 @@
 #include "Engine/Managers/Manager.hpp"
 #include <SDL.h>
 
-class SettingsManager : public Manager {
+class GameSettingsManager : public Manager {
 public:
-    SettingsManager(SDL_Window& window);
+    GameSettingsManager(SDL_Window& window);
     void getWindowSize(int& width, int& height) const;
 private:
     SDL_Window& window;
