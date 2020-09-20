@@ -12,5 +12,6 @@ public:
     virtual void update(const SDL_Event& event) override;
     virtual void update(float deltaTime) override;
 private:
-    const int acceleration = 5;
+    const float acceleration = 7.5f;
+    const float maxSpeed = 475.f;
 };

@@ -65,6 +65,8 @@ void PlayerEntity::update(float deltaTime) {
                 Eigen::Vector2f velocity = transformComponent->velocity;
                 velocity.x() += (std::cos(radians) * acceleration);
                 velocity.y() += (std::sin(radians) * acceleration);
+                velocity.x() = std::clamp(velocity.x(), -maxSpeed, maxSpeed);
+                velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
                 transformComponent->velocity = velocity;
                 break;
             }
