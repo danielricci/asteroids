@@ -13,5 +13,5 @@ public:
     virtual void update(float deltaTime) override;
 private:
     const float acceleration = 7.5f;
-    const float maxSpeed = 475.f;
+    const float maxSpeed = 475.f;    
 };

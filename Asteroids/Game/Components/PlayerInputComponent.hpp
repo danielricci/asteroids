@@ -9,16 +9,20 @@ public:
         NONE = 0,
         ROTATE_LEFT,
         ROTATE_RIGHT,
-        THRUST
+        THRUST,
+        HYPERSPACE
     };
     
     PlayerInputComponent();
     PlayerAction getRotationAction() const;
-    PlayerAction getThrustAction() const;
+    PlayerAction getMovementAction() const;
+    
+    void reset();
 private:
     void onRotate(const SDL_Event& event);
     void onThrust(const SDL_Event& event);
+    void onHyperspace(const SDL_Event& event);
     
     PlayerAction rotationAction = PlayerAction::NONE;
-    PlayerAction thrustAction = PlayerAction::NONE;
+    PlayerAction movementAction = PlayerAction::NONE;
 };

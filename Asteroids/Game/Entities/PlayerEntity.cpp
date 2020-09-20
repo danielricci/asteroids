@@ -5,6 +5,7 @@
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
+#include <random>
 
 PlayerEntity::PlayerEntity() {
     ShapeComponent* shapeComponent = new ShapeComponent{{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}};
@@ -59,7 +60,7 @@ void PlayerEntity::update(float deltaTime) {
             }
         }
         
-        switch(playerInputComponent->getThrustAction()) {
+        switch(playerInputComponent->getMovementAction()) {
             case PlayerInputComponent::PlayerAction::THRUST: {
                 double radians = transformComponent->orientation * M_PI / 180;
                 Eigen::Vector2f velocity = transformComponent->velocity;
@@ -69,6 +70,19 @@ void PlayerEntity::update(float deltaTime) {
                 velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
                 transformComponent->velocity = velocity;
                 break;
+            }
+            case PlayerInputComponent::PlayerAction::HYPERSPACE: {
+                playerInputComponent->reset();
+                transformComponent->velocity = {0, 0};
+                                
+                int width = 0;
+                int height = 0;
+                ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);                
+                std::uniform_int_distribution<unsigned int> widthDistribution(0, width);
+                std::uniform_int_distribution<unsigned int> heightDistribution(0, height);
+                std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
+                this->setPosition({widthDistribution(generator), heightDistribution(generator)});
+                return;
             }
             default: {
                 break;

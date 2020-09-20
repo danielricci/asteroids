@@ -4,6 +4,7 @@ PlayerInputComponent::PlayerInputComponent() {
     this->addBinding(SDLK_LEFT, "ROTATE", std::bind(&PlayerInputComponent::onRotate, this, std::placeholders::_1));
     this->addBinding(SDLK_RIGHT, "ROTATE", std::bind(&PlayerInputComponent::onRotate, this, std::placeholders::_1));
     this->addBinding(SDLK_UP, "THRUST", std::bind(&PlayerInputComponent::onThrust, this, std::placeholders::_1));
+    this->addBinding(SDLK_SPACE, "HYPERSPACE", std::bind(&PlayerInputComponent::onHyperspace, this, std::placeholders::_1));
 }
 
 void PlayerInputComponent::onRotate(const SDL_Event& event) {
@@ -30,21 +31,34 @@ void PlayerInputComponent::onRotate(const SDL_Event& event) {
 void PlayerInputComponent::onThrust(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYDOWN: {
-            this->thrustAction = PlayerAction::THRUST;
+            this->movementAction = PlayerAction::THRUST;
             break;
         }
         case SDL_KEYUP: {
-            this->thrustAction = PlayerAction::NONE;
+            this->movementAction = PlayerAction::NONE;
             break;
         }
     }
-    
+}
+
+void PlayerInputComponent::onHyperspace(const SDL_Event& event) {
+    switch(event.type) {
+        case SDL_KEYUP: {
+            this->movementAction = PlayerAction::HYPERSPACE;
+            break;
+        }
+    }
 }
 
 PlayerInputComponent::PlayerAction PlayerInputComponent::getRotationAction() const {
     return this->rotationAction;
 }
 
-PlayerInputComponent::PlayerAction PlayerInputComponent::getThrustAction() const {
-    return this->thrustAction;
+PlayerInputComponent::PlayerAction PlayerInputComponent::getMovementAction() const {
+    return this->movementAction;
+}
+
+void PlayerInputComponent::reset() {
+    this->rotationAction = PlayerAction::NONE;
+    this->movementAction = PlayerAction::NONE;
 }
