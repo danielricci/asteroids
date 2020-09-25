@@ -1,3 +1,4 @@
+#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include <algorithm>
@@ -5,6 +6,7 @@
 
 ShapeComponent::ShapeComponent() {
     this->addNode(new TransformComponent());
+    this->addNode(new RenderComponent());
 }
 
 ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : ShapeComponent() {
@@ -14,6 +16,7 @@ ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : Shap
 void ShapeComponent::addVertex(const SDL_Point& point) {
     this->vertices.push_back(point);
 }
+
 SDL_Point& ShapeComponent::operator[](int index) {
     return this->vertices.at(index);
 }
@@ -44,12 +47,15 @@ SDL_Point ShapeComponent::getShapeCenter() const {
 }
 
 void ShapeComponent::render(SDL_Renderer& renderer) {
+    if(!this->getNode<RenderComponent>()->isVisible) {
+        return;
+    }
     std::vector<SDL_Point> finalPosition(this->vertices);
-    TransformComponent* transformComponent = this->getNode<TransformComponent>();
-    double radians = transformComponent->orientation * M_PI/180;
+    
+    float orientation = TransformComponent::toRadians(this->getWorldOrientation());
     for(SDL_Point& vertex : finalPosition) {
-        double cosResult = std::cos(radians);
-        double sinResult = std::sin(radians);
+        double cosResult = std::cos(orientation);
+        double sinResult = std::sin(orientation);
         double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);
         double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
         vertex.x = expr1;

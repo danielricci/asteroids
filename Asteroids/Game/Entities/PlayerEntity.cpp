@@ -8,22 +8,37 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    ShapeComponent* shapeComponent = new ShapeComponent{{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}};
-    shapeComponent->getNode<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
+    TransformComponent* playerTransform = this->getNode<TransformComponent>();
+    playerTransform->orientation = TransformComponent::ORIENTATION_NORTH;
+    
+    ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
+    playerShapeComponent->name = PLAYER_SHAPE;
+    
+//    playerShapeComponent->getNode<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
+//    ShapeComponent* playerThrust = new ShapeComponent({{-14, -3}, {-20, 0}, {-13, 3}});
+//    playerThrust->name = PLAYER_THRUST_SHAPE;
+//    playerThrust->getNode<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
     
     // Offset the position of the shape w.r.t the center of the shape, making the
     // center the actual origin rather than the top-left
-    SDL_Point shapeCenterPoint = shapeComponent->getShapeCenter();
-    shapeComponent->setOrigin(Eigen::Vector2f(shapeCenterPoint.x, shapeCenterPoint.y));
-    for(int i = 0; i < shapeComponent->getSize(); ++i) {
-        (*shapeComponent)[i].x += shapeCenterPoint.x;
+    SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
+    playerShapeComponent->setOrigin(Eigen::Vector2f(shapeCenterPoint.x, shapeCenterPoint.y));
+    for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
+        (*playerShapeComponent)[i].x += shapeCenterPoint.x;
     }
-    this->addNode(shapeComponent);
+    //this->addNode(playerThrust);
+    this->addNode(playerShapeComponent);
     this->addNode(new PlayerInputComponent());
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
-    this->getNode<ShapeComponent>()->render(renderer);
+    for(ShapeComponent* shapeComponent : this->getNodes<ShapeComponent>()) {
+        shapeComponent->render(renderer);
+    }
+    //this->getNode<ShapeComponent>()->render(renderer);
+    //if(this->getNode<PlayerInputComponent>()->getMovementAction() == PlayerInputComponent::PlayerAction::THRUST) {
+        //this->getNode<PlayerThrustComponent>()->render(renderer);
+    //}
 }
 
 void PlayerEntity::update(const SDL_Event& event) {
@@ -42,39 +57,38 @@ void PlayerEntity::update(const SDL_Event& event) {
 void PlayerEntity::update(float deltaTime) {
     PlayerInputComponent* playerInputComponent = this->getNode<PlayerInputComponent>();
     if(playerInputComponent != nullptr) {
-        TransformComponent* transformComponent = this->getNode<ShapeComponent>()->getNode<TransformComponent>();
+        // Compute the orientation
+        TransformComponent* playerTransform = this->getNode<TransformComponent>();
         switch(playerInputComponent->getRotationAction()) {
-            case PlayerInputComponent::PlayerAction::NONE: {
-                break;
-            }
             case PlayerInputComponent::PlayerAction::ROTATE_LEFT: {
-                transformComponent->orientation = (static_cast<int>(transformComponent->orientation - (deltaTime * 360)) % 360);
+                playerTransform->orientation = (static_cast<int>(playerTransform->orientation - (deltaTime * 360)) % 360);
                 break;
             }
             case PlayerInputComponent::PlayerAction::ROTATE_RIGHT: {
-                transformComponent->orientation = (static_cast<int>(transformComponent->orientation + (deltaTime * 360)) % 360);
+                playerTransform->orientation = (static_cast<int>(playerTransform->orientation + (deltaTime * 360)) % 360);
                 break;
             }
             default: {
                 break;
             }
         }
-        
+        // Compute the position
         switch(playerInputComponent->getMovementAction()) {
             case PlayerInputComponent::PlayerAction::THRUST: {
-                double radians = transformComponent->orientation * M_PI / 180;
-                Eigen::Vector2f velocity = transformComponent->velocity;
+                double radians = TransformComponent::toRadians(playerTransform->orientation);
+                Eigen::Vector2f velocity = playerTransform->velocity;
                 velocity.x() += (std::cos(radians) * acceleration);
                 velocity.y() += (std::sin(radians) * acceleration);
                 velocity.x() = std::clamp(velocity.x(), -maxSpeed, maxSpeed);
                 velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
-                transformComponent->velocity = velocity;
+                playerTransform->velocity = velocity;
                 break;
             }
             case PlayerInputComponent::PlayerAction::HYPERSPACE: {
+                // Stop the player from moving
                 playerInputComponent->reset();
-                transformComponent->velocity = {0, 0};
-                                
+                playerTransform->velocity = {0, 0};
+                // Compute the new location
                 int width = 0;
                 int height = 0;
                 ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);                
@@ -88,10 +102,10 @@ void PlayerEntity::update(float deltaTime) {
                 break;
             }
         }
-        
+        // Set the position
         Eigen::Vector2f position = this->getPosition();
-        position.x() += (transformComponent->velocity.x() * deltaTime);
-        position.y() += (transformComponent->velocity.y() * deltaTime);
+        position.x() += (playerTransform->velocity.x() * deltaTime);
+        position.y() += (playerTransform->velocity.y() * deltaTime);
         this->setPosition(position);
     }
 }

@@ -2,15 +2,20 @@
 
 #include <Eigen/Dense>
 #include <list>
+#include <string>
 
 class Node {
 public:
     virtual ~Node();
-    template<typename T> T* getNode() const {
+    template<typename T> T* getNode(std::string identifier = std::string()) const {
         T* myNode = nullptr;
         for(Node* node : nodes) {
-            if((myNode = dynamic_cast<T*>(node)) != nullptr) {
-                break;
+            T* nodeCast = dynamic_cast<T*>(node);
+            if(nodeCast != nullptr) {
+                if(identifier.empty() || identifier == node->name) {
+                    myNode = nodeCast;
+                    break;
+                }
             }
         }
         return myNode;
@@ -30,8 +35,12 @@ public:
     virtual Eigen::Vector2f getPosition() const;
     virtual void setPosition(const Eigen::Vector2f& position);
     Eigen::Vector2f getOrigin() const;
+    float getWorldOrientation() const;
+    float getOrientation() const;
     virtual void setOrigin(const Eigen::Vector2f& position);
     virtual Eigen::Vector2f getDimension() const;
+    
+    std::string name;
 protected:
     Node() = default;
     Node* getParentNode() const;
