@@ -1,3 +1,4 @@
+#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
@@ -14,31 +15,27 @@ PlayerEntity::PlayerEntity() {
     ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
     playerShapeComponent->name = PLAYER_SHAPE;
     
-//    playerShapeComponent->getNode<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
-//    ShapeComponent* playerThrust = new ShapeComponent({{-14, -3}, {-20, 0}, {-13, 3}});
-//    playerThrust->name = PLAYER_THRUST_SHAPE;
-//    playerThrust->getNode<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
+    ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-18, 0}, {-9, 3}});
+    playerThrust->name = PLAYER_THRUST_SHAPE;
     
-    // Offset the position of the shape w.r.t the center of the shape, making the
-    // center the actual origin rather than the top-left
+    // Translate the player ships' shape positions to the right on the axis so that the
+    // the world position of the entity has its origin at the center
     SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
-    playerShapeComponent->setOrigin(Eigen::Vector2f(shapeCenterPoint.x, shapeCenterPoint.y));
     for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
         (*playerShapeComponent)[i].x += shapeCenterPoint.x;
     }
-    //this->addNode(playerThrust);
+    this->addNode(playerThrust);
     this->addNode(playerShapeComponent);
     this->addNode(new PlayerInputComponent());
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
+    PlayerInputComponent* playerInputComponent = this->getNode<PlayerInputComponent>();
+    RenderComponent* thrustRenderComponent = this->getNode<ShapeComponent>(this->PLAYER_THRUST_SHAPE)->getNode<RenderComponent>();
+    thrustRenderComponent->isVisible = playerInputComponent->getMovementAction() == PlayerInputComponent::PlayerAction::THRUST;
     for(ShapeComponent* shapeComponent : this->getNodes<ShapeComponent>()) {
         shapeComponent->render(renderer);
     }
-    //this->getNode<ShapeComponent>()->render(renderer);
-    //if(this->getNode<PlayerInputComponent>()->getMovementAction() == PlayerInputComponent::PlayerAction::THRUST) {
-        //this->getNode<PlayerThrustComponent>()->render(renderer);
-    //}
 }
 
 void PlayerEntity::update(const SDL_Event& event) {
