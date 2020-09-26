@@ -32,7 +32,6 @@
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03B6C8A224C8CD6C0067D03C /* MenuControlEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */; };
 		03D597B624C5FA3A001CE9CC /* TextMenuControlEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D597B424C5FA3A001CE9CC /* TextMenuControlEntity.cpp */; };
-		03EE9C6524CBCD6600302287 /* Fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03784F77245D361800C16FD8 /* Fonts */; };
 		03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6624CC760400302287 /* CollisionComponent.cpp */; };
 		03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6824CC784600302287 /* InputComponent.cpp */; };
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
@@ -46,7 +45,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				03EE9C6524CBCD6600302287 /* Fonts in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +64,7 @@
 		032589BB245D19240047CF7D /* TextComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextComponent.cpp; sourceTree = "<group>"; };
 		032589BC245D19240047CF7D /* TextComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextComponent.hpp; sourceTree = "<group>"; };
 		032589BF245D1E310047CF7D /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_ttf.a; path = ../../../../../../../../usr/local/Cellar/sdl2_ttf/2.0.15/lib/libSDL2_ttf.a; sourceTree = "<group>"; };
+		0326170B251ECAB300ABA175 /* thrust.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thrust.wav; sourceTree = "<group>"; };
 		033CD2D224EB72EB00EBA382 /* PlayerInputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInputComponent.cpp; sourceTree = "<group>"; };
 		033CD2D324EB72EB00EBA382 /* PlayerInputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerInputComponent.hpp; sourceTree = "<group>"; };
 		034F4C2F24DA54A300975181 /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
@@ -80,7 +79,6 @@
 		0364021E246A3BE7008684B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		036E505C24B87FC900426EBA /* TransformComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransformComponent.cpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		03784F77245D361800C16FD8 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		037FBA1424E3182600F984F1 /* ShapeComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeComponent.cpp; sourceTree = "<group>"; };
 		037FBA1524E3182600F984F1 /* ShapeComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShapeComponent.hpp; sourceTree = "<group>"; };
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -207,6 +205,14 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		0326170A251ECA7800ABA175 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0326170B251ECAB300ABA175 /* thrust.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		036E505324B17B9A00426EBA /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +226,7 @@
 		03784F76245D35DF00C16FD8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				03784F77245D361800C16FD8 /* Fonts */,
+				0326170A251ECA7800ABA175 /* Sounds */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
