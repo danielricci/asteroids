@@ -28,7 +28,6 @@ void InputManager::render(SDL_Renderer& renderer) {
 }
 
 void InputManager::update(float DeltaTime) {
-    
 }
 
 void InputManager::update(const SDL_Event& event) {

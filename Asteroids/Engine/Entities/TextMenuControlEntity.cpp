@@ -3,7 +3,7 @@
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 
 TextMenuControlEntity::TextMenuControlEntity(std::string text, int size) {
-    this->addNode(new TextComponent(size, {0xFF, 0xFF, 0xFF}, "Fonts/Verdana.ttf", text));
+    this->addNode(new TextComponent(size, {0xFF, 0xFF, 0xFF}, "Verdana.ttf", text));
     this->addNode(new TextRenderComponent());
 }
 

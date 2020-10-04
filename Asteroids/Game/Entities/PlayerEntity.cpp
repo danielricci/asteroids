@@ -1,5 +1,6 @@
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
+#include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/GameSettingsManager.hpp"
@@ -15,7 +16,7 @@ PlayerEntity::PlayerEntity() {
     ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
     playerShapeComponent->name = PLAYER_SHAPE;
     
-    ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-18, 0}, {-9, 3}});
+    ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
     playerThrust->name = PLAYER_THRUST_SHAPE;
     
     // Translate the player ships' shape positions to the right on the axis so that the
@@ -24,6 +25,11 @@ PlayerEntity::PlayerEntity() {
     for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
         (*playerShapeComponent)[i].x += shapeCenterPoint.x;
     }
+    
+    SoundComponent* thrustSoundComponent = new SoundComponent("Thrust.wav");
+    thrustSoundComponent->name = THRUST_SOUND;
+    
+    this->addNode(thrustSoundComponent);
     this->addNode(playerThrust);
     this->addNode(playerShapeComponent);
     this->addNode(new PlayerInputComponent());
@@ -79,6 +85,8 @@ void PlayerEntity::update(float deltaTime) {
                 velocity.x() = std::clamp(velocity.x(), -maxSpeed, maxSpeed);
                 velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
                 playerTransform->velocity = velocity;
+                // TODO
+                //this->getNode<SoundComponent>(THRUST_SOUND)->play(SoundComponent::INFINITE_LOOP);
                 break;
             }
             case PlayerInputComponent::PlayerAction::HYPERSPACE: {
@@ -96,6 +104,8 @@ void PlayerEntity::update(float deltaTime) {
                 return;
             }
             default: {
+                // TODO
+                //this->getNode<SoundComponent>(THRUST_SOUND)->stop();
                 break;
             }
         }

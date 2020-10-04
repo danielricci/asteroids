@@ -18,4 +18,5 @@ private:
     
     const std::string PLAYER_SHAPE = "playerShape";
     const std::string PLAYER_THRUST_SHAPE = "playerThrustShape";
+    const std::string THRUST_SOUND = "thrustSound";
 };

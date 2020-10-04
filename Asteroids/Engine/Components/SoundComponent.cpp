@@ -4,7 +4,7 @@
 SoundComponent::SoundComponent(const std::string& path) : path(path) {
     chunk = Mix_LoadWAV(path.c_str());
     if(chunk == nullptr) {
-        std::cerr << "Could not load sound at path " << path << "because of error:" << Mix_GetError() << std::endl;
+        std::cerr << "Mix_LoadWav: " << Mix_GetError() << std::endl;
     }
 }
 
@@ -15,11 +15,32 @@ SoundComponent::~SoundComponent() {
     }
 }
 
-void SoundComponent::play(int loops) const {
+bool SoundComponent::isPlaying() const {
+    return this->channel != NO_CHANNEL && Mix_Playing(this->channel);
+}
+
+void SoundComponent::stop() {
+    if(this->channel != NO_CHANNEL) {
+        Mix_HaltChannel(this->channel);
+        this->channel = NO_CHANNEL;
+    }
+}
+
+void SoundComponent::play(int loops) {
     if(chunk != nullptr) {
-        Mix_PlayChannel(-1, chunk, loops);
+        if(this->isPlaying()) {
+            return;
+        }
+        
+        int mixChannel = Mix_PlayChannel(-1, chunk, loops);
+        if(mixChannel == -1) {
+            std::cerr << "Mix_PlayChannel: " << Mix_GetError() << std::endl;
+        }
+        else {
+            this->channel = mixChannel;
+        }
     }
     else {
-        std::cerr << "Could not play sound, invalid chunk" << std::endl;
+        std::cerr << "Could not play sound " << path << ", invalid chunk" << std::endl;
     }
 }
