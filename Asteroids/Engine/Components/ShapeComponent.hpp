@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
+#include <SDL.h>
 #include <vector>
-#include "SDL.h"
 
 class ShapeComponent : public Component {
 public:
@@ -13,9 +13,10 @@ public:
     
     SDL_Point& operator[](int index);
     unsigned long getSize() const;
+    void clear();
     
-    void addVertex(const SDL_Point& point);
-    void render(SDL_Renderer& renderer);
+    virtual void addVertex(const SDL_Point& point);
+    virtual void render(SDL_Renderer& renderer);
 private:
     std::vector<SDL_Point> vertices;
 };

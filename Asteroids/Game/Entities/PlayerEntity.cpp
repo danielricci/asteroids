@@ -85,6 +85,7 @@ void PlayerEntity::update(float deltaTime) {
                 velocity.x() = std::clamp(velocity.x(), -maxSpeed, maxSpeed);
                 velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
                 playerTransform->velocity = velocity;
+                
                 // TODO
                 //this->getNode<SoundComponent>(THRUST_SOUND)->play(SoundComponent::INFINITE_LOOP);
                 break;

@@ -26,8 +26,11 @@ unsigned long ShapeComponent::getSize() const {
 }
 
 SDL_Point ShapeComponent::getShapeCenter() const {
-    if(vertices.size() < 2) {
-        return SDL_Point({0, 0});
+    if(vertices.size() == 0) {
+        return SDL_Point { 0, 0 };
+    }
+    else if(vertices.size() == 1) {
+        return vertices[0];
     }
     
     int xMin = INT_MAX;
@@ -69,4 +72,8 @@ void ShapeComponent::render(SDL_Renderer& renderer) {
     }
 
     SDL_RenderDrawLines(&renderer, &finalPosition.front(), static_cast<int>(finalPosition.size()));
+}
+
+void ShapeComponent::clear() {
+    this->vertices.clear();
 }
