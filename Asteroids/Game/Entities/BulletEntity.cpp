@@ -8,5 +8,5 @@ BulletEntity::BulletEntity() {
 }
 
 void BulletEntity::render(SDL_Renderer& renderer) {
-    
+    this->getNode<CircleComponent>()->render(renderer);
 }

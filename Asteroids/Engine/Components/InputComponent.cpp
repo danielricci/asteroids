@@ -3,7 +3,7 @@
 void InputComponent::addBinding(SDL_Keycode keyCode, const std::string& action) {
     inputBindings.emplace(keyCode, action);
 }
-
+// Verify if we really need two levels of indirection
 void InputComponent::addBinding(SDL_Keycode keyCode, const std::string& action, std::function<void(const SDL_Event&)> functor) {
     addBinding(keyCode, action);
     registerActionBinding(action, functor);

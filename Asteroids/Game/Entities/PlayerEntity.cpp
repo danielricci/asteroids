@@ -20,7 +20,7 @@ PlayerEntity::PlayerEntity() {
     playerThrust->name = PLAYER_THRUST_SHAPE;
     
     // Translate the player ships' shape positions to the right on the axis so that the
-    // the world position of the entity has its origin at the center
+    // the world position of the entity has its origin at the center (avoids having to do any origin normaliation for each rotational tick)
     SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
     for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
         (*playerShapeComponent)[i].x += shapeCenterPoint.x;
@@ -119,12 +119,11 @@ void PlayerEntity::update(float deltaTime) {
 }
 
 void PlayerEntity::setPosition(const Eigen::Vector2f& position) {
-    Eigen::Vector2f normalizedPosition = position;
-    
     int width = 0;
     int height = 0;
     ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
     
+    Eigen::Vector2f normalizedPosition = position;
     if(normalizedPosition.x() < 0) {
         normalizedPosition.x() = width;
     }
