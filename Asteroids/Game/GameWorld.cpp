@@ -49,15 +49,6 @@ void GameWorld::update(const SDL_Event& event) {
             isRunning = false;
             break;
         default: {
-            if(event.type == SDL_USEREVENT) {
-                SDL_UserEvent userEvent = event.user;
-                switch(userEvent.code) {
-                    case static_cast<int>(Engine::EngineEvents::EVENT_ENGINE_START_GAME): {
-                        this->constructGameWorld();
-                        break;
-                    }
-                }
-            }
             ManagerHelper::update(event);
             break;
         }
@@ -77,13 +68,4 @@ void GameWorld::render() const {
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     ManagerHelper::render(renderer);
     SDL_RenderPresent(&renderer);
-}
-
-void GameWorld::constructGameWorld() {
-    PlayerEntity* playerEntity = new PlayerEntity();
-    int width = 0;
-    int height = 0;
-    SDL_GetWindowSize(&window, &width, &height);
-    playerEntity->setPosition({width/2, height/2});
-    ManagerHelper::get<GameManager>()->addEntity(playerEntity);
 }

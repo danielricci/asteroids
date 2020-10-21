@@ -1,4 +1,6 @@
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/GameSettingsManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/System/Engine.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 
@@ -60,13 +62,12 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         }
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
-                SDL_UserEvent userEvent;
-                userEvent.type = SDL_USEREVENT;
-                userEvent.code = static_cast<int>(Engine::EngineEvents::EVENT_ENGINE_START_GAME);
-                SDL_Event event;
-                event.type = SDL_USEREVENT;
-                event.user = userEvent;
-                SDL_PushEvent(&event);
+                int width = 0;
+                int height = 0;
+                ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+                PlayerEntity* playerEntity = new PlayerEntity();
+                playerEntity->setPosition({width/2, height/2});
+                this->addEntity(playerEntity);
             }
             break;
         }
