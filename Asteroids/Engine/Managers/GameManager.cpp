@@ -1,7 +1,6 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/GameSettingsManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/System/Engine.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 
 void GameManager::render(SDL_Renderer& renderer) {

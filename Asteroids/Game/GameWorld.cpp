@@ -1,10 +1,8 @@
 #include "Game/Entities/MainMenuEntity.hpp"
-#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/GameWorld.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/UIManager.hpp"
-#include "Engine/System/Engine.hpp"
 
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
     initialize();
@@ -25,6 +23,7 @@ void GameWorld::destroy() {
 void GameWorld::initialize() {
     ManagerHelper::initialize(window);
     ManagerHelper::get<UIManager>()->addEntity(new MainMenuEntity());
+    
     // TODO - Remove me to re-enable menu
     ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);
 }
