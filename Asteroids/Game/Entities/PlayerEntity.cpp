@@ -8,31 +8,68 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
 #include <random>
+#include <iostream>
 
 PlayerEntity::PlayerEntity() {
+    // Orient the player facing upwards
     TransformComponent* playerTransform = this->getNode<TransformComponent>();
     playerTransform->orientation = TransformComponent::ORIENTATION_NORTH;
+
+    // Create the player input controls and set up the bindings
+    PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
+    this->addNode(playerInputComponent);
+
+    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_SHOOT, [](const SDL_Event& event) {
+        switch(event.type) {
+            case SDL_KEYUP: {
+                std::cout << "Shooting" << std::endl;
+                break;
+            }
+        }
+    });
+    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_HYPERSPACE, [&](const SDL_Event& event) {
+        switch(event.type) {
+            case SDL_KEYUP: {
+                PlayerInputComponent* pIC = this->getNode<PlayerInputComponent>();
+                
+                
+                playerInputComponent->reset();
+                playerTransform->velocity = {0, 0};
+
+                int width = 0;
+                int height = 0;
+                ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+                
+                std::uniform_int_distribution<unsigned int> widthDistribution(0, width);
+                std::uniform_int_distribution<unsigned int> heightDistribution(0, height);
+                std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
+                this->setPosition({widthDistribution(generator), heightDistribution(generator)});
+            }
+        }
+    });
     
+    
+    // Create the player ship
     ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
     playerShapeComponent->name = PLAYER_SHAPE;
     
-    ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
-    playerThrust->name = PLAYER_THRUST_SHAPE;
-    
-    // Translate the player ships' shape positions to the right on the axis so that the
-    // the world position of the entity has its origin at the center (avoids having to do any origin normaliation for each rotational tick)
+    // Translate the player ships' shape positions so that the
+    // world position of the entity has its origin at the center (avoids having to do any origin normaliation for each rotational tick)
     SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
     for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
         (*playerShapeComponent)[i].x += shapeCenterPoint.x;
     }
+    this->addNode(playerShapeComponent);
+
+    // Create the shape for when the player is moving
+    ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
+    playerThrust->name = PLAYER_THRUST_SHAPE;
+    this->addNode(playerThrust);
     
+    // Create the sound components associated to the player entity
     SoundComponent* thrustSoundComponent = new SoundComponent("Thrust.wav");
     thrustSoundComponent->name = THRUST_SOUND;
-    
     this->addNode(thrustSoundComponent);
-    this->addNode(playerThrust);
-    this->addNode(playerShapeComponent);
-    this->addNode(new PlayerInputComponent());
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
