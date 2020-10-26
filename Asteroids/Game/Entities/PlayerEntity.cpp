@@ -19,35 +19,8 @@ PlayerEntity::PlayerEntity() {
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     this->addNode(playerInputComponent);
 
-    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_SHOOT, [](const SDL_Event& event) {
-        switch(event.type) {
-            case SDL_KEYUP: {
-                std::cout << "Shooting" << std::endl;
-                break;
-            }
-        }
-    });
-    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_HYPERSPACE, [&](const SDL_Event& event) {
-        switch(event.type) {
-            case SDL_KEYUP: {
-                PlayerInputComponent* pIC = this->getNode<PlayerInputComponent>();
-                
-                
-                playerInputComponent->reset();
-                playerTransform->velocity = {0, 0};
-
-                int width = 0;
-                int height = 0;
-                ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
-                
-                std::uniform_int_distribution<unsigned int> widthDistribution(0, width);
-                std::uniform_int_distribution<unsigned int> heightDistribution(0, height);
-                std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
-                this->setPosition({widthDistribution(generator), heightDistribution(generator)});
-            }
-        }
-    });
-    
+    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_SHOOT, std::bind(&PlayerEntity::onEventShoot, this, std::placeholders::_1));
+    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_HYPERSPACE, std::bind(&PlayerEntity::onEventHyperspace, this, std::placeholders::_1));
     
     // Create the player ship
     ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
@@ -127,20 +100,6 @@ void PlayerEntity::update(float deltaTime) {
                 //this->getNode<SoundComponent>(THRUST_SOUND)->play(SoundComponent::INFINITE_LOOP);
                 break;
             }
-            case PlayerInputComponent::PlayerAction::HYPERSPACE: {
-                // Stop the player from moving
-                playerInputComponent->reset();
-                playerTransform->velocity = {0, 0};
-                // Compute the new location
-                int width = 0;
-                int height = 0;
-                ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);                
-                std::uniform_int_distribution<unsigned int> widthDistribution(0, width);
-                std::uniform_int_distribution<unsigned int> heightDistribution(0, height);
-                std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
-                this->setPosition({widthDistribution(generator), heightDistribution(generator)});
-                return;
-            }
             default: {
                 // TODO
                 //this->getNode<SoundComponent>(THRUST_SOUND)->stop();
@@ -176,4 +135,40 @@ void PlayerEntity::setPosition(const Eigen::Vector2f& position) {
     }
     
     Entity::setPosition(normalizedPosition);
+}
+
+void PlayerEntity::onEventHyperspace(const SDL_Event& event) {
+    switch(event.type) {
+        case SDL_KEYUP: {
+            PlayerInputComponent* playerInputComponent = this->getNode<PlayerInputComponent>();
+            playerInputComponent->reset();
+            
+            TransformComponent* transformComponent = this->getNode<TransformComponent>();
+            transformComponent->velocity = {0, 0};
+
+            int width = 0;
+            int height = 0;
+            ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+            
+            std::uniform_int_distribution<unsigned int> widthDistribution(0, width);
+            std::uniform_int_distribution<unsigned int> heightDistribution(0, height);
+            std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
+            this->setPosition({widthDistribution(generator), heightDistribution(generator)});
+        }
+    }
+}
+
+void PlayerEntity::onEventShoot(const SDL_Event& event) {
+    switch(event.type) {
+        case SDL_KEYUP: {
+//            SDL_UserEvent userEvent;
+//            userEvent.type = SDL_USEREVENT;
+//            userEvent.code = 100;
+//            SDL_Event thisEvent;
+//            thisEvent.type = SDL_USEREVENT;
+//            thisEvent.user = userEvent;
+//            SDL_PushEvent(&thisEvent);
+            break;
+        }
+    }
 }

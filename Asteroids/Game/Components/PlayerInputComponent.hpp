@@ -10,8 +10,7 @@ public:
         NONE = 0,
         ROTATE_LEFT,
         ROTATE_RIGHT,
-        THRUST,
-        HYPERSPACE
+        THRUST
     };
     
     PlayerInputComponent();
@@ -27,9 +26,7 @@ public:
     static inline const std::string EVENT_ROTATE_RIGHT = "EVENT_ROTATE_RIGHT";
     
 private:
-    void onHyperspace(const SDL_Event& event);
     void onRotate(const SDL_Event& event);
-    void onShoot(const SDL_Event& event);
     void onThrust(const SDL_Event& event);
     
     PlayerAction rotationAction = PlayerAction::NONE;
