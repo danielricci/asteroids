@@ -1,7 +1,7 @@
 #include "Engine/Managers/Manager.hpp"
 
-void Manager::addEntity(Entity* entity) {
-    this->entities.push_back(entity);
+void Manager::addNode(Node* node) {
+    this->nodes.push_back(node);
 }
 
 void Manager::update(float deltaTime) {

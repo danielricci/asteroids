@@ -80,6 +80,16 @@ float Node::getOrientation() const {
     return transformComponent == nullptr ? 0.f : transformComponent->orientation;
 }
 
+void Node::setOrientation(int orientation) {
+    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+    if(transformComponent == nullptr) {
+        transformComponent = new TransformComponent();
+        this->addNode(transformComponent);
+    }
+    transformComponent->orientation = orientation;
+}
+
+
 Node* Node::getParentNode() const {
     return this->parentNode;
 }

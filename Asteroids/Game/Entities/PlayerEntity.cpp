@@ -3,12 +3,13 @@
 #include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/GameSettingsManager.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
+#include "Game/Entities/BulletEntity.hpp"
 #include <cmath>
 #include <random>
-#include <iostream>
 
 PlayerEntity::PlayerEntity() {
     // Orient the player facing upwards
@@ -161,13 +162,15 @@ void PlayerEntity::onEventHyperspace(const SDL_Event& event) {
 void PlayerEntity::onEventShoot(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
-//            SDL_UserEvent userEvent;
-//            userEvent.type = SDL_USEREVENT;
-//            userEvent.code = 100;
-//            SDL_Event thisEvent;
-//            thisEvent.type = SDL_USEREVENT;
-//            thisEvent.user = userEvent;
-//            SDL_PushEvent(&thisEvent);
+            BulletEntity* bulletEntity = new BulletEntity();
+            ManagerHelper::get<GameManager>()->addNode(bulletEntity);
+            
+            bulletEntity->setOrientation(this->getOrientation());
+            
+            ShapeComponent* playerShapeComponent = this->getNode<ShapeComponent>();
+            SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
+            bulletEntity->setPosition({finalPosition.x, finalPosition.y});
+            
             break;
         }
     }

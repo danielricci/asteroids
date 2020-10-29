@@ -22,7 +22,7 @@ void GameWorld::destroy() {
 
 void GameWorld::initialize() {
     ManagerHelper::initialize(window);
-    ManagerHelper::get<UIManager>()->addEntity(new MainMenuEntity());
+    ManagerHelper::get<UIManager>()->addNode(new MainMenuEntity());
     
     // TODO - Remove me to re-enable menu
     ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);

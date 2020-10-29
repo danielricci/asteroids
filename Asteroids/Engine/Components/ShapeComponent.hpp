@@ -17,6 +17,8 @@ public:
     
     virtual void addVertex(const SDL_Point& point);
     virtual void render(SDL_Renderer& renderer);
-private:
+    SDL_Point getVertexPosition(SDL_Point vertex);
+    
+protected:
     std::vector<SDL_Point> vertices;
 };

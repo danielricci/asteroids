@@ -53,27 +53,30 @@ void ShapeComponent::render(SDL_Renderer& renderer) {
     if(!this->getNode<RenderComponent>()->isVisible) {
         return;
     }
-    std::vector<SDL_Point> finalPosition(this->vertices);
-    
-    float orientation = TransformComponent::toRadians(this->getWorldOrientation());
-    for(SDL_Point& vertex : finalPosition) {
-        double cosResult = std::cos(orientation);
-        double sinResult = std::sin(orientation);
-        double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);
-        double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
-        vertex.x = expr1;
-        vertex.y = expr2;
+    std::vector<SDL_Point> finalPositions;
+    for(const SDL_Point& vertex : this->vertices) {
+        finalPositions.push_back(this->getVertexPosition(vertex));
     }
-
-    Eigen::Vector2f worldPosition = this->getWorldPosition();
-    for(SDL_Point& vertex : finalPosition) {
-        vertex.x += static_cast<int>(worldPosition.x());
-        vertex.y += static_cast<int>(worldPosition.y());
-    }
-
-    SDL_RenderDrawLines(&renderer, &finalPosition.front(), static_cast<int>(finalPosition.size()));
+    SDL_RenderDrawLines(&renderer, &finalPositions.front(), static_cast<int>(finalPositions.size()));
 }
 
 void ShapeComponent::clear() {
     this->vertices.clear();
+}
+
+SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) {
+    float orientation = TransformComponent::toRadians(this->getWorldOrientation());
+    
+    double cosResult = std::cos(orientation);
+    double sinResult = std::sin(orientation);
+    double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);
+    double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
+    vertex.x = expr1;
+    vertex.y = expr2;
+    
+    Eigen::Vector2f worldPosition = this->getWorldPosition();
+    vertex.x += static_cast<int>(worldPosition.x());
+    vertex.y += static_cast<int>(worldPosition.y());
+    
+    return vertex;
 }

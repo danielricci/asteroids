@@ -8,4 +8,5 @@ public:
     BulletEntity();
     
     virtual void render(SDL_Renderer& renderer) override;
+    virtual void update(float deltaTime) override;
 };

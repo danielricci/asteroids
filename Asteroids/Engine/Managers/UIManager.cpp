@@ -9,30 +9,45 @@ UIManager::UIManager() {
 }
 
 UIManager::~UIManager() {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            delete entity;
-            entity = nullptr;
+    for(Node* node : this->nodes) {
+        if(node != nullptr) {
+            delete node;
+            node = nullptr;
         }
     }
-    entities.clear();
+    this->nodes.clear();
     TTF_Quit();
 }
 
 void UIManager::render(SDL_Renderer& renderer) {
-    for(Entity* entity : entities) {
-        entity->render(renderer);
+    for(Node* node : this->nodes) {
+        if(node != nullptr) {
+            Entity* entity = dynamic_cast<Entity*>(node);
+            if(entity != nullptr) {
+                entity->render(renderer);
+            }
+        }
     }
 }
 
 void UIManager::update(float deltaTime) {
-    for(Entity* entity : entities) {
-        entity->update(deltaTime);
+    for(Node* node : this->nodes) {
+        if(node != nullptr) {
+            Entity* entity = dynamic_cast<Entity*>(node);
+            if(entity != nullptr) {
+                entity->update(deltaTime);
+            }
+        }
     }
 }
 
 void UIManager::update(const SDL_Event& event) {
-    for(Entity* entity : entities) {
-        entity->update(event);
+    for(Node* node : this->nodes) {
+        if(node != nullptr) {
+            Entity* entity = dynamic_cast<Entity*>(node);
+            if(entity != nullptr) {
+                entity->update(event);
+            }
+        }
     }
 }

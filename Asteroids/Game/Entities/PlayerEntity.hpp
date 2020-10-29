@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Entities/Entity.hpp"
+
 #include <SDL.h>
 #include <Eigen/Dense>
 #include <string>

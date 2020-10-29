@@ -5,9 +5,12 @@
 
 void GameManager::render(SDL_Renderer& renderer) {
     if(this->gameState == GameState::STARTED) {
-        for(Entity* entity : entities) {
-            if(entity != nullptr) {
-                entity->render(renderer);
+        for(Node* node : this->nodes) {
+            if(node != nullptr) {
+                Entity* entity = dynamic_cast<Entity*>(node);
+                if(entity != nullptr) {
+                    entity->render(renderer);
+                }
             }
         }
     }
@@ -15,9 +18,12 @@ void GameManager::render(SDL_Renderer& renderer) {
 
 void GameManager::update(float deltaTime) {
     if(this->gameState == GameState::STARTED) {
-        for(Entity* entity : entities) {
-            if(entity != nullptr) {
-                entity->update(deltaTime);
+        for(Node* node : this->nodes) {
+            if(node != nullptr) {
+                Entity* entity = dynamic_cast<Entity*>(node);
+                if(entity != nullptr) {
+                    entity->update(deltaTime);
+                }
             }
         }
     }
@@ -43,9 +49,12 @@ void GameManager::update(const SDL_Event& event) {
         }
     }
     if(this->gameState == GameState::STARTED) {
-        for(Entity* entity : entities) {
-            if(entity != nullptr) {
-                entity->update(event);
+        for(Node* node : this->nodes) {
+            if(node != nullptr) {
+                Entity* entity = dynamic_cast<Entity*>(node);
+                if(entity != nullptr) {
+                    entity->update(event);
+                }
             }
         }
     }
@@ -66,7 +75,7 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
                 PlayerEntity* playerEntity = new PlayerEntity();
                 playerEntity->setPosition({width/2, height/2});
-                this->addEntity(playerEntity);
+                this->addNode(playerEntity);
             }
             break;
         }
