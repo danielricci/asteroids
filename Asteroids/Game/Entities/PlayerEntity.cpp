@@ -2,12 +2,12 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/GameSettingsManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
-#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/BulletEntity.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
 #include <random>
 
@@ -163,14 +163,14 @@ void PlayerEntity::onEventShoot(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
             BulletEntity* bulletEntity = new BulletEntity();
-            ManagerHelper::get<GameManager>()->addNode(bulletEntity);
-            
+            bulletEntity->getNode<TransformComponent>()->velocity = this->getNode<TransformComponent>()->velocity;
             bulletEntity->setOrientation(this->getOrientation());
-            
+
             ShapeComponent* playerShapeComponent = this->getNode<ShapeComponent>();
             SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
             bulletEntity->setPosition({finalPosition.x, finalPosition.y});
-            
+            ManagerHelper::get<GameManager>()->addNode(bulletEntity);
+
             break;
         }
     }

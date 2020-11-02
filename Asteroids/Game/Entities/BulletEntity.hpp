@@ -9,4 +9,6 @@ public:
     
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;
+private:
+    const int speed = 700;
 };
