@@ -4,7 +4,6 @@
 #include "SDL2_gfxPrimitives.h"
 
 CircleComponent::CircleComponent(int radius) {
-    this->addVertex({0, 0});
     this->radius = radius;
 }
 
