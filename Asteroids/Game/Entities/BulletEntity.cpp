@@ -29,3 +29,4 @@ void BulletEntity::update(float deltaTime) {
     position.y() += (velocity.y() * deltaTime);
     this->setPosition(position);
 }
+

@@ -115,29 +115,6 @@ void PlayerEntity::update(float deltaTime) {
     }
 }
 
-void PlayerEntity::setPosition(const Eigen::Vector2f& position) {
-    int width = 0;
-    int height = 0;
-    ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
-    
-    Eigen::Vector2f normalizedPosition = position;
-    if(normalizedPosition.x() < 0) {
-        normalizedPosition.x() = width;
-    }
-    else if(normalizedPosition.x() > width) {
-        normalizedPosition.x() = 0;
-    }
-    
-    if(normalizedPosition.y() < 0) {
-        normalizedPosition.y() = height;
-    }
-    else if(normalizedPosition.y() > height) {
-        normalizedPosition.y() = 0;
-    }
-    
-    Entity::setPosition(normalizedPosition);
-}
-
 void PlayerEntity::onEventHyperspace(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
