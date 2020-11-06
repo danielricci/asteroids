@@ -23,17 +23,17 @@ void Entity::setPosition(const Eigen::Vector2f& position) {
     
     Eigen::Vector2f normalizedPosition = position;
     if(normalizedPosition.x() < 0) {
-        normalizedPosition.x() = width;
+        normalizedPosition.x() += width;
     }
     else if(normalizedPosition.x() > width) {
-        normalizedPosition.x() = 0;
+        normalizedPosition.x() -= width;
     }
     
     if(normalizedPosition.y() < 0) {
-        normalizedPosition.y() = height;
+        normalizedPosition.y() += height;
     }
     else if(normalizedPosition.y() > height) {
-        normalizedPosition.y() = 0;
+        normalizedPosition.y() -= height;
     }
     
     Node::setPosition(normalizedPosition);
