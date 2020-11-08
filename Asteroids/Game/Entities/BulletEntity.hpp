@@ -11,4 +11,10 @@ public:
     virtual void update(float deltaTime) override;
 private:
     const int speed = 700;
+    float timeTravelled = 0;
+    
+    
+    float distanceSqr = 0;
+    static const int MAX_DISTANCE_SQR = 1000 * 1000;
+    float x = 0;
 };
