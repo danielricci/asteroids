@@ -6,7 +6,6 @@
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
-#include <iostream>
 
 BulletEntity::BulletEntity() {
     this->addNode(new CircleComponent(1));
@@ -18,12 +17,10 @@ void BulletEntity::render(SDL_Renderer& renderer) {
 }
 
 void BulletEntity::update(float deltaTime) {
-    
-    //timeTravelled += 
-    
-    
-    if(distanceSqr >= MAX_DISTANCE_SQR) {
-        //return;
+    // TODO: For better accuracy, the distance should be capped when exceeded
+    timeTravelled += deltaTime;
+    if(timeTravelled * speed >= MAX_DISTANCE) {
+        
     }
     
     Eigen::Vector2f velocity = this->getNode<TransformComponent>()->velocity;
@@ -31,13 +28,8 @@ void BulletEntity::update(float deltaTime) {
     velocity.x() = (speed * std::cos(radians));
     velocity.y() = (speed * std::sin(radians));
     
-    Eigen::Vector2f oldPosition = this->getPosition();
-    Eigen::Vector2f newPosition = {
-        oldPosition.x() + (velocity.x() * deltaTime),
-        oldPosition.y() + (velocity.y() * deltaTime)
-    };
-    
-    distanceSqr += (std::pow(newPosition.x() - oldPosition.x(), 2) + std::pow(newPosition.y() - oldPosition.y(), 2));
-    std::cout << x << std::endl;
-    this->setPosition(newPosition);
+    Eigen::Vector2f position = this->getPosition();
+    position.x() += (velocity.x() * deltaTime);
+    position.y() += (velocity.y() * deltaTime);
+    this->setPosition(position);
 }

@@ -5,27 +5,13 @@
 
 void GameManager::render(SDL_Renderer& renderer) {
     if(this->gameState == GameState::STARTED) {
-        for(Node* node : this->nodes) {
-            if(node != nullptr) {
-                Entity* entity = dynamic_cast<Entity*>(node);
-                if(entity != nullptr) {
-                    entity->render(renderer);
-                }
-            }
-        }
+        Manager::render(renderer);
     }
 }
 
 void GameManager::update(float deltaTime) {
     if(this->gameState == GameState::STARTED) {
-        for(Node* node : this->nodes) {
-            if(node != nullptr) {
-                Entity* entity = dynamic_cast<Entity*>(node);
-                if(entity != nullptr) {
-                    entity->update(deltaTime);
-                }
-            }
-        }
+        Manager::update(deltaTime);
     }
 }
 
@@ -48,15 +34,9 @@ void GameManager::update(const SDL_Event& event) {
             }
         }
     }
+    
     if(this->gameState == GameState::STARTED) {
-        for(Node* node : this->nodes) {
-            if(node != nullptr) {
-                Entity* entity = dynamic_cast<Entity*>(node);
-                if(entity != nullptr) {
-                    entity->update(event);
-                }
-            }
-        }
+        Manager::update(event);
     }
 }
 
