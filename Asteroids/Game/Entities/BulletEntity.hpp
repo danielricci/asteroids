@@ -10,8 +10,8 @@ public:
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;
 private:
-    const int speed = 700;
+    const int speed = 925;
     
     float timeTravelled = 0;
-    static const int MAX_DISTANCE = 675;
+    static const int MAX_DISTANCE = 875;
 };

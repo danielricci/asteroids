@@ -5,7 +5,8 @@
 class SoundManager : public Manager {
 public:
     SoundManager();
-    ~SoundManager();
+    virtual ~SoundManager();
+    
     void toggleSound() const;
     void allocateSoundChannels(int size);
     int getAllocatedChannelCount() const;

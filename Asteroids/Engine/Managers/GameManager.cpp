@@ -49,6 +49,7 @@ void GameManager::setGameState(GameManager::GameState gameState) {
             break;
         }
         case GameState::STARTED: {
+            // TODO: Gameplay related code should not be here!
             if(oldState == GameState::STOPPED) {
                 int width = 0;
                 int height = 0;
@@ -60,9 +61,6 @@ void GameManager::setGameState(GameManager::GameState gameState) {
             break;
         }
         case GameState::PAUSED: {
-            if(oldState == GameState::STARTED) {
-                // Need to pause the game world
-            }
             break;
         }
     }

@@ -4,7 +4,6 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
-#include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
 
 BulletEntity::BulletEntity() {
@@ -18,10 +17,12 @@ void BulletEntity::render(SDL_Renderer& renderer) {
 
 void BulletEntity::update(float deltaTime) {
     // TODO: For better accuracy, the distance should be capped when exceeded
-    timeTravelled += deltaTime;
     if(timeTravelled * speed >= MAX_DISTANCE) {
-        
+        ManagerHelper::get<GameManager>()->removeNode(this);
+        return;
     }
+
+    timeTravelled += deltaTime;
     
     Eigen::Vector2f velocity = this->getNode<TransformComponent>()->velocity;
     double radians = TransformComponent::toRadians(this->getOrientation());

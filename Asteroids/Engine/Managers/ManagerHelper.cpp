@@ -21,6 +21,14 @@ void ManagerHelper::clean() {
     managers.clear();
 }
 
+void ManagerHelper::finish() {
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            manager->finish();
+        }
+    }
+}
+
 void ManagerHelper::initialize(SDL_Window& window) {
     clean();
     managers.push_back(new GameManager());

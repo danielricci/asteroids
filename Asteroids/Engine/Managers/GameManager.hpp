@@ -2,7 +2,6 @@
 
 #include "Engine/Managers/Manager.hpp"
 #include <SDL.h>
-#include <string>
 
 class GameManager : public Manager {
 public:

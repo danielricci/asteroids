@@ -9,12 +9,6 @@ UIManager::UIManager() {
 }
 
 UIManager::~UIManager() {
-    for(Node* node : this->nodes) {
-        if(node != nullptr) {
-            delete node;
-            node = nullptr;
-        }
-    }
-    this->nodes.clear();
+    clearNodes();
     TTF_Quit();
 }

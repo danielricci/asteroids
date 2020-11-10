@@ -9,13 +9,15 @@
 class Manager {
 public:
     Manager() = default;
-    virtual ~Manager() = default;
+    virtual ~Manager();
     
     virtual void update(float deltaTime);
     virtual void update(const SDL_Event& event);
     virtual void render(SDL_Renderer& renderer);
     
     void addNode(Node* node);
+    void removeNode(Node* node);
+    void clearNodes();
     
     template<typename T> T* getNode(std::string identifier = std::string()) const {
         T* myNode = nullptr;
@@ -42,6 +44,9 @@ public:
         return nodes;
     }
     
-protected:
+    void finish();
+    
+private:
     std::list<Node*> nodes;
+    std::list<Node*> retiredNodes;
 };

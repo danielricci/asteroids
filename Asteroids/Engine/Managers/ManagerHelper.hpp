@@ -18,6 +18,7 @@ public:
     
     static void initialize(SDL_Window& window);
     static void clean();
+    static void finish();
     static void update(float deltaTime);
     static void update(const SDL_Event& event);
     static void render(SDL_Renderer& renderer);

@@ -39,6 +39,7 @@ void GameWorld::run() {
             update(gameWorldClock.sample());
             render();
         }
+        ManagerHelper::finish();
     }
 }
 
