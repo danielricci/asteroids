@@ -59,7 +59,15 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 playerEntity->setPosition({width/2, height/2});
                 this->addNode(playerEntity);
                 
-                this->addNode(new AsteroidEntity());
+                AsteroidEntity* a1 = new AsteroidEntity();
+                a1->setPosition({100, 100});
+                a1->setAsteroidSize(AsteroidEntity::AsteroidSize::BIG);
+                this->addNode(a1);
+                
+                AsteroidEntity* a2 = new AsteroidEntity();
+                a2->setPosition({500, 100});
+                a2->setAsteroidSize(AsteroidEntity::AsteroidSize::SMALL);
+                this->addNode(a2);
             }
             break;
         }

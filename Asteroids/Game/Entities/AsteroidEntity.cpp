@@ -9,7 +9,31 @@ AsteroidEntity::AsteroidEntity() {
     this->addNode(shapeComponent);
     shapeComponent->setPosition({0, 0});
     this->setOrientation(-30);
-    this->setPosition({100, 100});
+}
+
+void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
+    switch(asteroidSize) {
+        case AsteroidSize::BIG: {
+            if(this->asteroidSize != asteroidSize) {
+                ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
+                for(int i = 0; i < shapeComponent->getSize(); ++i) {
+                    (*shapeComponent)[i].x *= 3;
+                    (*shapeComponent)[i].y *= 3;
+                }
+            }
+            break;
+        }
+        case AsteroidSize::SMALL: {
+            if(this->asteroidSize != asteroidSize) {
+                ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
+                for(int i = 0; i < shapeComponent->getSize(); ++i) {
+                    (*shapeComponent)[i].x /= 3;
+                    (*shapeComponent)[i].y /= 3;
+                }
+            }
+            break;
+        }
+    }
 }
 
 void AsteroidEntity::setPosition(const Eigen::Vector2f& position) {
