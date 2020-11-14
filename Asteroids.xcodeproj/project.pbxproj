@@ -21,6 +21,7 @@
 		034F4C3024DA54A300975181 /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034F4C2F24DA54A300975181 /* Manager.cpp */; };
 		0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 0350F2B123A324FB0038A52E /* CollisionComponent.hpp */; };
 		0354B9F724D2602A0027E766 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0354B9F524D2602A0027E766 /* GameManager.cpp */; };
+		03571956255B1873004D09BB /* AsteroidEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03571954255B1873004D09BB /* AsteroidEntity.cpp */; };
 		035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* Entity.cpp */; };
 		0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0364021B246A3B11008684B8 /* SoundComponent.cpp */; };
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
@@ -91,6 +92,8 @@
 		0350F2B123A324FB0038A52E /* CollisionComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionComponent.hpp; sourceTree = "<group>"; };
 		0354B9F524D2602A0027E766 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		0354B9F624D2602A0027E766 /* GameManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
+		03571954255B1873004D09BB /* AsteroidEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AsteroidEntity.cpp; sourceTree = "<group>"; };
+		03571955255B1873004D09BB /* AsteroidEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AsteroidEntity.hpp; sourceTree = "<group>"; };
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 				03F006D524D3056700260594 /* PlayerEntity.hpp */,
 				03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */,
 				03EAD8FB252DE5A7003E76B2 /* BulletEntity.hpp */,
+				03571954255B1873004D09BB /* AsteroidEntity.cpp */,
+				03571955255B1873004D09BB /* AsteroidEntity.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */,
 				0354B9F724D2602A0027E766 /* GameManager.cpp in Sources */,
 				03EAD8FC252DE5A7003E76B2 /* BulletEntity.cpp in Sources */,
+				03571956255B1873004D09BB /* AsteroidEntity.cpp in Sources */,
 				0308C7BF24BD5811005DA3BB /* Node.cpp in Sources */,
 				0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */,
 				032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */,

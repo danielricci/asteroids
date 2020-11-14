@@ -13,6 +13,10 @@ ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : Shap
     this->vertices.insert(this->vertices.cbegin(), vertices);
 }
 
+ShapeComponent::ShapeComponent(const std::vector<SDL_Point>& vertices) : ShapeComponent() {
+    this->vertices = vertices;
+}
+
 void ShapeComponent::addVertex(const SDL_Point& point) {
     this->vertices.push_back(point);
 }

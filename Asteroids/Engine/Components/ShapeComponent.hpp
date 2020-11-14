@@ -8,6 +8,7 @@ class ShapeComponent : public Component {
 public:
     ShapeComponent();
     ShapeComponent(std::initializer_list<SDL_Point> vertices);
+    ShapeComponent(const std::vector<SDL_Point>& vertices);
     
     SDL_Point getShapeCenter() const;
     
