@@ -15,6 +15,9 @@ void Node::addNode(Node* node) {
     if(node != nullptr) {
         nodes.push_back(node);
         node->parentNode = this;
+        if(node->onParentNodeChanged != nullptr) {
+            node->onParentNodeChanged();
+        }
     }
 }
 

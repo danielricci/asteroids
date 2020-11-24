@@ -46,6 +46,8 @@ protected:
     Node() = default;
     Node* getParentNode() const;
     void addNode(Node* node);
+    
+    std::function<void()> onParentNodeChanged;
 private:
     std::list<Node*> nodes;
     Node* parentNode = nullptr;

@@ -1,3 +1,4 @@
+#include "Engine/Components/CollisionComponent.hpp"
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/SoundComponent.hpp"
@@ -44,6 +45,9 @@ PlayerEntity::PlayerEntity() {
     SoundComponent* thrustSoundComponent = new SoundComponent("Thrust.wav");
     thrustSoundComponent->name = THRUST_SOUND;
     this->addNode(thrustSoundComponent);
+    
+    CollisionComponent* collisionComponent = new CollisionComponent();
+    this->addNode(collisionComponent);
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
@@ -96,14 +100,9 @@ void PlayerEntity::update(float deltaTime) {
                 velocity.x() = std::clamp(velocity.x(), -maxSpeed, maxSpeed);
                 velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
                 playerTransform->velocity = velocity;
-                
-                // TODO
-                //this->getNode<SoundComponent>(THRUST_SOUND)->play(SoundComponent::INFINITE_LOOP);
                 break;
             }
             default: {
-                // TODO
-                //this->getNode<SoundComponent>(THRUST_SOUND)->stop();
                 break;
             }
         }

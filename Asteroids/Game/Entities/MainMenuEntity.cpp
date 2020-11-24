@@ -9,7 +9,6 @@ MainMenuEntity::MainMenuEntity() {
     int width = 0;
     int height = 0;
     ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
-    // TODO - can the hardcoded `centering` be done automatically?
     this->setPosition(Eigen::Vector2f(width/2 - 50, height/2 - 95));
     
     TextMenuControlEntity* startGameMenuEntity = new TextMenuControlEntity("Start Game", 24);

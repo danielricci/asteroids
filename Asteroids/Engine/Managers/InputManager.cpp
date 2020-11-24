@@ -33,7 +33,6 @@ void InputManager::update(const SDL_Event& event) {
         }
         case SDL_KEYDOWN:
         case SDL_KEYUP: {
-            // TODO
             break;
         }
     }

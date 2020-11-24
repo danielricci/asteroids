@@ -1,14 +1,13 @@
 #include "Engine/Components/CircleComponent.hpp"
-#include "Engine/Components/RenderComponent.hpp"
+#include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include <cmath>
 
 BulletEntity::BulletEntity() {
     this->addNode(new CircleComponent(1));
-    this->addNode(new RenderComponent());
 }
 
 void BulletEntity::render(SDL_Renderer& renderer) {
@@ -16,7 +15,6 @@ void BulletEntity::render(SDL_Renderer& renderer) {
 }
 
 void BulletEntity::update(float deltaTime) {
-    // TODO: For better accuracy, the distance should be capped when exceeded
     if(timeTravelled * speed >= MAX_DISTANCE) {
         ManagerHelper::get<GameManager>()->removeNode(this);
         return;

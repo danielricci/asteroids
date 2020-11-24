@@ -2,8 +2,15 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include <SDL.h>
 
+CollisionComponent::CollisionComponent() {
+    this->addNode(new TransformComponent());
+}
+
+bool CollisionComponent::isValidCollision() {
+    return false;
+}
+
 bool CollisionComponent::isCollidedAABB(const Entity& entity) const {
-    // TODO: Implement me
     return false;
 //    TransformComponent* firstTransformComponent = this->getEntity()->getComponent<TransformComponent>();
 //    TransformComponent* secondTransformComponent = entity.getComponent<TransformComponent>();

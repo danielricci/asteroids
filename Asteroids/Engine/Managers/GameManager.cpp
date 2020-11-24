@@ -50,7 +50,6 @@ void GameManager::setGameState(GameManager::GameState gameState) {
             break;
         }
         case GameState::STARTED: {
-            // TODO: Gameplay related code should not be here!
             if(oldState == GameState::STOPPED) {
                 int width = 0;
                 int height = 0;

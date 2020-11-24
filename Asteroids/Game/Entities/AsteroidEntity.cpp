@@ -8,7 +8,7 @@ AsteroidEntity::AsteroidEntity() {
     ShapeComponent* shapeComponent = new ShapeComponent(asteroidShapes[0]);
     this->addNode(shapeComponent);
     shapeComponent->setPosition({0, 0});
-    this->setOrientation(-30);
+    this->setOrientation(-45);
 }
 
 void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
@@ -38,7 +38,6 @@ void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
 
 void AsteroidEntity::setPosition(const Eigen::Vector2f& position) {
     Entity::setPosition(position);
-    // TODO: Handle properly how to transition over the screen when setting the position
 }
 
 void AsteroidEntity::update(float deltaTime) {
