@@ -27,7 +27,6 @@
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
 		036E505D24B87FC900426EBA /* TransformComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036E505C24B87FC900426EBA /* TransformComponent.cpp */; };
 		037FBA1624E3182600F984F1 /* ShapeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037FBA1424E3182600F984F1 /* ShapeComponent.cpp */; };
-		0387FD83249AAA160019BE47 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD81249AAA160019BE47 /* Clock.cpp */; };
 		0387FD8B24A78D220019BE47 /* MainMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */; };
 		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
 		03928B9F24E439C4008F4381 /* GameSettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03928B9D24E439C4008F4381 /* GameSettingsManager.cpp */; };
@@ -105,8 +104,6 @@
 		037FBA1424E3182600F984F1 /* ShapeComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeComponent.cpp; sourceTree = "<group>"; };
 		037FBA1524E3182600F984F1 /* ShapeComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShapeComponent.hpp; sourceTree = "<group>"; };
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		0387FD81249AAA160019BE47 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
-		0387FD82249AAA160019BE47 /* Clock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clock.hpp; sourceTree = "<group>"; };
 		0387FD8624A59CE70019BE47 /* MenuControlEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuControlEntity.hpp; sourceTree = "<group>"; };
 		0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuEntity.cpp; sourceTree = "<group>"; };
 		0387FD8A24A78D220019BE47 /* MainMenuEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainMenuEntity.hpp; sourceTree = "<group>"; };
@@ -156,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				031E7777246A34A20088854F /* Components */,
-				0387FD80249AA9FD0019BE47 /* Core */,
 				031E7778246A34AA0088854F /* Entities */,
 				03219D442406B07A0050588A /* Managers */,
 				036E505324B17B9A00426EBA /* System */,
@@ -269,15 +265,6 @@
 				0326170A251ECA7800ABA175 /* Sounds */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		0387FD80249AA9FD0019BE47 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				0387FD81249AAA160019BE47 /* Clock.cpp */,
-				0387FD82249AAA160019BE47 /* Clock.hpp */,
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		0389AD7E2396F4CA005EEC22 /* Frameworks */ = {
@@ -439,7 +426,6 @@
 				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
 				03928B9F24E439C4008F4381 /* GameSettingsManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
-				0387FD83249AAA160019BE47 /* Clock.cpp in Sources */,
 				03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */,
 				0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */,

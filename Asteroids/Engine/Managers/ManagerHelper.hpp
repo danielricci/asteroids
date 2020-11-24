@@ -24,6 +24,7 @@ public:
     static void render(SDL_Renderer& renderer);
 private:
     ManagerHelper() = default;
-    virtual ~ManagerHelper();
+    ~ManagerHelper();
+    
     static std::list<Manager*> managers;
 };

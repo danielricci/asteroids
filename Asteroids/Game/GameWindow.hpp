@@ -7,7 +7,8 @@ class GameWindow {
 public:
     GameWindow(const char* title, int width, int height);
     ~GameWindow();
-    void show() const;
+    
+    void run() const;
 private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;

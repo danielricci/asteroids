@@ -41,7 +41,7 @@ GameWindow::~GameWindow() {
     SDL_Quit();
 }
 
-void GameWindow::show() const {
+void GameWindow::run() const {
     if(gameWorld != nullptr) {
         gameWorld->run();
     }

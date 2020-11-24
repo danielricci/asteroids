@@ -1,31 +1,26 @@
-#include "Game/Entities/MainMenuEntity.hpp"
-#include "Game/GameWorld.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/UIManager.hpp"
+#include "Game/GameWorld.hpp"
 
-GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : window(window), renderer(renderer) {
-    initialize();
+GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : renderer(renderer) {
+    ManagerHelper::initialize(window);
+    ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);
 }
 
 GameWorld::~GameWorld() {
-    destroy();
-}
-
-void GameWorld::clean() {
     ManagerHelper::clean();
 }
 
-void GameWorld::destroy() {
-    clean();
-}
+float GameWorld::getDeltaTime() {
+    static long long int lastTime = 0;
+    static long long int nowTime = 0;
 
-void GameWorld::initialize() {
-    ManagerHelper::initialize(window);
-    ManagerHelper::get<UIManager>()->addNode(new MainMenuEntity());
-    
-    // TODO - Remove me to re-enable menu
-    ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);
+    if(nowTime == 0) {
+        nowTime = SDL_GetPerformanceCounter();
+    }
+    lastTime = nowTime;
+    nowTime = SDL_GetPerformanceCounter();
+    return (nowTime - lastTime) / static_cast<float>(SDL_GetPerformanceFrequency());
 }
 
 void GameWorld::run() {
@@ -36,7 +31,7 @@ void GameWorld::run() {
             update(event);
         }
         if(isRunning) {
-            update(gameWorldClock.sample());
+            update(getDeltaTime());
             render();
         }
         ManagerHelper::finish();
