@@ -1,14 +1,16 @@
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/GameSettingsManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Engine/Managers/UIManager.hpp"
+#include "Engine/Managers/WindowManager.hpp"
+#include <SDL.h>
 
 std::list<Manager*> ManagerHelper::managers {};
 
 ManagerHelper::~ManagerHelper() {
     clean();
+    SDL_Quit();
 }
 
 void ManagerHelper::clean() {
@@ -29,19 +31,20 @@ void ManagerHelper::finish() {
     }
 }
 
-void ManagerHelper::initialize(SDL_Window& window) {
+void ManagerHelper::initialize(const char* const title, int width, int height) {
     clean();
+    managers.push_back(new WindowManager(title, width, height));
     managers.push_back(new GameManager());
     managers.push_back(new InputManager());
-    managers.push_back(new GameSettingsManager(window));
     managers.push_back(new UIManager());
     managers.push_back(new SoundManager());
 }
 
-void ManagerHelper::render(SDL_Renderer &renderer) {
+void ManagerHelper::render() {
+    SDL_Renderer* renderer = getRenderer();
     for(Manager* manager : managers) {
         if(manager != nullptr) {
-            manager->render(renderer);
+            manager->render(*renderer);
         }
     }
 }
@@ -60,4 +63,8 @@ void ManagerHelper::update(const SDL_Event& event) {
             manager->update(event);
         }
     }
+}
+
+SDL_Renderer* ManagerHelper::getRenderer() {
+    return get<WindowManager>()->getRenderer();
 }

@@ -1,5 +1,5 @@
-#include "Game/GameWindow.hpp"
+#include "Game/GameWorld.hpp"
 
 int main(int argc, char** argv) {
-    GameWindow("Asteroids", 1280, 800).run();
+    GameWorld().run();
 }

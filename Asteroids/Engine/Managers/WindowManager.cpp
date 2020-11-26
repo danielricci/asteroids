@@ -1,7 +1,7 @@
-#include "Game/GameWindow.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include <iostream>
 
-GameWindow::GameWindow(const char* title, int width, int height) {
+WindowManager::WindowManager(const char* const title, int width, int height) {
     if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL video initialization failed: " << SDL_GetError() << std::endl;
         return;
@@ -18,31 +18,22 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         std::cerr << "SDL renderer could not be created: " << SDL_GetError() << std::endl;
         return;
     }
-
-    gameWorld = new GameWorld(*window, *renderer);
 }
 
-GameWindow::~GameWindow() {
-    if(gameWorld != nullptr) {
-        delete gameWorld;
-        gameWorld = nullptr;
-    }
-
-    if(renderer != nullptr) {
-        SDL_DestroyRenderer(renderer);
-        renderer = nullptr;
-    }
-    
+WindowManager::~WindowManager() {
     if(window != nullptr) {
         SDL_DestroyWindow(window);
         window = nullptr;
     }
-
-    SDL_Quit();
+    
+    if(renderer != nullptr) {
+        SDL_DestroyRenderer(renderer);
+        renderer = nullptr;
+    }
 }
 
-void GameWindow::run() const {
-    if(gameWorld != nullptr) {
-        gameWorld->run();
-    }
+SDL_Rect WindowManager::getWindowSize() {
+    SDL_Rect rectangle;
+    SDL_GetWindowSize(window, &rectangle.w, &rectangle.h);
+    return rectangle;
 }

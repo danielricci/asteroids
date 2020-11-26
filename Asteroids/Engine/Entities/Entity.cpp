@@ -1,6 +1,6 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Entities/Entity.hpp"
-#include "Engine/Managers/GameSettingsManager.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 
 Entity::Entity() {
@@ -17,23 +17,21 @@ void Entity::render(SDL_Renderer& renderer) {
 }
 
 void Entity::setPosition(const Eigen::Vector2f& position) {
-    int width = 0;
-    int height = 0;
-    ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
     
     Eigen::Vector2f normalizedPosition = position;
     if(normalizedPosition.x() < 0) {
-        normalizedPosition.x() += width;
+        normalizedPosition.x() += windowSize.w;
     }
-    else if(normalizedPosition.x() > width) {
-        normalizedPosition.x() -= width;
+    else if(normalizedPosition.x() > windowSize.w) {
+        normalizedPosition.x() -= windowSize.w;
     }
     
     if(normalizedPosition.y() < 0) {
-        normalizedPosition.y() += height;
+        normalizedPosition.y() += windowSize.h;
     }
-    else if(normalizedPosition.y() > height) {
-        normalizedPosition.y() -= height;
+    else if(normalizedPosition.y() > windowSize.h) {
+        normalizedPosition.y() -= windowSize.h;
     }
     
     Node::setPosition(normalizedPosition);

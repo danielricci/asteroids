@@ -4,8 +4,8 @@
 #include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/GameSettingsManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
@@ -123,12 +123,10 @@ void PlayerEntity::onEventHyperspace(const SDL_Event& event) {
             TransformComponent* transformComponent = this->getNode<TransformComponent>();
             transformComponent->velocity = {0, 0};
 
-            int width = 0;
-            int height = 0;
-            ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+            SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
             
-            std::uniform_int_distribution<unsigned int> widthDistribution(0, width);
-            std::uniform_int_distribution<unsigned int> heightDistribution(0, height);
+            std::uniform_int_distribution<unsigned int> widthDistribution(0, windowSize.w);
+            std::uniform_int_distribution<unsigned int> heightDistribution(0, windowSize.h);
             std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
             this->setPosition({widthDistribution(generator), heightDistribution(generator)});
         }

@@ -1,6 +1,6 @@
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/GameSettingsManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 
@@ -51,11 +51,9 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         }
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
-                int width = 0;
-                int height = 0;
-                ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
+                SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
                 PlayerEntity* playerEntity = new PlayerEntity();
-                playerEntity->setPosition({width/2, height/2});
+                playerEntity->setPosition({windowSize.w/2, windowSize.h/2});
                 this->addNode(playerEntity);
                 
                 AsteroidEntity* a1 = new AsteroidEntity();

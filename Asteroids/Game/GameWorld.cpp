@@ -2,8 +2,8 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/GameWorld.hpp"
 
-GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) : renderer(renderer) {
-    ManagerHelper::initialize(window);
+GameWorld::GameWorld() {
+    ManagerHelper::initialize("Asteroids", 1280, 800);
     ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);
 }
 
@@ -58,9 +58,10 @@ void GameWorld::update(float deltaTime) const {
 }
 
 void GameWorld::render() const {
-    SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(&renderer);
-    SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
-    ManagerHelper::render(renderer);
-    SDL_RenderPresent(&renderer);
+    SDL_Renderer* renderer = ManagerHelper::getRenderer();
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
+    ManagerHelper::render();
+    SDL_RenderPresent(renderer);
 }

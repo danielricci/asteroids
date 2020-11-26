@@ -4,7 +4,7 @@
 
 class GameWorld {
 public:
-    GameWorld(SDL_Window& window, SDL_Renderer& renderer);
+    GameWorld();
     ~GameWorld();
     
     void run();
@@ -14,9 +14,7 @@ private:
     void render() const;
 
     float getDeltaTime();
-    
-    SDL_Renderer& renderer;
-    
+
     bool isRunning = false;
 
     const float deltaTimeClamp = 1.f / 60.f;

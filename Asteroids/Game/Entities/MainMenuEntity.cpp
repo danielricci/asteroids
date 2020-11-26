@@ -2,14 +2,12 @@
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/GameSettingsManager.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/MainMenuEntity.hpp"
 
 MainMenuEntity::MainMenuEntity() {
-    int width = 0;
-    int height = 0;
-    ManagerHelper::get<GameSettingsManager>()->getWindowSize(width, height);
-    this->setPosition(Eigen::Vector2f(width/2 - 50, height/2 - 95));
+    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
+    this->setPosition(Eigen::Vector2f(windowSize.w/2 - 50, windowSize.h/2 - 95));
     
     TextMenuControlEntity* startGameMenuEntity = new TextMenuControlEntity("Start Game", 24);
     startGameMenuEntity->onExecute([this]() {
