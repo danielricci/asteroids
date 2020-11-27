@@ -1,10 +1,8 @@
-#include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/GameWorld.hpp"
 
 GameWorld::GameWorld() {
     ManagerHelper::initialize("Asteroids", 1280, 800);
-    ManagerHelper::get<GameManager>()->setGameState(GameManager::GameState::STARTED);
 }
 
 GameWorld::~GameWorld() {
@@ -13,14 +11,11 @@ GameWorld::~GameWorld() {
 
 float GameWorld::getDeltaTime() {
     static long long int lastTime = 0;
-    static long long int nowTime = 0;
+    static long long int nowTime = SDL_GetPerformanceCounter();
 
-    if(nowTime == 0) {
-        nowTime = SDL_GetPerformanceCounter();
-    }
     lastTime = nowTime;
     nowTime = SDL_GetPerformanceCounter();
-    return (nowTime - lastTime) / static_cast<float>(SDL_GetPerformanceFrequency());
+    return (nowTime - lastTime) / performanceFrequency;
 }
 
 void GameWorld::run() {
@@ -58,10 +53,5 @@ void GameWorld::update(float deltaTime) const {
 }
 
 void GameWorld::render() const {
-    SDL_Renderer* renderer = ManagerHelper::getRenderer();
-    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     ManagerHelper::render();
-    SDL_RenderPresent(renderer);
 }
