@@ -54,15 +54,15 @@ Eigen::Vector2f Node::getWorldPosition() const {
     return position;
 }
 
-void Node::setPosition(const Eigen::Vector2f& position) {
-    TransformComponent* transformComponent = this->getNode<TransformComponent>();
-    if(transformComponent == nullptr) {
-        transformComponent = new TransformComponent();
-        this->addNode(transformComponent);
-    }
-    
-    transformComponent->position = position;
-}
+//void Node::setPosition(const Eigen::Vector2f& position) {
+//    TransformComponent* transformComponent = this->getNode<TransformComponent>();
+//    if(transformComponent == nullptr) {
+//        transformComponent = new TransformComponent();
+//        this->addNode(transformComponent);
+//    }
+//    
+//    transformComponent->position = position;
+//}
 
 void Node::setOrigin(const Eigen::Vector2f& origin) {
     TransformComponent* transformComponent = this->getNode<TransformComponent>();

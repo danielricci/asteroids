@@ -17,10 +17,11 @@ public:
     }
     
     static void initialize(const char* const title, int width, int height);
-    
     static void clean();
     static void finish();
+    
     static SDL_Renderer* getRenderer();
+    
     static void update(float deltaTime);
     static void update(const SDL_Event& event);
     static void render();

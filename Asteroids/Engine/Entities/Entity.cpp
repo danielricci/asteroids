@@ -4,16 +4,28 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 
 Entity::Entity() {
-    this->addNode(new TransformComponent());
+    addComponent(new TransformComponent());
 }
 
-void Entity::update(float deltaTime) {
+void Entity::addComponent(Component* component) {
+    if(component != nullptr) {
+        this->components.push_back(component);
+        component->setOwnerEntity(this);
+    }
 }
 
-void Entity::update(const SDL_Event& event) {
-}
-
-void Entity::render(SDL_Renderer& renderer) {
+template<class T> T* Entity::getComponent<T>(std::string name) {
+    T* resultComponent = nullptr;
+    for(Component* component : components) {
+        T* componentCast = dynamic_cast<T*>(component);
+        if(componentCast != nullptr) {
+            if(name.empty() || name == component->name) {
+                resultComponent = componentCast;
+                break;
+            }
+        }
+    }
+    return resultComponent;
 }
 
 void Entity::setPosition(const Eigen::Vector2f& position) {
@@ -34,5 +46,5 @@ void Entity::setPosition(const Eigen::Vector2f& position) {
         normalizedPosition.y() -= windowSize.h;
     }
     
-    Node::setPosition(normalizedPosition);
+    this->getComponent<TransformComponent>()->position = normalizedPosition;
 }

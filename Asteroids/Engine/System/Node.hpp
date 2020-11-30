@@ -33,7 +33,7 @@ public:
     
     Eigen::Vector2f getWorldPosition() const;
     virtual Eigen::Vector2f getPosition() const;
-    virtual void setPosition(const Eigen::Vector2f& position);
+    //virtual void setPosition(const Eigen::Vector2f& position);
     Eigen::Vector2f getOrigin() const;
     float getWorldOrientation() const;
     float getOrientation() const;

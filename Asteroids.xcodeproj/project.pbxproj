@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0308C7BF24BD5811005DA3BB /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0308C7BE24BD5811005DA3BB /* Node.cpp */; };
 		030B2D9A25256735003F89B5 /* thrust.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030B2D982525671F003F89B5 /* thrust.wav */; };
+		031956AD2572BE2D00FFF34E /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031956AC2572BE2D00FFF34E /* Component.cpp */; };
 		03219D472406B5F70050588A /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03219D452406B5F70050588A /* InputManager.cpp */; };
 		032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032589BA245D19240047CF7D /* TextRenderComponent.cpp */; };
 		032589BE245D19240047CF7D /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032589BB245D19240047CF7D /* TextComponent.cpp */; };
@@ -71,6 +72,7 @@
 		0308C7BE24BD5811005DA3BB /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		030B2D982525671F003F89B5 /* thrust.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thrust.wav; sourceTree = "<group>"; };
 		0317C67F2352500C00D43455 /* Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
+		031956AC2572BE2D00FFF34E /* Component.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
 		03219D452406B5F70050588A /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
 		03219D462406B5F70050588A /* InputManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputManager.hpp; sourceTree = "<group>"; };
 		032589B9245D19240047CF7D /* TextRenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextRenderComponent.hpp; sourceTree = "<group>"; };
@@ -160,10 +162,11 @@
 		031E7777246A34A20088854F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				03EAD8FF252EB2E8003E76B2 /* CircleComponent.hpp */,
 				03EAD8FD252EB2D9003E76B2 /* CircleComponent.cpp */,
+				03EAD8FF252EB2E8003E76B2 /* CircleComponent.hpp */,
 				03EE9C6624CC760400302287 /* CollisionComponent.cpp */,
 				0350F2B123A324FB0038A52E /* CollisionComponent.hpp */,
+				031956AC2572BE2D00FFF34E /* Component.cpp */,
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
 				03EE9C6824CC784600302287 /* InputComponent.cpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
@@ -407,6 +410,7 @@
 				032589BD245D19240047CF7D /* TextRenderComponent.cpp in Sources */,
 				03D597B624C5FA3A001CE9CC /* TextMenuControlEntity.cpp in Sources */,
 				0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */,
+				031956AD2572BE2D00FFF34E /* Component.cpp in Sources */,
 				034F4C3024DA54A300975181 /* Manager.cpp in Sources */,
 				036E505D24B87FC900426EBA /* TransformComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
