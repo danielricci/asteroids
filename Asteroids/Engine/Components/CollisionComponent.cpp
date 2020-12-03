@@ -3,7 +3,7 @@
 #include <SDL.h>
 
 CollisionComponent::CollisionComponent() {
-    this->addNode(new TransformComponent());
+    //this->addNode(new TransformComponent());
 }
 
 bool CollisionComponent::isValidCollision() {

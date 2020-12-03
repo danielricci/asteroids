@@ -14,18 +14,34 @@ void Entity::addComponent(Component* component) {
     }
 }
 
-template<class T> T* Entity::getComponent<T>(std::string name) {
-    T* resultComponent = nullptr;
+template<typename T> T* Entity::getComponent(const std::string& name) const {
+    T* result = nullptr;
     for(Component* component : components) {
-        T* componentCast = dynamic_cast<T*>(component);
-        if(componentCast != nullptr) {
-            if(name.empty() || name == component->name) {
-                resultComponent = componentCast;
+        T* cast = dynamic_cast<T*>(component);
+        if(cast != nullptr) {
+            if(name.empty() || name == cast->name) {
+                result = cast;
                 break;
             }
         }
     }
-    return resultComponent;
+    return result;
+}
+
+template<typename T> std::list<T*> Entity::getComponents() const {
+    std::list<T*> components;
+    for(Component* component : this->components) {
+        T* cast = dynamic_cast<T*>(component);
+        if(cast != nullptr) {
+            components.push_back(cast);
+        }
+    }
+    return components;
+}
+
+Eigen::Vector2f Entity::getPosition() const {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->position;
 }
 
 void Entity::setPosition(const Eigen::Vector2f& position) {
@@ -47,4 +63,31 @@ void Entity::setPosition(const Eigen::Vector2f& position) {
     }
     
     this->getComponent<TransformComponent>()->position = normalizedPosition;
+}
+
+float Entity::getOrientation() const {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    return transformComponent == nullptr ? 0.f : transformComponent->orientation;
+}
+
+void Entity::setOrientation(int orientation) {
+    getComponent<TransformComponent>()->orientation = orientation;
+}
+
+Eigen::Vector2f Entity::getOrigin() const {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->origin;
+}
+
+void Entity::setOrigin(const Eigen::Vector2f& origin) {
+    getComponent<TransformComponent>()->origin = origin;
+}
+
+Eigen::Vector2f Entity::getDimension() const {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->dimension;
+}
+
+void Entity::setDimension(const Eigen::Vector2f& dimension) const {
+    getComponent<TransformComponent>()->dimension = dimension;
 }

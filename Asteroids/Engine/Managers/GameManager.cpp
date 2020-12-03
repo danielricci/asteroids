@@ -42,36 +42,36 @@ void GameManager::update(const SDL_Event& event) {
 }
 
 void GameManager::setGameState(GameManager::GameState gameState) {
-    GameManager::GameState oldState = this->gameState;
-    this->gameState = gameState;
-    
-    switch(gameState) {
-        case GameState::STOPPED: {
-            break;
-        }
-        case GameState::STARTED: {
-            if(oldState == GameState::STOPPED) {
-                SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
-                PlayerEntity* playerEntity = new PlayerEntity();
-                playerEntity->setPosition({windowSize.w/2, windowSize.h/2});
-                this->addNode(playerEntity);
-                
-                AsteroidEntity* a1 = new AsteroidEntity();
-                a1->setPosition({100, 100});
-                a1->setAsteroidSize(AsteroidEntity::AsteroidSize::BIG);
-                this->addNode(a1);
-                
-                AsteroidEntity* a2 = new AsteroidEntity();
-                a2->setPosition({500, 100});
-                a2->setAsteroidSize(AsteroidEntity::AsteroidSize::SMALL);
-                this->addNode(a2);
-            }
-            break;
-        }
-        case GameState::PAUSED: {
-            break;
-        }
-    }
+//    GameManager::GameState oldState = this->gameState;
+//    this->gameState = gameState;
+//    
+//    switch(gameState) {
+//        case GameState::STOPPED: {
+//            break;
+//        }
+//        case GameState::STARTED: {
+//            if(oldState == GameState::STOPPED) {
+//                SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
+//                PlayerEntity* playerEntity = new PlayerEntity();
+//                playerEntity->setPosition({windowSize.w/2, windowSize.h/2});
+//                this->addNode(playerEntity);
+//                
+//                AsteroidEntity* a1 = new AsteroidEntity();
+//                a1->setPosition({100, 100});
+//                a1->setAsteroidSize(AsteroidEntity::AsteroidSize::BIG);
+//                this->addNode(a1);
+//                
+//                AsteroidEntity* a2 = new AsteroidEntity();
+//                a2->setPosition({500, 100});
+//                a2->setAsteroidSize(AsteroidEntity::AsteroidSize::SMALL);
+//                this->addNode(a2);
+//            }
+//            break;
+//        }
+//        case GameState::PAUSED: {
+//            break;
+//        }
+//    }
 }
 
 GameManager::GameState GameManager::getGameState() const {

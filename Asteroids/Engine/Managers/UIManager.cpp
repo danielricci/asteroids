@@ -3,12 +3,12 @@
 #include <iostream>
 
 UIManager::UIManager() {
-    if(TTF_Init() < 0) {
-        std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
-    }
+//    if(TTF_Init() < 0) {
+//        std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
+//    }
 }
 
 UIManager::~UIManager() {
-    clearNodes();
-    TTF_Quit();
+    //clearNodes();
+    //TTF_Quit();
 }
