@@ -16,7 +16,7 @@ public:
     
     void addEntity(Entity* entity);
     void removeEntity(Entity* entity);
-    void clear();
+    void clearEntities();
     
 //    template<typename T> T* getEntity(std::string identifier = std::string()) const {
 //        T* myNode = nullptr;
@@ -46,6 +46,6 @@ public:
     void finish();
     
 private:
-//    std::list<Entity*> entities;
+    std::list<Entity*> entities;
 //    std::list<Entity*> entityNodes;
 };

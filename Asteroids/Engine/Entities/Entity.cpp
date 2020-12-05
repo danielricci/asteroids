@@ -7,6 +7,15 @@ Entity::Entity() {
     addComponent(new TransformComponent());
 }
 
+Entity::~Entity() {
+    for(Component* component : this->components) {
+        if(component != nullptr) {
+            delete component;
+        }
+    }
+    this->components.clear();
+}
+
 void Entity::addComponent(Component* component) {
     if(component != nullptr) {
         this->components.push_back(component);

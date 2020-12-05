@@ -10,6 +10,8 @@ class Component;
 
 class Entity {
 public:
+    virtual ~Entity();
+    
     void addComponent(Component* Component);
     
     template<typename T> T* getComponent(const std::string& name = std::string()) const;

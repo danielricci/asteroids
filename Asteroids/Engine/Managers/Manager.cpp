@@ -1,25 +1,24 @@
 #include "Engine/Managers/Manager.hpp"
 
 Manager::~Manager() {
-    //clearNodes();
+    clearEntities();
 }
 
 void Manager::addEntity(Entity* entity) {
-    //this->nodes.push_back(node);
+    this->entities.push_back(entity);
 }
 
 void Manager::removeEntity(Entity* entity) {
     //this->retiredNodes.push_back(node);
 }
 
-void Manager::clear() {
-//    finish();
-//    for(Node* node : this->nodes) {
-//        if(node != nullptr) {
-//            delete node;
-//        }
-//    }
-//    nodes.clear();
+void Manager::clearEntities() {
+    for(Entity* entity : this->entities) {
+        if(entity != nullptr) {
+            delete entity;
+        }
+    }
+    entities.clear();
 }
 
 void Manager::update(float deltaTime) {
