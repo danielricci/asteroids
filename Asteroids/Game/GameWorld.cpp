@@ -29,7 +29,6 @@ void GameWorld::run() {
             update(getDeltaTime());
             render();
         }
-        ManagerHelper::finish();
     }
 }
 

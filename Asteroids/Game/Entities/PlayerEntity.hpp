@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Entities/Entity.hpp"
+#include "Game/Entities/GameEntity.hpp"
 #include <SDL.h>
 #include <string>
 
-class PlayerEntity : public Entity {
+class PlayerEntity : public GameEntity {
 public:
     PlayerEntity();
     virtual void render(SDL_Renderer& renderer) override;

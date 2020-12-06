@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/Entities/Entity.hpp"
+#include "Game/Entities/GameEntity.hpp"
 #include <SDL.h>
 #include <array>
 #include <vector>
 #include <Eigen/Dense>
 
-class AsteroidEntity : public Entity {
+class AsteroidEntity : public GameEntity {
 public:
     enum class AsteroidSize {
         BIG = 0,

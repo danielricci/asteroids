@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Engine/Entities/Entity.hpp"
+#include "Game/Entities/GameEntity.hpp"
 #include <SDL.h>
 
-class MainMenuEntity : public Entity {
+class MainMenuEntity : public GameEntity {
 public:
     MainMenuEntity();
     

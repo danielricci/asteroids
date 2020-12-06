@@ -23,14 +23,6 @@ void ManagerHelper::clean() {
     managers.clear();
 }
 
-void ManagerHelper::finish() {
-    for(Manager* manager : managers) {
-        if(manager != nullptr) {
-            manager->finish();
-        }
-    }
-}
-
 void ManagerHelper::initialize(const char* const title, int width, int height) {
     clean();
     managers.push_back(new WindowManager(title, width, height));

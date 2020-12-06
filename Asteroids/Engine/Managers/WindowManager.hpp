@@ -9,10 +9,7 @@ public:
     ~WindowManager();
     
     SDL_Rect getWindowSize();
-    inline SDL_Renderer* getRenderer() const {
-        return renderer;
-    }
-    
+    SDL_Renderer* getRenderer() const;
 private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;

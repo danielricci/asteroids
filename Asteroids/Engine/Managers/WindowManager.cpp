@@ -30,6 +30,12 @@ WindowManager::~WindowManager() {
         SDL_DestroyRenderer(renderer);
         renderer = nullptr;
     }
+
+    SDL_QuitSubSystem(SDL_INIT_VIDEO);
+}
+
+SDL_Renderer* WindowManager::getRenderer() const {
+    return renderer;
 }
 
 SDL_Rect WindowManager::getWindowSize() {

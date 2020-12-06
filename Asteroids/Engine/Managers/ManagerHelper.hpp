@@ -18,7 +18,6 @@ public:
     
     static void initialize(const char* const title, int width, int height);
     static void clean();
-    static void finish();
     
     static SDL_Renderer* getRenderer();
     
