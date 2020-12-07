@@ -3,11 +3,9 @@
 #include "Engine/Entities/Entity.hpp"
 #include <SDL.h>
 #include <list>
-#include <string>
 
 class Manager {
 public:
-    Manager() = default;
     virtual ~Manager();
     
     virtual void update(float deltaTime);
@@ -15,7 +13,6 @@ public:
     virtual void render(SDL_Renderer& renderer);
     
     void addEntity(Entity* entity);
-    void removeEntity(Entity* entity);
     void clearEntities();
     
 //    template<typename T> T* getEntity(std::string identifier = std::string()) const {
@@ -43,9 +40,8 @@ public:
 //        return nodes;
 //    }
     
-    void finish();
-    
+protected:
+    Manager() = default;
 private:
     std::list<Entity*> entities;
-//    std::list<Entity*> entityNodes;
 };

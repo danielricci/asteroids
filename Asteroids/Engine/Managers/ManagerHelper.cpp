@@ -26,13 +26,13 @@ void ManagerHelper::clean() {
 void ManagerHelper::initialize(const char* const title, int width, int height) {
     clean();
     managers.push_back(new WindowManager(title, width, height));
-//    GameManager* gameManager = new GameManager();
-//    managers.push_back(gameManager);
+    
+    GameManager* gameManager = new GameManager();
+    gameManager->setGameState(GameManager::GameState::STARTED);
+    managers.push_back(gameManager);
 //    managers.push_back(new InputManager());
 //    managers.push_back(new UIManager());
 //    managers.push_back(new SoundManager());
-//    
-//    gameManager->setGameState(GameManager::GameState::STARTED);
 }
 
 void ManagerHelper::render() {
