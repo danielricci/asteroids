@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Entities/Entity.hpp"
-#include <Eigen/Dense>
 #include <string>
 
 class Entity;
@@ -11,9 +10,9 @@ public:
     virtual ~Component() = default;
     void setOwnerEntity(Entity* entityOwner);
     std::function<void()> onOwnerEntityChanged;
-    const std::string& name;
+    const std::string name = "";
 protected:
-    Component(const std::string& name = std::string());
+    Component() = default;
 private:
     Entity* ownerEntity = nullptr;
 };

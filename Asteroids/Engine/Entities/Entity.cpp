@@ -22,31 +22,6 @@ void Entity::addComponent(Component* component) {
     }
 }
 
-template<typename T> T* Entity::getComponent(const std::string& name) const {
-    T* result = nullptr;
-    for(Component* component : components) {
-        T* cast = dynamic_cast<T*>(component);
-        if(cast != nullptr) {
-            if(name.empty() || name == cast->name) {
-                result = cast;
-                break;
-            }
-        }
-    }
-    return result;
-}
-
-template<typename T> std::list<T*> Entity::getComponents() const {
-    std::list<T*> components;
-    for(Component* component : this->components) {
-        T* cast = dynamic_cast<T*>(component);
-        if(cast != nullptr) {
-            components.push_back(cast);
-        }
-    }
-    return components;
-}
-
 Eigen::Vector2f Entity::getPosition() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
     return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->position;

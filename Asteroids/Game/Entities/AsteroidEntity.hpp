@@ -4,7 +4,6 @@
 #include <SDL.h>
 #include <array>
 #include <vector>
-#include <Eigen/Dense>
 
 class AsteroidEntity : public GameEntity {
 public:
@@ -17,8 +16,8 @@ public:
     
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;
-    virtual void setPosition(const Eigen::Vector2f& position) override;
-    void setAsteroidSize(const AsteroidSize& asteroidSize);
+    virtual void update(const SDL_Event& event) override;
+    //void setAsteroidSize(const AsteroidSize& asteroidSize);
 private:
     AsteroidSize asteroidSize = AsteroidSize::BIG;
     static const int speed = 40;

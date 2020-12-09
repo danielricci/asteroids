@@ -2,16 +2,16 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
+#include <Eigen/Dense>
 
 AsteroidEntity::AsteroidEntity() {
-//    this->addNode(new RenderComponent());
-//    ShapeComponent* shapeComponent = new ShapeComponent(asteroidShapes[0]);
-//    this->addNode(shapeComponent);
-//    shapeComponent->setPosition({0, 0});
-//    this->setOrientation(-45);
+    addComponent(new RenderComponent());
+    addComponent(new ShapeComponent(asteroidShapes[0]));
+    setPosition({0, 0});
+    setOrientation(-45);
 }
 
-void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
+//void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
 //    switch(asteroidSize) {
 //        case AsteroidSize::BIG: {
 //            if(this->asteroidSize != asteroidSize) {
@@ -34,26 +34,23 @@ void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
 //            break;
 //        }
 //    }
-}
-
-void AsteroidEntity::setPosition(const Eigen::Vector2f& position) {
-    Entity::setPosition(position);
-}
+//}
 
 void AsteroidEntity::update(float deltaTime) {
-//    Eigen::Vector2f velocity = this->getNode<TransformComponent>()->velocity;
-//    double radians = TransformComponent::toRadians(this->getOrientation());
-//    velocity.x() = (speed * std::cos(radians));
-//    velocity.y() = (speed * std::sin(radians));
-//
-//    Eigen::Vector2f position = this->getPosition();
-//    position.x() += (velocity.x() * deltaTime);
-//    position.y() += (velocity.y() * deltaTime);
-//    this->setPosition(position);
+    Eigen::Vector2f velocity = getComponent<TransformComponent>()->velocity;
+    double radians = TransformComponent::toRadians(getOrientation());
+    velocity.x() = (speed * std::cos(radians));
+    velocity.y() = (speed * std::sin(radians));
+
+    Eigen::Vector2f position = getPosition();
+    position.x() += (velocity.x() * deltaTime);
+    position.y() += (velocity.y() * deltaTime);
+    setPosition(position);
+}
+
+void AsteroidEntity::update(const SDL_Event& event) {
 }
 
 void AsteroidEntity::render(SDL_Renderer& renderer) {
-//    for(ShapeComponent* shapeComponent : this->getNodes<ShapeComponent>()) {
-//        shapeComponent->render(renderer);
-//    }
+    getComponent<ShapeComponent>()->render(renderer);
 }

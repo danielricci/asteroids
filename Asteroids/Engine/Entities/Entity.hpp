@@ -14,8 +14,30 @@ public:
     
     void addComponent(Component* Component);
     
-    template<typename T> T* getComponent(const std::string& name = std::string()) const;
-    template<typename T> std::list<T*> getComponents() const;
+    template<typename T> T* getComponent(const std::string& name = std::string()) const {
+        T* result = nullptr;
+        for(Component* component : components) {
+            T* cast = dynamic_cast<T*>(component);
+            if(cast != nullptr) {
+                if(name.empty() || name == cast->name) {
+                    result = cast;
+                    break;
+                }
+            }
+        }
+        
+        return result;
+    }
+    template<typename T> std::list<T*> getComponents() const {
+        std::list<T*> components;
+        for(Component* component : this->components) {
+            T* cast = dynamic_cast<T*>(component);
+            if(cast != nullptr) {
+                components.push_back(cast);
+            }
+        }
+        return components;
+    }
     
     virtual Eigen::Vector2f getPosition() const;
     virtual void setPosition(const Eigen::Vector2f& position);
