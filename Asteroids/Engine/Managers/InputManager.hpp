@@ -3,7 +3,7 @@
 #include "Engine/Managers/Manager.hpp"
 #include <SDL.h>
 
-class InputManager : public Manager {
+class InputManager final : public Manager {
 public:
     InputManager();
     virtual ~InputManager();

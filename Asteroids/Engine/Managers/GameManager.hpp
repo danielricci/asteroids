@@ -3,7 +3,7 @@
 #include "Engine/Managers/Manager.hpp"
 #include <SDL.h>
 
-class GameManager : public Manager {
+class GameManager final : public Manager {
 public:
     enum class GameState : char {
         STOPPED,
