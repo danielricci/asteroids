@@ -54,14 +54,11 @@ SDL_Point ShapeComponent::getShapeCenter() const {
 }
 
 void ShapeComponent::render(SDL_Renderer& renderer) {
-//    if(!this->getNode<RenderComponent>()->isVisible) {
-//        return;
-//    }
-//    std::vector<SDL_Point> finalPositions;
-//    for(const SDL_Point& vertex : this->vertices) {
-//        finalPositions.push_back(this->getVertexPosition(vertex));
-//    }
-//    SDL_RenderDrawLines(&renderer, &finalPositions.front(), static_cast<int>(finalPositions.size()));
+    std::vector<SDL_Point> finalPositions;
+    for(const SDL_Point& vertex : this->vertices) {
+        finalPositions.push_back(this->getVertexPosition(vertex));
+    }
+    SDL_RenderDrawLines(&renderer, &finalPositions.front(), static_cast<int>(finalPositions.size()));
 }
 
 void ShapeComponent::clear() {
@@ -69,19 +66,18 @@ void ShapeComponent::clear() {
 }
 
 SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) {
-    return {0,0};
-//    float orientation = TransformComponent::toRadians(this->getWorldOrientation());
-//
-//    double cosResult = std::cos(orientation);
-//    double sinResult = std::sin(orientation);
-//    double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);
-//    double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
-//    vertex.x = expr1;
-//    vertex.y = expr2;
-//
-//    Eigen::Vector2f worldPosition = this->getWorldPosition();
-//    vertex.x += static_cast<int>(worldPosition.x());
-//    vertex.y += static_cast<int>(worldPosition.y());
-//
-//    return vertex;
+    float orientation = TransformComponent::toRadians(this->ownerEntity->getOrientation());
+
+    double cosResult = std::cos(orientation);
+    double sinResult = std::sin(orientation);
+    double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);
+    double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
+    vertex.x = expr1;
+    vertex.y = expr2;
+
+    Eigen::Vector2f worldPosition = this->ownerEntity->getPosition();
+    vertex.x += static_cast<int>(worldPosition.x());
+    vertex.y += static_cast<int>(worldPosition.y());
+
+    return vertex;
 }

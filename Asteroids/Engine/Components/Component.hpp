@@ -9,10 +9,8 @@ class Component {
 public:
     virtual ~Component() = default;
     void setOwnerEntity(Entity* entityOwner);
-    std::function<void()> onOwnerEntityChanged;
-    const std::string name = "";
+    std::string name = "";
 protected:
     Component() = default;
-private:
     Entity* ownerEntity = nullptr;
 };
