@@ -7,11 +7,15 @@
 #include <cmath>
 
 BulletEntity::BulletEntity() {
-    //this->addNode(new CircleComponent(1));
+    this->addComponent(new CircleComponent(1));
 }
 
 void BulletEntity::render(SDL_Renderer& renderer) {
-    //this->getNode<CircleComponent>()->render(renderer);
+    this->getComponent<CircleComponent>()->render(renderer);
+}
+
+void BulletEntity::update(const SDL_Event& event) {
+    
 }
 
 void BulletEntity::update(float deltaTime) {
@@ -19,16 +23,16 @@ void BulletEntity::update(float deltaTime) {
 //        ManagerHelper::get<GameManager>()->removeNode(this);
 //        return;
 //    }
-//
-//    timeTravelled += deltaTime;
-//    
-//    Eigen::Vector2f velocity = this->getNode<TransformComponent>()->velocity;
-//    double radians = TransformComponent::toRadians(this->getOrientation());
-//    velocity.x() = (speed * std::cos(radians));
-//    velocity.y() = (speed * std::sin(radians));
-//    
-//    Eigen::Vector2f position = this->getPosition();
-//    position.x() += (velocity.x() * deltaTime);
-//    position.y() += (velocity.y() * deltaTime);
-//    this->setPosition(position);
+
+    timeTravelled += deltaTime;
+    
+    Eigen::Vector2f velocity = getComponent<TransformComponent>()->velocity;
+    double radians = TransformComponent::toRadians(this->getOrientation());
+    velocity.x() = (speed * std::cos(radians));
+    velocity.y() = (speed * std::sin(radians));
+    
+    Eigen::Vector2f position = getPosition();
+    position.x() += (velocity.x() * deltaTime);
+    position.y() += (velocity.y() * deltaTime);
+    this->setPosition(position);
 }

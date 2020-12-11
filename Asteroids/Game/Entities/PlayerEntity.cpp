@@ -28,11 +28,10 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerShapeComponent);
     // Translate the player ships' shape positions so that the
     // world position of the entity has its origin at the center (avoids having to do any origin normalization for each rotational tick)
-//    SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
-//    for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
-//        (*playerShapeComponent)[i].x += shapeCenterPoint.x;
-//    }
-//
+    SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
+    for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
+        (*playerShapeComponent)[i].x += shapeCenterPoint.x;
+    }
     
     // Create the shape for when the player is moving
     ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
@@ -134,14 +133,14 @@ void PlayerEntity::onEventHyperspace(const SDL_Event& event) {
 void PlayerEntity::onEventShoot(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
-//            BulletEntity* bulletEntity = new BulletEntity();
-//            bulletEntity->getNode<TransformComponent>()->velocity = this->getNode<TransformComponent>()->velocity;
-//            bulletEntity->setOrientation(this->getOrientation());
-//
-//            ShapeComponent* playerShapeComponent = this->getNode<ShapeComponent>();
-//            SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
-//            bulletEntity->setPosition({finalPosition.x, finalPosition.y});
-//            ManagerHelper::get<GameManager>()->addNode(bulletEntity);
+            BulletEntity* bulletEntity = new BulletEntity();
+            bulletEntity->getComponent<TransformComponent>()->velocity = this->getComponent<TransformComponent>()->velocity;
+            bulletEntity->setOrientation(getOrientation());
+
+            ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>();
+            SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
+            bulletEntity->setPosition({finalPosition.x, finalPosition.y});
+            ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
 
             break;
         }

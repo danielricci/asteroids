@@ -25,7 +25,6 @@
 		035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* Entity.cpp */; };
 		0364021D246A3B11008684B8 /* SoundComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0364021B246A3B11008684B8 /* SoundComponent.cpp */; };
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
-		036E505D24B87FC900426EBA /* TransformComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036E505C24B87FC900426EBA /* TransformComponent.cpp */; };
 		037FBA1624E3182600F984F1 /* ShapeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037FBA1424E3182600F984F1 /* ShapeComponent.cpp */; };
 		0387FD8B24A78D220019BE47 /* MainMenuEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8924A78D220019BE47 /* MainMenuEntity.cpp */; };
 		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
@@ -98,7 +97,6 @@
 		0364021B246A3B11008684B8 /* SoundComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComponent.cpp; sourceTree = "<group>"; };
 		0364021C246A3B11008684B8 /* SoundComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundComponent.hpp; sourceTree = "<group>"; };
 		0364021E246A3BE7008684B8 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
-		036E505C24B87FC900426EBA /* TransformComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransformComponent.cpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		037FBA1424E3182600F984F1 /* ShapeComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeComponent.cpp; sourceTree = "<group>"; };
 		037FBA1524E3182600F984F1 /* ShapeComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShapeComponent.hpp; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				032589BC245D19240047CF7D /* TextComponent.hpp */,
 				032589BA245D19240047CF7D /* TextRenderComponent.cpp */,
 				032589B9245D19240047CF7D /* TextRenderComponent.hpp */,
-				036E505C24B87FC900426EBA /* TransformComponent.cpp */,
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
 			);
 			path = Components;
@@ -403,7 +400,6 @@
 				0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */,
 				031956AD2572BE2D00FFF34E /* Component.cpp in Sources */,
 				034F4C3024DA54A300975181 /* Manager.cpp in Sources */,
-				036E505D24B87FC900426EBA /* TransformComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
 				03EAD8FE252EB2DA003E76B2 /* CircleComponent.cpp in Sources */,
 				03261720251ED61B00ABA175 /* SoundManager.cpp in Sources */,
