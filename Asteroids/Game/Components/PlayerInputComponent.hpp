@@ -4,31 +4,36 @@
 #include "SDL.h"
 #include <string>
 
-class PlayerInputComponent : public InputComponent {
+class PlayerInputComponent final : public InputComponent {
 public:
-    enum class PlayerAction {
+    enum class RotationAction {
         NONE = 0,
         ROTATE_LEFT,
-        ROTATE_RIGHT,
-        THRUST
+        ROTATE_RIGHT
     };
     
     PlayerInputComponent();
-    PlayerAction getRotationAction() const;
-    PlayerAction getMovementAction() const;
     
-    void reset();
+    inline RotationAction getRotationAction() const {
+        return rotationAction;
+    }
     
-    static inline const std::string EVENT_SHOOT = "EVENT_SHOOT";
-    static inline const std::string EVENT_HYPERSPACE = "EVENT_HYPERSPACE";
-    static inline const std::string EVENT_THRUST = "EVENT_THRUST";
-    static inline const std::string EVENT_ROTATE_LEFT = "EVENT_ROTATE_LEFT";
-    static inline const std::string EVENT_ROTATE_RIGHT = "EVENT_ROTATE_RIGHT";
+    inline bool getIsThrustActivated() const {
+        return isThrustActivated;
+    }
+    
+    std::function<void()> eventOnThrustStart = nullptr;
+    std::function<void()> eventOnThrustStop = nullptr;
+    std::function<void()> eventOnHyperspace = nullptr;
+    std::function<void()> eventOnShoot = nullptr;
     
 private:
+    bool isThrustActivated = false;
+    
     void onRotate(const SDL_Event& event);
     void onThrust(const SDL_Event& event);
+    void onHyperspace(const SDL_Event& event);
+    void onShoot(const SDL_Event& event);
     
-    PlayerAction rotationAction = PlayerAction::NONE;
-    PlayerAction movementAction = PlayerAction::NONE;
+    RotationAction rotationAction = RotationAction::NONE;
 };
