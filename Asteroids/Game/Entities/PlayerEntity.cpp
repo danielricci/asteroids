@@ -16,20 +16,10 @@
 PlayerEntity::PlayerEntity() {
     getComponent<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
 
+    // Player input bindings
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
-    
-    //playerInputComponent->
-//    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_SHOOT, std::bind(&PlayerEntity::onEventShoot, this, std::placeholders::_1));
-//    playerInputComponent->registerActionBinding(PlayerInputComponent::EVENT_HYPERSPACE, std::bind(&PlayerEntity::onEventHyperspace, this, std::placeholders::_1));
-//
-//    playerInputComponent->onThrustStart = []() {
-//    };
-//
-//    playerInputComponent->onThrustStop = []() {
-//
-//    };
-
+    playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
     addComponent(playerInputComponent);
 
     // Create the player ship
@@ -114,20 +104,16 @@ void PlayerEntity::update(float deltaTime) {
     }
 }
 
-void PlayerEntity::onEventHyperspace(const SDL_Event& event) {
-    switch(event.type) {
-        case SDL_KEYUP: {
-            TransformComponent* transformComponent = getComponent<TransformComponent>();
-            transformComponent->velocity = {0, 0};
+void PlayerEntity::onEventHyperspace() {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    transformComponent->velocity = {0, 0};
 
-            SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
+    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
 
-            std::uniform_int_distribution<unsigned int> widthDistribution(0, windowSize.w);
-            std::uniform_int_distribution<unsigned int> heightDistribution(0, windowSize.h);
-            std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
-            setPosition({widthDistribution(generator), heightDistribution(generator)});
-        }
-    }
+    std::uniform_int_distribution<unsigned int> widthDistribution(0, windowSize.w);
+    std::uniform_int_distribution<unsigned int> heightDistribution(0, windowSize.h);
+    std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
+    setPosition({widthDistribution(generator), heightDistribution(generator)});
 }
 
 void PlayerEntity::onEventShoot() {

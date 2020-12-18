@@ -11,7 +11,7 @@ public:
     virtual void update(const SDL_Event& event) override;
     virtual void update(float deltaTime) override;
 private:
-    void onEventHyperspace(const SDL_Event& event);
+    void onEventHyperspace();
     void onEventShoot();
     
     const float acceleration = 7.5f;

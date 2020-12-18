@@ -4,7 +4,6 @@ PlayerInputComponent::PlayerInputComponent() {
     this->addBinding(SDLK_LEFT, std::bind(&PlayerInputComponent::onRotate, this, std::placeholders::_1));
     this->addBinding(SDLK_RIGHT, std::bind(&PlayerInputComponent::onRotate, this, std::placeholders::_1));
     this->addBinding(SDLK_UP, std::bind(&PlayerInputComponent::onThrust, this, std::placeholders::_1));
-    this->addBinding(SDLK_LSHIFT, std::bind(&PlayerInputComponent::onHyperspace, this, std::placeholders::_1));
     this->addBinding(SDLK_RSHIFT, std::bind(&PlayerInputComponent::onHyperspace, this, std::placeholders::_1));
     this->addBinding(SDLK_SPACE, std::bind(&PlayerInputComponent::onShoot, this, std::placeholders::_1));
 }
@@ -54,11 +53,14 @@ void PlayerInputComponent::onThrust(const SDL_Event& event) {
 }
 
 void PlayerInputComponent::onHyperspace(const SDL_Event& event) {
-    rotationAction = RotationAction::NONE;
-    isThrustActivated = false;
-    
-    if(eventOnHyperspace != nullptr) {
-        eventOnHyperspace();
+    switch(event.type) {
+        case SDL_KEYUP: {
+            isThrustActivated = false;
+            if(eventOnHyperspace != nullptr) {
+                eventOnHyperspace();
+            }
+            break;
+        }
     }
 }
 
