@@ -2,7 +2,6 @@
 
 #include "Engine/Components/InputComponent.hpp"
 #include "SDL.h"
-#include <string>
 
 class PlayerInputComponent final : public InputComponent {
 public:
