@@ -5,6 +5,7 @@
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include <SDL.h>
+#include <set>
 
 std::list<Manager*> ManagerHelper::managers {};
 
@@ -21,6 +22,16 @@ void ManagerHelper::clean() {
         }
     }
     managers.clear();
+}
+
+void ManagerHelper::clean(Entity* entity) {
+    if(entity != nullptr) {
+        for(Manager* manager : managers) {
+            if(manager != nullptr) {
+                manager->clean(entity);
+            }
+        }
+    }
 }
 
 void ManagerHelper::initialize(const char* const title, int width, int height) {
@@ -53,6 +64,17 @@ void ManagerHelper::update(float deltaTime) {
             manager->update(deltaTime);
         }
     }
+    
+    std::set<Entity*> entitiesToDelete;
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            auto flushedEntities = manager->flush();
+            std::copy(flushedEntities.begin(), flushedEntities.end(), std::inserter(entitiesToDelete, entitiesToDelete.begin()));
+        }
+    }
+    std::for_each(entitiesToDelete.begin(), entitiesToDelete.end(), [](Entity* entity) {
+        delete entity;
+    });
 }
 
 void ManagerHelper::update(const SDL_Event& event) {

@@ -14,6 +14,23 @@ public:
     
     void addComponent(Component* Component);
     
+    virtual Eigen::Vector2f getPosition() const;
+    virtual void setPosition(const Eigen::Vector2f& position);
+    
+    float getOrientation() const;
+    void setOrientation(int orientation);
+    
+    Eigen::Vector2f getOrigin() const;
+    virtual void setOrigin(const Eigen::Vector2f& position);
+    
+    void setDimension(const Eigen::Vector2f& dimension) const;
+    virtual Eigen::Vector2f getDimension() const;
+
+    virtual void render(SDL_Renderer& renderer) = 0;
+    virtual void update(float deltaTime) = 0;
+    virtual void update(const SDL_Event& event) = 0;
+protected:
+    Entity();
     template<typename T> T* getComponent(const std::string& name = std::string()) const {
         T* result = nullptr;
         for(Component* component : components) {
@@ -38,24 +55,6 @@ public:
         }
         return components;
     }
-    
-    virtual Eigen::Vector2f getPosition() const;
-    virtual void setPosition(const Eigen::Vector2f& position);
-    
-    float getOrientation() const;
-    void setOrientation(int orientation);
-    
-    Eigen::Vector2f getOrigin() const;
-    virtual void setOrigin(const Eigen::Vector2f& position);
-    
-    void setDimension(const Eigen::Vector2f& dimension) const;
-    virtual Eigen::Vector2f getDimension() const;
-
-    virtual void render(SDL_Renderer& renderer) = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void update(const SDL_Event& event) = 0;
-protected:
-    Entity();
 private:
     std::list<Component*> components;
 };

@@ -1,42 +1,53 @@
 #include "Engine/Managers/Manager.hpp"
+#include <algorithm>
 
 Manager::~Manager() {
-    clearEntities();
+    // TODO: The moment we need more than 1 manager to have the same entity, we cant do this anymore
+    std::for_each(entitiesMap.begin(), entitiesMap.end(), [](const auto& pair) {
+        delete pair.first;
+    });
+    entitiesMap.clear();
 }
 
 void Manager::addEntity(Entity* entity) {
-    entities.push_back(entity);
+    entitiesMap.insert(std::pair<Entity*, ManagerInformation>(entity, ManagerInformation()));
 }
 
-void Manager::clearEntities() {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            delete entity;
-        }
-    }
-    entities.clear();
-}
-
-void Manager::update(float deltaTime) {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            entity->update(deltaTime);
-        }
+void Manager::clean(Entity* entity) {
+    const auto iterator = entitiesMap.find(entity);
+    if(iterator != entitiesMap.end()) {
+        iterator->second.state = ManagerInformation::State::Destroy;
     }
 }
 
-void Manager::update(const SDL_Event& event) {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            entity->update(event);
+std::list<Entity*> Manager::flush() {
+    std::list<Entity*> flushedEntities;
+    for(auto iter = entitiesMap.begin(); iter != entitiesMap.end();) {
+        if(iter->second.state == ManagerInformation::State::Destroy) {
+            flushedEntities.push_back(iter->first);
+            iter = entitiesMap.erase(iter);
+        }
+        else {
+            ++iter;
         }
     }
+    return flushedEntities;
 }
 
 void Manager::render(SDL_Renderer& renderer) {
-    for(Entity* entity : entities) {
-        if(entity != nullptr) {
-            entity->render(renderer);
-        }
-    }
+    std::for_each(entitiesMap.begin(), entitiesMap.end(), [&renderer](const auto& pair) {
+        pair.first->render(renderer);
+    });
+}
+
+void Manager::update(float deltaTime) {
+    std::for_each(entitiesMap.begin(), entitiesMap.end(), [=](const auto& pair) {
+        pair.first->update(deltaTime);
+    });
+}
+
+void Manager::update(const SDL_Event& event) {
+    std::for_each(entitiesMap.begin(), entitiesMap.end(), [&event](const auto& pair) {
+        pair.first->update(event);
+    });
 }

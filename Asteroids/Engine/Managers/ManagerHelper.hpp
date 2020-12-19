@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/Entities/Entity.hpp"
 #include "Engine/Managers/Manager.hpp"
 #include <SDL.h>
 #include <list>
@@ -18,6 +19,7 @@ public:
     
     static void initialize(const char* const title, int width, int height);
     static void clean();
+    static void clean(Entity* obj);
     
     static SDL_Renderer* getRenderer();
     

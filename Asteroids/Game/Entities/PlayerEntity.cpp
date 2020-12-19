@@ -114,11 +114,11 @@ void PlayerEntity::onEventHyperspace() {
 
 void PlayerEntity::onEventShoot() {
     BulletEntity* bulletEntity = new BulletEntity();
-    bulletEntity->getComponent<TransformComponent>()->velocity = this->getComponent<TransformComponent>()->velocity;
     bulletEntity->setOrientation(getOrientation());
 
-    ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>();
+    ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHAPE);
     SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
     bulletEntity->setPosition({finalPosition.x, finalPosition.y});
+    
     ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
 }

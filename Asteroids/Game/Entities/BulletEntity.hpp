@@ -11,8 +11,8 @@ public:
     virtual void update(float deltaTime) override;
     virtual void update(const SDL_Event& event) override;
 private:
-    const int speed = 925;
-    
+    const int SPEED = 925;
+    const int MAX_DISTANCE = 600;
+
     float timeTravelled = 0;
-    static const int MAX_DISTANCE = 875;
 };

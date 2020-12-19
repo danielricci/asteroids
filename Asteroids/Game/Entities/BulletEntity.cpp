@@ -19,17 +19,17 @@ void BulletEntity::update(const SDL_Event& event) {
 }
 
 void BulletEntity::update(float deltaTime) {
-//    if(timeTravelled * speed >= MAX_DISTANCE) {
-//        ManagerHelper::get<GameManager>()->removeNode(this);
-//        return;
-//    }
+    if(timeTravelled * SPEED >= MAX_DISTANCE) {
+        ManagerHelper::clean(this);
+        return;
+    }
 
     timeTravelled += deltaTime;
     
     Eigen::Vector2f velocity = getComponent<TransformComponent>()->velocity;
     double radians = TransformComponent::toRadians(this->getOrientation());
-    velocity.x() = (speed * std::cos(radians));
-    velocity.y() = (speed * std::sin(radians));
+    velocity.x() = (SPEED * std::cos(radians));
+    velocity.y() = (SPEED * std::sin(radians));
     
     Eigen::Vector2f position = getPosition();
     position.x() += (velocity.x() * deltaTime);
