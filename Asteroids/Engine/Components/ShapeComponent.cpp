@@ -4,10 +4,6 @@
 #include <algorithm>
 #include <cmath>
 
-ShapeComponent::ShapeComponent() {
-//    this->addNode(new TransformComponent());
-//    this->addNode(new RenderComponent());
-}
 
 ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : ShapeComponent() {
     this->vertices.insert(this->vertices.cbegin(), vertices);

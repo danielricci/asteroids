@@ -1,7 +1,6 @@
 #include "Engine/Components/CollisionComponent.hpp"
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
-#include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
@@ -20,12 +19,16 @@ PlayerEntity::PlayerEntity() {
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
+    playerInputComponent->eventOnThrust = [this](bool value) {
+        this->getComponent<ShapeComponent>(PLAYER_THRUST_SHAPE)->setIsVisible(value);
+    };
     addComponent(playerInputComponent);
 
     // Create the player ship
     ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
     playerShapeComponent->name = PLAYER_SHAPE;
     addComponent(playerShapeComponent);
+    
     // Translate the player ships' shape positions so that the
     // world position of the entity has its origin at the center (avoids having to do any origin normalization for each rotational tick)
     SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
@@ -37,21 +40,14 @@ PlayerEntity::PlayerEntity() {
     ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
     playerThrust->name = PLAYER_THRUST_SHAPE;
     this->addComponent(playerThrust);
-
-    // Create the sound components associated to the player entity
-//    SoundComponent* thrustSoundComponent = new SoundComponent("Thrust.wav");
-//    thrustSoundComponent->name = THRUST_SOUND;
-//    this->addComponent(thrustSoundComponent);
-
-//    CollisionComponent* collisionComponent = new CollisionComponent();
-//    this->addComponent(collisionComponent);
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
-    //PlayerInputComponent* playerInputComponent = getComponent<PlayerInputComponent>();
-    //RenderComponent* thrustRenderComponent = this->getComponent<ShapeComponent>(PLAYER_THRUST_SHAPE)->get<RenderComponent>();
-    //thrustRenderComponent->isVisible = playerInputComponent->getMovementAction() == PlayerInputComponent::PlayerAction::THRUST;
     for(ShapeComponent* shapeComponent : this->getComponents<ShapeComponent>()) {
+        if(shapeComponent->name == PLAYER_THRUST_SHAPE && !this->getComponent<PlayerInputComponent>()->getIsThrustActivated()) {
+            continue;
+        }
+
         shapeComponent->render(renderer);
     }
 }

@@ -34,8 +34,8 @@ void PlayerInputComponent::onThrust(const SDL_Event& event) {
         case SDL_KEYDOWN: {
             if(!isThrustActivated) {
                 isThrustActivated = true;
-                if(eventOnThrustStart != nullptr) {
-                    eventOnThrustStart();
+                if(eventOnThrust != nullptr) {
+                    eventOnThrust(isThrustActivated);
                 }
             }
             break;
@@ -43,8 +43,8 @@ void PlayerInputComponent::onThrust(const SDL_Event& event) {
         case SDL_KEYUP: {
             if(isThrustActivated) {
                 isThrustActivated = false;
-                if(eventOnThrustStop != nullptr) {
-                    eventOnThrustStop();
+                if(eventOnThrust != nullptr) {
+                    eventOnThrust(isThrustActivated);
                 }
             }
             break;

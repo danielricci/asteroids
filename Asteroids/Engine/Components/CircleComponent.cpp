@@ -11,9 +11,11 @@ void CircleComponent::addVertex(const SDL_Point& point) {
 }
 
 void CircleComponent::render(SDL_Renderer& renderer) {
-    Eigen::Vector2f worldPosition = ownerEntity->getPosition();
-    SDL_Point point;
-    point.x = worldPosition.x();
-    point.y = worldPosition.y();
-    filledCircleRGBA(&renderer, point.x, point.y, this->radius , color.r, color.g, color.b, 255);
+    if(getIsVisible()) {
+        Eigen::Vector2f worldPosition = ownerEntity->getPosition();
+        SDL_Point point;
+        point.x = worldPosition.x();
+        point.y = worldPosition.y();
+        filledCircleRGBA(&renderer, point.x, point.y, radius , color.r, color.g, color.b, 255);
+    }
 }

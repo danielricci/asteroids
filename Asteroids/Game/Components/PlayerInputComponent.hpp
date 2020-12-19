@@ -21,8 +21,7 @@ public:
         return isThrustActivated;
     }
     
-    std::function<void()> eventOnThrustStart = nullptr;
-    std::function<void()> eventOnThrustStop = nullptr;
+    std::function<void(bool)> eventOnThrust = nullptr;
     std::function<void()> eventOnHyperspace = nullptr;
     std::function<void()> eventOnShoot = nullptr;
     

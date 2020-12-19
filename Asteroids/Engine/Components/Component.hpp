@@ -3,14 +3,25 @@
 #include "Engine/Entities/Entity.hpp"
 #include <string>
 
+class RenderComponent;
 class Entity;
 
 class Component {
 public:
-    virtual ~Component() = default;
+    virtual ~Component();
+    
+    bool getIsVisible();
     void setOwnerEntity(Entity* entityOwner);
+    void setIsVisible(bool isVisible);
+    
     std::string name = "";
+
 protected:
     Component() = default;
+    
+    virtual RenderComponent* getRenderComponent();
+    
     Entity* ownerEntity = nullptr;
+private:
+    RenderComponent* renderComponent = nullptr;
 };

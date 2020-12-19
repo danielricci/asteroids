@@ -4,5 +4,5 @@
 
 class RenderComponent : public Component {
 public:
-    bool isVisible { true };
+    bool isVisible = true;
 };
