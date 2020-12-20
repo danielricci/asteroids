@@ -13,7 +13,8 @@
 #include <iostream>
 
 PlayerEntity::PlayerEntity() {
-    getComponent<TransformComponent>()->orientation = TransformComponent::ORIENTATION_NORTH;
+    setOrientation(TransformComponent::ORIENTATION_NORTH);
+    setDimension({40,40});
 
     // Player input bindings
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
@@ -56,6 +57,7 @@ void PlayerEntity::render(SDL_Renderer& renderer) {
 
         shapeComponent->render(renderer);
     }
+    getComponent<PhysicsComponent>()->render(renderer);
 }
 
 void PlayerEntity::update(const SDL_Event& event) {

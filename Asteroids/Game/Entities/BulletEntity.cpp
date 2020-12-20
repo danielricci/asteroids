@@ -17,7 +17,7 @@ BulletEntity::BulletEntity() {
 }
 
 void BulletEntity::render(SDL_Renderer& renderer) {
-    this->getComponent<CircleComponent>()->render(renderer);
+    getComponent<CircleComponent>()->render(renderer);
 }
 
 void BulletEntity::update(const SDL_Event& event) {

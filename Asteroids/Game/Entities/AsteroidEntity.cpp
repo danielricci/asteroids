@@ -55,5 +55,6 @@ void AsteroidEntity::update(const SDL_Event& event) {
 }
 
 void AsteroidEntity::render(SDL_Renderer& renderer) {
-    getComponent<ShapeComponent>()->render(renderer);
+    getComponent<ShapeComponent>()->render(renderer);    
+    getComponent<PhysicsComponent>()->render(renderer);
 }

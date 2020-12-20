@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <cmath>
 
-
 ShapeComponent::ShapeComponent(std::initializer_list<SDL_Point> vertices) : ShapeComponent() {
     this->vertices.insert(this->vertices.cbegin(), vertices);
 }
