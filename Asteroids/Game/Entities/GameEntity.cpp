@@ -1,5 +1,6 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
+#include "Engine/Components/PhysicsComponent.hpp"
 #include "Game/Entities/GameEntity.hpp"
 
 void GameEntity::setPosition(const Eigen::Vector2f& position) {
@@ -20,4 +21,13 @@ void GameEntity::setPosition(const Eigen::Vector2f& position) {
         normalizedPosition.y() -= windowSize.h;
     }
     Entity::setPosition(normalizedPosition);
+}
+
+void GameEntity::collision(Entity& entity) {
+    PhysicsComponent* physicsComponent = this->getComponent<PhysicsComponent>();
+    if(physicsComponent != nullptr && entity.hasComponent<PhysicsComponent>()) {
+        if(physicsComponent->collide(entity) && physicsComponent->eventOnCollide != nullptr) {
+            physicsComponent->eventOnCollide();
+        }
+    }
 }

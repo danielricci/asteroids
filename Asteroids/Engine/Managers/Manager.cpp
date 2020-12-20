@@ -1,5 +1,6 @@
 #include "Engine/Managers/Manager.hpp"
 #include <algorithm>
+#include <list>
 
 Manager::~Manager() {
     // TODO: The moment we need more than 1 manager to have the same entity, we cant do this anymore
@@ -17,6 +18,16 @@ void Manager::clean(Entity* entity) {
     const auto iterator = entitiesMap.find(entity);
     if(iterator != entitiesMap.end()) {
         iterator->second.state = ManagerInformation::State::Destroy;
+    }
+}
+
+void Manager::collision() {
+    for(auto& pair : entitiesMap) {
+        std::for_each(entitiesMap.begin(), entitiesMap.end(), [&pair](const auto& thisPair) {
+            if(pair.first != thisPair.first) {
+                pair.first->collision(*(thisPair.first));
+            }
+        });
     }
 }
 

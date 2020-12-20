@@ -1,4 +1,5 @@
 #include "Engine/Components/CircleComponent.hpp"
+#include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
@@ -8,6 +9,11 @@
 
 BulletEntity::BulletEntity() {
     this->addComponent(new CircleComponent(1));
+    PhysicsComponent* collisionComponent = new PhysicsComponent();
+    collisionComponent->eventOnCollide = [this]() {
+        ManagerHelper::clean(this);
+    };
+    this->addComponent(collisionComponent);
 }
 
 void BulletEntity::render(SDL_Renderer& renderer) {

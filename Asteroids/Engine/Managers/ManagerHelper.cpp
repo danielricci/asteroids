@@ -1,8 +1,6 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/SoundManager.hpp"
-#include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include <SDL.h>
 #include <set>
@@ -41,8 +39,6 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     gameManager->setGameState(GameManager::GameState::STARTED);
     managers.push_back(gameManager);
     managers.push_back(new InputManager());
-    //managers.push_back(new UIManager());
-    //managers.push_back(new SoundManager());
 }
 
 void ManagerHelper::render() {
@@ -62,6 +58,12 @@ void ManagerHelper::update(float deltaTime) {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->update(deltaTime);
+        }
+    }
+    
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            manager->collision();
         }
     }
     

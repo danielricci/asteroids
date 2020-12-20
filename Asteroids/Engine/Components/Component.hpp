@@ -12,15 +12,15 @@ public:
     
     bool getIsVisible();
     void setOwnerEntity(Entity* entityOwner);
-    void setIsVisible(bool isVisible);
-    
+    void setIsVisible(bool isVisible); 
     std::string name = "";
 
 protected:
     Component() = default;
     
     virtual RenderComponent* getRenderComponent();
-    
+
+    bool isEnabled = true;
     Entity* ownerEntity = nullptr;
 private:
     RenderComponent* renderComponent = nullptr;

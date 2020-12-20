@@ -1,4 +1,4 @@
-#include "Engine/Components/CollisionComponent.hpp"
+#include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
@@ -40,6 +40,12 @@ PlayerEntity::PlayerEntity() {
     ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
     playerThrust->name = PLAYER_THRUST_SHAPE;
     this->addComponent(playerThrust);
+    
+    PhysicsComponent* physicsComponent = new PhysicsComponent();
+    physicsComponent->eventOnCollide = [this]() {
+        this->onEventHyperspace();
+    };
+    this->addComponent(physicsComponent);
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {

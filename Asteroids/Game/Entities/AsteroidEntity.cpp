@@ -1,3 +1,4 @@
+#include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
@@ -7,8 +8,10 @@
 AsteroidEntity::AsteroidEntity() {
     addComponent(new RenderComponent());
     addComponent(new ShapeComponent(asteroidShapes[0]));
+    addComponent(new PhysicsComponent());
     setPosition({0, 0});
     setOrientation(-45);
+    setDimension({100, 100});
 }
 
 //void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {

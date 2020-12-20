@@ -13,7 +13,10 @@ public:
     virtual ~Entity();
     
     void addComponent(Component* Component);
-    
+    template<typename T> bool hasComponent(const std::string& name = std::string()) const {
+        return this->getComponent<T>(name) != nullptr;
+    }
+
     virtual Eigen::Vector2f getPosition() const;
     virtual void setPosition(const Eigen::Vector2f& position);
     
@@ -25,10 +28,12 @@ public:
     
     void setDimension(const Eigen::Vector2f& dimension) const;
     virtual Eigen::Vector2f getDimension() const;
+    SDL_Rect getDimensionVector() const;
 
-    virtual void render(SDL_Renderer& renderer) = 0;
+    virtual void collision(Entity& entity) = 0;
     virtual void update(float deltaTime) = 0;
     virtual void update(const SDL_Event& event) = 0;
+    virtual void render(SDL_Renderer& renderer) = 0;
 protected:
     Entity();
     template<typename T> T* getComponent(const std::string& name = std::string()) const {

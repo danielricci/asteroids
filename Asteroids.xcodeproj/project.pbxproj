@@ -19,7 +19,7 @@
 		032BB7C1257BD5B800846004 /* GameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032BB7BF257BD5B800846004 /* GameEntity.cpp */; };
 		033CD2D424EB72EB00EBA382 /* PlayerInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033CD2D224EB72EB00EBA382 /* PlayerInputComponent.cpp */; };
 		034F4C3024DA54A300975181 /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034F4C2F24DA54A300975181 /* Manager.cpp */; };
-		0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 0350F2B123A324FB0038A52E /* CollisionComponent.hpp */; };
+		0350F2B223A324FB0038A52E /* PhysicsComponent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */; };
 		0354B9F724D2602A0027E766 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0354B9F524D2602A0027E766 /* GameManager.cpp */; };
 		03571956255B1873004D09BB /* AsteroidEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03571954255B1873004D09BB /* AsteroidEntity.cpp */; };
 		035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* Entity.cpp */; };
@@ -36,7 +36,7 @@
 		03EAD8F7252C1414003E76B2 /* libSDL2_gfx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EAD8F6252C1414003E76B2 /* libSDL2_gfx.dylib */; };
 		03EAD8FC252DE5A7003E76B2 /* BulletEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */; };
 		03EAD8FE252EB2DA003E76B2 /* CircleComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EAD8FD252EB2D9003E76B2 /* CircleComponent.cpp */; };
-		03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6624CC760400302287 /* CollisionComponent.cpp */; };
+		03EE9C6724CC760500302287 /* PhysicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6624CC760400302287 /* PhysicsComponent.cpp */; };
 		03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6824CC784600302287 /* InputComponent.cpp */; };
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
 		03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F006D424D3056700260594 /* PlayerEntity.cpp */; };
@@ -86,7 +86,7 @@
 		033CD2D224EB72EB00EBA382 /* PlayerInputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInputComponent.cpp; sourceTree = "<group>"; };
 		033CD2D324EB72EB00EBA382 /* PlayerInputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerInputComponent.hpp; sourceTree = "<group>"; };
 		034F4C2F24DA54A300975181 /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
-		0350F2B123A324FB0038A52E /* CollisionComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionComponent.hpp; sourceTree = "<group>"; };
+		0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicsComponent.hpp; sourceTree = "<group>"; };
 		0354B9F524D2602A0027E766 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		0354B9F624D2602A0027E766 /* GameManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
 		03571954255B1873004D09BB /* AsteroidEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AsteroidEntity.cpp; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		03EAD8FB252DE5A7003E76B2 /* BulletEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BulletEntity.hpp; sourceTree = "<group>"; };
 		03EAD8FD252EB2D9003E76B2 /* CircleComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleComponent.cpp; sourceTree = "<group>"; };
 		03EAD8FF252EB2E8003E76B2 /* CircleComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CircleComponent.hpp; sourceTree = "<group>"; };
-		03EE9C6624CC760400302287 /* CollisionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionComponent.cpp; sourceTree = "<group>"; };
+		03EE9C6624CC760400302287 /* PhysicsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsComponent.cpp; sourceTree = "<group>"; };
 		03EE9C6824CC784600302287 /* InputComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputComponent.cpp; sourceTree = "<group>"; };
 		03EFD232237D004B006EF2A5 /* GameWorld.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
 		03EFD233237D004B006EF2A5 /* GameWorld.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameWorld.hpp; sourceTree = "<group>"; };
@@ -162,8 +162,8 @@
 			children = (
 				03EAD8FD252EB2D9003E76B2 /* CircleComponent.cpp */,
 				03EAD8FF252EB2E8003E76B2 /* CircleComponent.hpp */,
-				03EE9C6624CC760400302287 /* CollisionComponent.cpp */,
-				0350F2B123A324FB0038A52E /* CollisionComponent.hpp */,
+				03EE9C6624CC760400302287 /* PhysicsComponent.cpp */,
+				0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */,
 				031956AC2572BE2D00FFF34E /* Component.cpp */,
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
 				03EE9C6824CC784600302287 /* InputComponent.cpp */,
@@ -392,7 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03EE9C6724CC760500302287 /* CollisionComponent.cpp in Sources */,
+				03EE9C6724CC760500302287 /* PhysicsComponent.cpp in Sources */,
 				0354B9F724D2602A0027E766 /* GameManager.cpp in Sources */,
 				03EAD8FC252DE5A7003E76B2 /* BulletEntity.cpp in Sources */,
 				03571956255B1873004D09BB /* AsteroidEntity.cpp in Sources */,
@@ -402,7 +402,7 @@
 				0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */,
 				031956AD2572BE2D00FFF34E /* Component.cpp in Sources */,
 				034F4C3024DA54A300975181 /* Manager.cpp in Sources */,
-				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
+				0350F2B223A324FB0038A52E /* PhysicsComponent.hpp in Sources */,
 				03EAD8FE252EB2DA003E76B2 /* CircleComponent.cpp in Sources */,
 				03261720251ED61B00ABA175 /* SoundManager.cpp in Sources */,
 				03B6C8A224C8CD6C0067D03C /* MenuControlEntity.cpp in Sources */,

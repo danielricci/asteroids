@@ -15,7 +15,6 @@ RenderComponent* Component::getRenderComponent() {
     return renderComponent;
 }
 
-
 void Component::setOwnerEntity(Entity* ownerEntity) {
     this->ownerEntity = ownerEntity;
 }

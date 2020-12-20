@@ -54,6 +54,18 @@ Eigen::Vector2f Entity::getDimension() const {
     return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->dimension;
 }
 
+SDL_Rect Entity::getDimensionVector() const {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    return transformComponent == nullptr
+    ? SDL_Rect()
+    : SDL_Rect {
+        static_cast<int>(transformComponent->position.x()),
+        static_cast<int>(transformComponent->position.y()),
+        static_cast<int>(transformComponent->dimension.x()),
+        static_cast<int>(transformComponent->dimension.y())
+    };
+}
+
 void Entity::setDimension(const Eigen::Vector2f& dimension) const {
     getComponent<TransformComponent>()->dimension = dimension;
 }
