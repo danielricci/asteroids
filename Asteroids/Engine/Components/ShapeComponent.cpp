@@ -24,6 +24,31 @@ unsigned long ShapeComponent::getSize() const {
     return this->vertices.size();
 }
 
+SDL_Rect ShapeComponent::getShapeBounds() const {
+    int xMin = INT_MAX;
+    int yMin = INT_MAX;
+    
+    int xMax = INT_MIN;
+    int yMax = INT_MIN;
+    
+    for(const SDL_Point& point : vertices) {
+        xMin = std::min(xMin, point.x);
+        yMin = std::min(yMin, point.y);
+        xMax = std::max(xMax, point.x);
+        yMax = std::max(yMax, point.y);
+    }
+    
+    SDL_Rect rectangle;
+    rectangle.w = xMax - xMin;
+    rectangle.h = yMax - yMin;
+
+    SDL_Point newOrigin = this->getVertexPosition({xMin, yMin});
+    rectangle.x = newOrigin.x;
+    rectangle.y = newOrigin.y;
+    
+    return rectangle;
+}
+
 SDL_Point ShapeComponent::getShapeCenter() const {
     if(vertices.size() == 0) {
         return SDL_Point { 0, 0 };
@@ -60,7 +85,7 @@ void ShapeComponent::clear() {
     this->vertices.clear();
 }
 
-SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) {
+SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) const {
     float orientation = TransformComponent::toRadians(this->ownerEntity->getOrientation());
 
     double cosResult = std::cos(orientation);
@@ -69,7 +94,7 @@ SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) {
     double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
     vertex.x = expr1;
     vertex.y = expr2;
-
+   
     Eigen::Vector2f worldPosition = this->ownerEntity->getPosition();
     vertex.x += static_cast<int>(worldPosition.x());
     vertex.y += static_cast<int>(worldPosition.y());

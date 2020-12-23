@@ -6,7 +6,8 @@
 
 class PhysicsComponent : public Component {
 public:
-    std::function<void()> eventOnCollide = nullptr;
     bool collide(const Entity& entity) const;
     virtual void render(SDL_Renderer& renderer);
+    
+    std::function<void()> eventOnCollide = nullptr;
 };

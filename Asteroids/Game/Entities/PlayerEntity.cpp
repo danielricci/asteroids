@@ -10,48 +10,73 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include <cmath>
 #include <random>
-#include <iostream>
 
 PlayerEntity::PlayerEntity() {
     setOrientation(TransformComponent::ORIENTATION_NORTH);
-    setDimension({40,40});
-
-    // Player input bindings
+        
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
     playerInputComponent->eventOnThrust = [this](bool value) {
-        this->getComponent<ShapeComponent>(PLAYER_THRUST_SHAPE)->setIsVisible(value);
+        getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setIsVisible(value);
     };
     addComponent(playerInputComponent);
 
-    // Create the player ship
-    ShapeComponent* playerShapeComponent = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
-    playerShapeComponent->name = PLAYER_SHAPE;
-    addComponent(playerShapeComponent);
-    
-    // Translate the player ships' shape positions so that the
-    // world position of the entity has its origin at the center (avoids having to do any origin normalization for each rotational tick)
-    SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
-    for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
-        (*playerShapeComponent)[i].x += shapeCenterPoint.x;
-    }
-    
-    // Create the shape for when the player is moving
+    ShapeComponent* playerShip = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
+    playerShip->name = PLAYER_SHIP;
+    addComponent(playerShip);
+        
     ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
-    playerThrust->name = PLAYER_THRUST_SHAPE;
-    this->addComponent(playerThrust);
+    playerThrust->name = PLAYER_SHIP_EXHAUST;
+    addComponent(playerThrust);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide = [this]() {
-        this->onEventHyperspace();
+        onEventHyperspace();
     };
-    this->addComponent(physicsComponent);
+    addComponent(physicsComponent);
+    
+    SDL_Point shapeCenterPoint = playerShip->getShapeCenter();
+    setOrigin({shapeCenterPoint.x, shapeCenterPoint.y});
+    
+    // Translate the player ships' shape positions so that the
+    // world position of the entity has its origin at the center (avoids having to do any origin normalization for each rotational tick)
+//    SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
+//    for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
+//        (*playerShapeComponent)[i].x += shapeCenterPoint.x;
+//    }
+}
+
+SDL_Rect PlayerEntity::getEntityBounds() const {
+    return getComponent<ShapeComponent>(PLAYER_SHIP)->getShapeBounds();
+}
+
+void PlayerEntity::onEventHyperspace() {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    transformComponent->velocity = {0, 0};
+
+    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
+
+    std::uniform_int_distribution<unsigned int> widthDistribution(0, windowSize.w);
+    std::uniform_int_distribution<unsigned int> heightDistribution(0, windowSize.h);
+    std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
+    setPosition({widthDistribution(generator), heightDistribution(generator)});
+}
+
+void PlayerEntity::onEventShoot() {
+    BulletEntity* bulletEntity = new BulletEntity();
+    bulletEntity->setOrientation(getOrientation());
+
+    ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);
+    SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
+    bulletEntity->setPosition({finalPosition.x, finalPosition.y});
+    
+    ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
 }
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
     for(ShapeComponent* shapeComponent : this->getComponents<ShapeComponent>()) {
-        if(shapeComponent->name == PLAYER_THRUST_SHAPE && !this->getComponent<PlayerInputComponent>()->getIsThrustActivated()) {
+        if(shapeComponent->name == PLAYER_SHIP_EXHAUST && !this->getComponent<PlayerInputComponent>()->getIsThrustActivated()) {
             continue;
         }
 
@@ -94,10 +119,10 @@ void PlayerEntity::update(float deltaTime) {
         if(playerInputComponent->getIsThrustActivated()) {
             double radians = TransformComponent::toRadians(playerTransform->orientation);
             Eigen::Vector2f velocity = playerTransform->velocity;
-            velocity.x() += (std::cos(radians) * acceleration);
-            velocity.y() += (std::sin(radians) * acceleration);
-            velocity.x() = std::clamp(velocity.x(), -maxSpeed, maxSpeed);
-            velocity.y() = std::clamp(velocity.y(), -maxSpeed, maxSpeed);
+            velocity.x() += (std::cos(radians) * ACCELERATION);
+            velocity.y() += (std::sin(radians) * ACCELERATION);
+            velocity.x() = std::clamp(velocity.x(), -MAX_SPEED, MAX_SPEED);
+            velocity.y() = std::clamp(velocity.y(), -MAX_SPEED, MAX_SPEED);
             playerTransform->velocity = velocity;
         }
         
@@ -106,27 +131,4 @@ void PlayerEntity::update(float deltaTime) {
         position.y() += (playerTransform->velocity.y() * deltaTime);
         this->setPosition(position);
     }
-}
-
-void PlayerEntity::onEventHyperspace() {
-    TransformComponent* transformComponent = getComponent<TransformComponent>();
-    transformComponent->velocity = {0, 0};
-
-    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
-
-    std::uniform_int_distribution<unsigned int> widthDistribution(0, windowSize.w);
-    std::uniform_int_distribution<unsigned int> heightDistribution(0, windowSize.h);
-    std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
-    setPosition({widthDistribution(generator), heightDistribution(generator)});
-}
-
-void PlayerEntity::onEventShoot() {
-    BulletEntity* bulletEntity = new BulletEntity();
-    bulletEntity->setOrientation(getOrientation());
-
-    ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHAPE);
-    SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
-    bulletEntity->setPosition({finalPosition.x, finalPosition.y});
-    
-    ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
 }

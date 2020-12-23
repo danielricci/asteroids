@@ -6,12 +6,10 @@
 #include <Eigen/Dense>
 
 AsteroidEntity::AsteroidEntity() {
-    addComponent(new RenderComponent());
     addComponent(new ShapeComponent(asteroidShapes[0]));
+    addComponent(new RenderComponent());
     addComponent(new PhysicsComponent());
-    setPosition({0, 0});
-    setOrientation(-45);
-    setDimension({100, 100});
+    setPosition({300, 300});
 }
 
 //void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
@@ -38,6 +36,10 @@ AsteroidEntity::AsteroidEntity() {
 //        }
 //    }
 //}
+
+SDL_Rect AsteroidEntity::getEntityBounds() const {
+    return getComponent<ShapeComponent>()->getShapeBounds();
+}
 
 void AsteroidEntity::update(float deltaTime) {
     Eigen::Vector2f velocity = getComponent<TransformComponent>()->velocity;
