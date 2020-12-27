@@ -38,7 +38,11 @@ AsteroidEntity::AsteroidEntity() {
 //}
 
 SDL_Rect AsteroidEntity::getEntityBounds() const {
-    return getComponent<ShapeComponent>()->getShapeBounds();
+    SDL_Rect bounds = getComponent<ShapeComponent>()->getShapeBounds();
+    Eigen::Vector2f position = getPosition();
+    bounds.x += position.x();
+    bounds.y += position.y();
+    return bounds;
 }
 
 void AsteroidEntity::update(float deltaTime) {

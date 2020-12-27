@@ -38,7 +38,11 @@ PlayerEntity::PlayerEntity() {
 }
 
 SDL_Rect PlayerEntity::getEntityBounds() const {
-    return getComponent<ShapeComponent>(PLAYER_SHIP)->getShapeBounds();
+    SDL_Rect bounds = getComponent<ShapeComponent>(PLAYER_SHIP)->getShapeBounds();
+    Eigen::Vector2f position = getPosition();
+    bounds.x += position.x();
+    bounds.y += position.y();
+    return bounds;
 }
 
 void PlayerEntity::onEventHyperspace() {
