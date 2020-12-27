@@ -21,12 +21,12 @@ PlayerEntity::PlayerEntity() {
         getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setIsVisible(value);
     };
     addComponent(playerInputComponent);
-
-    ShapeComponent* playerShip = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
+    
+    ShapeComponent* playerShip = new ShapeComponent({{10, 0}, {-14, 10}, {-10, 0}, {-14, -10}, {10, 0}});
     playerShip->name = PLAYER_SHIP;
     addComponent(playerShip);
         
-    ShapeComponent* playerThrust = new ShapeComponent({{-9, -3}, {-20, 0}, {-9, 3}});
+    ShapeComponent* playerThrust = new ShapeComponent({{-11, -3}, {-20, 0}, {-10, 3}});
     playerThrust->name = PLAYER_SHIP_EXHAUST;
     addComponent(playerThrust);
     
@@ -35,16 +35,6 @@ PlayerEntity::PlayerEntity() {
         onEventHyperspace();
     };
     addComponent(physicsComponent);
-    
-    SDL_Point shapeCenterPoint = playerShip->getShapeCenter();
-    setOrigin({shapeCenterPoint.x, shapeCenterPoint.y});
-    
-    // Translate the player ships' shape positions so that the
-    // world position of the entity has its origin at the center (avoids having to do any origin normalization for each rotational tick)
-//    SDL_Point shapeCenterPoint = playerShapeComponent->getShapeCenter();
-//    for(int i = 0; i < playerShapeComponent->getSize(); ++i) {
-//        (*playerShapeComponent)[i].x += shapeCenterPoint.x;
-//    }
 }
 
 SDL_Rect PlayerEntity::getEntityBounds() const {
@@ -123,12 +113,12 @@ void PlayerEntity::update(float deltaTime) {
             velocity.y() += (std::sin(radians) * ACCELERATION);
             velocity.x() = std::clamp(velocity.x(), -MAX_SPEED, MAX_SPEED);
             velocity.y() = std::clamp(velocity.y(), -MAX_SPEED, MAX_SPEED);
-            playerTransform->velocity = velocity;
+            //playerTransform->velocity = velocity;
         }
         
         Eigen::Vector2f position = this->getPosition();
         position.x() += (playerTransform->velocity.x() * deltaTime);
         position.y() += (playerTransform->velocity.y() * deltaTime);
-        this->setPosition(position);
+        setPosition(position);
     }
 }

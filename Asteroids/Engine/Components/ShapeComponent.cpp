@@ -88,13 +88,17 @@ void ShapeComponent::clear() {
 SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) const {
     float orientation = TransformComponent::toRadians(this->ownerEntity->getOrientation());
 
+    //Eigen::Vector2f origin = this->ownerEntity->getOrigin();
+    //vertex.x += (origin.x() - vertex.x);
+    //vertex.y += (origin.y() - vertex.y);
+    
     double cosResult = std::cos(orientation);
     double sinResult = std::sin(orientation);
     double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);
     double expr2 = (sinResult * vertex.x) + (cosResult * vertex.y);
     vertex.x = expr1;
     vertex.y = expr2;
-   
+    
     Eigen::Vector2f worldPosition = this->ownerEntity->getPosition();
     vertex.x += static_cast<int>(worldPosition.x());
     vertex.y += static_cast<int>(worldPosition.y());
