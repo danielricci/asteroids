@@ -39,12 +39,10 @@ SDL_Rect ShapeComponent::getShapeBounds() const {
     }
     
     SDL_Rect rectangle;
+    rectangle.x = xMin;
+    rectangle.y = yMin;
     rectangle.w = xMax - xMin;
     rectangle.h = yMax - yMin;
-
-    SDL_Point newOrigin = this->getVertexPosition({xMin, yMin});
-    rectangle.x = newOrigin.x;
-    rectangle.y = newOrigin.y;
     
     return rectangle;
 }
@@ -88,10 +86,6 @@ void ShapeComponent::clear() {
 SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) const {
     float orientation = TransformComponent::toRadians(this->ownerEntity->getOrientation());
 
-    //Eigen::Vector2f origin = this->ownerEntity->getOrigin();
-    //vertex.x += (origin.x() - vertex.x);
-    //vertex.y += (origin.y() - vertex.y);
-    
     double cosResult = std::cos(orientation);
     double sinResult = std::sin(orientation);
     double expr1 = (cosResult * vertex.x) - (sinResult * vertex.y);

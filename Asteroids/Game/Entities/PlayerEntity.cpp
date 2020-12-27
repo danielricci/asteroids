@@ -113,7 +113,7 @@ void PlayerEntity::update(float deltaTime) {
             velocity.y() += (std::sin(radians) * ACCELERATION);
             velocity.x() = std::clamp(velocity.x(), -MAX_SPEED, MAX_SPEED);
             velocity.y() = std::clamp(velocity.y(), -MAX_SPEED, MAX_SPEED);
-            //playerTransform->velocity = velocity;
+            playerTransform->velocity = velocity;
         }
         
         Eigen::Vector2f position = this->getPosition();
