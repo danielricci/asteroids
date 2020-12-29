@@ -13,10 +13,13 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
         if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
-            auto asteroidStage = static_cast<AsteroidEntity::AsteroidStage>(static_cast<int>(this->stage) + 1);
-            AsteroidEntity* a1 = new AsteroidEntity(asteroidStage);
-            a1->setPosition(this->getPosition());
-            ManagerHelper::get<GameManager>()->addEntity(a1);
+            if(this->stage != AsteroidStage::STAGE_2) {
+                // Note: If more stages come then modify this to be incremental
+                AsteroidEntity* asteroid = new AsteroidEntity(AsteroidStage::STAGE_2);
+                asteroid->setPosition(this->getPosition());
+                asteroid->setOrientation(this->getOrientation());
+                ManagerHelper::get<GameManager>()->addEntity(asteroid);
+            }
             ManagerHelper::clean(this);
         }
     });
