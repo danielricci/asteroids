@@ -3,10 +3,9 @@
 class ManagerInformation {
 public:
     enum class State {
-        Active,
-        Inactive,
-        Destroy
+        Activate = 0,
+        Destroy,
     };
     
-    State state = State::Active;
+    State state = State::Activate;
 };

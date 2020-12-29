@@ -17,9 +17,9 @@ PlayerEntity::PlayerEntity() {
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
-    playerInputComponent->eventOnThrust = [this](bool value) {
-        getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setIsVisible(value);
-    };
+//    playerInputComponent->eventOnThrust = [this](Entity* sender, EventArgs args) {
+//        getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setIsVisible(value);
+//    };
     addComponent(playerInputComponent);
     
     ShapeComponent* playerShip = new ShapeComponent({{10, 0}, {-14, 10}, {-10, 0}, {-14, -10}, {10, 0}});
@@ -31,9 +31,9 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerThrust);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
-    physicsComponent->eventOnCollide = [this]() {
-        onEventHyperspace();
-    };
+//    physicsComponent->eventOnCollide = [this]() {
+//        onEventHyperspace();
+//    };
     addComponent(physicsComponent);
 }
 

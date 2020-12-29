@@ -24,4 +24,5 @@ protected:
     Manager() = default;
 private:
     std::map<Entity*, ManagerInformation> entitiesMap;
+    
 };

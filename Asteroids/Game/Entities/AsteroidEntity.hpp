@@ -7,23 +7,23 @@
 
 class AsteroidEntity : public GameEntity {
 public:
-    enum class AsteroidSize {
-        BIG = 0,
-        SMALL
+    enum class AsteroidStage {
+        STAGE_1 = 0,
+        STAGE_2,
+        END
     };
     
-    AsteroidEntity();
+    AsteroidEntity(AsteroidStage stage = AsteroidStage::STAGE_1);
     
     virtual SDL_Rect getEntityBounds() const override;
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;
     virtual void update(const SDL_Event& event) override;
-    //void setAsteroidSize(const AsteroidSize& asteroidSize);
 private:
-    AsteroidSize asteroidSize = AsteroidSize::BIG;
-    static const int speed = 40;
-    static const int ASTEROID_KIND_COUNT = 1;
-    const std::array<std::vector<SDL_Point>, AsteroidEntity::ASTEROID_KIND_COUNT> asteroidShapes = {{
-        {{0, 0}, {30, 0}, {60, 30}, {60, 45}, {30, 60}, {60, 75}, {45, 90}, {30, 75}, {0, 90}, {-15, 60}, {-15, 30}, {15, 30}, {0, 0}}
+    const AsteroidStage stage;
+    const int speed = 40;
+    const std::array<std::vector<SDL_Point>, 2> asteroidShapes = {{
+        {{0, 0}, {30, 0}, {60, 30}, {60, 45}, {30, 60}, {60, 75}, {45, 90}, {30, 75}, {0, 90}, {-15, 60}, {-15, 30}, {15, 30}, {0, 0}},
+        {{0, 0}, {10, 0}, {20, 10}, {20, 15}, {10, 20}, {20, 25}, {15, 30}, {10, 25}, {0, 30}, {-5, 20}, {-5, 10}, {5, 10}, {0, 0}}
     }};
 };

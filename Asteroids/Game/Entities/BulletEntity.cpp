@@ -10,9 +10,9 @@
 BulletEntity::BulletEntity() {
     this->addComponent(new CircleComponent(1));
     PhysicsComponent* collisionComponent = new PhysicsComponent();
-    collisionComponent->eventOnCollide = [this]() {
+    collisionComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
         ManagerHelper::clean(this);
-    };
+    });
     this->addComponent(collisionComponent);
 }
 

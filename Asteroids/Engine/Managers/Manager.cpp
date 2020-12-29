@@ -24,7 +24,7 @@ void Manager::clean(Entity* entity) {
 void Manager::collision() {
     for(auto& pair : entitiesMap) {
         std::for_each(entitiesMap.begin(), entitiesMap.end(), [&pair](const auto& thisPair) {
-            if(pair.first != thisPair.first) {
+            if(pair.first != thisPair.first && pair.second.state != ManagerInformation::State::Destroy && thisPair.second.state != ManagerInformation::State::Destroy) {
                 pair.first->collision(*(thisPair.first));
             }
         });
@@ -53,12 +53,16 @@ void Manager::render(SDL_Renderer& renderer) {
 
 void Manager::update(float deltaTime) {
     std::for_each(entitiesMap.begin(), entitiesMap.end(), [=](const auto& pair) {
-        pair.first->update(deltaTime);
+        if(pair.second.state != ManagerInformation::State::Destroy) {
+            pair.first->update(deltaTime);
+        }
     });
 }
 
 void Manager::update(const SDL_Event& event) {
     std::for_each(entitiesMap.begin(), entitiesMap.end(), [&event](const auto& pair) {
-        pair.first->update(event);
+        if(pair.second.state != ManagerInformation::State::Destroy) {
+            pair.first->update(event);
+        }
     });
 }

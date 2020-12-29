@@ -1,3 +1,5 @@
+#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
@@ -5,37 +7,21 @@
 #include "Game/Entities/AsteroidEntity.hpp"
 #include <Eigen/Dense>
 
-AsteroidEntity::AsteroidEntity() {
-    addComponent(new ShapeComponent(asteroidShapes[0]));
+AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
+    addComponent(new ShapeComponent(asteroidShapes[static_cast<int>(stage) % static_cast<int>(AsteroidStage::END)]));
     addComponent(new RenderComponent());
-    addComponent(new PhysicsComponent());
-    setPosition({300, 300});
+    PhysicsComponent* physicsComponent = new PhysicsComponent();
+    physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
+        if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
+            auto asteroidStage = static_cast<AsteroidEntity::AsteroidStage>(static_cast<int>(this->stage) + 1);
+            AsteroidEntity* a1 = new AsteroidEntity(asteroidStage);
+            a1->setPosition(this->getPosition());
+            ManagerHelper::get<GameManager>()->addEntity(a1);
+            ManagerHelper::clean(this);
+        }
+    });
+    addComponent(physicsComponent);
 }
-
-//void AsteroidEntity::setAsteroidSize(const AsteroidSize& asteroidSize) {
-//    switch(asteroidSize) {
-//        case AsteroidSize::BIG: {
-//            if(this->asteroidSize != asteroidSize) {
-//                ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
-//                for(int i = 0; i < shapeComponent->getSize(); ++i) {
-//                    (*shapeComponent)[i].x *= 3;
-//                    (*shapeComponent)[i].y *= 3;
-//                }
-//            }
-//            break;
-//        }
-//        case AsteroidSize::SMALL: {
-//            if(this->asteroidSize != asteroidSize) {
-//                ShapeComponent* shapeComponent = this->getNode<ShapeComponent>();
-//                for(int i = 0; i < shapeComponent->getSize(); ++i) {
-//                    (*shapeComponent)[i].x /= 3;
-//                    (*shapeComponent)[i].y /= 3;
-//                }
-//            }
-//            break;
-//        }
-//    }
-//}
 
 SDL_Rect AsteroidEntity::getEntityBounds() const {
     SDL_Rect bounds = getComponent<ShapeComponent>()->getShapeBounds();
@@ -61,6 +47,6 @@ void AsteroidEntity::update(const SDL_Event& event) {
 }
 
 void AsteroidEntity::render(SDL_Renderer& renderer) {
-    getComponent<ShapeComponent>()->render(renderer);    
     getComponent<PhysicsComponent>()->render(renderer);
+    getComponent<ShapeComponent>()->render(renderer);
 }

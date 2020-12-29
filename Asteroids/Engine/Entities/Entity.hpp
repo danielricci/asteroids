@@ -34,8 +34,7 @@ public:
     virtual void update(float deltaTime) = 0;
     virtual void update(const SDL_Event& event) = 0;
     virtual void render(SDL_Renderer& renderer) = 0;
-protected:
-    Entity();
+    
     template<typename T> T* getComponent(const std::string& name = std::string()) const {
         T* result = nullptr;
         for(Component* component : components) {
@@ -60,6 +59,8 @@ protected:
         }
         return components;
     }
+protected:
+    Entity();
 private:
     std::list<Component*> components;
 };
