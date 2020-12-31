@@ -8,6 +8,7 @@ public:
     TransformComponent() = default;
                
     static const int ORIENTATION_EAST = 0;
+    static const int ORIENTATION_NORTH_EAST = -45;
     static const int ORIENTATION_NORTH = -90;
     static const int ORIENTATION_WEST = -180;
     static const int ORIENTATION_SOUTH = -270;

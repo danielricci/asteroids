@@ -6,24 +6,43 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include <Eigen/Dense>
+#include <iostream>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
-    addComponent(new ShapeComponent(asteroidShapes[static_cast<int>(stage) % static_cast<int>(AsteroidStage::END)]));
+    ShapeComponent* shapeComponent = nullptr;
+    switch(stage) {
+        case AsteroidStage::STAGE_1: {
+            shapeComponent  = new ShapeComponent(asteroidShapes[0]);
+            break;
+        }
+        case AsteroidStage::STAGE_LAST: {
+            shapeComponent  = new ShapeComponent(asteroidShapes[asteroidShapes.size() - 1]);
+            break;
+        }
+        default: {
+            std::cerr << "Could not determine the asteroid stage" << std::endl;
+            break;
+        }
+    }
+    speed *= static_cast<int>(stage) + 1;
+    addComponent(shapeComponent);
     addComponent(new RenderComponent());
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
         if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
-            if(this->stage != AsteroidStage::STAGE_2) {
-                // Note: If more stages come then modify this to be incremental
-                AsteroidEntity* asteroid = new AsteroidEntity(AsteroidStage::STAGE_2);
-                asteroid->setPosition(this->getPosition());
-                asteroid->setOrientation(this->getOrientation());
-                ManagerHelper::get<GameManager>()->addEntity(asteroid);
+            if(this->stage != AsteroidStage::STAGE_LAST) {
+                for(int i = 0; i < 3; ++i) {
+                    AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(static_cast<int>(this->stage) + 1));
+                    asteroid->setPosition(this->getPosition());
+                    asteroid->setOrientation(TransformComponent::ORIENTATION_NORTH_EAST * i);
+                    ManagerHelper::get<GameManager>()->addEntity(asteroid);
+                }
             }
             ManagerHelper::clean(this);
         }
     });
     addComponent(physicsComponent);
+    //setOrientation(-45);
 }
 
 SDL_Rect AsteroidEntity::getEntityBounds() const {

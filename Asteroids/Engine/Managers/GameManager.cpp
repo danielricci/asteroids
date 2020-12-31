@@ -58,6 +58,19 @@ void GameManager::setGameState(GameManager::GameState gameState) {
 
                 AsteroidEntity* a1 = new AsteroidEntity();
                 addEntity(a1);
+                a1->setPosition({150, 550});
+                
+                AsteroidEntity* a2 = new AsteroidEntity();
+                addEntity(a2);
+                a2->setPosition({150, 950});
+                
+                AsteroidEntity* a3 = new AsteroidEntity();
+                addEntity(a3);
+                a3->setPosition({950, 550});
+                
+                AsteroidEntity* a4 = new AsteroidEntity();
+                addEntity(a4);
+                a4->setPosition({950, 950});
             }
             break;
         }
