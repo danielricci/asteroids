@@ -26,7 +26,6 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     }
     speed *= static_cast<int>(stage) + 1;
     addComponent(shapeComponent);
-    addComponent(new RenderComponent());
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
         if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {

@@ -3,6 +3,7 @@
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
+#include "Game/Entities/SaucerEntity.hpp"
 
 void GameManager::render(SDL_Renderer& renderer) {
     if(this->gameState == GameState::STARTED) {
@@ -71,6 +72,10 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 AsteroidEntity* a4 = new AsteroidEntity();
                 addEntity(a4);
                 a4->setPosition({950, 950});
+                
+                SaucerEntity* e1 = new SaucerEntity();
+                addEntity(e1);
+                e1->setPosition({40, 450});
             }
             break;
         }
