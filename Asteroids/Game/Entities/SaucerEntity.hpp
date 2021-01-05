@@ -2,27 +2,21 @@
 
 #include "Game/Entities/GameEntity.hpp"
 #include <SDL.h>
-#include <array>
 #include <vector>
 
 class SaucerEntity : public GameEntity {
 public:
-    enum class SaucerLevel {
-        LEVEL_1 = 0,
-        LEVEL_MAX,
-    };
-    
-    SaucerEntity(SaucerLevel level = SaucerLevel::LEVEL_1);
+    SaucerEntity();
     
     virtual SDL_Rect getEntityBounds() const override;
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;
     virtual void update(const SDL_Event& event) override;
 private:
-    const SaucerLevel level;
     int speed = 65;
-    const std::array<std::vector<SDL_Point>, 3> saucerParts = {{
-        {{0, 0}, {30, 0}, {60, 30}, {60, 45}, {30, 60}, {60, 75}, {45, 90}, {30, 75}, {0, 90}, {-15, 60}, {-15, 30}, {15, 30}, {0, 0}},
-        {{0, 0}, {10, 0}, {20, 10}, {20, 15}, {10, 20}, {20, 25}, {15, 30}, {10, 25}, {0, 30}, {-5, 20}, {-5, 10}, {5, 10}, {0, 0}}
+    const std::vector<std::vector<SDL_Point>> saucerParts = {{
+        {{5, -5}, {10, -15}, {25, -15}, {30, -5}},
+        {{0, 0}, {5, -5}, {30, -5}, {36, 1}},
+        {{0, 0}, {5, 5}, {30, 5}, {35, 0}},
     }};
 };
