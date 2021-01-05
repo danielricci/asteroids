@@ -1,9 +1,9 @@
-#include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
+#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include <Eigen/Dense>
 #include <iostream>
@@ -15,6 +15,10 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
             shapeComponent  = new ShapeComponent(asteroidShapes[0]);
             break;
         }
+        case AsteroidStage::STAGE_2: {
+            shapeComponent = new ShapeComponent(asteroidShapes[1]);
+            break;
+        }
         case AsteroidStage::STAGE_LAST: {
             shapeComponent  = new ShapeComponent(asteroidShapes[asteroidShapes.size() - 1]);
             break;
@@ -24,8 +28,10 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
             break;
         }
     }
-    speed *= static_cast<int>(stage) + 1;
     addComponent(shapeComponent);
+    
+    speed *= static_cast<int>(stage) + 1;
+    
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
         if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
@@ -33,7 +39,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
                 for(int i = 0; i < 3; ++i) {
                     AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(static_cast<int>(this->stage) + 1));
                     asteroid->setPosition(this->getPosition());
-                    asteroid->setOrientation(TransformComponent::ORIENTATION_NORTH_EAST * i);
+                    asteroid->setOrientation(TransformComponent::getRandomOrientation());
                     ManagerHelper::get<GameManager>()->addEntity(asteroid);
                 }
             }
@@ -41,7 +47,6 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
         }
     });
     addComponent(physicsComponent);
-    //setOrientation(-45);
 }
 
 SDL_Rect AsteroidEntity::getEntityBounds() const {

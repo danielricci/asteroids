@@ -169,12 +169,12 @@
 			children = (
 				03EAD8FD252EB2D9003E76B2 /* CircleComponent.cpp */,
 				03EAD8FF252EB2E8003E76B2 /* CircleComponent.hpp */,
-				03EE9C6624CC760400302287 /* PhysicsComponent.cpp */,
-				0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */,
 				031956AC2572BE2D00FFF34E /* Component.cpp */,
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
 				03EE9C6824CC784600302287 /* InputComponent.cpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
+				03EE9C6624CC760400302287 /* PhysicsComponent.cpp */,
+				0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */,
 				03987B54239559A60004639E /* RenderComponent.hpp */,
 				037FBA1424E3182600F984F1 /* ShapeComponent.cpp */,
 				037FBA1524E3182600F984F1 /* ShapeComponent.hpp */,
@@ -213,13 +213,13 @@
 				0387FD9324A96AC60019BE47 /* Manager.hpp */,
 				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
 				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+				037ACE68258DC7570031C069 /* ManagerInformation.hpp */,
 				0326171E251ED61B00ABA175 /* SoundManager.cpp */,
 				0326171F251ED61B00ABA175 /* SoundManager.hpp */,
 				0387FD8F24A94C530019BE47 /* UIManager.cpp */,
 				0387FD9024A94C530019BE47 /* UIManager.hpp */,
 				03B6F363256DA68000A80AF1 /* WindowManager.cpp */,
 				03B6F364256DA68000A80AF1 /* WindowManager.hpp */,
-				037ACE68258DC7570031C069 /* ManagerInformation.hpp */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -239,8 +239,8 @@
 		0325031425999CE0008BF227 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				0325031725999CFB008BF227 /* EventHandler.hpp */,
 				032503192599A362008BF227 /* EventArgs.hpp */,
+				0325031725999CFB008BF227 /* EventHandler.hpp */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -305,8 +305,6 @@
 		03EFD235237E48BA006EF2A5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				0325032E259DA92A008BF227 /* SaucerEntity.cpp */,
-				0325032F259DA92A008BF227 /* SaucerEntity.hpp */,
 				03571954255B1873004D09BB /* AsteroidEntity.cpp */,
 				03571955255B1873004D09BB /* AsteroidEntity.hpp */,
 				03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */,
@@ -317,6 +315,8 @@
 				0387FD8A24A78D220019BE47 /* MainMenuEntity.hpp */,
 				03F006D424D3056700260594 /* PlayerEntity.cpp */,
 				03F006D524D3056700260594 /* PlayerEntity.hpp */,
+				0325032E259DA92A008BF227 /* SaucerEntity.cpp */,
+				0325032F259DA92A008BF227 /* SaucerEntity.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";

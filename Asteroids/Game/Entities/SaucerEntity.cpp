@@ -10,10 +10,10 @@
 #include <list>
 
 SaucerEntity::SaucerEntity(SaucerLevel level) : level(level) {
-    std::list<ShapeComponent*> shapeComponents;
+    ShapeComponent* shapeComponent = nullptr;
     switch(level) {
         case SaucerLevel::LEVEL_1: {
-            shapeComponents.push_back(new ShapeComponent());
+            shapeComponent = new ShapeComponent({{0, 0}, {10, -15}, {20, -15}, {30, 1}});
             break;
         }
         case SaucerLevel::LEVEL_MAX: {
@@ -23,6 +23,7 @@ SaucerEntity::SaucerEntity(SaucerLevel level) : level(level) {
             std::cerr << "Could not determine the saucer level" << std::endl;
         }
     }
+    addComponent(shapeComponent);
 //    switch(stage) {
 //        case AsteroidStage::STAGE_1: {
 //            shapeComponent  = new ShapeComponent(asteroidShapes[0]);
@@ -73,5 +74,5 @@ void SaucerEntity::update(const SDL_Event& event) {
 
 void SaucerEntity::render(SDL_Renderer& renderer) {
     getComponent<PhysicsComponent>()->render(renderer);
-    //getComponent<ShapeComponent>()->render(renderer);
+    getComponent<ShapeComponent>()->render(renderer);
 }

@@ -53,13 +53,14 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
                 SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
+                
                 PlayerEntity* playerEntity = new PlayerEntity();
                 playerEntity->setPosition({windowSize.w/2, windowSize.h/2});
                 addEntity(playerEntity);
 
-                AsteroidEntity* a1 = new AsteroidEntity();
-                addEntity(a1);
-                a1->setPosition({150, 550});
+                AsteroidEntity* asteroidEntity = new AsteroidEntity();
+                addEntity(asteroidEntity);
+                asteroidEntity->setPosition({150, 550});
                 
                 AsteroidEntity* a2 = new AsteroidEntity();
                 addEntity(a2);
