@@ -12,7 +12,7 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    setOrientation(TransformComponent::ORIENTATION_NORTH);
+    setOrientation(TransformComponent::ORIENTATION_TOP);
         
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
