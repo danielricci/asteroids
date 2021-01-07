@@ -24,11 +24,15 @@ void GameEntity::setPosition(const Eigen::Vector2f& position) {
 }
 
 void GameEntity::collision(Entity& entity) {
-    PhysicsComponent* physicsComponent = this->getComponent<PhysicsComponent>();
-    if(physicsComponent != nullptr && entity.hasComponent<PhysicsComponent>()) {
-        if(physicsComponent->collide(entity)) {
-            physicsComponent->eventOnCollide.invoke(&entity);
-            entity.getComponent<PhysicsComponent>()->eventOnCollide.invoke(this);
-        }
+    PhysicsComponent* physicsComponent = getComponent<PhysicsComponent>();
+    if(physicsComponent != nullptr && entity.hasComponent<PhysicsComponent>() && physicsComponent->collide(entity)) {
+        physicsComponent->eventOnCollide.invoke(&entity);
+        entity.getComponent<PhysicsComponent>()->eventOnCollide.invoke(this);
     }
+}
+
+
+SDL_Rect GameEntity::getEntityBounds() const {
+    SDL_Rect rect;
+    return rect;
 }

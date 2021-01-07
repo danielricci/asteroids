@@ -39,7 +39,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
                 for(int i = 0; i < 3; ++i) {
                     AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(static_cast<int>(this->stage) + 1));
                     asteroid->setPosition(this->getPosition());
-                    asteroid->setOrientation(TransformComponent::getRandomOrientation());
+                    asteroid->setRotation(TransformComponent::getRandomRotation());
                     ManagerHelper::get<GameManager>()->addEntity(asteroid);
                 }
             }
@@ -58,8 +58,7 @@ SDL_Rect AsteroidEntity::getEntityBounds() const {
 }
 
 void AsteroidEntity::update(float deltaTime) {
-    Eigen::Vector2f velocity = getComponent<TransformComponent>()->velocity;
-    double radians = TransformComponent::toRadians(getOrientation());
+    double radians = TransformComponent::toRadians(getRotation());
     velocity.x() = (speed * std::cos(radians));
     velocity.y() = (speed * std::sin(radians));
 

@@ -3,9 +3,9 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
-#include "Game/Entities/MainMenuEntity.hpp"
+#include "Game/Entities/MenuEntity.hpp"
 
-MainMenuEntity::MainMenuEntity() {
+MenuEntity::MenuEntity() {
 //    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
 //    this->setPosition(Eigen::Vector2f(windowSize.w/2 - 50, windowSize.h/2 - 95));
 //
@@ -38,11 +38,11 @@ MainMenuEntity::MainMenuEntity() {
 //    this->addNode(new RenderComponent());
 }
 
-void MainMenuEntity::update(float deltaTime) {
+void MenuEntity::update(float deltaTime) {
     //this->getNode<RenderComponent>()->isVisible = ManagerHelper::get<GameManager>()->getGameState() != GameManager::GameState::STARTED;
 }
 
-void MainMenuEntity::update(const SDL_Event& event) {
+void MenuEntity::update(const SDL_Event& event) {
 //    if(ManagerHelper::get<GameManager>()->getGameState() != GameManager::GameState::STARTED) {
 //        for(TextMenuControlEntity* entity : this->getNodes<TextMenuControlEntity>()) {
 //            if(entity != nullptr) {
@@ -52,7 +52,7 @@ void MainMenuEntity::update(const SDL_Event& event) {
 //    }
 }
 
-void MainMenuEntity::render(SDL_Renderer& renderer) {
+void MenuEntity::render(SDL_Renderer& renderer) {
 //    if(this->getNode<RenderComponent>()->isVisible) {
 //        for(TextMenuControlEntity* entity : this->getNodes<TextMenuControlEntity>()) {
 //            if(entity != nullptr) {

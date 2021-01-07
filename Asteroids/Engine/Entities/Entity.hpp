@@ -20,17 +20,13 @@ public:
     virtual Eigen::Vector2f getPosition() const;
     virtual void setPosition(const Eigen::Vector2f& position);
     
-    float getOrientation() const;
-    void setOrientation(int orientation);
+    float getRotation() const;
+    void setRotation(int orientation);
     
-    Eigen::Vector2f getOrigin() const;
-    virtual void setOrigin(const Eigen::Vector2f& position);
-    
-    void setDimension(const Eigen::Vector2f& dimension) const;
-    virtual Eigen::Vector2f getDimension() const;
+    virtual void collision(Entity& entity) = 0;
     virtual SDL_Rect getEntityBounds() const;
 
-    virtual void collision(Entity& entity) = 0;
+
     virtual void update(float deltaTime) = 0;
     virtual void update(const SDL_Event& event) = 0;
     virtual void render(SDL_Renderer& renderer) = 0;

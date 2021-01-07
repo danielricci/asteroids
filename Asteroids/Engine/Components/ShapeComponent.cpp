@@ -47,34 +47,10 @@ SDL_Rect ShapeComponent::getShapeBounds() const {
     return rectangle;
 }
 
-SDL_Point ShapeComponent::getShapeCenter() const {
-    if(vertices.size() == 0) {
-        return SDL_Point { 0, 0 };
-    }
-    else if(vertices.size() == 1) {
-        return vertices[0];
-    }
-    
-    int xMin = INT_MAX;
-    int yMin = INT_MAX;
-    
-    int xMax = INT_MIN;
-    int yMax = INT_MIN;
-    
-    for(const SDL_Point& point : vertices) {
-        xMin = std::min(xMin, point.x);
-        yMin = std::min(yMin, point.y);
-        xMax = std::max(xMax, point.x);
-        yMax = std::max(yMax, point.y);
-    }
-    
-    return SDL_Point({(xMax - xMin)/2, (yMax - yMin)/2});
-}
-
 void ShapeComponent::render(SDL_Renderer& renderer) {
     std::vector<SDL_Point> finalPositions;
     for(const SDL_Point& vertex : this->vertices) {
-        finalPositions.push_back(this->getVertexPosition(vertex));
+        finalPositions.push_back(this->getFinalVertexPosition(vertex));
     }
     SDL_RenderDrawLines(&renderer, &finalPositions.front(), static_cast<int>(finalPositions.size()));
 }
@@ -83,8 +59,8 @@ void ShapeComponent::clear() {
     this->vertices.clear();
 }
 
-SDL_Point ShapeComponent::getVertexPosition(SDL_Point vertex) const {
-    float orientation = TransformComponent::toRadians(this->ownerEntity->getOrientation());
+SDL_Point ShapeComponent::getFinalVertexPosition(SDL_Point vertex) const {
+    float orientation = TransformComponent::toRadians(this->ownerEntity->getRotation());
 
     double cosResult = std::cos(orientation);
     double sinResult = std::sin(orientation);

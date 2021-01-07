@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Game/Entities/GameEntity.hpp"
+#include "Engine/Entities/Entity.hpp"
 #include <SDL.h>
 
-class MainMenuEntity : public GameEntity {
+class MenuEntity : public Entity {
 public:
-    MainMenuEntity();
+    MenuEntity();
     
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;

@@ -14,7 +14,3 @@ void TextMenuControlEntity::render(SDL_Renderer& renderer) {
 //        textRenderComponent->render(renderer, *textComponent);
 //    }
 }
-
-Eigen::Vector2f TextMenuControlEntity::getDimension() const {
-    return {0,0};//return this->getNode<TextComponent>()->getDimension();
-}

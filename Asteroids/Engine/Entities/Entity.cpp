@@ -31,27 +31,13 @@ void Entity::setPosition(const Eigen::Vector2f& position) {
     getComponent<TransformComponent>()->position = position;
 }
 
-float Entity::getOrientation() const {
+float Entity::getRotation() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent == nullptr ? 0.f : transformComponent->orientation;
+    return transformComponent == nullptr ? 0.f : transformComponent->rotation;
 }
 
-void Entity::setOrientation(int orientation) {
-    getComponent<TransformComponent>()->orientation = orientation;
-}
-
-Eigen::Vector2f Entity::getOrigin() const {
-    TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->origin;
-}
-
-void Entity::setOrigin(const Eigen::Vector2f& origin) {
-    getComponent<TransformComponent>()->origin = origin;
-}
-
-Eigen::Vector2f Entity::getDimension() const {
-    TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->dimension;
+void Entity::setRotation(int orientation) {
+    getComponent<TransformComponent>()->rotation = orientation;
 }
 
 SDL_Rect Entity::getEntityBounds() const {
@@ -61,11 +47,7 @@ SDL_Rect Entity::getEntityBounds() const {
     : SDL_Rect {
         static_cast<int>(transformComponent->position.x()),
         static_cast<int>(transformComponent->position.y()),
-        static_cast<int>(transformComponent->dimension.x()),
-        static_cast<int>(transformComponent->dimension.y())
+        0,
+        0
     };
-}
-
-void Entity::setDimension(const Eigen::Vector2f& dimension) const {
-    getComponent<TransformComponent>()->dimension = dimension;
 }

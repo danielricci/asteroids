@@ -12,7 +12,7 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    setOrientation(TransformComponent::ORIENTATION_TOP);
+    setRotation(TransformComponent::ROTATION_TOP);
         
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
@@ -43,9 +43,8 @@ SDL_Rect PlayerEntity::getEntityBounds() const {
 }
 
 void PlayerEntity::onEventHyperspace() {
-    TransformComponent* transformComponent = getComponent<TransformComponent>();
-    transformComponent->velocity = {0, 0};
-
+    velocity = Eigen::Vector2f::Zero();
+    
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
 
     std::uniform_int_distribution<unsigned int> widthDistribution(0, windowSize.w);
@@ -56,10 +55,10 @@ void PlayerEntity::onEventHyperspace() {
 
 void PlayerEntity::onEventShoot() {
     BulletEntity* bulletEntity = new BulletEntity();
-    bulletEntity->setOrientation(getOrientation());
+    bulletEntity->setRotation(getRotation());
 
     ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);
-    SDL_Point finalPosition = playerShapeComponent->getVertexPosition((*playerShapeComponent)[0]);
+    SDL_Point finalPosition = playerShapeComponent->getFinalVertexPosition((*playerShapeComponent)[0]);
     bulletEntity->setPosition({finalPosition.x, finalPosition.y});
     
     ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
@@ -95,11 +94,11 @@ void PlayerEntity::update(float deltaTime) {
         TransformComponent* playerTransform = getComponent<TransformComponent>();
         switch(playerInputComponent->getRotationAction()) {
             case PlayerInputComponent::RotationAction::ROTATE_LEFT: {
-                playerTransform->orientation = (static_cast<int>(playerTransform->orientation - (deltaTime * 360)) % 360);
+                playerTransform->rotation = (static_cast<int>(playerTransform->rotation - (deltaTime * 360)) % 360);
                 break;
             }
             case PlayerInputComponent::RotationAction::ROTATE_RIGHT: {
-                playerTransform->orientation = (static_cast<int>(playerTransform->orientation + (deltaTime * 360)) % 360);
+                playerTransform->rotation = (static_cast<int>(playerTransform->rotation + (deltaTime * 360)) % 360);
                 break;
             }
             default: {
@@ -108,18 +107,16 @@ void PlayerEntity::update(float deltaTime) {
         }
         
         if(playerInputComponent->getIsThrustActivated()) {
-            double radians = TransformComponent::toRadians(playerTransform->orientation);
-            Eigen::Vector2f velocity = playerTransform->velocity;
+            double radians = TransformComponent::toRadians(playerTransform->rotation);
             velocity.x() += (std::cos(radians) * ACCELERATION);
             velocity.y() += (std::sin(radians) * ACCELERATION);
             velocity.x() = std::clamp(velocity.x(), -MAX_SPEED, MAX_SPEED);
             velocity.y() = std::clamp(velocity.y(), -MAX_SPEED, MAX_SPEED);
-            playerTransform->velocity = velocity;
         }
         
         Eigen::Vector2f position = this->getPosition();
-        position.x() += (playerTransform->velocity.x() * deltaTime);
-        position.y() += (playerTransform->velocity.y() * deltaTime);
+        position.x() += (velocity.x() * deltaTime);
+        position.y() += (velocity.y() * deltaTime);
         setPosition(position);
     }
 }

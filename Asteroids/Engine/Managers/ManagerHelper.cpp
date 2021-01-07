@@ -70,7 +70,7 @@ void ManagerHelper::update(float deltaTime) {
     std::set<Entity*> entitiesToDelete;
     for(Manager* manager : managers) {
         if(manager != nullptr) {
-            auto flushedEntities = manager->flush();
+            std::list<Entity*> flushedEntities = manager->flush();
             std::copy(flushedEntities.begin(), flushedEntities.end(), std::inserter(entitiesToDelete, entitiesToDelete.begin()));
         }
     }

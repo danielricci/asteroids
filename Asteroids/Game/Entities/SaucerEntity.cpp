@@ -28,8 +28,7 @@ SDL_Rect SaucerEntity::getEntityBounds() const {
 }
 
 void SaucerEntity::update(float deltaTime) {
-    Eigen::Vector2f velocity = getComponent<TransformComponent>()->velocity;
-    double radians = TransformComponent::toRadians(getOrientation());
+    double radians = TransformComponent::toRadians(getRotation());
     velocity.x() = (speed * std::cos(radians));
     velocity.y() = (speed * std::sin(radians));
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game/Entities/GameEntity.hpp"
+#include <Eigen/Dense>
 #include <SDL.h>
 
 class BulletEntity : public GameEntity {
