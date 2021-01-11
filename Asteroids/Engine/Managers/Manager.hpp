@@ -12,17 +12,13 @@ public:
     virtual ~Manager();
     
     void addEntity(Entity* entity);
-    void clean(Entity* entity);
-    std::list<Entity*> flush();
+    void removeEntity(Entity* entity);
+    std::list<Entity*> purgeEntities();
     
-    void collision();
     virtual void render(SDL_Renderer& renderer);
     virtual void update(float deltaTime);
     virtual void update(const SDL_Event& event);
-
 protected:
     Manager() = default;
-private:
-    std::map<Entity*, ManagerInformation> entitiesMap;
-    
+    std::map<Entity*, ManagerInformation> entities;
 };

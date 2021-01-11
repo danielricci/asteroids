@@ -4,39 +4,29 @@
 
 Manager::~Manager() {
     // TODO: The moment we need more than 1 manager to have the same entity, we cant do this anymore
-    std::for_each(entitiesMap.begin(), entitiesMap.end(), [](const auto& pair) {
+    std::for_each(entities.begin(), entities.end(), [](const auto& pair) {
         delete pair.first;
     });
-    entitiesMap.clear();
+    entities.clear();
 }
 
 void Manager::addEntity(Entity* entity) {
-    entitiesMap.insert(std::pair<Entity*, ManagerInformation>(entity, ManagerInformation()));
+    entities.insert(std::pair<Entity*, ManagerInformation>(entity, ManagerInformation()));
 }
 
-void Manager::clean(Entity* entity) {
-    const auto iterator = entitiesMap.find(entity);
-    if(iterator != entitiesMap.end()) {
+void Manager::removeEntity(Entity* entity) {
+    const auto iterator = entities.find(entity);
+    if(iterator != entities.end()) {
         iterator->second.state = ManagerInformation::State::Destroy;
     }
 }
 
-void Manager::collision() {
-    for(auto& pair : entitiesMap) {
-        std::for_each(entitiesMap.begin(), entitiesMap.end(), [&pair](const auto& thisPair) {
-            if(pair.first != thisPair.first && pair.second.state != ManagerInformation::State::Destroy && thisPair.second.state != ManagerInformation::State::Destroy) {
-                pair.first->collision(*(thisPair.first));
-            }
-        });
-    }
-}
-
-std::list<Entity*> Manager::flush() {
+std::list<Entity*> Manager::purgeEntities() {
     std::list<Entity*> flushedEntities;
-    for(auto iter = entitiesMap.begin(); iter != entitiesMap.end();) {
+    for(auto iter = entities.begin(); iter != entities.end();) {
         if(iter->second.state == ManagerInformation::State::Destroy) {
             flushedEntities.push_back(iter->first);
-            iter = entitiesMap.erase(iter);
+            iter = entities.erase(iter);
         }
         else {
             ++iter;
@@ -46,13 +36,13 @@ std::list<Entity*> Manager::flush() {
 }
 
 void Manager::render(SDL_Renderer& renderer) {
-    std::for_each(entitiesMap.begin(), entitiesMap.end(), [&renderer](const auto& pair) {
+    std::for_each(entities.begin(), entities.end(), [&renderer](const auto& pair) {
         pair.first->render(renderer);
     });
 }
 
 void Manager::update(float deltaTime) {
-    std::for_each(entitiesMap.begin(), entitiesMap.end(), [=](const auto& pair) {
+    std::for_each(entities.begin(), entities.end(), [=](const auto& pair) {
         if(pair.second.state != ManagerInformation::State::Destroy) {
             pair.first->update(deltaTime);
         }
@@ -60,7 +50,7 @@ void Manager::update(float deltaTime) {
 }
 
 void Manager::update(const SDL_Event& event) {
-    std::for_each(entitiesMap.begin(), entitiesMap.end(), [&event](const auto& pair) {
+    std::for_each(entities.begin(), entities.end(), [&event](const auto& pair) {
         if(pair.second.state != ManagerInformation::State::Destroy) {
             pair.first->update(event);
         }

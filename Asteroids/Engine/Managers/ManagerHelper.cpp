@@ -26,7 +26,7 @@ void ManagerHelper::clean(Entity* entity) {
     if(entity != nullptr) {
         for(Manager* manager : managers) {
             if(manager != nullptr) {
-                manager->clean(entity);
+                manager->removeEntity(entity);
             }
         }
     }
@@ -61,16 +61,12 @@ void ManagerHelper::update(float deltaTime) {
         }
     }
     
-    for(Manager* manager : managers) {
-        if(manager != nullptr) {
-            manager->collision();
-        }
-    }
+    get<GameManager>()->handleCollision();
     
     std::set<Entity*> entitiesToDelete;
     for(Manager* manager : managers) {
         if(manager != nullptr) {
-            std::list<Entity*> flushedEntities = manager->flush();
+            std::list<Entity*> flushedEntities = manager->purgeEntities();
             std::copy(flushedEntities.begin(), flushedEntities.end(), std::inserter(entitiesToDelete, entitiesToDelete.begin()));
         }
     }
