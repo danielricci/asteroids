@@ -39,15 +39,3 @@ float Entity::getRotation() const {
 void Entity::setRotation(int orientation) {
     getComponent<TransformComponent>()->rotation = orientation;
 }
-
-SDL_Rect Entity::getEntityBounds() const {
-    TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent == nullptr
-    ? SDL_Rect()
-    : SDL_Rect {
-        static_cast<int>(transformComponent->position.x()),
-        static_cast<int>(transformComponent->position.y()),
-        0,
-        0
-    };
-}

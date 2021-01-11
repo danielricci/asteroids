@@ -19,14 +19,6 @@ SaucerEntity::SaucerEntity() {
     addComponent(physicsComponent);
 }
 
-SDL_Rect SaucerEntity::getEntityBounds() const {
-    SDL_Rect bounds = getComponent<ShapeComponent>()->getShapeBounds();
-    Eigen::Vector2f position = getPosition();
-    bounds.x += position.x();
-    bounds.y += position.y();
-    return bounds;
-}
-
 void SaucerEntity::update(float deltaTime) {
     double radians = TransformComponent::toRadians(getRotation());
     velocity.x() = (speed * std::cos(radians));

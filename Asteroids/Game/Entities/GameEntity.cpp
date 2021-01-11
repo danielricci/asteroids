@@ -30,9 +30,3 @@ void GameEntity::collision(Entity& entity) {
         entity.getComponent<PhysicsComponent>()->eventOnCollide.invoke(this);
     }
 }
-
-
-SDL_Rect GameEntity::getEntityBounds() const {
-    SDL_Rect rect;
-    return rect;
-}

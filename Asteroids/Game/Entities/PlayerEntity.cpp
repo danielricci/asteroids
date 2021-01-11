@@ -34,14 +34,6 @@ PlayerEntity::PlayerEntity() {
     addComponent(physicsComponent);
 }
 
-SDL_Rect PlayerEntity::getEntityBounds() const {
-    SDL_Rect bounds = getComponent<ShapeComponent>(PLAYER_SHIP)->getShapeBounds();
-    Eigen::Vector2f position = getPosition();
-    bounds.x += position.x();
-    bounds.y += position.y();
-    return bounds;
-}
-
 void PlayerEntity::onEventHyperspace() {
     velocity = Eigen::Vector2f::Zero();
     

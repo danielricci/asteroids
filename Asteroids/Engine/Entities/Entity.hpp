@@ -24,8 +24,6 @@ public:
     void setRotation(int orientation);
     
     virtual void collision(Entity& entity) = 0;
-    virtual SDL_Rect getEntityBounds() const;
-
 
     virtual void update(float deltaTime) = 0;
     virtual void update(const SDL_Event& event) = 0;
