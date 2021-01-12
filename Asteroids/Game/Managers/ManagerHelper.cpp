@@ -1,7 +1,7 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include <SDL.h>
 #include <set>
 

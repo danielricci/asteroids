@@ -211,8 +211,6 @@
 				03219D462406B5F70050588A /* InputManager.hpp */,
 				034F4C2F24DA54A300975181 /* Manager.cpp */,
 				0387FD9324A96AC60019BE47 /* Manager.hpp */,
-				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
-				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
 				037ACE68258DC7570031C069 /* ManagerInformation.hpp */,
 				0326171E251ED61B00ABA175 /* SoundManager.cpp */,
 				0326171F251ED61B00ABA175 /* SoundManager.hpp */,
@@ -227,6 +225,7 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				03ED9B3325AE237600168346 /* Managers */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
 				03EFD235237E48BA006EF2A5 /* Entities */,
 				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
@@ -300,6 +299,15 @@
 				032220182380FE60004B0BD1 /* Game */,
 			);
 			path = Asteroids;
+			sourceTree = "<group>";
+		};
+		03ED9B3325AE237600168346 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
+				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		03EFD235237E48BA006EF2A5 /* Entities */ = {

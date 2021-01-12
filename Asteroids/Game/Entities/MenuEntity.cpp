@@ -1,9 +1,9 @@
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/MenuEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 
 MenuEntity::MenuEntity() {
 //    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();

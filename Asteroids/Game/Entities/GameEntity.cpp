@@ -1,7 +1,7 @@
-#include "Engine/Managers/ManagerHelper.hpp"
-#include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Components/PhysicsComponent.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/GameEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 
 void GameEntity::setPosition(const Eigen::Vector2f& position) {
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();

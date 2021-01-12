@@ -3,11 +3,11 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include <cmath>
 #include <random>
 

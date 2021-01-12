@@ -3,8 +3,8 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/BulletEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include <cmath>
 
 BulletEntity::BulletEntity() {
