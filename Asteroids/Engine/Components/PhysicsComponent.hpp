@@ -8,8 +8,6 @@
 
 class PhysicsComponent : public Component {
 public:
-    bool collide(const Entity& entity) const;
-    virtual void render(SDL_Renderer& renderer);
-    
+    bool isCollidedWith(const Entity& entity) const;
     EventHandler<EventArgs> eventOnCollide;
 };

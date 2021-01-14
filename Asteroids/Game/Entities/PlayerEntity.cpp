@@ -64,7 +64,6 @@ void PlayerEntity::render(SDL_Renderer& renderer) {
 
         shapeComponent->render(renderer);
     }
-    getComponent<PhysicsComponent>()->render(renderer);
 }
 
 void PlayerEntity::update(const SDL_Event& event) {

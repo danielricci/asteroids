@@ -5,7 +5,7 @@
 
 class GameEntity : public Entity {
 public:
-    virtual void collision(Entity& entity) override;
+    virtual void collisionCheck(Entity& entity) override;
     virtual void setPosition(const Eigen::Vector2f& position) override;
 protected:
     GameEntity() = default;

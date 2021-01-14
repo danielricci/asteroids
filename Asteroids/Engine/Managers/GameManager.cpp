@@ -11,15 +11,9 @@ void GameManager::handleCollision() {
     for(auto& pair : entities) {
         std::for_each(entities.begin(), entities.end(), [&pair](const auto& thisPair) {
             if(pair.first != thisPair.first && pair.second.state != ManagerInformation::State::Destroy && thisPair.second.state != ManagerInformation::State::Destroy) {
-                pair.first->collision(*(thisPair.first));
+                pair.first->collisionCheck(*(thisPair.first));
             }
         });
-    }
-}
-
-void GameManager::render(SDL_Renderer& renderer) {
-    if(this->gameState == GameState::STARTED) {
-        Manager::render(renderer);
     }
 }
 

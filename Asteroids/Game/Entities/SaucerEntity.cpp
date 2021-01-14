@@ -34,7 +34,6 @@ void SaucerEntity::update(const SDL_Event& event) {
 }
 
 void SaucerEntity::render(SDL_Renderer& renderer) {
-    getComponent<PhysicsComponent>()->render(renderer);
     for(ShapeComponent* shapeComponent : getComponents<ShapeComponent>()) {
         shapeComponent->render(renderer);
     }    

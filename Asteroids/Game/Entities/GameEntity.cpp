@@ -23,9 +23,9 @@ void GameEntity::setPosition(const Eigen::Vector2f& position) {
     Entity::setPosition(normalizedPosition);
 }
 
-void GameEntity::collision(Entity& entity) {
+void GameEntity::collisionCheck(Entity& entity) {
     PhysicsComponent* physicsComponent = getComponent<PhysicsComponent>();
-    if(physicsComponent != nullptr && entity.hasComponent<PhysicsComponent>() && physicsComponent->collide(entity)) {
+    if(physicsComponent != nullptr && entity.hasComponent<PhysicsComponent>() && physicsComponent->isCollidedWith(entity)) {
         physicsComponent->eventOnCollide.invoke(&entity);
         entity.getComponent<PhysicsComponent>()->eventOnCollide.invoke(this);
     }
