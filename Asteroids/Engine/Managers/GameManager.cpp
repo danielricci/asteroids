@@ -2,6 +2,7 @@
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
+#include <Eigen/Dense>
 
 GameManager::GameState GameManager::getGameState() const {
     return this->gameState;
@@ -10,11 +11,25 @@ GameManager::GameState GameManager::getGameState() const {
 void GameManager::handleCollision() {
     for(auto& pair : entities) {
         std::for_each(entities.begin(), entities.end(), [&pair](const auto& thisPair) {
+            // It might be too naive to not send collision messages to destroyed entities
             if(pair.first != thisPair.first && pair.second.state != ManagerInformation::State::Destroy && thisPair.second.state != ManagerInformation::State::Destroy) {
                 pair.first->collisionCheck(*(thisPair.first));
             }
         });
     }
+}
+
+void GameManager::render(SDL_Renderer& renderer) {
+    Manager::render(renderer);
+    SDL_Color color;
+    SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
+    SDL_SetRenderDrawColor(&renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+    std::for_each(entities.begin(), entities.end(), [&renderer](const auto& entityPair) {
+        Eigen::Vector2f position = entityPair.first->getPosition();
+        SDL_RenderDrawLine(&renderer, position.x(), position.y(), position.x() + 20, position.y());
+        SDL_RenderDrawLine(&renderer, position.x(), position.y(), position.x(), position.y() + 20);
+    });
+    SDL_SetRenderDrawColor(&renderer, color.r, color.g, color.b, color.a);
 }
 
 void GameManager::setGameState(GameManager::GameState gameState) {

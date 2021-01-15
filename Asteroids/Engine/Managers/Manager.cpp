@@ -1,6 +1,4 @@
 #include "Engine/Managers/Manager.hpp"
-#include <algorithm>
-#include <list>
 
 Manager::~Manager() {
     // TODO: The moment we need more than 1 manager to have the same entity, we cant do this anymore
