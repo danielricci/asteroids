@@ -5,12 +5,11 @@
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
-#include <iostream>
 
 SaucerEntity::SaucerEntity() {
-    for(const auto& part : saucerParts) {
-        addComponent(new ShapeComponent(part));
-    }
+    addComponent(new ShapeComponent({{5, -5}, {10, -15}, {25, -15}, {30, -5}}));
+    addComponent(new ShapeComponent({{0, 0}, {5, -5}, {30, -5}, {36, 1}}));
+    addComponent(new ShapeComponent({{0, 0}, {5, 5}, {30, 5}, {35, 0}}));
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {

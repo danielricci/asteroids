@@ -1,21 +1,21 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
+#include <Eigen/Dense>
 #include <SDL.h>
 #include <vector>
 
 class ShapeComponent : public Component {
 public:
     ShapeComponent() = default;
-    ShapeComponent(std::initializer_list<SDL_Point> vertices);
-    ShapeComponent(const std::vector<SDL_Point>& vertices);
+    ShapeComponent(std::initializer_list<Eigen::Vector2f> vertices);
     
-    SDL_Point& operator[](int index);
+    Eigen::Vector2f& operator[](int index);
     
-    virtual void addVertex(const SDL_Point& point);
+    virtual void addVertex(const Eigen::Vector2f& vertex);
     void clear();
     unsigned long getSize() const;
     virtual void render(SDL_Renderer& renderer);
 protected:
-    std::vector<SDL_Point> vertices;
+    std::vector<Eigen::Vector2f> vertices;
 };
