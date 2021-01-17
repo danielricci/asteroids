@@ -17,7 +17,7 @@ public:
         std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
         return rotationDistribution(generator);
     }
-    
+       
     static const int ROTATION_RIGHT = 0;
     static const int ROTATION_TOP_RIGHT = -45;
     static const int ROTATION_TOP = -90;
@@ -27,5 +27,4 @@ public:
     
     int rotation = 0;
     Eigen::Vector2f position { 0, 0 };    
-    //Eigen::Vector2f velocity { 0, 0 };
 };

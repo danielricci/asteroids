@@ -50,8 +50,9 @@ void PlayerEntity::onEventShoot() {
     bulletEntity->setRotation(getRotation());
 
     ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);
-    SDL_Point finalPosition = playerShapeComponent->getFinalVertexPosition((*playerShapeComponent)[0]);
-    bulletEntity->setPosition({finalPosition.x, finalPosition.y});
+    SDL_Point finalPosition = (*playerShapeComponent)[0];
+    Eigen::Vector2f finalFinalPosition = getPosition({finalPosition.x, finalPosition.y});
+    bulletEntity->setPosition({finalFinalPosition.x(), finalFinalPosition.y()});
     
     ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
 }
