@@ -12,14 +12,15 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    setRotation(TransformComponent::ROTATION_TOP);
-        
+    //setRotation(TransformComponent::ROTATION_TOP);
+    
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
     addComponent(playerInputComponent);
     
-    ShapeComponent* playerShip = new ShapeComponent({{10, 0}, {-14, 10}, {-10, 0}, {-14, -10}, {10, 0}});
+    ShapeComponent* playerShip = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
+    playerShip->normalize({12, 0});
     playerShip->name = PLAYER_SHIP;
     addComponent(playerShip);
         

@@ -1,12 +1,10 @@
 #include "Engine/Components/PhysicsComponent.hpp"
-#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
-#include <iostream>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     ShapeComponent* shapeComponent = nullptr;
@@ -21,10 +19,6 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
         }
         case AsteroidStage::STAGE_LAST: {
             shapeComponent  = new ShapeComponent({{0, 0}, {10, 0}, {20, 10}, {20, 15}, {10, 20}, {20, 25}, {15, 30}, {10, 25}, {0, 30}, {-5, 20}, {-5, 10}, {5, 10}, {0, 0}});
-            break;
-        }
-        default: {
-            std::cerr << "Could not determine the asteroid stage" << std::endl;
             break;
         }
     }

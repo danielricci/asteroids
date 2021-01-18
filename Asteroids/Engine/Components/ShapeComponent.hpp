@@ -15,6 +15,7 @@ public:
     virtual void addVertex(const Eigen::Vector2f& vertex);
     void clear();
     unsigned long getSize() const;
+    void normalize(const Eigen::Vector2f& vector);
     virtual void render(SDL_Renderer& renderer);
 protected:
     std::vector<Eigen::Vector2f> vertices;
