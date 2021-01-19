@@ -5,6 +5,7 @@
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
+#include <iostream>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     ShapeComponent* shapeComponent = nullptr;
@@ -21,7 +22,13 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
             shapeComponent  = new ShapeComponent({{0, 0}, {10, 0}, {20, 10}, {20, 15}, {10, 20}, {20, 25}, {15, 30}, {10, 25}, {0, 30}, {-5, 20}, {-5, 10}, {5, 10}, {0, 0}});
             break;
         }
+        default: {
+            std::cerr << "Could not determine the asteroid stage" << std::endl;
+            break;
+        }
     }
+    //shapeComponent->getBounds();
+    //shapeComponent->normalize({-42, 0});
     addComponent(shapeComponent);
     
     speed *= static_cast<int>(stage) + 1;

@@ -18,6 +18,31 @@ void ShapeComponent::clear() {
     this->vertices.clear();
 }
 
+Eigen::AlignedBox2f ShapeComponent::getBounds() const {
+    float xMin = 0;
+    float yMin = 0;
+    float xMax = 0;
+    float yMax = 0;
+    
+    for(const auto& vertex : vertices) {
+        xMin = std::min(xMin, vertex.x());
+        yMin = std::min(yMin, vertex.y());
+        xMax = std::max(xMax, vertex.x());
+        yMax = std::max(yMax, vertex.y());
+    }
+    
+    return Eigen::AlignedBox2f();
+//    Eigen::Axis
+//    bounds
+//
+//    rectangle.x = xMin;
+//    rectangle.y = yMin;
+//    rectangle.w = xMax - xMin;
+//    rectangle.h = yMax - yMin;
+//
+//    return rectangle;
+}
+
 unsigned long ShapeComponent::getSize() const {
     return this->vertices.size();
 }

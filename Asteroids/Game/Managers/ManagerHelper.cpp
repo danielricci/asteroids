@@ -37,6 +37,7 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     managers.push_back(new WindowManager(title, width, height));
     GameManager* gameManager = new GameManager();
     gameManager->setGameState(GameManager::GameState::STARTED);
+    gameManager->setGameState(GameManager::GameState::PAUSED);
     managers.push_back(gameManager);
     managers.push_back(new InputManager());
 }

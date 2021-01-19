@@ -14,6 +14,7 @@ public:
     
     virtual void addVertex(const Eigen::Vector2f& vertex);
     void clear();
+    Eigen::AlignedBox2f getBounds() const;
     unsigned long getSize() const;
     void normalize(const Eigen::Vector2f& vector);
     virtual void render(SDL_Renderer& renderer);
