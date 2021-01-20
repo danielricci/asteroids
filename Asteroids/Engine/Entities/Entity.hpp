@@ -37,9 +37,6 @@ public:
         
         return result;
     }
-    template<typename T> bool hasComponent(const std::string& name = std::string()) const {
-        return this->getComponent<T>(name) != nullptr;
-    }
     template<typename T> std::list<T*> getComponents() const {
         std::list<T*> components;
         for(Component* component : this->components) {
@@ -49,6 +46,9 @@ public:
             }
         }
         return components;
+    }
+    template<typename T> bool hasComponent(const std::string& name = std::string()) const {
+        return this->getComponent<T>(name) != nullptr;
     }
 protected:
     Entity();

@@ -19,8 +19,7 @@ PlayerEntity::PlayerEntity() {
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
     addComponent(playerInputComponent);
     
-    ShapeComponent* playerShip = new ShapeComponent({{0, 0}, {-24, 10}, {-20, 0}, {-24, -10}, {0, 0}});
-    playerShip->normalize({12, 0});
+    ShapeComponent* playerShip = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
     playerShip->name = PLAYER_SHIP;
     addComponent(playerShip);
         

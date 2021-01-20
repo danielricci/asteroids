@@ -27,8 +27,6 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
             break;
         }
     }
-    //shapeComponent->getBounds();
-    //shapeComponent->normalize({-42, 0});
     addComponent(shapeComponent);
     
     speed *= static_cast<int>(stage) + 1;
