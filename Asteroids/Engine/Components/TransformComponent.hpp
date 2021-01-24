@@ -25,6 +25,6 @@ public:
     static const int ROTATION_DOWN = -270;
     static const int ROTATION_FULL_UNIT = -360;
     
-    int rotation = 0;
+    int orientation = 0;
     Eigen::Vector2f position { 0, 0 };    
 };

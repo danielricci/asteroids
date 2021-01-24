@@ -19,7 +19,7 @@ SaucerEntity::SaucerEntity() {
 }
 
 void SaucerEntity::update(float deltaTime) {
-    double radians = TransformComponent::toRadians(getRotation());
+    double radians = TransformComponent::toRadians(getOrientation());
     velocity.x() = (speed * std::cos(radians));
     velocity.y() = (speed * std::sin(radians));
 

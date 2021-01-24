@@ -19,9 +19,9 @@ public:
     void addComponent(Component* Component);
     virtual Eigen::Vector2f getPosition() const;
     Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex) const;
-    float getRotation() const;
+    float getOrientation() const;
     virtual void setPosition(const Eigen::Vector2f& position);
-    void setRotation(int orientation);
+    void setOrientation(int orientation);
     
     template<typename T> T* getComponent(const std::string& name = std::string()) const {
         T* result = nullptr;

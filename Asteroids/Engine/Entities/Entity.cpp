@@ -22,9 +22,9 @@ void Entity::addComponent(Component* component) {
     }
 }
 
-float Entity::getRotation() const {
+float Entity::getOrientation() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent == nullptr ? 0.f : transformComponent->rotation;
+    return transformComponent == nullptr ? 0.f : transformComponent->orientation;
 }
 
 Eigen::Vector2f Entity::getPosition() const {
@@ -33,7 +33,7 @@ Eigen::Vector2f Entity::getPosition() const {
 }
 
 Eigen::Vector2f Entity::getPosition(const Eigen::Vector2f& vertex) const {
-    float rotation = TransformComponent::toRadians(getRotation());
+    float rotation = TransformComponent::toRadians(getOrientation());
 
     float cosResult = std::cos(rotation);
     float sinResult = std::sin(rotation);
@@ -52,6 +52,6 @@ void Entity::setPosition(const Eigen::Vector2f& position) {
 }
 
 
-void Entity::setRotation(int orientation) {
-    getComponent<TransformComponent>()->rotation = orientation;
+void Entity::setOrientation(int orientation) {
+    getComponent<TransformComponent>()->orientation = orientation;
 }

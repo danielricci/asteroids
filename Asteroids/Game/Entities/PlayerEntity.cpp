@@ -12,7 +12,7 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    //setRotation(TransformComponent::ROTATION_TOP);
+    setOrientation(TransformComponent::ROTATION_TOP);
     
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
@@ -47,7 +47,7 @@ void PlayerEntity::onEventHyperspace() {
 
 void PlayerEntity::onEventShoot() {
     BulletEntity* bulletEntity = new BulletEntity();
-    bulletEntity->setRotation(getRotation());
+    bulletEntity->setOrientation(getOrientation());
 
     ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);
     Eigen::Vector2f finalFinalPosition = getPosition((*playerShapeComponent)[0]);
@@ -85,11 +85,11 @@ void PlayerEntity::update(float deltaTime) {
         TransformComponent* playerTransform = getComponent<TransformComponent>();
         switch(playerInputComponent->getRotationAction()) {
             case PlayerInputComponent::RotationAction::ROTATE_LEFT: {
-                playerTransform->rotation = (static_cast<int>(playerTransform->rotation - (deltaTime * 360)) % 360);
+                playerTransform->orientation = (static_cast<int>(playerTransform->orientation - (deltaTime * 360)) % 360);
                 break;
             }
             case PlayerInputComponent::RotationAction::ROTATE_RIGHT: {
-                playerTransform->rotation = (static_cast<int>(playerTransform->rotation + (deltaTime * 360)) % 360);
+                playerTransform->orientation = (static_cast<int>(playerTransform->orientation + (deltaTime * 360)) % 360);
                 break;
             }
             default: {
@@ -98,7 +98,7 @@ void PlayerEntity::update(float deltaTime) {
         }
         
         if(playerInputComponent->getIsThrustActivated()) {
-            double radians = TransformComponent::toRadians(playerTransform->rotation);
+            double radians = TransformComponent::toRadians(playerTransform->orientation);
             velocity.x() += (std::cos(radians) * ACCELERATION);
             velocity.y() += (std::sin(radians) * ACCELERATION);
             velocity.x() = std::clamp(velocity.x(), -MAX_SPEED, MAX_SPEED);

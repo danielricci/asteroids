@@ -32,7 +32,7 @@ void BulletEntity::update(float deltaTime) {
 
     timeTravelled += deltaTime;
     
-    double radians = TransformComponent::toRadians(this->getRotation());
+    double radians = TransformComponent::toRadians(this->getOrientation());
     velocity.x() = (SPEED * std::cos(radians));
     velocity.y() = (SPEED * std::sin(radians));
     

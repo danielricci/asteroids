@@ -18,6 +18,22 @@ void ShapeComponent::clear() {
     this->vertices.clear();
 }
 
+Eigen::Vector2f ShapeComponent::getCenter() const {
+    float xMin = 0;
+    float yMin = 0;
+    float xMax = 0;
+    float yMax = 0;
+
+    for(const auto& vertex : vertices) {
+        xMin = std::min(xMin, vertex.x());
+        yMin = std::min(yMin, vertex.y());
+        xMax = std::max(xMax, vertex.x());
+        yMax = std::max(yMax, vertex.y());
+    }
+    
+    return Eigen::Vector2f((xMax - xMin) / 2, (yMax - yMin) / 2);
+}
+
 unsigned long ShapeComponent::getSize() const {
     return this->vertices.size();
 }

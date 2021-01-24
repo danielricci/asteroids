@@ -49,9 +49,9 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 playerEntity->setPosition({450, 450});
                 addEntity(playerEntity);
 
-//                AsteroidEntity* asteroidEntity = new AsteroidEntity();
-//                addEntity(asteroidEntity);
-//                asteroidEntity->setPosition({150, 550});
+                AsteroidEntity* asteroidEntity = new AsteroidEntity();
+                addEntity(asteroidEntity);
+                asteroidEntity->setPosition({150, 550});
                 
 //                AsteroidEntity* a2 = new AsteroidEntity();
 //                addEntity(a2);
