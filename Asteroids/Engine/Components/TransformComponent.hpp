@@ -26,5 +26,6 @@ public:
     static const int ROTATION_FULL_UNIT = -360;
     
     int orientation = 0;
-    Eigen::Vector2f position { 0, 0 };    
+    Eigen::Vector2f position { 0, 0 };
+    Eigen::Vector2f dimensions { 0, 0 };
 };

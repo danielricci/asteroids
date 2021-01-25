@@ -34,6 +34,23 @@ Eigen::Vector2f ShapeComponent::getCenter() const {
     return Eigen::Vector2f((xMax - xMin) / 2, (yMax - yMin) / 2);
 }
 
+//Eigen::Vector2f ShapeComponent::getShapeBounds() const {
+//    int xMin = 0;
+//    int yMin = 0;
+//
+//    int xMax = 0;
+//    int yMax = 0;
+//
+//    for(const auto& vertex : vertices) {
+//        xMin = std::min(xMin, vertex.x());
+//        yMin = std::min(yMin, vertex.y());
+//        xMax = std::max(xMax, vertex.x());
+//        yMax = std::max(yMax, vertex.y());
+//    }
+//    
+//    return Eigen::Vector2f((xMax - xMin) / 2, (yMax - yMin) / 2);
+//}
+
 unsigned long ShapeComponent::getSize() const {
     return this->vertices.size();
 }

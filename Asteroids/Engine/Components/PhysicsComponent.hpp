@@ -4,7 +4,6 @@
 #include "Engine/Components/RenderComponent.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include "Engine/System/EventHandler.hpp"
-#include <SDL.h>
 
 class PhysicsComponent : public Component {
 public:

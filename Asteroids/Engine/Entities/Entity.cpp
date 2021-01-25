@@ -22,6 +22,11 @@ void Entity::addComponent(Component* component) {
     }
 }
 
+Eigen::Vector2f Entity::getDimensions() const {
+    TransformComponent* transformComponent = getComponent<TransformComponent>();
+    return transformComponent ? Eigen::Vector2f::Zero() : transformComponent->dimensions;
+}
+
 float Entity::getOrientation() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
     return transformComponent == nullptr ? 0.f : transformComponent->orientation;
@@ -29,7 +34,7 @@ float Entity::getOrientation() const {
 
 Eigen::Vector2f Entity::getPosition() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent == nullptr ? Eigen::Vector2f(0, 0) : transformComponent->position;
+    return transformComponent == nullptr ? Eigen::Vector2f::Zero() : transformComponent->position;
 }
 
 Eigen::Vector2f Entity::getPosition(const Eigen::Vector2f& vertex) const {
@@ -47,10 +52,13 @@ Eigen::Vector2f Entity::getPosition(const Eigen::Vector2f& vertex) const {
     return worldPosition;
 }
 
+void Entity::setDimensions(const Eigen::Vector2f& dimensions) {
+    getComponent<TransformComponent>()->dimensions = dimensions;
+}
+
 void Entity::setPosition(const Eigen::Vector2f& position) {
     getComponent<TransformComponent>()->position = position;
 }
-
 
 void Entity::setOrientation(int orientation) {
     getComponent<TransformComponent>()->orientation = orientation;

@@ -17,9 +17,11 @@ public:
     virtual void update(const SDL_Event& event) = 0;
 
     void addComponent(Component* Component);
+    virtual Eigen::Vector2f getDimensions() const;
     virtual Eigen::Vector2f getPosition() const;
     Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex) const;
     float getOrientation() const;
+    virtual void setDimensions(const Eigen::Vector2f& dimensions);
     virtual void setPosition(const Eigen::Vector2f& position);
     void setOrientation(int orientation);
     

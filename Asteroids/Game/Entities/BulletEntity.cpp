@@ -16,6 +16,10 @@ BulletEntity::BulletEntity() {
     this->addComponent(collisionComponent);
 }
 
+Eigen::Vector2f BulletEntity::getDimensions() const {
+    return Eigen::Vector2f(1, 1);
+}
+
 void BulletEntity::render(SDL_Renderer& renderer) {
     getComponent<CircleComponent>()->render(renderer);
 }
