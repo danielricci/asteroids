@@ -24,7 +24,7 @@ void Entity::addComponent(Component* component) {
 
 Eigen::Vector2f Entity::getDimensions() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
-    return transformComponent ? Eigen::Vector2f::Zero() : transformComponent->dimensions;
+    return transformComponent == nullptr ? Eigen::Vector2f::Zero() : transformComponent->dimensions;
 }
 
 float Entity::getOrientation() const {

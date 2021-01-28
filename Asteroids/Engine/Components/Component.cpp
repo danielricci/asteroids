@@ -15,6 +15,9 @@ RenderComponent* Component::getRenderComponent() {
     return renderComponent;
 }
 
+void Component::render(SDL_Renderer& renderer) {
+}
+
 void Component::setOwnerEntity(Entity* ownerEntity) {
     this->ownerEntity = ownerEntity;
 }

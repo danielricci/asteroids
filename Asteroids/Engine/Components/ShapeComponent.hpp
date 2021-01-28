@@ -17,7 +17,7 @@ public:
     Eigen::Vector2f getCenter() const;
     //Eigen::Vector2f getShapeBounds() const;
     unsigned long getSize() const;
-    virtual void render(SDL_Renderer& renderer);
+    virtual void render(SDL_Renderer& renderer) override;
 protected:
     std::vector<Eigen::Vector2f> vertices;
 };

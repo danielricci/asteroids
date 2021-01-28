@@ -5,7 +5,6 @@
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
-#include <iostream>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     ShapeComponent* shapeComponent = nullptr;
@@ -22,10 +21,6 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
         case AsteroidStage::STAGE_LAST: {
             //shapeComponent  = new ShapeComponent({{0, 0}, {10, 0}, {20, 10}, {20, 15}, {10, 20}, {20, 25}, {15, 30}, {10, 25}, {0, 30}, {-5, 20}, {-5, 10}, {5, 10}, {0, 0}});
             shapeComponent  = new ShapeComponent({{-20, -50}, {20, -40}, {30, -20}, {40, 10}, {20, 15}, {35, 35}, {30, 50}, {0, 35}, {-25, 50}, {-40, 10}, {-40, -10}, {-23.5, -20}, {-20, -50}});
-            break;
-        }
-        default: {
-            std::cerr << "Could not determine the asteroid stage" << std::endl;
             break;
         }
     }
@@ -50,6 +45,11 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     addComponent(physicsComponent);
 }
 
+void AsteroidEntity::render(SDL_Renderer& renderer) {
+    getComponent<ShapeComponent>()->render(renderer);
+    getComponent<PhysicsComponent>()->render(renderer);
+}
+
 void AsteroidEntity::update(float deltaTime) {
     double radians = TransformComponent::toRadians(getOrientation());
     velocity.x() = (speed * std::cos(radians));
@@ -62,8 +62,4 @@ void AsteroidEntity::update(float deltaTime) {
 }
 
 void AsteroidEntity::update(const SDL_Event& event) {
-}
-
-void AsteroidEntity::render(SDL_Renderer& renderer) {
-    getComponent<ShapeComponent>()->render(renderer);
 }

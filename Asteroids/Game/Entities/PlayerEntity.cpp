@@ -34,6 +34,10 @@ PlayerEntity::PlayerEntity() {
     addComponent(physicsComponent);
 }
 
+Eigen::Vector2f PlayerEntity::getDimensions() const {
+    return {30, 30};
+}
+
 void PlayerEntity::onEventHyperspace() {
     velocity = Eigen::Vector2f::Zero();
     
@@ -63,6 +67,7 @@ void PlayerEntity::render(SDL_Renderer& renderer) {
         }
 
         shapeComponent->render(renderer);
+        this->getComponent<PhysicsComponent>()->render(renderer);
     }
 }
 
