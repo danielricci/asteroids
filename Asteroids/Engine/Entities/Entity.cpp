@@ -22,6 +22,10 @@ void Entity::addComponent(Component* component) {
     }
 }
 
+Eigen::AlignedBox2f Entity::getBounds() const {
+    return Eigen::AlignedBox2f(); // TODO - implement me
+}
+
 Eigen::Vector2f Entity::getDimensions() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
     return transformComponent == nullptr ? Eigen::Vector2f::Zero() : transformComponent->dimensions;

@@ -1,6 +1,4 @@
-#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
-#include "Engine/Components/TransformComponent.hpp"
 
 ShapeComponent::ShapeComponent(std::initializer_list<Eigen::Vector2f> vertices) {
     this->vertices.insert(this->vertices.cbegin(), vertices);
@@ -18,7 +16,7 @@ void ShapeComponent::clear() {
     this->vertices.clear();
 }
 
-Eigen::Vector2f ShapeComponent::getCenter() const {
+SDL_Rect ShapeComponent::getRectangle() const {
     float xMin = 0;
     float yMin = 0;
     float xMax = 0;
@@ -31,25 +29,14 @@ Eigen::Vector2f ShapeComponent::getCenter() const {
         yMax = std::max(yMax, vertex.y());
     }
     
-    return Eigen::Vector2f((xMax - xMin) / 2, (yMax - yMin) / 2);
+    SDL_Rect rectangle;
+    rectangle.x = xMin;
+    rectangle.y = yMin;
+    rectangle.w = xMax - xMin;
+    rectangle.h = yMax - yMin;
+    
+    return rectangle;
 }
-
-//Eigen::Vector2f ShapeComponent::getShapeBounds() const {
-//    int xMin = 0;
-//    int yMin = 0;
-//
-//    int xMax = 0;
-//    int yMax = 0;
-//
-//    for(const auto& vertex : vertices) {
-//        xMin = std::min(xMin, vertex.x());
-//        yMin = std::min(yMin, vertex.y());
-//        xMax = std::max(xMax, vertex.x());
-//        yMax = std::max(yMax, vertex.y());
-//    }
-//    
-//    return Eigen::Vector2f((xMax - xMin) / 2, (yMax - yMin) / 2);
-//}
 
 unsigned long ShapeComponent::getSize() const {
     return this->vertices.size();

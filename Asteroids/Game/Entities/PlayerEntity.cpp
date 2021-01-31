@@ -9,6 +9,7 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include <cmath>
+#include <Eigen/Dense>
 #include <random>
 
 PlayerEntity::PlayerEntity() {
@@ -34,8 +35,14 @@ PlayerEntity::PlayerEntity() {
     addComponent(physicsComponent);
 }
 
-Eigen::Vector2f PlayerEntity::getDimensions() const {
-    return {30, 30};
+Eigen::AlignedBox2f PlayerEntity::getBounds() const {
+    ShapeComponent* shapeComponent = this->getComponent<ShapeComponent>(PLAYER_SHIP);
+    SDL_Rect rectangle = shapeComponent->getRectangle();
+    
+    Eigen::AlignedBox2f alignedBox;
+    alignedBox.min() = this->getPosition(Eigen::Vector2f(rectangle.x, rectangle.y));
+    alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
+    return alignedBox;
 }
 
 void PlayerEntity::onEventHyperspace() {

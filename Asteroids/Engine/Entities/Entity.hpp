@@ -17,6 +17,7 @@ public:
     virtual void update(const SDL_Event& event) = 0;
 
     void addComponent(Component* Component);
+    virtual Eigen::AlignedBox2f getBounds() const;
     virtual Eigen::Vector2f getDimensions() const;
     virtual Eigen::Vector2f getPosition() const;
     Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex) const;

@@ -9,7 +9,7 @@ class PlayerEntity : public GameEntity {
 public:
     PlayerEntity();
     
-    virtual Eigen::Vector2f getDimensions() const override;
+    virtual Eigen::AlignedBox2f getBounds() const override;
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(const SDL_Event& event) override;
     virtual void update(float deltaTime) override;
