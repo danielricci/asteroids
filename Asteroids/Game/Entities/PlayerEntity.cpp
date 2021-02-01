@@ -13,7 +13,7 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    setOrientation(TransformComponent::ROTATION_TOP);
+    //setOrientation(TransformComponent::ROTATION_TOP);
     
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
@@ -41,7 +41,7 @@ Eigen::AlignedBox2f PlayerEntity::getBounds() const {
     
     Eigen::AlignedBox2f alignedBox;
     alignedBox.min() = this->getPosition(Eigen::Vector2f(rectangle.x, rectangle.y));
-    alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
+    alignedBox.max() = this->getPosition(Eigen::Vector2f(rectangle.x + rectangle.w, rectangle.y + rectangle.h));
     return alignedBox;
 }
 

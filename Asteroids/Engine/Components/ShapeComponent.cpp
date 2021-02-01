@@ -22,11 +22,12 @@ SDL_Rect ShapeComponent::getRectangle() const {
     float xMax = 0;
     float yMax = 0;
 
-    for(const auto& vertex : vertices) {
-        xMin = std::min(xMin, vertex.x());
-        yMin = std::min(yMin, vertex.y());
-        xMax = std::max(xMax, vertex.x());
-        yMax = std::max(yMax, vertex.y());
+    for(const Eigen::Vector2f& vertex : vertices) {
+        Eigen::Vector2f normalizedVertex = this->ownerEntity->getPosition(vertex, false);
+        xMin = std::min(xMin, normalizedVertex.x());
+        yMin = std::min(yMin, normalizedVertex.y());
+        xMax = std::max(xMax, normalizedVertex.x());
+        yMax = std::max(yMax, normalizedVertex.y());
     }
     
     SDL_Rect rectangle;

@@ -20,7 +20,7 @@ public:
     virtual Eigen::AlignedBox2f getBounds() const;
     virtual Eigen::Vector2f getDimensions() const;
     virtual Eigen::Vector2f getPosition() const;
-    Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex) const;
+    Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition = true) const;
     float getOrientation() const;
     virtual void setDimensions(const Eigen::Vector2f& dimensions);
     virtual void setPosition(const Eigen::Vector2f& position);

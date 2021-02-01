@@ -41,19 +41,19 @@ Eigen::Vector2f Entity::getPosition() const {
     return transformComponent == nullptr ? Eigen::Vector2f::Zero() : transformComponent->position;
 }
 
-Eigen::Vector2f Entity::getPosition(const Eigen::Vector2f& vertex) const {
+Eigen::Vector2f Entity::getPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition) const {
     float rotation = TransformComponent::toRadians(getOrientation());
-
     float cosResult = std::cos(rotation);
     float sinResult = std::sin(rotation);
-    float expr1 = (cosResult * vertex.x()) - (sinResult * vertex.y());
-    float expr2 = (sinResult * vertex.x()) + (cosResult * vertex.y());
+    float positionX = (cosResult * vertex.x()) - (sinResult * vertex.y());
+    float positionY = (sinResult * vertex.x()) + (cosResult * vertex.y());
     
-    Eigen::Vector2f worldPosition = getPosition();
-    worldPosition.x() += expr1;
-    worldPosition.y() += expr2;
-
-    return worldPosition;
+    Eigen::Vector2f position(positionX, positionY);
+    if(includeWorldPosition) {
+        position += getPosition();
+    }
+    
+    return position;
 }
 
 void Entity::setDimensions(const Eigen::Vector2f& dimensions) {
