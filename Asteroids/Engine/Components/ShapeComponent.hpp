@@ -14,7 +14,7 @@ public:
     
     virtual void addVertex(const Eigen::Vector2f& vertex);
     void clear();
-    SDL_Rect getRectangle() const;
+    SDL_FRect getRectangle() const;
     unsigned long getSize() const;
     virtual void render(SDL_Renderer& renderer) override;
 protected:

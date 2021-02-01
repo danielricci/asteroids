@@ -22,17 +22,18 @@ void GameManager::handleCollision() {
 
 void GameManager::render(SDL_Renderer& renderer) {
     Manager::render(renderer);
-    SDL_Color color;
-    SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
-    SDL_SetRenderDrawColor(&renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-    std::for_each(entities.begin(), entities.end(), [&renderer](const auto& entityPair) {
-        Eigen::Vector2f position = entityPair.first->getPosition();
-        Eigen::Vector2f xPoint2 = entityPair.first->getPosition({30, 0});
-        SDL_RenderDrawLine(&renderer, position.x(), position.y(), xPoint2.x(), xPoint2.y());
-        Eigen::Vector2f yPoint2 = entityPair.first->getPosition({0, 30});
-        SDL_RenderDrawLine(&renderer, position.x(), position.y(), yPoint2.x(), yPoint2.y());
-    });
-    SDL_SetRenderDrawColor(&renderer, color.r, color.g, color.b, color.a);
+//    SDL_Color color;
+//    SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
+//    std::for_each(entities.begin(), entities.end(), [&renderer](const auto& entityPair) {
+//        Eigen::Vector2f position = entityPair.first->getPosition();
+//        Eigen::Vector2f xPoint2 = entityPair.first->getPosition({30, 0});
+//        SDL_SetRenderDrawColor(&renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+//        SDL_RenderDrawLine(&renderer, position.x(), position.y(), xPoint2.x(), xPoint2.y());
+//        Eigen::Vector2f yPoint2 = entityPair.first->getPosition({0, 30});
+//        SDL_SetRenderDrawColor(&renderer, 0x00, 0xFF, 0x00, SDL_ALPHA_OPAQUE);
+//        SDL_RenderDrawLine(&renderer, position.x(), position.y(), yPoint2.x(), yPoint2.y());
+//    });
+//    SDL_SetRenderDrawColor(&renderer, color.r, color.g, color.b, color.a);
 }
 
 void GameManager::setGameState(GameManager::GameState gameState) {
@@ -56,22 +57,22 @@ void GameManager::setGameState(GameManager::GameState gameState) {
 //                AsteroidEntity* a2 = new AsteroidEntity();
 //                addEntity(a2);
 //                a2->setPosition({150, 950});
-//                a2->setRotation(-45);
+//                a2->setOrientation(-45);
 //
 //                AsteroidEntity* a3 = new AsteroidEntity();
 //                addEntity(a3);
 //                a3->setPosition({950, 550});
-//                a3->setRotation(-90);
+//                a3->setOrientation(-90);
 //
 //                AsteroidEntity* a4 = new AsteroidEntity();
 //                addEntity(a4);
 //                a4->setPosition({950, 950});
-//                a4->setRotation(-135);
-//
+//                a4->setOrientation(-135);
+
 //                SaucerEntity* e1 = new SaucerEntity();
 //                addEntity(e1);
 //                e1->setPosition({40, 450});
-//                a4->setRotation(-180);
+//                a4->setOrientation(-180);
             }
             break;
         }

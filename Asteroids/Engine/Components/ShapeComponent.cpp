@@ -16,7 +16,7 @@ void ShapeComponent::clear() {
     this->vertices.clear();
 }
 
-SDL_Rect ShapeComponent::getRectangle() const {
+SDL_FRect ShapeComponent::getRectangle() const {
     float xMin = 0;
     float yMin = 0;
     float xMax = 0;
@@ -29,8 +29,7 @@ SDL_Rect ShapeComponent::getRectangle() const {
         xMax = std::max(xMax, normalizedVertex.x());
         yMax = std::max(yMax, normalizedVertex.y());
     }
-    
-    SDL_Rect rectangle;
+    SDL_FRect rectangle;
     rectangle.x = xMin;
     rectangle.y = yMin;
     rectangle.w = xMax - xMin;

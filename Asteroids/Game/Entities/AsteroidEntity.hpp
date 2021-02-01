@@ -13,6 +13,7 @@ public:
     
     AsteroidEntity(AsteroidStage stage = AsteroidStage::STAGE_1);
     
+    virtual Eigen::AlignedBox2f getBounds() const override;
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(float deltaTime) override;
     virtual void update(const SDL_Event& event) override;

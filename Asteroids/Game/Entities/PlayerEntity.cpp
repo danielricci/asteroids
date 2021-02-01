@@ -13,7 +13,7 @@
 #include <random>
 
 PlayerEntity::PlayerEntity() {
-    //setOrientation(TransformComponent::ROTATION_TOP);
+    setOrientation(TransformComponent::ROTATION_TOP);
     
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
@@ -37,11 +37,11 @@ PlayerEntity::PlayerEntity() {
 
 Eigen::AlignedBox2f PlayerEntity::getBounds() const {
     ShapeComponent* shapeComponent = this->getComponent<ShapeComponent>(PLAYER_SHIP);
-    SDL_Rect rectangle = shapeComponent->getRectangle();
+    SDL_FRect rectangle = shapeComponent->getRectangle();
     
     Eigen::AlignedBox2f alignedBox;
-    alignedBox.min() = this->getPosition(Eigen::Vector2f(rectangle.x, rectangle.y));
-    alignedBox.max() = this->getPosition(Eigen::Vector2f(rectangle.x + rectangle.w, rectangle.y + rectangle.h));
+    alignedBox.min() = this->getPosition() + Eigen::Vector2f(rectangle.x, rectangle.y);
+    alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
     return alignedBox;
 }
 
@@ -74,7 +74,6 @@ void PlayerEntity::render(SDL_Renderer& renderer) {
         }
 
         shapeComponent->render(renderer);
-        this->getComponent<PhysicsComponent>()->render(renderer);
     }
 }
 

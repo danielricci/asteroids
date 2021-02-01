@@ -45,9 +45,18 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     addComponent(physicsComponent);
 }
 
+Eigen::AlignedBox2f AsteroidEntity::getBounds() const {
+    ShapeComponent* shapeComponent = this->getComponent<ShapeComponent>();
+    SDL_FRect rectangle = shapeComponent->getRectangle();
+    
+    Eigen::AlignedBox2f alignedBox;
+    alignedBox.min() = this->getPosition() + Eigen::Vector2f(rectangle.x, rectangle.y);
+    alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
+    return alignedBox;
+}
+
 void AsteroidEntity::render(SDL_Renderer& renderer) {
     getComponent<ShapeComponent>()->render(renderer);
-    getComponent<PhysicsComponent>()->render(renderer);
 }
 
 void AsteroidEntity::update(float deltaTime) {
