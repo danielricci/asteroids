@@ -1,5 +1,5 @@
 #include "Game/GameWorld.hpp"
-#include "Game/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 
 GameWorld::GameWorld() {
     ManagerHelper::initialize("Asteroids", 1280, 800);

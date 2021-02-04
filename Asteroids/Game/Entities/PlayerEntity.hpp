@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/Entities/GameEntity.hpp"
+#include "Engine/Entities/GameEntity.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
 #include <string>

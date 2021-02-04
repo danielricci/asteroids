@@ -7,7 +7,7 @@
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
-#include "Game/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include <cmath>
 #include <Eigen/Dense>
 #include <random>

@@ -11,13 +11,17 @@ class Entity {
 public:
     virtual ~Entity();
     
+    // TODO: Can this be moved to a GameEntity.hpp
+    virtual Eigen::AlignedBox2f getBounds() const = 0;
+    // TODO: Can this be moved to a GameEntity.hpp
     virtual void collisionCheck(Entity& entity) = 0;
+    
     virtual void render(SDL_Renderer& renderer) = 0;
     virtual void update(float deltaTime) = 0;
     virtual void update(const SDL_Event& event) = 0;
 
     void addComponent(Component* Component);
-    virtual Eigen::AlignedBox2f getBounds() const;
+    
     virtual Eigen::Vector2f getDimensions() const;
     virtual Eigen::Vector2f getPosition() const;
     Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition = true) const;

@@ -3,7 +3,7 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
-#include "Game/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {

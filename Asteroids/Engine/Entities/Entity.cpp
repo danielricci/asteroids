@@ -1,6 +1,5 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Entities/Entity.hpp"
-#include "Engine/Managers/WindowManager.hpp"
 
 Entity::Entity() {
     addComponent(new TransformComponent());
@@ -20,10 +19,6 @@ void Entity::addComponent(Component* component) {
         this->components.push_back(component);
         component->setOwnerEntity(this);
     }
-}
-
-Eigen::AlignedBox2f Entity::getBounds() const {
-    return Eigen::AlignedBox2f(); // TODO - implement me
 }
 
 Eigen::Vector2f Entity::getDimensions() const {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/Entities/GameEntity.hpp"
+#include "Engine/Entities/GameEntity.hpp"
 #include <SDL.h>
 
 class AsteroidEntity : public GameEntity {

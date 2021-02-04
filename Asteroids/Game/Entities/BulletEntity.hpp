@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Game/Entities/GameEntity.hpp"
+#include "Engine/Entities/GameEntity.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
 
-class BulletEntity : public GameEntity {
+class BulletEntity : public
+GameEntity {
 public:
     BulletEntity();
     virtual Eigen::Vector2f getDimensions() const override;
@@ -17,3 +18,4 @@ private:
 
     float timeTravelled = 0;
 };
+
