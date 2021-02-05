@@ -1,6 +1,6 @@
 #include "Engine/Components/PhysicsComponent.hpp"
-#include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Entities/GameEntity.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 
 void GameEntity::collisionCheck(Entity& entity) {
@@ -12,7 +12,10 @@ void GameEntity::collisionCheck(Entity& entity) {
 }
 
 Eigen::AlignedBox2f GameEntity::getBounds() const {
-    return Eigen::AlignedBox2f();
+    Eigen::AlignedBox2f bounds;
+    bounds.min() = this->getPosition();
+    bounds.max() = bounds.min() + this->getDimensions();
+    return bounds;
 }
 
 void GameEntity::setPosition(const Eigen::Vector2f& position) {
