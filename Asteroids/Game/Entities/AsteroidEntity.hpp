@@ -2,13 +2,14 @@
 
 #include "Engine/Entities/GameEntity.hpp"
 #include <SDL.h>
+#include <Eigen/Dense>
 
 class AsteroidEntity : public GameEntity {
 public:
     enum class AsteroidStage {
-        STAGE_1 = 0,
-        STAGE_2 = 1,
-        STAGE_LAST
+        STAGE_1 = 1,
+        STAGE_2 = 2,
+        STAGE_LAST = 3
     };
     
     AsteroidEntity(AsteroidStage stage = AsteroidStage::STAGE_1);
