@@ -1,5 +1,5 @@
 #include "Engine/Components/TextComponent.hpp"
-#include "Engine/Components/TextRenderComponent.hpp"
+//#include "Engine/Components/TextRenderComponent.hpp"
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 
 TextMenuControlEntity::TextMenuControlEntity(std::string text, int size) {

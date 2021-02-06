@@ -18,6 +18,9 @@ Eigen::AlignedBox2f GameEntity::getBounds() const {
     return bounds;
 }
 
+void GameEntity::render(SDL_Renderer& renderer) {
+}
+
 void GameEntity::setPosition(const Eigen::Vector2f& position) {
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
     
@@ -36,4 +39,10 @@ void GameEntity::setPosition(const Eigen::Vector2f& position) {
         normalizedPosition.y() -= windowSize.h;
     }
     Entity::setPosition(normalizedPosition);
+}
+
+void GameEntity::update(float deltaTime) {
+}
+
+void GameEntity::update(const SDL_Event& event) {
 }

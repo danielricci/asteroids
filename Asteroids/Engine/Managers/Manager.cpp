@@ -1,15 +1,15 @@
 #include "Engine/Managers/Manager.hpp"
 
-Manager::~Manager() {
+void Manager::addEntity(Entity* entity) {
+    entities.insert(std::pair<Entity*, ManagerInformation>(entity, ManagerInformation()));
+}
+
+void Manager::clean() {
     // TODO: The moment we need more than 1 manager to have the same entity, we cant do this anymore
     std::for_each(entities.begin(), entities.end(), [](const auto& pair) {
         delete pair.first;
     });
     entities.clear();
-}
-
-void Manager::addEntity(Entity* entity) {
-    entities.insert(std::pair<Entity*, ManagerInformation>(entity, ManagerInformation()));
 }
 
 void Manager::removeEntity(Entity* entity) {

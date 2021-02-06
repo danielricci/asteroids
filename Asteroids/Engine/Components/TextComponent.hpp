@@ -1,15 +1,30 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
+#include <Eigen/Dense>
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <string>
 
 class TextComponent : public Component {
 public:
-    TextComponent(int size, const SDL_Color& color, const std::string& font, const std::string& text);
+    TextComponent(const std::string& fontPath);
+    ~TextComponent();
 
-    SDL_Color color;
-    std::string font = "";
+    void setSize(int size);
+    void setText(std::string text);
+    virtual void render(SDL_Renderer& renderer) override;
+private:
+    void clean();
+
+    bool isDirty = false;
+    std::string fontPath = "";
     std::string text = "";
-    int size = 0;
+    int size = 12;
+    
+    SDL_Color color {255, 255, 255};
+    SDL_Texture* texture = nullptr;
+    SDL_Surface* surface = nullptr;
+    
+    TTF_Font* font = nullptr;
 };

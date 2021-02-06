@@ -8,9 +8,10 @@
 
 class Manager {
 public:
-    virtual ~Manager();
+    virtual ~Manager() = default;
     
     void addEntity(Entity* entity);
+    void clean();
     void removeEntity(Entity* entity);
     std::list<Entity*> purgeEntities();
     

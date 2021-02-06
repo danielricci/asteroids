@@ -1,5 +1,6 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
+#include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include <SDL.h>
@@ -13,6 +14,11 @@ ManagerHelper::~ManagerHelper() {
 }
 
 void ManagerHelper::clean() {
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            manager->clean();
+        }
+    }
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             delete manager;
@@ -44,6 +50,7 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     gameManager->setGameState(GameManager::GameState::PAUSED);
     managers.push_back(gameManager);
     managers.push_back(new InputManager());
+    managers.push_back(new UIManager());
 }
 
 void ManagerHelper::render() {

@@ -1,14 +1,16 @@
 #include "Engine/Managers/UIManager.hpp"
+#include "Game/Entities/ScoreEntity.hpp"
 #include <SDL_ttf.h>
 #include <iostream>
 
 UIManager::UIManager() {
-//    if(TTF_Init() < 0) {
-//        std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
-//    }
+    if(TTF_Init() < 0) {
+        std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
+    }
+    
+    this->addEntity(new ScoreEntity());
 }
 
 UIManager::~UIManager() {
-    //clearNodes();
-    //TTF_Quit();
+    TTF_Quit();
 }
