@@ -14,7 +14,7 @@ ScoreEntity::ScoreEntity() {
 }
 
 void ScoreEntity::addScore(int score) {
-    this->score += score;
+    this->score = std::min(this->score + score, MAX_SCORE);
     getComponent<TextComponent>()->setText(toString());
 }
 

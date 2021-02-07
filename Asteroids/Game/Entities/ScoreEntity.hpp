@@ -16,5 +16,5 @@ public:
 private:
     int score = 0;
     const int MAX_SCORE = 99990;
-    const int PRECISION = 6;
+    const int PRECISION = 5;
 };
