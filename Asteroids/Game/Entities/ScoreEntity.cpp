@@ -7,6 +7,7 @@
 ScoreEntity::ScoreEntity() {
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
     textComponent->setSize(32);
+    textComponent->setText(toString());
     this->addComponent(textComponent);
 
     this->setPosition(Eigen::Vector2f(150, 50));
@@ -14,12 +15,11 @@ ScoreEntity::ScoreEntity() {
 
 void ScoreEntity::addScore(int score) {
     this->score += score;
-    isDirty = true;
+    getComponent<TextComponent>()->setText(toString());
 }
 
 void ScoreEntity::addScoreAsteroidHit() {
-    this->score += 50;
-    isDirty = true;
+    addScore(50);
 }
 
 void ScoreEntity::render(SDL_Renderer& renderer) {
@@ -27,15 +27,7 @@ void ScoreEntity::render(SDL_Renderer& renderer) {
 }
 
 void ScoreEntity::reset() {
-    this->score = 0;
-    isDirty = true;
-}
-
-void ScoreEntity::update(float deltaTime) {
-    if(isDirty) {
-        isDirty = false;
-        getComponent<TextComponent>()->setText(toString());
-    }
+    addScore(-score);
 }
 
 void ScoreEntity::update(const SDL_Event& event) {
@@ -51,6 +43,6 @@ void ScoreEntity::update(const SDL_Event& event) {
 
 std::string ScoreEntity::toString() const {
     std::stringstream ss;
-    ss << std::setw(precision) << std::setfill('0') << score;
+    ss << std::setw(PRECISION) << std::setfill('0') << score;
     return ss.str();
 }

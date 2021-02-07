@@ -11,11 +11,10 @@ public:
     void addScoreAsteroidHit();
     void reset();
     virtual void render(SDL_Renderer& renderer) override;
-    virtual void update(float deltaTime) override;
     virtual void update(const SDL_Event& event) override;
     std::string toString() const;
 private:
     int score = 0;
-    const int precision = 6;
-    bool isDirty = true;
+    const int MAX_SCORE = 99990;
+    const int PRECISION = 6;
 };
