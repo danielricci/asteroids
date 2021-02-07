@@ -8,8 +8,10 @@ class ScoreEntity : public GameEntity {
 public:
     ScoreEntity();
     void addScore(int score);
+    void addScoreAsteroidHit();
     void reset();
     virtual void render(SDL_Renderer& renderer) override;
+    virtual void update(const SDL_Event& event) override;
     std::string toString() const;
 private:
     int score = 0;

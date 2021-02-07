@@ -89,26 +89,36 @@ void GameManager::update(float deltaTime) {
 }
 
 void GameManager::update(const SDL_Event& event) {
-    if(event.key.keysym.sym == SDLK_ESCAPE && event.type == SDL_KEYUP) {
-        switch(gameState) {
-            case GameState::STARTED: {
-                this->setGameState(GameManager::GameState::PAUSED);
-                break;
-            }
-            case GameState::PAUSED: {
-                this->setGameState(GameManager::GameState::STARTED);
-                break;
-            }
-            case GameState::STOPPED: {
-                SDL_Event event;
-                event.type = SDL_QUIT;
-                SDL_PushEvent(&event);
-                break;
-            }
-        }
-    }
-    
-    if(this->gameState == GameState::STARTED) {
-        Manager::update(event);
-    }
+    Manager::update(event);
+//    switch(event.type) {
+//        case SDL_USEREVENT: {
+//
+//            break;
+//        }
+//        case SDL_KEYUP: {
+//            if(event.key.keysym.sym == SDLK_ESCAPE) {
+//                switch(gameState) {
+//                    case GameState::STARTED: {
+//                        this->setGameState(GameManager::GameState::PAUSED);
+//                        break;
+//                    }
+//                    case GameState::PAUSED: {
+//                        this->setGameState(GameManager::GameState::STARTED);
+//                        break;
+//                    }
+//                    case GameState::STOPPED: {
+//                        SDL_Event event;
+//                        event.type = SDL_QUIT;
+//                        SDL_PushEvent(&event);
+//                        break;
+//                    }
+//                }
+//            }
+//
+//            if(this->gameState == GameState::STARTED) {
+//                Manager::update(event);
+//            }
+//            break;
+//        }
+//    }
 }

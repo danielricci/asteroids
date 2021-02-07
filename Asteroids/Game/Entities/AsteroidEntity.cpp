@@ -2,6 +2,7 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 
@@ -38,6 +39,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
                     ManagerHelper::get<GameManager>()->addEntity(asteroid);
                 }
             }
+            ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs());
             ManagerHelper::clean(this);
         }
     });

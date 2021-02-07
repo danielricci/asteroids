@@ -1,4 +1,5 @@
 #include "Engine/Components/TextComponent.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/ScoreEntity.hpp"
 #include <iomanip>
 #include <sstream>
@@ -11,14 +12,29 @@ ScoreEntity::ScoreEntity() {
     this->addScore(12);
 }
 
+void ScoreEntity::addScore(int score) {
+    this->score += score;
+    getComponent<TextComponent>()->setText(toString());
+}
+
+void ScoreEntity::addScoreAsteroidHit() {
+    this->score += 50;
+}
+
 void ScoreEntity::reset() {
     this->score = 0;
     getComponent<TextComponent>()->setText(toString());
 }
 
-void ScoreEntity::addScore(int score) {
-    this->score += score;
-    getComponent<TextComponent>()->setText(toString());
+void ScoreEntity::update(const SDL_Event& event) {
+    if(event.type == SDL_USEREVENT) {
+        switch(event.user.code) {
+            case ManagerHelper::EVENT_ASTEROID_HIT: {
+                
+                break;
+            }
+        }
+    }
 }
 
 std::string ScoreEntity::toString() const {

@@ -2,11 +2,17 @@
 
 #include "Engine/Entities/Entity.hpp"
 #include "Engine/Managers/Manager.hpp"
+#include "Engine/System/EventArgs.hpp"
 #include <SDL.h>
 #include <list>
 
 class ManagerHelper {
 public:
+    enum BroadcastEvent {
+        EVENT_ASTEROID_HIT = 0
+    };
+    
+    static void broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args);
     static void clean();
     static void clean(Entity* obj);
     static SDL_Renderer* getRenderer();

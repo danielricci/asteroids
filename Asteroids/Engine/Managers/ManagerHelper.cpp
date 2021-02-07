@@ -13,6 +13,20 @@ ManagerHelper::~ManagerHelper() {
     SDL_Quit();
 }
 
+void ManagerHelper::broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args) {
+    SDL_UserEvent userevent;
+    userevent.type = SDL_USEREVENT;
+    userevent.code = static_cast<int>(broadcastEvent);
+    userevent.data1 = sender;
+    userevent.data2 = (void*)&args;
+
+    SDL_Event event;
+    event.type = SDL_USEREVENT;
+    event.user = userevent;
+
+    SDL_PushEvent(&event);
+}
+
 void ManagerHelper::clean() {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
@@ -47,7 +61,7 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     managers.push_back(new WindowManager(title, width, height));
     GameManager* gameManager = new GameManager();
     gameManager->setGameState(GameManager::GameState::STARTED);
-    gameManager->setGameState(GameManager::GameState::PAUSED);
+    //gameManager->setGameState(GameManager::GameState::PAUSED);
     managers.push_back(gameManager);
     managers.push_back(new InputManager());
     managers.push_back(new UIManager());
