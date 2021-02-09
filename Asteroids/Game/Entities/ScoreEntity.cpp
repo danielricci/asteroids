@@ -1,5 +1,6 @@
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/ScoreEntity.hpp"
 #include <iomanip>
 #include <sstream>
@@ -18,10 +19,6 @@ void ScoreEntity::addScore(int score) {
     getComponent<TextComponent>()->setText(toString());
 }
 
-void ScoreEntity::addScoreAsteroidHit() {
-    addScore(50);
-}
-
 void ScoreEntity::render(SDL_Renderer& renderer) {
     getComponent<TextComponent>()->render(renderer);
 }
@@ -34,7 +31,21 @@ void ScoreEntity::update(const SDL_Event& event) {
     if(event.type == SDL_USEREVENT) {
         switch(event.user.code) {
             case ManagerHelper::EVENT_ASTEROID_HIT: {
-                addScoreAsteroidHit();
+                AsteroidEntity* asteroidEntity = static_cast<AsteroidEntity*>(event.user.data1);
+                switch(asteroidEntity->stage) {
+                    case AsteroidEntity::AsteroidStage::STAGE_1: {
+                        addScore(50);
+                        break;
+                    }
+                    case AsteroidEntity::AsteroidStage::STAGE_2: {
+                        addScore(75);
+                        break;
+                    }
+                    case AsteroidEntity::AsteroidStage::STAGE_LAST: {
+                        addScore(125);
+                        break;
+                    }
+                }
                 break;
             }
         }

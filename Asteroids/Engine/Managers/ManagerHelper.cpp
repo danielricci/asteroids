@@ -24,7 +24,7 @@ void ManagerHelper::broadcast(BroadcastEvent broadcastEvent, void* sender, const
     event.type = SDL_USEREVENT;
     event.user = userevent;
 
-    SDL_PushEvent(&event);
+    ManagerHelper::update(event);
 }
 
 void ManagerHelper::clean() {
