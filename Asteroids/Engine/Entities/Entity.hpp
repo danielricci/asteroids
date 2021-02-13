@@ -35,7 +35,7 @@ public:
         for(Component* component : components) {
             T* cast = dynamic_cast<T*>(component);
             if(cast != nullptr) {
-                if(name.empty() || name == cast->name) {
+                if(name.empty() || name == cast->getName()) {
                     result = cast;
                     break;
                 }

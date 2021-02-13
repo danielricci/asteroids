@@ -7,11 +7,16 @@
 
 ScoreEntity::ScoreEntity() {
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
+    textComponent->setPosition(Eigen::Vector2f(150, 50));
     textComponent->setSize(32);
     textComponent->setText(toString());
     this->addComponent(textComponent);
+    //this->setPosition(Eigen::Vector2f(150, 50));
+}
 
-    this->setPosition(Eigen::Vector2f(150, 50));
+void ScoreEntity::addLives(int lives) {
+    this->lives += lives;
+    getComponent<TextComponent>()->setText(toString());
 }
 
 void ScoreEntity::addScore(int score) {

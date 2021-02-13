@@ -21,11 +21,11 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerInputComponent);
     
     ShapeComponent* playerShip = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
-    playerShip->name = PLAYER_SHIP;
+    playerShip->setName(PLAYER_SHIP);
     addComponent(playerShip);
         
     ShapeComponent* playerThrust = new ShapeComponent({{-11, -3}, {-20, 0}, {-10, 3}});
-    playerThrust->name = PLAYER_SHIP_EXHAUST;
+    playerThrust->setName(PLAYER_SHIP_EXHAUST);
     addComponent(playerThrust);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
@@ -69,7 +69,7 @@ void PlayerEntity::onEventShoot() {
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
     for(ShapeComponent* shapeComponent : this->getComponents<ShapeComponent>()) {
-        if(shapeComponent->name == PLAYER_SHIP_EXHAUST && !this->getComponent<PlayerInputComponent>()->getIsThrustActivated()) {
+        if(shapeComponent->getName() == PLAYER_SHIP_EXHAUST && !this->getComponent<PlayerInputComponent>()->getIsThrustActivated()) {
             continue;
         }
 

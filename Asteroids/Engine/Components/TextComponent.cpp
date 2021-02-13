@@ -58,7 +58,7 @@ void TextComponent::render(SDL_Renderer& renderer) {
         return;
     }
     
-    Eigen::Vector2f position = this->ownerEntity->getPosition();
+    Eigen::Vector2f position = this->ownerEntity->getPosition() + this->position;
 
     SDL_Rect rectangle;
     rectangle.x = position.x();

@@ -8,24 +8,33 @@ Component::~Component() {
     }
 }
 
-RenderComponent* Component::getRenderComponent() {
-    if(renderComponent == nullptr) {
-        renderComponent = new RenderComponent();
-    }
+bool Component::getIsVisible() const {
+    return getRenderComponent()->isVisible;
+}
+
+std::string Component::getName() const {
+    return this->name;
+}
+
+RenderComponent* Component::getRenderComponent() const {
     return renderComponent;
 }
 
 void Component::render(SDL_Renderer& renderer) {
 }
 
-void Component::setOwnerEntity(Entity* ownerEntity) {
-    this->ownerEntity = ownerEntity;
-}
-
 void Component::setIsVisible(bool isVisible) {
     getRenderComponent()->isVisible = isVisible;
 }
 
-bool Component::getIsVisible() {
-    return getRenderComponent()->isVisible;
+void Component::setName(const std::string& name) {
+    this->name = name;
+}
+
+void Component::setOwnerEntity(Entity* ownerEntity) {
+    this->ownerEntity = ownerEntity;
+}
+
+void Component::setPosition(const Eigen::Vector2f& position) {
+    this->position = position;
 }

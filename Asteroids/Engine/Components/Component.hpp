@@ -1,6 +1,8 @@
+
 #pragma once
 
 #include "Engine/Entities/Entity.hpp"
+#include <Eigen/Dense>
 #include <SDL.h>
 #include <string>
 
@@ -11,20 +13,23 @@ class Component {
 public:
     virtual ~Component();
 
+    bool getIsVisible() const;
     virtual void render(SDL_Renderer& renderer);
-    
-    bool getIsVisible();
+    std::string getName() const;
+    void setIsVisible(bool isVisible);
+    void setName(const std::string& name);
     void setOwnerEntity(Entity* entityOwner);
-    void setIsVisible(bool isVisible); 
-    std::string name = "";
+    void setPosition(const Eigen::Vector2f& position);
 
 protected:
     Component() = default;
     
-    virtual RenderComponent* getRenderComponent();
+    virtual RenderComponent* getRenderComponent() const;
 
+    std::string name = "";
     bool isEnabled = true;
     Entity* ownerEntity = nullptr;
+    Eigen::Vector2f position;
 private:
     RenderComponent* renderComponent = nullptr;
 };
