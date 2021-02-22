@@ -11,26 +11,12 @@ ScoreEntity::ScoreEntity() {
     textComponent->setPosition(Eigen::Vector2f(150, 50));
     textComponent->setSize(32);
     textComponent->setText(toString());
-    this->addComponent(textComponent);    
-//    for(int i = 0; i < 3; ++i) {
-//        ShapeComponent* shapeComponent = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
-//        shapeComponent->setPosition(Eigen::Vector2f(300, 300));
-//        addComponent(shapeComponent);
-//    }
+    addComponent(textComponent);
 }
-
-//void ScoreEntity::addLives(int lives) {
-//    this->lives += lives;
-//    getComponent<TextComponent>()->setText(toString());
-//}
 
 void ScoreEntity::addScore(int score) {
     this->score = std::min(this->score + score, MAX_SCORE);
     getComponent<TextComponent>()->setText(toString());
-}
-
-void ScoreEntity::render(SDL_Renderer& renderer) {
-    getComponent<TextComponent>()->render(renderer);
 }
 
 void ScoreEntity::reset() {

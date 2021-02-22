@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
-#include <Eigen/Dense>
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <string>
@@ -11,9 +10,9 @@ public:
     TextComponent(const std::string& fontPath);
     ~TextComponent();
 
+    virtual void render(SDL_Renderer& renderer) override;
     void setSize(int size);
     void setText(std::string text);
-    virtual void render(SDL_Renderer& renderer) override;
 private:
     void clean();
 
@@ -21,10 +20,8 @@ private:
     std::string fontPath = "";
     std::string text = "";
     int size = 12;
-    
     SDL_Color color {255, 255, 255};
     SDL_Texture* texture = nullptr;
     SDL_Surface* surface = nullptr;
-    
     TTF_Font* font = nullptr;
 };

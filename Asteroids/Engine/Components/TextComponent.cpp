@@ -1,5 +1,5 @@
 #include "Engine/Components/TextComponent.hpp"
-#include "Engine/Components/TransformComponent.hpp"
+#include <Eigen/Dense>
 #include <iostream>
 
 TextComponent::TextComponent(const std::string& fontPath) : fontPath(fontPath) {
@@ -14,51 +14,55 @@ void TextComponent::clean() {
         TTF_CloseFont(font);
         font = nullptr;
     }
+    
     if(texture != nullptr) {
         SDL_DestroyTexture(texture);
         texture = nullptr;
     }
+    
     if(surface != nullptr) {
         SDL_FreeSurface(surface);
         surface = nullptr;
     }
+    
+    isDirty = true;
 }
 
 void TextComponent::setSize(int size) {
     this->size = size;
+    isDirty = true;
 }
 
 void TextComponent::setText(std::string text) {
     this->text = text;
+    isDirty = true;
 }
 
 void TextComponent::render(SDL_Renderer& renderer) {
-//    if(!this->getIsVisible() || !isDirty) {
-//        return;
-//    }
+    if(isDirty) {
+        clean();
+        isDirty = false;
+        
+        font = TTF_OpenFont(fontPath.c_str(), size);
+        if(font == nullptr) {
+            std::cerr << "Could not open the specified font" << std::endl;
+            return;
+        }
 
-    isDirty = false;
-    clean();
-    
-    font = TTF_OpenFont(fontPath.c_str(), this->size);
-    if(font == nullptr) {
-        std::cerr << "Could not open the specified font" << std::endl;
-        return;
-    }
+        surface = TTF_RenderText_Blended(font, text.c_str(), color);
+        if(surface == nullptr) {
+            std::cerr << "Could not create the surface from the specified font" << std::endl;
+            return;
+        }
 
-    surface = TTF_RenderText_Blended(font, text.c_str(), this->color);
-    if(surface == nullptr) {
-        std::cerr << "Could not create the surface from the specified font" << std::endl;
-        return;
-    }
-
-    texture = SDL_CreateTextureFromSurface(&renderer, surface);
-    if(texture == nullptr) {
-        std::cerr << "Could not create the texture from the specified surface" << std::endl;
-        return;
+        texture = SDL_CreateTextureFromSurface(&renderer, surface);
+        if(texture == nullptr) {
+            std::cerr << "Could not create the texture from the specified surface" << std::endl;
+            return;
+        }
     }
     
-    Eigen::Vector2f position = this->ownerEntity->getPosition() + this->position;
+    Eigen::Vector2f position = ownerEntity->getPosition() + this->position;
 
     SDL_Rect rectangle;
     rectangle.x = position.x();
