@@ -1,3 +1,4 @@
+#include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
@@ -10,14 +11,18 @@ ScoreEntity::ScoreEntity() {
     textComponent->setPosition(Eigen::Vector2f(150, 50));
     textComponent->setSize(32);
     textComponent->setText(toString());
-    this->addComponent(textComponent);
-    //this->setPosition(Eigen::Vector2f(150, 50));
+    this->addComponent(textComponent);    
+//    for(int i = 0; i < 3; ++i) {
+//        ShapeComponent* shapeComponent = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
+//        shapeComponent->setPosition(Eigen::Vector2f(300, 300));
+//        addComponent(shapeComponent);
+//    }
 }
 
-void ScoreEntity::addLives(int lives) {
-    this->lives += lives;
-    getComponent<TextComponent>()->setText(toString());
-}
+//void ScoreEntity::addLives(int lives) {
+//    this->lives += lives;
+//    getComponent<TextComponent>()->setText(toString());
+//}
 
 void ScoreEntity::addScore(int score) {
     this->score = std::min(this->score + score, MAX_SCORE);

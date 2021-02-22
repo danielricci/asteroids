@@ -1,8 +1,13 @@
 #include "Engine/Components/ShapeComponent.hpp"
 
-ShapeComponent::ShapeComponent(std::initializer_list<Eigen::Vector2f> vertices) {
+ShapeComponent::ShapeComponent(const std::initializer_list<Eigen::Vector2f>& vertices) {
     this->vertices.insert(this->vertices.cbegin(), vertices);
 }
+
+ShapeComponent::ShapeComponent(const std::vector<Eigen::Vector2f>& vertices) {
+    this->vertices = vertices;
+}
+
 
 Eigen::Vector2f& ShapeComponent::operator[](int index) {
     return this->vertices.at(index);

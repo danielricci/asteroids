@@ -19,6 +19,9 @@ Eigen::AlignedBox2f GameEntity::getBounds() const {
 }
 
 void GameEntity::render(SDL_Renderer& renderer) {
+    for(Component* component : this->getComponents()) {
+        component->render(renderer);
+    }
 }
 
 void GameEntity::setPosition(const Eigen::Vector2f& position) {

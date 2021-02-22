@@ -21,6 +21,10 @@ void Entity::addComponent(Component* component) {
     }
 }
 
+std::list<Component*> Entity::getComponents() {
+    return this->components;
+}
+
 Eigen::Vector2f Entity::getDimensions() const {
     TransformComponent* transformComponent = getComponent<TransformComponent>();
     return transformComponent == nullptr ? Eigen::Vector2f::Zero() : transformComponent->dimensions;

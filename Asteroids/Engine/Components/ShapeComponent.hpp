@@ -8,7 +8,8 @@
 class ShapeComponent : public Component {
 public:
     ShapeComponent() = default;
-    ShapeComponent(std::initializer_list<Eigen::Vector2f> vertices);
+    ShapeComponent(const std::initializer_list<Eigen::Vector2f>& vertices);
+    ShapeComponent(const std::vector<Eigen::Vector2f>& vertices);
     
     Eigen::Vector2f& operator[](int index);
     

@@ -1,4 +1,5 @@
 #include "Engine/Managers/UIManager.hpp"
+#include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/ScoreEntity.hpp"
 #include <SDL_ttf.h>
 #include <iostream>
@@ -9,6 +10,7 @@ UIManager::UIManager() {
     }
     
     this->addEntity(new ScoreEntity());
+    this->addEntity(new LivesEntity());
 }
 
 UIManager::~UIManager() {
