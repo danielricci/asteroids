@@ -9,7 +9,8 @@
 class ManagerHelper {
 public:
     enum BroadcastEvent {
-        EVENT_ASTEROID_HIT = 0
+        EVENT_ASTEROID_HIT = 0,
+        EVENT_PLAYER_DEATH
     };
     
     static void broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args);

@@ -11,6 +11,7 @@ public:
     void increment();
     virtual void render(SDL_Renderer& renderer) override;
     void reset();
+    virtual void update(const SDL_Event& event) override;
 private:
     int lives = 3;
     const int MAX_LIVES = 99;

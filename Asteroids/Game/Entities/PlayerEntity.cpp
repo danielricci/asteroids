@@ -8,6 +8,7 @@
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/System/EventArgs.hpp"
 #include <cmath>
 #include <Eigen/Dense>
 #include <random>
@@ -30,6 +31,7 @@ PlayerEntity::PlayerEntity() {
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
+        ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_DEATH, this, EventArgs::Empty());
         onEventHyperspace();
     });
     addComponent(physicsComponent);

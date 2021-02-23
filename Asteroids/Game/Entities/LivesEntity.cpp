@@ -1,5 +1,7 @@
 #include "Engine/Components/TextComponent.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 
 LivesEntity::LivesEntity() {
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
@@ -29,4 +31,15 @@ void LivesEntity::render(SDL_Renderer& renderer) {
 
 void LivesEntity::reset() {
     lives = 0;
+}
+
+void LivesEntity::update(const SDL_Event& event) {
+    if(event.type == SDL_USEREVENT) {
+        switch(event.user.code) {
+            case ManagerHelper::EVENT_PLAYER_DEATH: {
+                
+                break;
+            }
+        }
+    }
 }
