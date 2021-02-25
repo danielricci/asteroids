@@ -28,11 +28,12 @@ SDL_FRect ShapeComponent::getRectangle() const {
     float yMax = 0;
 
     for(const Eigen::Vector2f& vertex : vertices) {
-        Eigen::Vector2f normalizedVertex = this->ownerEntity->getPosition(vertex, false);
-        xMin = std::min(xMin, normalizedVertex.x());
-        yMin = std::min(yMin, normalizedVertex.y());
-        xMax = std::max(xMax, normalizedVertex.x());
-        yMax = std::max(yMax, normalizedVertex.y());
+        // TODO - validate this with the added this->position
+        Eigen::Vector2f position = this->ownerEntity->getPosition(vertex, false) + this->position;
+        xMin = std::min(xMin, position.x());
+        yMin = std::min(yMin, position.y());
+        xMax = std::max(xMax, position.x());
+        yMax = std::max(yMax, position.y());
     }
     SDL_FRect rectangle;
     rectangle.x = xMin;
@@ -50,7 +51,7 @@ unsigned long ShapeComponent::getSize() const {
 void ShapeComponent::render(SDL_Renderer& renderer) {
     std::vector<SDL_FPoint> positions;
     for(const auto& vertex : this->vertices) {
-        Eigen::Vector2f position = this->ownerEntity->getPosition(vertex);
+        Eigen::Vector2f position = this->ownerEntity->getPosition(vertex) + this->position;
         positions.push_back({position.x(), position.y()});
     }
     SDL_RenderDrawLinesF(&renderer, &positions.front(), static_cast<int>(positions.size()));

@@ -7,8 +7,9 @@
 #include <sstream>
 
 ScoreEntity::ScoreEntity() {
+    setPosition(Eigen::Vector2f(150, 50));
+    
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
-    textComponent->setPosition(Eigen::Vector2f(150, 50));
     textComponent->setSize(32);
     textComponent->setText(toString());
     addComponent(textComponent);

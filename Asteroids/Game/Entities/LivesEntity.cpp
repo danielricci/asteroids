@@ -5,16 +5,16 @@
 #include "Game/Entities/PlayerEntity.hpp"
 
 LivesEntity::LivesEntity() {
+    setPosition(Eigen::Vector2f(230, 80));
+
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
     textComponent->setSize(32);
     textComponent->setText(toString());
     addComponent(textComponent);
     
     ShapeComponent* shapeComponent = new ShapeComponent({{0, 0}, {10, 24}, {0, 20}, {-10, 24}, {0, 0}});
-    shapeComponent->setPosition(textComponent->getPosition());
+    shapeComponent->setPosition(Eigen::Vector2f(28, 8));
     addComponent(shapeComponent);
-    
-    this->setPosition(Eigen::Vector2f(250, 80));
 }
 
 void LivesEntity::addLives(int lives) {
@@ -23,7 +23,7 @@ void LivesEntity::addLives(int lives) {
 }
 
 void LivesEntity::render(SDL_Renderer& renderer) {
-    GameEntity::render(renderer);
+    lives > 3 ? getComponent<TextComponent>()->render(renderer) : getComponent<ShapeComponent>()->render(renderer);
 }
 
 void LivesEntity::reset() {

@@ -30,7 +30,7 @@ protected:
     std::string name = "";
     bool isEnabled = true;
     Entity* ownerEntity = nullptr;
-    Eigen::Vector2f position;
+    Eigen::Vector2f position = Eigen::Vector2f::Zero();
 private:
     RenderComponent* renderComponent = nullptr;
 };

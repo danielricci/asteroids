@@ -13,9 +13,10 @@ public:
     }
     
     static int getRandomRotation() {
-        std::uniform_int_distribution<int> rotationDistribution(static_cast<int>(TransformComponent::ROTATION_RIGHT), static_cast<int>(TransformComponent::ROTATION_FULL_UNIT));
+        // TODO - spend more time on this, look also at https://stackoverflow.com/questions/39288595/why-not-just-use-random-device
+        std::uniform_int_distribution<unsigned int> rotationDistribution(TransformComponent::ROTATION_RIGHT, std::abs(TransformComponent::ROTATION_FULL_UNIT));
         std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
-        return rotationDistribution(generator);
+        return -rotationDistribution(generator);
     }
        
     static const int ROTATION_RIGHT = 0;
