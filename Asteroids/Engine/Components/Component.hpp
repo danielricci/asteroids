@@ -16,6 +16,7 @@ public:
     bool getIsVisible() const;
     virtual void render(SDL_Renderer& renderer);
     std::string getName() const;
+    Eigen::Vector2f getPosition() const;
     void setIsVisible(bool isVisible);
     void setName(const std::string& name);
     void setOwnerEntity(Entity* entityOwner);

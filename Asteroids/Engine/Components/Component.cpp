@@ -38,3 +38,7 @@ void Component::setOwnerEntity(Entity* ownerEntity) {
 void Component::setPosition(const Eigen::Vector2f& position) {
     this->position = position;
 }
+
+Eigen::Vector2f Component::getPosition() const {
+    return position;
+}

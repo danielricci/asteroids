@@ -1,3 +1,4 @@
+#include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
@@ -5,24 +6,20 @@
 
 LivesEntity::LivesEntity() {
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
-    textComponent->setPosition(Eigen::Vector2f(250, 80));
     textComponent->setSize(32);
-    textComponent->setText("2");
+    textComponent->setText(toString());
     addComponent(textComponent);
-       
-    //    for(int i = 0; i < 3; ++i) {
-    //        ShapeComponent* shapeComponent = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
-    //        shapeComponent->setPosition(Eigen::Vector2f(300, 300));
-    //        addComponent(shapeComponent);
-    //    }
+    
+    ShapeComponent* shapeComponent = new ShapeComponent({{0, 0}, {10, 24}, {0, 20}, {-10, 24}, {0, 0}});
+    shapeComponent->setPosition(textComponent->getPosition());
+    addComponent(shapeComponent);
+    
+    this->setPosition(Eigen::Vector2f(250, 80));
 }
 
-void LivesEntity::decrement() {
-    --lives;
-}
-
-void LivesEntity::increment() {
-    ++lives;
+void LivesEntity::addLives(int lives) {
+    this->lives = std::max(0, std::min(this->lives + lives, MAX_LIVES));
+    getComponent<TextComponent>()->setText(toString());
 }
 
 void LivesEntity::render(SDL_Renderer& renderer) {
@@ -30,14 +27,18 @@ void LivesEntity::render(SDL_Renderer& renderer) {
 }
 
 void LivesEntity::reset() {
-    lives = 0;
+    addLives(-lives);
+}
+
+std::string LivesEntity::toString() const {
+    return std::to_string(lives);
 }
 
 void LivesEntity::update(const SDL_Event& event) {
     if(event.type == SDL_USEREVENT) {
         switch(event.user.code) {
             case ManagerHelper::EVENT_PLAYER_DEATH: {
-                
+                addLives(-1);
                 break;
             }
         }
