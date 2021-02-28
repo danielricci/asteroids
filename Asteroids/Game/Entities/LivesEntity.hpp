@@ -9,12 +9,13 @@ public:
     LivesEntity();
         
     void addLives(int lives);
-    virtual void render(SDL_Renderer& renderer) override;
     void reset();
     virtual void update(const SDL_Event& event) override;
 private:
     std::string toString() const;
 
-    int lives = 3;
+    int lives = 0;
     const int MAX_LIVES = 99;
+    const int PRECISION = 6;
+    const Eigen::Vector2f INDEX_OFFSET_POSITION = Eigen::Vector2f(-20, 0);
 };

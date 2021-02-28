@@ -9,7 +9,9 @@ Component::~Component() {
 }
 
 bool Component::getIsVisible() const {
-    return getRenderComponent()->isVisible;
+    RenderComponent* renderComponent = getRenderComponent();
+    // Components are visible by default unless otherwise specified
+    return renderComponent == nullptr || renderComponent->getIsVisible();
 }
 
 std::string Component::getName() const {
@@ -24,7 +26,11 @@ void Component::render(SDL_Renderer& renderer) {
 }
 
 void Component::setIsVisible(bool isVisible) {
-    getRenderComponent()->isVisible = isVisible;
+    RenderComponent* renderComponent = getRenderComponent();
+    if(renderComponent == nullptr) {
+        renderComponent = new RenderComponent();
+    }
+    renderComponent->isVisible = isVisible;
 }
 
 void Component::setName(const std::string& name) {

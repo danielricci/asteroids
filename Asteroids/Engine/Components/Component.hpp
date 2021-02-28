@@ -25,7 +25,7 @@ public:
 protected:
     Component() = default;
     
-    virtual RenderComponent* getRenderComponent() const;
+    RenderComponent* getRenderComponent() const;
 
     std::string name = "";
     bool isEnabled = true;
