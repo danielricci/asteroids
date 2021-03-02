@@ -119,7 +119,6 @@
 		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
 		0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManagerHelper.cpp; sourceTree = "<group>"; };
 		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
-		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuControlEntity.cpp; sourceTree = "<group>"; };
 		03B6F363256DA68000A80AF1 /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
 				03EE9C6624CC760400302287 /* PhysicsComponent.cpp */,
 				0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */,
-				03987B54239559A60004639E /* RenderComponent.hpp */,
 				037FBA1424E3182600F984F1 /* ShapeComponent.cpp */,
 				037FBA1524E3182600F984F1 /* ShapeComponent.hpp */,
 				0364021B246A3B11008684B8 /* SoundComponent.cpp */,

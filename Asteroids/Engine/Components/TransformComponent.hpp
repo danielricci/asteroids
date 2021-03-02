@@ -6,7 +6,10 @@
 
 class TransformComponent final : public Component {
 public:
-    TransformComponent() = default;
+    TransformComponent() {
+        // By default transforms are not visibly rendered
+        setIsVisible(false);
+    }
     
     static float toRadians(float degrees) {
         return degrees * M_PI/180;

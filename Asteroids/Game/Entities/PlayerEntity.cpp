@@ -1,5 +1,4 @@
 #include "Engine/Components/PhysicsComponent.hpp"
-#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"

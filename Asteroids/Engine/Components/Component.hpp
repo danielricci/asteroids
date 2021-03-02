@@ -11,7 +11,7 @@ class Entity;
 
 class Component {
 public:
-    virtual ~Component();
+    virtual ~Component() = default;
 
     bool getIsVisible() const;
     virtual void render(SDL_Renderer& renderer);
@@ -21,16 +21,12 @@ public:
     void setName(const std::string& name);
     void setOwnerEntity(Entity* entityOwner);
     void setPosition(const Eigen::Vector2f& position);
-
 protected:
     Component() = default;
     
-    RenderComponent* getRenderComponent() const;
-
     std::string name = "";
-    bool isEnabled = true;
     Entity* ownerEntity = nullptr;
     Eigen::Vector2f position = Eigen::Vector2f::Zero();
 private:
-    RenderComponent* renderComponent = nullptr;
+    bool isVisible = true;
 };

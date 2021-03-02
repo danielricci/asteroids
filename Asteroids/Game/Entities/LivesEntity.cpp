@@ -12,8 +12,10 @@ LivesEntity::LivesEntity() {
     addComponent(textComponent);
     
     ShapeComponent* shapeComponent = new ShapeComponent({{0, 0}, {10, 24}, {0, 20}, {-10, 24}, {0, 0}});
+    shapeComponent->setPosition(OFFSET_POSITION_SHAPE);
     addComponent(shapeComponent);
     
+    // Note: Must be at the end after all the components have been initialized/added
     addLives(10);
 }
 
@@ -21,17 +23,8 @@ void LivesEntity::addLives(int lives) {
     this->lives = std::max(0, std::min(this->lives + lives, MAX_LIVES));
     
     TextComponent* textComponent = getComponent<TextComponent>();
+    textComponent->setPosition(OFFSET_POSITION_TEXT * (std::to_string(this->lives).length()));
     textComponent->setText(toString());
-    
-    if(lives > PRECISION) {
-        textComponent->setPosition(INDEX_OFFSET_POSITION * (std::to_string(lives).length() - 1));
-    }
-    else {
-        
-    }
-    
-    textComponent->setIsVisible(lives > PRECISION);
-    getComponent<ShapeComponent>()->setIsVisible(textComponent->getIsVisible());
 }
 
 void LivesEntity::reset() {
@@ -40,6 +33,16 @@ void LivesEntity::reset() {
 
 std::string LivesEntity::toString() const {
     return std::to_string(lives);
+}
+
+void LivesEntity::render(SDL_Renderer& renderer) {
+    getComponent<ShapeComponent>()->render(renderer);
+    if(lives <= PRECISION) {
+        
+    }
+    else {
+        getComponent<TextComponent>()->render(renderer);
+    }
 }
 
 void LivesEntity::update(const SDL_Event& event) {

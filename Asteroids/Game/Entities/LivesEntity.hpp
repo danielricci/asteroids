@@ -10,6 +10,7 @@ public:
         
     void addLives(int lives);
     void reset();
+    virtual void render(SDL_Renderer& renderer) override;
     virtual void update(const SDL_Event& event) override;
 private:
     std::string toString() const;
@@ -17,5 +18,6 @@ private:
     int lives = 0;
     const int MAX_LIVES = 99;
     const int PRECISION = 6;
-    const Eigen::Vector2f INDEX_OFFSET_POSITION = Eigen::Vector2f(-20, 0);
+    const Eigen::Vector2f OFFSET_POSITION_TEXT = Eigen::Vector2f(-20, 0);
+    const Eigen::Vector2f OFFSET_POSITION_SHAPE = Eigen::Vector2f(12, 8);
 };

@@ -1,4 +1,3 @@
-#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/Entities/TextMenuControlEntity.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"

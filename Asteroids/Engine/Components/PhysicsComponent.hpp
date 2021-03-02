@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Components/Component.hpp"
-#include "Engine/Components/RenderComponent.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include "Engine/System/EventHandler.hpp"
 #include <SDL.h>

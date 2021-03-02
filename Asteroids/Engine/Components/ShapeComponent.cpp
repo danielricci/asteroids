@@ -49,6 +49,10 @@ unsigned long ShapeComponent::getSize() const {
 }
 
 void ShapeComponent::render(SDL_Renderer& renderer) {
+    if(!getIsVisible()) {
+        return;
+    }
+    
     std::vector<SDL_FPoint> positions;
     for(const auto& vertex : this->vertices) {
         Eigen::Vector2f position = this->ownerEntity->getPosition(vertex) + this->position;
