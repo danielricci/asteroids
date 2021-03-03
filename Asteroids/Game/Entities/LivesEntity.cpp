@@ -16,7 +16,7 @@ LivesEntity::LivesEntity() {
     addComponent(shapeComponent);
     
     // Note: Must be at the end after all the components have been initialized/added
-    addLives(10);
+    addLives(3);
 }
 
 void LivesEntity::addLives(int lives) {
