@@ -7,6 +7,8 @@
 
 class PhysicsComponent : public Component {
 public:
+    PhysicsComponent();
+    
     bool isCollidedWith(const Entity& entity) const;
     virtual void render(SDL_Renderer& renderer) override;
 

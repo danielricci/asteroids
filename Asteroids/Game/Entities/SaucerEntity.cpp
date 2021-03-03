@@ -29,9 +29,6 @@ void SaucerEntity::update(float deltaTime) {
     setPosition(position);
 }
 
-void SaucerEntity::update(const SDL_Event& event) {
-}
-
 void SaucerEntity::render(SDL_Renderer& renderer) {
     for(ShapeComponent* shapeComponent : getComponents<ShapeComponent>()) {
         shapeComponent->render(renderer);

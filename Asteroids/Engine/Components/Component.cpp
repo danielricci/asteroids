@@ -8,6 +8,10 @@ std::string Component::getName() const {
     return this->name;
 }
 
+Eigen::Vector2f Component::getPosition() const {
+    return position;
+}
+
 void Component::render(SDL_Renderer& renderer) {
 }
 
@@ -25,8 +29,4 @@ void Component::setOwnerEntity(Entity* ownerEntity) {
 
 void Component::setPosition(const Eigen::Vector2f& position) {
     this->position = position;
-}
-
-Eigen::Vector2f Component::getPosition() const {
-    return position;
 }

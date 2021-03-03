@@ -20,14 +20,6 @@ Eigen::Vector2f BulletEntity::getDimensions() const {
     return Eigen::Vector2f(1, 1);
 }
 
-void BulletEntity::render(SDL_Renderer& renderer) {
-    getComponent<CircleComponent>()->render(renderer);
-}
-
-void BulletEntity::update(const SDL_Event& event) {
-    
-}
-
 void BulletEntity::update(float deltaTime) {
     if(timeTravelled * SPEED >= MAX_DISTANCE) {
         ManagerHelper::clean(this);

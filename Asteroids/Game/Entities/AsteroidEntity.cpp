@@ -2,9 +2,9 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     
@@ -56,10 +56,6 @@ Eigen::AlignedBox2f AsteroidEntity::getBounds() const {
     return alignedBox;
 }
 
-void AsteroidEntity::render(SDL_Renderer& renderer) {
-    getComponent<ShapeComponent>()->render(renderer);
-}
-
 void AsteroidEntity::update(float deltaTime) {
     double radians = TransformComponent::toRadians(getOrientation());
     velocity.x() = (speed * std::cos(radians));
@@ -69,7 +65,4 @@ void AsteroidEntity::update(float deltaTime) {
     position.x() += (velocity.x() * deltaTime);
     position.y() += (velocity.y() * deltaTime);
     setPosition(position);
-}
-
-void AsteroidEntity::update(const SDL_Event& event) {
 }
