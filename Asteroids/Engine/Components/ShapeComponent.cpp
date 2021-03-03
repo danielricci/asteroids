@@ -10,15 +10,15 @@ ShapeComponent::ShapeComponent(const std::vector<Eigen::Vector2f>& vertices) {
 
 
 Eigen::Vector2f& ShapeComponent::operator[](int index) {
-    return this->vertices.at(index);
+    return vertices.at(index);
 }
 
 void ShapeComponent::addVertex(const Eigen::Vector2f& vertex) {
-    this->vertices.push_back(vertex);
+    vertices.push_back(vertex);
 }
 
 void ShapeComponent::clear() {
-    this->vertices.clear();
+    vertices.clear();
 }
 
 SDL_FRect ShapeComponent::getRectangle() const {
@@ -29,7 +29,7 @@ SDL_FRect ShapeComponent::getRectangle() const {
 
     for(const Eigen::Vector2f& vertex : vertices) {
         // TODO - validate this with the added this->position
-        Eigen::Vector2f position = this->ownerEntity->getPosition(vertex, false) + this->position;
+        Eigen::Vector2f position = ownerEntity->getPosition(vertex, false) + this->position;
         xMin = std::min(xMin, position.x());
         yMin = std::min(yMin, position.y());
         xMax = std::max(xMax, position.x());
@@ -45,7 +45,7 @@ SDL_FRect ShapeComponent::getRectangle() const {
 }
 
 unsigned long ShapeComponent::getSize() const {
-    return this->vertices.size();
+    return vertices.size();
 }
 
 void ShapeComponent::render(SDL_Renderer& renderer) {
@@ -54,8 +54,8 @@ void ShapeComponent::render(SDL_Renderer& renderer) {
     }
     
     std::vector<SDL_FPoint> positions;
-    for(const auto& vertex : this->vertices) {
-        Eigen::Vector2f position = this->ownerEntity->getPosition(vertex) + this->position;
+    for(const auto& vertex : vertices) {
+        Eigen::Vector2f position = ownerEntity->getPosition(vertex) + this->position;
         positions.push_back({position.x(), position.y()});
     }
     SDL_RenderDrawLinesF(&renderer, &positions.front(), static_cast<int>(positions.size()));

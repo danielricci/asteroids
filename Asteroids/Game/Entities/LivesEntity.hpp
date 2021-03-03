@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Entities/GameEntity.hpp"
+#include <Eigen/Dense>
 #include <SDL.h>
 #include <string>
 
@@ -17,7 +18,8 @@ private:
 
     int lives = 0;
     const int MAX_LIVES = 99;
-    const int PRECISION = 6;
-    const Eigen::Vector2f OFFSET_POSITION_TEXT = Eigen::Vector2f(-20, 0);
-    const Eigen::Vector2f OFFSET_POSITION_SHAPE = Eigen::Vector2f(12, 8);
+    const int PRECISION = 9;
+    const Eigen::Vector2f INITIAL_POSITION_SHAPE = Eigen::Vector2f(32, 12);
+    const Eigen::Vector2f OFFSET_POSITION_SHAPE = Eigen::Vector2f(24, 0);
+    const Eigen::Vector2f OFFSET_POSITION_TEXT = Eigen::Vector2f(-10, 0);
 };

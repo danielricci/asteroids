@@ -17,7 +17,7 @@ public:
     void clear();
     SDL_FRect getRectangle() const;
     unsigned long getSize() const;
-    virtual void render(SDL_Renderer& renderer) override;
+    virtual void render(SDL_Renderer& renderer) override;    
 protected:
     std::vector<Eigen::Vector2f> vertices;
 };
