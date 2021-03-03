@@ -1,7 +1,7 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Entities/GameEntity.hpp"
-#include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Engine/Managers/WindowManager.hpp"
 
 void GameEntity::collisionCheck(Entity& entity) {
     PhysicsComponent* physicsComponent = getComponent<PhysicsComponent>();
@@ -13,13 +13,13 @@ void GameEntity::collisionCheck(Entity& entity) {
 
 Eigen::AlignedBox2f GameEntity::getBounds() const {
     Eigen::AlignedBox2f bounds;
-    bounds.min() = this->getPosition();
-    bounds.max() = bounds.min() + this->getDimensions();
+    bounds.min() = getPosition();
+    bounds.max() = bounds.min() + getDimensions();
     return bounds;
 }
 
 void GameEntity::render(SDL_Renderer& renderer) {
-    for(Component* component : this->getComponents()) {
+    for(Component* component : getComponents()) {
         if(component->getIsVisible()) {
             component->render(renderer);
         }

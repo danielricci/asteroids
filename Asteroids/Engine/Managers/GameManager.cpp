@@ -1,9 +1,7 @@
-#include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
-#include <Eigen/Dense>
 
 GameManager::GameState GameManager::getGameState() const {
     return this->gameState;
@@ -22,18 +20,6 @@ void GameManager::handleCollision() {
 
 void GameManager::render(SDL_Renderer& renderer) {
     Manager::render(renderer);
-//    SDL_Color color;
-//    SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
-//    std::for_each(entities.begin(), entities.end(), [&renderer](const auto& entityPair) {
-//        Eigen::Vector2f position = entityPair.first->getPosition();
-//        Eigen::Vector2f xPoint2 = entityPair.first->getPosition({30, 0});
-//        SDL_SetRenderDrawColor(&renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-//        SDL_RenderDrawLine(&renderer, position.x(), position.y(), xPoint2.x(), xPoint2.y());
-//        Eigen::Vector2f yPoint2 = entityPair.first->getPosition({0, 30});
-//        SDL_SetRenderDrawColor(&renderer, 0x00, 0xFF, 0x00, SDL_ALPHA_OPAQUE);
-//        SDL_RenderDrawLine(&renderer, position.x(), position.y(), yPoint2.x(), yPoint2.y());
-//    });
-//    SDL_SetRenderDrawColor(&renderer, color.r, color.g, color.b, color.a);
 }
 
 void GameManager::setGameState(GameManager::GameState gameState) {
