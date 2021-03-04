@@ -3,6 +3,7 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/ScoreEntity.hpp"
+#include <Eigen/Dense>
 #include <iomanip>
 #include <sstream>
 
