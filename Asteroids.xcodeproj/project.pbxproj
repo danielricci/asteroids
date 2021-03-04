@@ -119,6 +119,7 @@
 		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
 		0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManagerHelper.cpp; sourceTree = "<group>"; };
 		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
+		039ABDFB25F1130B00307A3B /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuControlEntity.cpp; sourceTree = "<group>"; };
 		03B6F363256DA68000A80AF1 /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
@@ -290,10 +291,11 @@
 			isa = PBXGroup;
 			children = (
 				03830797243597E100F39FC0 /* .gitignore */,
+				039ABDFB25F1130B00307A3B /* Assets */,
 				0317C67F2352500C00D43455 /* Asteroids */,
-				037280BD234F9A0D008472B1 /* README.md */,
 				039E6C15234E30B0004CCD78 /* Asteroids */,
 				0389AD7E2396F4CA005EEC22 /* Frameworks */,
+				037280BD234F9A0D008472B1 /* README.md */,
 				03784F76245D35DF00C16FD8 /* Resources */,
 			);
 			sourceTree = "<group>";
