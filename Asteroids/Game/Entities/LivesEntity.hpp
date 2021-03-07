@@ -9,7 +9,7 @@ class LivesEntity : public GameEntity {
 public:
     LivesEntity();
         
-    void addLives(int lives);
+    void addScore(int lives);
     void reset();
     virtual void render(SDL_Renderer& renderer) override;
     virtual void update(const SDL_Event& event) override;

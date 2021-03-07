@@ -6,13 +6,12 @@
 
 class ScoreEntity : public GameEntity {
 public:
-    ScoreEntity();
-
     void reset();
-    virtual void update(const SDL_Event& event) override;
 protected:
+    ScoreEntity() = default;
+    
     void addScore(int score);
-    std::string toString() const;
+    virtual std::string toString() const;
 private:
     int score = 0;
     

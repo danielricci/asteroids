@@ -1,0 +1,38 @@
+#include "Engine/Components/TextComponent.hpp"
+#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/Entities/AsteroidEntity.hpp"
+#include "Game/Entities/PlayerScoreEntity.hpp"
+
+PlayerScoreEntity::PlayerScoreEntity() {
+    setPosition(Eigen::Vector2f(150, 50));
+    
+    TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
+    textComponent->setSize(32);
+    textComponent->setText(toString());
+    addComponent(textComponent);
+}
+
+void PlayerScoreEntity::update(const SDL_Event& event) {
+    if(event.type == SDL_USEREVENT) {
+        switch(event.user.code) {
+            case ManagerHelper::EVENT_ASTEROID_HIT: {
+                AsteroidEntity* asteroidEntity = static_cast<AsteroidEntity*>(event.user.data1);
+                switch(asteroidEntity->stage) {
+                    case AsteroidEntity::AsteroidStage::STAGE_1: {
+                        addScore(50);
+                        break;
+                    }
+                    case AsteroidEntity::AsteroidStage::STAGE_2: {
+                        addScore(75);
+                        break;
+                    }
+                    case AsteroidEntity::AsteroidStage::STAGE_LAST: {
+                        addScore(125);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
+}

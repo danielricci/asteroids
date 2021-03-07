@@ -16,10 +16,10 @@ LivesEntity::LivesEntity() {
     addComponent(shapeComponent);
     
     // Note: Must be at the end after all the components have been initialized/added
-    addLives(3);
+    addScore(3);
 }
 
-void LivesEntity::addLives(int lives) {
+void LivesEntity::addScore(int lives) {
     this->lives = std::max(0, std::min(this->lives + lives, MAX_LIVES));
     
     TextComponent* textComponent = getComponent<TextComponent>();
@@ -28,7 +28,7 @@ void LivesEntity::addLives(int lives) {
 }
 
 void LivesEntity::reset() {
-    addLives(-lives);
+    addScore(-lives);
 }
 
 std::string LivesEntity::toString() const {
@@ -56,7 +56,7 @@ void LivesEntity::update(const SDL_Event& event) {
     if(event.type == SDL_USEREVENT) {
         switch(event.user.code) {
             case ManagerHelper::EVENT_PLAYER_DEATH: {
-                addLives(-1);
+                addScore(-1);
                 break;
             }
         }

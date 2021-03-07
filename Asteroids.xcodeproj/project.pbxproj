@@ -45,6 +45,7 @@
 		03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EE9C6824CC784600302287 /* InputComponent.cpp */; };
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
 		03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F006D424D3056700260594 /* PlayerEntity.cpp */; };
+		03F57FE325F3D5F1000F6588 /* PlayerScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -145,6 +146,8 @@
 		03EFD237237E48D9006EF2A5 /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		03F006D424D3056700260594 /* PlayerEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerEntity.cpp; sourceTree = "<group>"; };
 		03F006D524D3056700260594 /* PlayerEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerEntity.hpp; sourceTree = "<group>"; };
+		03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerScoreEntity.cpp; sourceTree = "<group>"; };
+		03F57FE225F3D5F1000F6588 /* PlayerScoreEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerScoreEntity.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,18 +322,20 @@
 				03571955255B1873004D09BB /* AsteroidEntity.hpp */,
 				03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */,
 				03EAD8FB252DE5A7003E76B2 /* BulletEntity.hpp */,
+				0368714B25F121B200D281E4 /* HighScoreEntity.cpp */,
+				0368714C25F121B200D281E4 /* HighScoreEntity.hpp */,
 				035804F625E0D0D700EC9AF6 /* LivesEntity.cpp */,
 				035804F725E0D0D700EC9AF6 /* LivesEntity.hpp */,
 				0387FD8924A78D220019BE47 /* MenuEntity.cpp */,
 				0387FD8A24A78D220019BE47 /* MenuEntity.hpp */,
 				03F006D424D3056700260594 /* PlayerEntity.cpp */,
 				03F006D524D3056700260594 /* PlayerEntity.hpp */,
+				03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */,
+				03F57FE225F3D5F1000F6588 /* PlayerScoreEntity.hpp */,
 				0325032E259DA92A008BF227 /* SaucerEntity.cpp */,
 				0325032F259DA92A008BF227 /* SaucerEntity.hpp */,
 				03E25BB125CE642900B20839 /* ScoreEntity.cpp */,
 				03E25BB225CE642900B20839 /* ScoreEntity.hpp */,
-				0368714B25F121B200D281E4 /* HighScoreEntity.cpp */,
-				0368714C25F121B200D281E4 /* HighScoreEntity.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				03250330259DA92A008BF227 /* SaucerEntity.cpp in Sources */,
 				034F4C3024DA54A300975181 /* Manager.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* PhysicsComponent.hpp in Sources */,
+				03F57FE325F3D5F1000F6588 /* PlayerScoreEntity.cpp in Sources */,
 				03EAD8FE252EB2DA003E76B2 /* CircleComponent.cpp in Sources */,
 				03261720251ED61B00ABA175 /* SoundManager.cpp in Sources */,
 				03B6C8A224C8CD6C0067D03C /* MenuControlEntity.cpp in Sources */,
