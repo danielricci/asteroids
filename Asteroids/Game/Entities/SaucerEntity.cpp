@@ -7,15 +7,36 @@
 #include <Eigen/Dense>
 
 SaucerEntity::SaucerEntity() {
-    addComponent(new ShapeComponent({{5, -5}, {10, -15}, {25, -15}, {30, -5}}));
-    addComponent(new ShapeComponent({{0, 0}, {5, -5}, {30, -5}, {36, 1}}));
-    addComponent(new ShapeComponent({{0, 0}, {5, 5}, {30, 5}, {35, 0}}));
+    addComponent(new ShapeComponent({
+        // Top shape
+        {5, -5},
+        {10, -15},
+        {25, -15},
+        {30, -5},
+        {5, -5},
+        // Bottom shape
+        {0, 0},
+        {5, 5},
+        {30, 5},
+        {35, 0},
+        {30, -5}
+    }));
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
         ManagerHelper::clean(this);
     });
     addComponent(physicsComponent);
+}
+
+Eigen::AlignedBox2f SaucerEntity::getBounds() const {
+    ShapeComponent* shapeComponent = this->getComponent<ShapeComponent>();
+    SDL_FRect rectangle = shapeComponent->getRectangle();
+    
+    Eigen::AlignedBox2f alignedBox;
+    alignedBox.min() = this->getPosition() + Eigen::Vector2f(rectangle.x, rectangle.y);
+    alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
+    return alignedBox;
 }
 
 void SaucerEntity::update(float deltaTime) {
@@ -27,10 +48,4 @@ void SaucerEntity::update(float deltaTime) {
     position.x() += (velocity.x() * deltaTime);
     position.y() += (velocity.y() * deltaTime);
     setPosition(position);
-}
-
-void SaucerEntity::render(SDL_Renderer& renderer) {
-    for(ShapeComponent* shapeComponent : getComponents<ShapeComponent>()) {
-        shapeComponent->render(renderer);
-    }    
 }

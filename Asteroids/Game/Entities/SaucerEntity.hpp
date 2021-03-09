@@ -7,7 +7,7 @@ class SaucerEntity : public GameEntity {
 public:
     SaucerEntity();
     
-    virtual void render(SDL_Renderer& renderer) override;
+    virtual Eigen::AlignedBox2f getBounds() const override;
     virtual void update(float deltaTime) override;
 private:
     int speed = 65;

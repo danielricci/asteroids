@@ -3,7 +3,6 @@
 #include <SDL.h>
 
 PhysicsComponent::PhysicsComponent() {
-    // By default transforms are not visibly rendered
     setIsVisible(false);
 }
 
@@ -26,6 +25,10 @@ bool PhysicsComponent::isCollidedWith(const Entity& entity) const {
 }
 
 void PhysicsComponent::render(SDL_Renderer& renderer) {
+    if(!getIsVisible()) {
+        return;
+    }
+    
     Eigen::AlignedBox2f bounds = this->ownerEntity->getBounds();
 
     SDL_Rect rect;
@@ -37,8 +40,6 @@ void PhysicsComponent::render(SDL_Renderer& renderer) {
     SDL_Color color;
     SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0x00, 0xFF, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawPointF(&renderer, bounds.min().x(), bounds.min().y());
-    SDL_RenderDrawPointF(&renderer, bounds.max().x(), bounds.max().y());
     SDL_RenderDrawRect(&renderer, &rect);
     SDL_SetRenderDrawColor(&renderer, color.r, color.g, color.b, color.a);
 }

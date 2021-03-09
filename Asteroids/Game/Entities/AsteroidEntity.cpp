@@ -5,6 +5,7 @@
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
+#include <SDL.h>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     

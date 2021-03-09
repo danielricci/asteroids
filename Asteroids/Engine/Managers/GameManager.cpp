@@ -33,32 +33,31 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
                 PlayerEntity* playerEntity = new PlayerEntity();
-                playerEntity->setPosition({450, 450});
+                playerEntity->setPosition({450, 150});
                 addEntity(playerEntity);
 
-                AsteroidEntity* asteroidEntity = new AsteroidEntity();
-                addEntity(asteroidEntity);
-                asteroidEntity->setPosition({150, 550});
+//                AsteroidEntity* asteroidEntity = new AsteroidEntity();
+//                asteroidEntity->setPosition({150, 550});
+//                addEntity(asteroidEntity);
+//
+//                AsteroidEntity* a2 = new AsteroidEntity();
+//                a2->setOrientation(-45);
+//                a2->setPosition({150, 950});
+//                addEntity(a2);
+//
+//                AsteroidEntity* a3 = new AsteroidEntity();
+//                a3->setOrientation(-90);
+//                a3->setPosition({950, 550});
+//                addEntity(a3);
+//
+//                AsteroidEntity* a4 = new AsteroidEntity();
+//                a4->setOrientation(-135);
+//                a4->setPosition({950, 950});
+//                addEntity(a4);
                 
-                AsteroidEntity* a2 = new AsteroidEntity();
-                addEntity(a2);
-                a2->setPosition({150, 950});
-                a2->setOrientation(-45);
-
-                AsteroidEntity* a3 = new AsteroidEntity();
-                addEntity(a3);
-                a3->setPosition({950, 550});
-                a3->setOrientation(-90);
-
-                AsteroidEntity* a4 = new AsteroidEntity();
-                addEntity(a4);
-                a4->setPosition({950, 950});
-                a4->setOrientation(-135);
-
-                //SaucerEntity* e1 = new SaucerEntity();
-                //addEntity(e1);
-                //e1->setPosition({40, 450});
-                //a4->setOrientation(-180);
+                SaucerEntity* e1 = new SaucerEntity();
+                e1->setPosition({40, 450});
+                addEntity(e1);
             }
             break;
         }

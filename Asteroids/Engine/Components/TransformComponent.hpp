@@ -8,7 +8,6 @@
 class TransformComponent final : public Component {
 public:
     TransformComponent() {
-        // By default transforms are not visibly rendered
         setIsVisible(false);
     }
     
@@ -24,6 +23,10 @@ public:
     }
     
     virtual void render(SDL_Renderer& renderer) override {
+        if(!getIsVisible()) {
+            return;
+        }
+        
         SDL_Color color;
         SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
 

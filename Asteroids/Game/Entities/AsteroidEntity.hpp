@@ -2,7 +2,6 @@
 
 #include "Engine/Entities/GameEntity.hpp"
 #include <Eigen/Dense>
-#include <SDL.h>
 
 class AsteroidEntity : public GameEntity {
 public:
