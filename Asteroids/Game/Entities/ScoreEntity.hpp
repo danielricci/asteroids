@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Entities/GameEntity.hpp"
-#include <SDL.h>
 #include <string>
 
 class ScoreEntity : public GameEntity {
@@ -11,10 +10,13 @@ protected:
     ScoreEntity() = default;
     
     void addScore(int score);
+    void setMaxScore(int maxScore);
+    void setPrecision(int precision);
+    
     virtual std::string toString() const;
 private:
     int score = 0;
     
-    const int MAX_SCORE = 999999;
-    const int PRECISION = 9;
+    int maxScore = 999999;
+    int precision = 9;
 };
