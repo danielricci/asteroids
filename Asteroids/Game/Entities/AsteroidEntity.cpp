@@ -32,6 +32,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this, stageNumeral](Entity* sender, EventArgs args) {
         if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
+            ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs());
             if(this->stage != AsteroidStage::STAGE_LAST) {
                 for(int i = 0, j = stageNumeral * 2; i < j; ++i) {
                     AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(stageNumeral + 1));
@@ -40,7 +41,6 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
                     ManagerHelper::get<GameManager>()->addEntity(asteroid);
                 }
             }
-            ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs());
             ManagerHelper::clean(this);
         }
     });

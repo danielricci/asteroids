@@ -82,6 +82,11 @@ void GameManager::update(const SDL_Event& event) {
                 addEntity(asteroidEntity);
             }
             else if(event.key.keysym.sym == SDLK_s) {
+                SaucerEntity* e1 = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL);
+                e1->setPosition({10, 350});
+                addEntity(e1);
+            }
+            else if(event.key.keysym.sym == SDLK_d) {
                 SaucerEntity* e1 = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_LARGE);
                 e1->setPosition({40, 350});
                 addEntity(e1);

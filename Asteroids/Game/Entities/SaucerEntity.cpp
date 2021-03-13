@@ -8,13 +8,36 @@
 #include <SDL.h>
 
 SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
+    
+    float scaleFactor = 1.f;
+    switch(saucerType) {
+        case SaucerType::SAUCER_SMALL: {
+            scaleFactor = 0.95;
+            break;
+        }
+        case SaucerType::SAUCER_LARGE: {
+            scaleFactor = 1.25;
+            break;
+        }
+    }
+    
     addComponent(new ShapeComponent({
         // Top shape
-        {5, -5}, {10, -12}, {25, -12}, {30, -5}, {5, -5},
+        scaleFactor * Eigen::Vector2f(5, -5),
+        scaleFactor * Eigen::Vector2f(10, -12),
+        scaleFactor * Eigen::Vector2f(25, -12),
+        scaleFactor * Eigen::Vector2f(30, -5),
+        scaleFactor * Eigen::Vector2f(5, -5),
         // Middle Shape
-        {0, 0}, {35, 0}, {30, -5}, {5, -5},
+        scaleFactor * Eigen::Vector2f(-5, 0),
+        scaleFactor * Eigen::Vector2f(40, 0),
+        scaleFactor * Eigen::Vector2f(30, -5),
+        scaleFactor * Eigen::Vector2f(5, -5),
+        scaleFactor * Eigen::Vector2f(-5, 0),
         // Bottom shape
-        {0, 0}, {5, 5}, {30, 5}, {35, 0},
+        scaleFactor * Eigen::Vector2f(5, 5),
+        scaleFactor * Eigen::Vector2f(30, 5),
+        scaleFactor * Eigen::Vector2f(40, 0)
     }));
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();

@@ -1,6 +1,7 @@
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
+
 #include "Game/Entities/PlayerScoreEntity.hpp"
 
 PlayerScoreEntity::PlayerScoreEntity() {
@@ -28,6 +29,20 @@ void PlayerScoreEntity::update(const SDL_Event& event) {
                     }
                     case AsteroidEntity::AsteroidStage::STAGE_LAST: {
                         addScore(125);
+                        break;
+                    }
+                }
+                break;
+            }
+            case ManagerHelper::EVENT_SAUCER_HIT: {
+                SaucerEntity* saucerEntity = static_cast<SaucerEntity*>(event.user.data1);
+                switch(saucerEntity->saucerType) {
+                    case SaucerEntity::SaucerType::SAUCER_SMALL: {
+                        addScore(1000);
+                        break;
+                    }
+                    case SaucerEntity::SaucerType::SAUCER_LARGE: {
+                        addScore(200);
                         break;
                     }
                 }
