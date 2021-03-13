@@ -5,21 +5,16 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 #include <Eigen/Dense>
+#include <SDL.h>
 
 SaucerEntity::SaucerEntity() {
     addComponent(new ShapeComponent({
         // Top shape
-        {5, -5},
-        {10, -15},
-        {25, -15},
-        {30, -5},
-        {5, -5},
+        {5, -5}, {10, -12}, {25, -12}, {30, -5}, {5, -5},
+        // Middle Shape
+        {0, 0}, {35, 0}, {30, -5}, {5, -5},
         // Bottom shape
-        {0, 0},
-        {5, 5},
-        {30, 5},
-        {35, 0},
-        {30, -5}
+        {0, 0}, {5, 5}, {30, 5}, {35, 0},
     }));
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();

@@ -1,14 +1,18 @@
 #pragma once
 
 #include "Engine/Entities/GameEntity.hpp"
-#include <SDL.h>
 
 class SaucerEntity : public GameEntity {
 public:
+    enum class SaucerType {
+        SAUCER_SMALL = 1,
+        SAUCER_LARGE = 2
+    };
+    
     SaucerEntity();
     
     virtual Eigen::AlignedBox2f getBounds() const override;
     virtual void update(float deltaTime) override;
 private:
-    int speed = 65;
+    int speed = 120;
 };

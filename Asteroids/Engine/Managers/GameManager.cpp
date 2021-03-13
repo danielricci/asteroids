@@ -36,9 +36,9 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 playerEntity->setPosition({450, 150});
                 addEntity(playerEntity);
 
-//                AsteroidEntity* asteroidEntity = new AsteroidEntity();
-//                asteroidEntity->setPosition({150, 550});
-//                addEntity(asteroidEntity);
+                AsteroidEntity* asteroidEntity = new AsteroidEntity();
+                asteroidEntity->setPosition({750, 550});
+                addEntity(asteroidEntity);
 //
 //                AsteroidEntity* a2 = new AsteroidEntity();
 //                a2->setOrientation(-45);
@@ -56,8 +56,16 @@ void GameManager::setGameState(GameManager::GameState gameState) {
 //                addEntity(a4);
                 
                 SaucerEntity* e1 = new SaucerEntity();
-                e1->setPosition({40, 450});
+                e1->setPosition({40, 350});
                 addEntity(e1);
+                
+                SaucerEntity* e2 = new SaucerEntity();
+                e2->setPosition({70, 450});
+                addEntity(e2);
+                
+                SaucerEntity* e3 = new SaucerEntity();
+                e3->setPosition({100, 550});
+                addEntity(e3);
             }
             break;
         }
