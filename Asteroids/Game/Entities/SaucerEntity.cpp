@@ -7,7 +7,7 @@
 #include <Eigen/Dense>
 #include <SDL.h>
 
-SaucerEntity::SaucerEntity() {
+SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
     addComponent(new ShapeComponent({
         // Top shape
         {5, -5}, {10, -12}, {25, -12}, {30, -5}, {5, -5},
@@ -19,6 +19,7 @@ SaucerEntity::SaucerEntity() {
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
+        ManagerHelper::broadcast(ManagerHelper::EVENT_SAUCER_HIT, this, EventArgs());
         ManagerHelper::clean(this);
     });
     addComponent(physicsComponent);

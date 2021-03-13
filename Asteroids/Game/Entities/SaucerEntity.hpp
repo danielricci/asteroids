@@ -9,10 +9,12 @@ public:
         SAUCER_LARGE = 2
     };
     
-    SaucerEntity();
+    SaucerEntity(SaucerType saucerType);
     
     virtual Eigen::AlignedBox2f getBounds() const override;
     virtual void update(float deltaTime) override;
+    
+    const SaucerType saucerType;
 private:
     int speed = 120;
 };

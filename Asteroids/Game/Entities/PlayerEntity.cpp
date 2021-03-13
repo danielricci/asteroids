@@ -30,7 +30,7 @@ PlayerEntity::PlayerEntity() {
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
-        ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_DEATH, this, EventArgs::Empty());
+        ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
         onEventHyperspace();
     });
     addComponent(physicsComponent);

@@ -55,7 +55,7 @@ void LivesEntity::render(SDL_Renderer& renderer) {
 void LivesEntity::update(const SDL_Event& event) {
     if(event.type == SDL_USEREVENT) {
         switch(event.user.code) {
-            case ManagerHelper::EVENT_PLAYER_DEATH: {
+            case ManagerHelper::EVENT_PLAYER_HIT: {
                 addScore(-1);
                 break;
             }
