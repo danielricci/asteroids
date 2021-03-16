@@ -5,5 +5,5 @@
 class UIManager : public Manager {
 public:
     UIManager();
-    virtual ~UIManager();    
+    virtual ~UIManager();
 };

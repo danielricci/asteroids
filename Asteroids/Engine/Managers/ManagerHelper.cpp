@@ -3,6 +3,9 @@
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/Entities/HighScoreEntity.hpp"
+#include "Game/Entities/LivesEntity.hpp"
+#include "Game/Entities/PlayerScoreEntity.hpp"
 #include <SDL.h>
 #include <set>
 
@@ -64,7 +67,12 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     //gameManager->setGameState(GameManager::GameState::PAUSED);
     managers.push_back(gameManager);
     managers.push_back(new InputManager());
-    managers.push_back(new UIManager());
+    
+    UIManager* uiManager = new UIManager();
+    uiManager->addEntity(new HighScoreEntity());
+    uiManager->addEntity(new LivesEntity());
+    uiManager->addEntity(new PlayerScoreEntity());
+    managers.push_back(uiManager);
 }
 
 void ManagerHelper::render() {
@@ -77,6 +85,7 @@ void ManagerHelper::render() {
             manager->render(*renderer);
         }
     }
+    
     SDL_RenderPresent(renderer);
 }
 
