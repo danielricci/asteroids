@@ -1,5 +1,5 @@
 #include "Engine/Components/TextComponent.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include <Eigen/Dense>

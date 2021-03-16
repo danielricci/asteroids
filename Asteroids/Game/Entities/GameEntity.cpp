@@ -1,7 +1,7 @@
 #include "Engine/Components/PhysicsComponent.hpp"
-#include "Engine/Entities/GameEntity.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
+#include "Game/Entities/GameEntity.hpp"
 
 void GameEntity::collisionCheck(Entity& entity) {
     PhysicsComponent* physicsComponent = getComponent<PhysicsComponent>();

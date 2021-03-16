@@ -6,7 +6,7 @@
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include <cmath>
 #include <Eigen/Dense>

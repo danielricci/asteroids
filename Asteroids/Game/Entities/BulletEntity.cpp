@@ -4,7 +4,7 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include <cmath>
 
 BulletEntity::BulletEntity() {

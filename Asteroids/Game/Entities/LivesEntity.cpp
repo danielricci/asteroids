@@ -1,6 +1,6 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TextComponent.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 

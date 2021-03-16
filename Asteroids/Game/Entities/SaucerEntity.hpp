@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Entities/GameEntity.hpp"
+#include "Game/Entities/GameEntity.hpp"
 
 class SaucerEntity : public GameEntity {
 public:

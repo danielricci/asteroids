@@ -2,7 +2,7 @@
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"

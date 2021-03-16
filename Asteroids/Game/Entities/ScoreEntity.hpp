@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Entities/GameEntity.hpp"
+#include "Game/Entities/GameEntity.hpp"
 #include <string>
 
 class ScoreEntity : public GameEntity {

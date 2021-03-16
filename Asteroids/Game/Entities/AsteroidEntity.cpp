@@ -2,7 +2,7 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include <SDL.h>

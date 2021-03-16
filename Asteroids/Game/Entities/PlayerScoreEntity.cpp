@@ -1,5 +1,5 @@
 #include "Engine/Components/TextComponent.hpp"
-#include "Engine/Managers/ManagerHelper.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"

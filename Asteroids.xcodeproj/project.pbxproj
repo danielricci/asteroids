@@ -203,8 +203,6 @@
 			children = (
 				035DB9DF238B75D90025B2F7 /* Entity.cpp */,
 				03EFD237237E48D9006EF2A5 /* Entity.hpp */,
-				032BB7BF257BD5B800846004 /* GameEntity.cpp */,
-				032BB7C0257BD5B800846004 /* GameEntity.hpp */,
 				03B6C8A124C8CD6C0067D03C /* MenuControlEntity.cpp */,
 				0387FD8624A59CE70019BE47 /* MenuControlEntity.hpp */,
 				03D597B424C5FA3A001CE9CC /* TextMenuControlEntity.cpp */,
@@ -222,8 +220,6 @@
 				03219D462406B5F70050588A /* InputManager.hpp */,
 				034F4C2F24DA54A300975181 /* Manager.cpp */,
 				0387FD9324A96AC60019BE47 /* Manager.hpp */,
-				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
-				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
 				037ACE68258DC7570031C069 /* ManagerInformation.hpp */,
 				0326171E251ED61B00ABA175 /* SoundManager.cpp */,
 				0326171F251ED61B00ABA175 /* SoundManager.hpp */,
@@ -243,6 +239,8 @@
 				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
 				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
 				039E6C16234E30B0004CCD78 /* main.cpp */,
+				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
+				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -322,6 +320,8 @@
 				03571955255B1873004D09BB /* AsteroidEntity.hpp */,
 				03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */,
 				03EAD8FB252DE5A7003E76B2 /* BulletEntity.hpp */,
+				032BB7BF257BD5B800846004 /* GameEntity.cpp */,
+				032BB7C0257BD5B800846004 /* GameEntity.hpp */,
 				0368714B25F121B200D281E4 /* HighScoreEntity.cpp */,
 				0368714C25F121B200D281E4 /* HighScoreEntity.hpp */,
 				035804F625E0D0D700EC9AF6 /* LivesEntity.cpp */,
