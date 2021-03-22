@@ -16,6 +16,7 @@ public:
 private:
     void onEventHyperspace();
     void onEventShoot();
+    void onEventThrust(bool isThrustActivated);
     
     const float ACCELERATION = 7.5f;
     const float MAX_SPEED = 475.f;
