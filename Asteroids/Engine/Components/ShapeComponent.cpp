@@ -8,7 +8,6 @@ ShapeComponent::ShapeComponent(const std::vector<Eigen::Vector2f>& vertices) {
     this->vertices = vertices;
 }
 
-
 Eigen::Vector2f& ShapeComponent::operator[](int index) {
     return vertices.at(index);
 }
@@ -19,6 +18,18 @@ void ShapeComponent::addVertex(const Eigen::Vector2f& vertex) {
 
 void ShapeComponent::clear() {
     vertices.clear();
+}
+
+std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> ShapeComponent::getEdges() const {
+    if(edges.empty()) {
+        //std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
+        for(int i = 0; i < getSize() - 1; ++i) {
+            this->edges.empl
+            //this->edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>(vertices.at(i), vertices.at(i + 1)));
+        }
+    }
+    
+    return edges;
 }
 
 SDL_FRect ShapeComponent::getRectangle() const {

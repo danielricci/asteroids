@@ -15,9 +15,12 @@ public:
     
     virtual void addVertex(const Eigen::Vector2f& vertex);
     void clear();
+    std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> getEdges() const;
     SDL_FRect getRectangle() const;
     unsigned long getSize() const;
     virtual void render(SDL_Renderer& renderer) override;    
 protected:
     std::vector<Eigen::Vector2f> vertices;
+private:
+    std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
 };

@@ -35,11 +35,11 @@ PlayerEntity::PlayerEntity() {
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
         ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
-             
-        std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
-        for(int i = 0; i < playerShip->getSize() - 1; ++i) {
-            edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>((*playerShip)[i], (*playerShip)[i + 1]));
-        }
+        auto edges = playerShip->getEdges();
+//        std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
+//        for(int i = 0; i < playerShip->getSize() - 1; ++i) {
+//            edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>((*playerShip)[i], (*playerShip)[i + 1]));
+//        }
         
         // SDL_Timer to cause the specific line to run?
         
