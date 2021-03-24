@@ -20,7 +20,6 @@ PlayerEntity::PlayerEntity() {
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
     playerInputComponent->eventOnThrust = std::bind(&PlayerEntity::onEventThrust, this, std::placeholders::_1);
-
     addComponent(playerInputComponent);
     
     ShapeComponent* playerShip = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
@@ -35,21 +34,11 @@ PlayerEntity::PlayerEntity() {
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
         ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
-        auto edges = playerShip->getEdges();
 //        std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
 //        for(int i = 0; i < playerShip->getSize() - 1; ++i) {
 //            edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>((*playerShip)[i], (*playerShip)[i + 1]));
 //        }
-        
-        // SDL_Timer to cause the specific line to run?
-        
-        int y = 55;
-        
-//        Eigen::Vector2f one = (*playerShip)[0];
-//        one.y() -= 5;
-//        one.y() -= 5;
-//        (*playerShip)[0] = one;
-//        (*playerShip)[4] = one;
+        //auto edges = playerShip->getEdges();
     });
     addComponent(physicsComponent);
 }
@@ -74,6 +63,7 @@ void PlayerEntity::onEventHyperspace() {
     std::mt19937 generator(static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()));
     setPosition({widthDistribution(generator), heightDistribution(generator)});
 }
+
 void PlayerEntity::onEventThrust(bool isThrustActivated) {
     getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setIsVisible(isThrustActivated);
 }

@@ -20,18 +20,6 @@ void ShapeComponent::clear() {
     vertices.clear();
 }
 
-std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> ShapeComponent::getEdges() const {
-    if(edges.empty()) {
-        //std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
-        for(int i = 0; i < getSize() - 1; ++i) {
-            this->edges.empl
-            //this->edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>(vertices.at(i), vertices.at(i + 1)));
-        }
-    }
-    
-    return edges;
-}
-
 SDL_FRect ShapeComponent::getRectangle() const {
     float xMin = 0;
     float yMin = 0;
