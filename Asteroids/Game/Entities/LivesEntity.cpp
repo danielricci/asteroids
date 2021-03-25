@@ -1,17 +1,20 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TextComponent.hpp"
+#include "Engine/Components/TransformComponent.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 
 LivesEntity::LivesEntity() {
-    setPosition(Eigen::Vector2f(310, 80));
+    // TODO: Calculate the coordinates with the rotation applied so this doesnt have to be done every frame
+    setOrientation(TransformComponent::ROTATION_TOP);
+    setPosition(Eigen::Vector2f(310, 90));
 
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
     textComponent->setSize(32);
     addComponent(textComponent);
     
-    ShapeComponent* shapeComponent = new ShapeComponent({{0, 0}, {10, 24}, {0, 20}, {-10, 24}, {0, 0}});
+    ShapeComponent* shapeComponent = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 5}, {-8, -5}, {-12, -10}, {12, 0}});
     shapeComponent->setPosition(INITIAL_POSITION_SHAPE);
     addComponent(shapeComponent);
     

@@ -22,7 +22,7 @@ PlayerEntity::PlayerEntity() {
     playerInputComponent->eventOnThrust = std::bind(&PlayerEntity::onEventThrust, this, std::placeholders::_1);
     addComponent(playerInputComponent);
     
-    ShapeComponent* playerShip = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 0}, {-12, -10}, {12, 0}});
+    ShapeComponent* playerShip = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 5}, {-8, -5}, {-12, -10}, {12, 0}});
     playerShip->setName(PLAYER_SHIP);
     addComponent(playerShip);
         
