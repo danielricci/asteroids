@@ -33,7 +33,6 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
                 PlayerEntity* playerEntity = new PlayerEntity();
-                playerEntity->setPosition({450, 150});
                 addEntity(playerEntity);
             }
             break;
@@ -73,7 +72,6 @@ void GameManager::update(const SDL_Event& event) {
             }
             else if(event.key.keysym.sym == SDLK_p) {
                 PlayerEntity* playerEntity = new PlayerEntity();
-                playerEntity->setPosition({450, 150});
                 addEntity(playerEntity);
             }
             else if(event.key.keysym.sym == SDLK_a) {

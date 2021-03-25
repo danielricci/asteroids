@@ -16,6 +16,10 @@
 PlayerEntity::PlayerEntity() {
     setOrientation(TransformComponent::ROTATION_TOP);
     
+    // TODO: Not true center but close enough for now
+    SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
+    setPosition(Eigen::Vector2f(windowSize.w / 2, windowSize.h / 2));
+    
     PlayerInputComponent* playerInputComponent = new PlayerInputComponent();
     playerInputComponent->eventOnShoot = std::bind(&PlayerEntity::onEventShoot, this);
     playerInputComponent->eventOnHyperspace = std::bind(&PlayerEntity::onEventHyperspace, this);
@@ -32,6 +36,7 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerThrust);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
+    physicsComponent->setIsVisible(true);
     physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
         ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
 //        std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;

@@ -61,11 +61,8 @@ SDL_Renderer* ManagerHelper::getRenderer() {
 
 void ManagerHelper::initialize(const char* const title, int width, int height) {
     clean();
+    
     managers.push_back(new WindowManager(title, width, height));
-    GameManager* gameManager = new GameManager();
-    gameManager->setGameState(GameManager::GameState::STARTED);
-    //gameManager->setGameState(GameManager::GameState::PAUSED);
-    managers.push_back(gameManager);
     managers.push_back(new InputManager());
     
     UIManager* uiManager = new UIManager();
@@ -73,6 +70,10 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     uiManager->addEntity(new LivesEntity());
     uiManager->addEntity(new PlayerScoreEntity());
     managers.push_back(uiManager);
+    
+    GameManager* gameManager = new GameManager();
+    gameManager->setGameState(GameManager::GameState::STARTED);
+    managers.push_back(gameManager);
 }
 
 void ManagerHelper::render() {

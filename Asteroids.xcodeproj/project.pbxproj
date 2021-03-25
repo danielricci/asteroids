@@ -237,7 +237,6 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				03CAE8FF260448EF00ACC701 /* Views */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
 				03EFD235237E48BA006EF2A5 /* Entities */,
 				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
@@ -245,6 +244,7 @@
 				039E6C16234E30B0004CCD78 /* main.cpp */,
 				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
 				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+				03CAE8FF260448EF00ACC701 /* Views */,
 			);
 			path = Game;
 			sourceTree = "<group>";
