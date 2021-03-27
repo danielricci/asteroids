@@ -47,6 +47,7 @@
 		03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* GameWorld.cpp */; };
 		03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F006D424D3056700260594 /* PlayerEntity.cpp */; };
 		03F57FE325F3D5F1000F6588 /* PlayerScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */; };
+		03FFB50E260EBE7C00F4FE53 /* CopyrightEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FFB50C260EBE7C00F4FE53 /* CopyrightEntity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -151,6 +152,8 @@
 		03F006D524D3056700260594 /* PlayerEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerEntity.hpp; sourceTree = "<group>"; };
 		03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerScoreEntity.cpp; sourceTree = "<group>"; };
 		03F57FE225F3D5F1000F6588 /* PlayerScoreEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerScoreEntity.hpp; sourceTree = "<group>"; };
+		03FFB50C260EBE7C00F4FE53 /* CopyrightEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyrightEntity.cpp; sourceTree = "<group>"; };
+		03FFB50D260EBE7C00F4FE53 /* CopyrightEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CopyrightEntity.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +332,8 @@
 		03EFD235237E48BA006EF2A5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				03FFB50C260EBE7C00F4FE53 /* CopyrightEntity.cpp */,
+				03FFB50D260EBE7C00F4FE53 /* CopyrightEntity.hpp */,
 				03571954255B1873004D09BB /* AsteroidEntity.cpp */,
 				03571955255B1873004D09BB /* AsteroidEntity.hpp */,
 				03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */,
@@ -464,6 +469,7 @@
 				0387FD8B24A78D220019BE47 /* MenuEntity.cpp in Sources */,
 				032BB7C1257BD5B800846004 /* GameEntity.cpp in Sources */,
 				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
+				03FFB50E260EBE7C00F4FE53 /* CopyrightEntity.cpp in Sources */,
 				033CD2D424EB72EB00EBA382 /* PlayerInputComponent.cpp in Sources */,
 				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,

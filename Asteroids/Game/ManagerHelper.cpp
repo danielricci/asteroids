@@ -3,6 +3,7 @@
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
+#include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
@@ -69,6 +70,7 @@ void ManagerHelper::initialize(const char* const title, int width, int height) {
     uiManager->addEntity(new HighScoreEntity());
     uiManager->addEntity(new LivesEntity());
     uiManager->addEntity(new PlayerScoreEntity());
+    uiManager->addEntity(new CopyrightEntity());
     managers.push_back(uiManager);
     
     GameManager* gameManager = new GameManager();
@@ -83,6 +85,9 @@ void ManagerHelper::render() {
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     for(Manager* manager : managers) {
         if(manager != nullptr) {
+            if(dynamic_cast<UIManager*>(manager)) {
+                int x = 55;
+            }
             manager->render(*renderer);
         }
     }

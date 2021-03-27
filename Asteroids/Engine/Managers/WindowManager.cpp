@@ -40,6 +40,8 @@ SDL_Renderer* WindowManager::getRenderer() const {
 
 SDL_Rect WindowManager::getWindowSize() {
     SDL_Rect rectangle;
+    rectangle.x = 0;
+    rectangle.y = 0;
     SDL_GetWindowSize(window, &rectangle.w, &rectangle.h);
     return rectangle;
 }
