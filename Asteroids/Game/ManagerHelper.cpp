@@ -85,9 +85,6 @@ void ManagerHelper::render() {
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     for(Manager* manager : managers) {
         if(manager != nullptr) {
-            if(dynamic_cast<UIManager*>(manager)) {
-                int x = 55;
-            }
             manager->render(*renderer);
         }
     }

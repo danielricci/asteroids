@@ -12,7 +12,12 @@ void GameManager::handleCollision() {
         std::for_each(entities.begin(), entities.end(), [&pair](const auto& thisPair) {
             // It might be too naive to not send collision messages to destroyed entities
             if(pair.first != thisPair.first && pair.second.state != ManagerInformation::State::Destroy && thisPair.second.state != ManagerInformation::State::Destroy) {
-                pair.first->collisionCheck(*(thisPair.first));
+                // TODO: Instead of doing this cast, see if there is a way to change the type of the game entity at runtime (templates, generics, etc)
+                GameEntity* gameEntityFirst = dynamic_cast<GameEntity*>(pair.first);
+                GameEntity* gameEntitySecond = dynamic_cast<GameEntity*>(thisPair.first);
+                if(gameEntityFirst != nullptr && gameEntitySecond != nullptr) {
+                    gameEntityFirst->collisionCheck(*gameEntitySecond);
+                }
             }
         });
     }

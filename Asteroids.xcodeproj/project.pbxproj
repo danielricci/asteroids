@@ -48,6 +48,7 @@
 		03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F006D424D3056700260594 /* PlayerEntity.cpp */; };
 		03F57FE325F3D5F1000F6588 /* PlayerScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */; };
 		03FFB50E260EBE7C00F4FE53 /* CopyrightEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FFB50C260EBE7C00F4FE53 /* CopyrightEntity.cpp */; };
+		03FFB512260ECA4B00F4FE53 /* ParticleEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FFB510260ECA4B00F4FE53 /* ParticleEntity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,6 +155,8 @@
 		03F57FE225F3D5F1000F6588 /* PlayerScoreEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerScoreEntity.hpp; sourceTree = "<group>"; };
 		03FFB50C260EBE7C00F4FE53 /* CopyrightEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyrightEntity.cpp; sourceTree = "<group>"; };
 		03FFB50D260EBE7C00F4FE53 /* CopyrightEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CopyrightEntity.hpp; sourceTree = "<group>"; };
+		03FFB510260ECA4B00F4FE53 /* ParticleEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEntity.cpp; sourceTree = "<group>"; };
+		03FFB511260ECA4B00F4FE53 /* ParticleEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParticleEntity.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +250,7 @@
 				039E6C16234E30B0004CCD78 /* main.cpp */,
 				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
 				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+				03FFB50F260ECA1F00F4FE53 /* Particles */,
 				03CAE8FF260448EF00ACC701 /* Views */,
 			);
 			path = Game;
@@ -367,6 +371,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		03FFB50F260ECA1F00F4FE53 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				03FFB510260ECA4B00F4FE53 /* ParticleEntity.cpp */,
+				03FFB511260ECA4B00F4FE53 /* ParticleEntity.hpp */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -475,6 +488,7 @@
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
 				03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */,
+				03FFB512260ECA4B00F4FE53 /* ParticleEntity.cpp in Sources */,
 				0368714D25F121B200D281E4 /* HighScoreEntity.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
 				03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */,

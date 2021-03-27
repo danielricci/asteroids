@@ -1,6 +1,6 @@
 #include "Engine/Components/PhysicsComponent.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Engine/Managers/WindowManager.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/GameEntity.hpp"
 
 void GameEntity::collisionCheck(Entity& entity) {

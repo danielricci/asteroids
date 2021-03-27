@@ -11,7 +11,7 @@ class Entity {
 public:
     virtual ~Entity();
     
-    virtual void collisionCheck(Entity& entity) = 0;
+    // TODO: Put into the gameentity
     virtual Eigen::AlignedBox2f getBounds() const = 0;
     virtual void render(SDL_Renderer& renderer) = 0;
     virtual void update(float deltaTime) = 0;
