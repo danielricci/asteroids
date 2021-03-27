@@ -36,7 +36,6 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerThrust);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
-    physicsComponent->setIsVisible(true);
     physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
         ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
 //        std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
