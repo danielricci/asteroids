@@ -38,16 +38,10 @@ PlayerEntity::PlayerEntity() {
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
         ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
-//        std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
-//        for(int i = 0; i < playerShip->getSize() - 1; ++i) {
-//            edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>((*playerShip)[i], (*playerShip)[i + 1]));
-//        }
-        //auto edges = playerShip->getEdges();
     });
     addComponent(physicsComponent);
     
     particle = new PlayerExplosionParticle(this);
-    particle->setOrientation(getOrientation());
 }
 
 PlayerEntity::~PlayerEntity() {
@@ -109,6 +103,8 @@ void PlayerEntity::update(const SDL_Event& event) {
             break;
         }
     }
+    
+    particle->update(event);
 }
 
 void PlayerEntity::update(float deltaTime) {
@@ -142,4 +138,6 @@ void PlayerEntity::update(float deltaTime) {
         position.y() += (velocity.y() * deltaTime);
         setPosition(position);
     }
+    
+    particle->update(deltaTime);
 }
