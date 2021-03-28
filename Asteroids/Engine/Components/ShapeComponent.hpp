@@ -12,6 +12,7 @@ public:
     ShapeComponent(const std::vector<Eigen::Vector2f>& vertices);
     
     Eigen::Vector2f& operator[](int index);
+    const Eigen::Vector2f& operator[](int index) const;
     
     virtual void addVertex(const Eigen::Vector2f& vertex);
     void clear();

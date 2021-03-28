@@ -11,11 +11,15 @@ class Entity {
 public:
     virtual ~Entity();
     
-    // TODO: Put into the gameentity
+    // TODO: Put into the game entity ================
     virtual Eigen::AlignedBox2f getBounds() const = 0;
+    // ===============================================
+
+    // TODO: Put this into its own interface ==========
     virtual void render(SDL_Renderer& renderer) = 0;
     virtual void update(float deltaTime) = 0;
     virtual void update(const SDL_Event& event) = 0;
+    // ================================================
 
     void addComponent(Component* Component);
     std::list<Component*> getComponents();
@@ -24,7 +28,7 @@ public:
     virtual Eigen::Vector2f getPosition() const;
     Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition = true) const;
     virtual void setDimensions(const Eigen::Vector2f& dimensions);
-    void setOrientation(int orientation);
+    virtual void setOrientation(int orientation);
     virtual void setPosition(const Eigen::Vector2f& position);
     
     template<typename T> T* getComponent(const std::string& name = std::string()) const {

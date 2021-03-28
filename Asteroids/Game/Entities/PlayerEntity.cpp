@@ -45,6 +45,16 @@ PlayerEntity::PlayerEntity() {
         //auto edges = playerShip->getEdges();
     });
     addComponent(physicsComponent);
+    
+    particle = new PlayerExplosionParticle(this);
+    particle->setOrientation(getOrientation());
+}
+
+PlayerEntity::~PlayerEntity() {
+    if(particle != nullptr) {
+        delete particle;
+        particle = nullptr;
+    }
 }
 
 Eigen::AlignedBox2f PlayerEntity::getBounds() const {
@@ -85,6 +95,7 @@ void PlayerEntity::onEventShoot() {
 
 void PlayerEntity::render(SDL_Renderer& renderer) {
     GameEntity::render(renderer);
+    particle->render(renderer);
 }
 
 void PlayerEntity::update(const SDL_Event& event) {

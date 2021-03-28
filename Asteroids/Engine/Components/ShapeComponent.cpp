@@ -12,6 +12,10 @@ Eigen::Vector2f& ShapeComponent::operator[](int index) {
     return vertices.at(index);
 }
 
+const Eigen::Vector2f& ShapeComponent::operator[](int index) const {
+    return vertices.at(index);
+}
+
 void ShapeComponent::addVertex(const Eigen::Vector2f& vertex) {
     vertices.push_back(vertex);
 }
