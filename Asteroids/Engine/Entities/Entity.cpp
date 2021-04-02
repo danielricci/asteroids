@@ -40,7 +40,7 @@ Eigen::Vector2f Entity::getPosition() const {
     return transformComponent == nullptr ? Eigen::Vector2f::Zero() : transformComponent->position;
 }
 
-Eigen::Vector2f Entity::getPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition) const {
+Eigen::Vector2f Entity::getWorldPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition) const {
     float rotation = TransformComponent::toRadians(getOrientation());
     float cosResult = std::cos(rotation);
     float sinResult = std::sin(rotation);

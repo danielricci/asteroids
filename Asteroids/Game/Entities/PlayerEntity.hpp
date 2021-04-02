@@ -1,20 +1,16 @@
 #pragma once
 
 #include "Game/Entities/GameEntity.hpp"
-#include "Game/Particles/PlayerExplosionParticle.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
 #include <string>
 
-class PlayerExplosionParticle;
-
 class PlayerEntity : public GameEntity {
 public:
     PlayerEntity();
-    virtual ~PlayerEntity();
+    virtual ~PlayerEntity() = default;
     
     virtual Eigen::AlignedBox2f getBounds() const override;
-    virtual void render(SDL_Renderer& renderer) override;
     virtual void update(const SDL_Event& event) override;
     virtual void update(float deltaTime) override;
     
@@ -27,6 +23,4 @@ private:
     
     const float ACCELERATION = 7.5f;
     const float MAX_SPEED = 475.f;
-    
-    PlayerExplosionParticle* particle = nullptr;
 };

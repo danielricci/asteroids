@@ -26,7 +26,7 @@ public:
     virtual Eigen::Vector2f getDimensions() const;
     float getOrientation() const;
     virtual Eigen::Vector2f getPosition() const;
-    Eigen::Vector2f getPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition = true) const;
+    Eigen::Vector2f getWorldPosition(const Eigen::Vector2f& vertex, bool includeWorldPosition = true) const;
     virtual void setDimensions(const Eigen::Vector2f& dimensions);
     virtual void setOrientation(int orientation);
     virtual void setPosition(const Eigen::Vector2f& position);

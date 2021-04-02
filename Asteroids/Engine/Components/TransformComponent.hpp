@@ -31,10 +31,10 @@ public:
         SDL_GetRenderDrawColor(&renderer, &color.r, &color.g, &color.b, &color.a);
 
         Eigen::Vector2f position = ownerEntity->getPosition();
-        Eigen::Vector2f xPoint2 = ownerEntity->getPosition({30, 0});
+        Eigen::Vector2f xPoint2 = ownerEntity->getWorldPosition({30, 0});
         SDL_SetRenderDrawColor(&renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawLine(&renderer, position.x(), position.y(), xPoint2.x(), xPoint2.y());
-        Eigen::Vector2f yPoint2 = ownerEntity->getPosition({0, 30});
+        Eigen::Vector2f yPoint2 = ownerEntity->getWorldPosition({0, 30});
         SDL_SetRenderDrawColor(&renderer, 0x00, 0xFF, 0x00, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawLine(&renderer, position.x(), position.y(), yPoint2.x(), yPoint2.y());
 

@@ -3,13 +3,13 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
+#include "Engine/System/EventArgs.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/ManagerHelper.hpp"
-#include "Engine/System/EventArgs.hpp"
+#include "Game/Particles/PlayerExplosionParticle.hpp"
 #include <cmath>
-#include <Eigen/Dense>
 #include <random>
 #include <vector>
 
@@ -37,18 +37,11 @@ PlayerEntity::PlayerEntity() {
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
+        ManagerHelper::get<GameManager>()->addEntity(new PlayerExplosionParticle());
         ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
+        ManagerHelper::clean(this);
     });
     addComponent(physicsComponent);
-    
-    particle = new PlayerExplosionParticle(this);
-}
-
-PlayerEntity::~PlayerEntity() {
-    if(particle != nullptr) {
-        delete particle;
-        particle = nullptr;
-    }
 }
 
 Eigen::AlignedBox2f PlayerEntity::getBounds() const {
@@ -81,21 +74,21 @@ void PlayerEntity::onEventShoot() {
     bulletEntity->setOrientation(getOrientation());
 
     ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);
-    Eigen::Vector2f finalFinalPosition = getPosition((*playerShapeComponent)[0]);
+    Eigen::Vector2f finalFinalPosition = getWorldPosition((*playerShapeComponent)[0]);
     bulletEntity->setPosition({finalFinalPosition.x(), finalFinalPosition.y()});
     
     ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
 }
 
-void PlayerEntity::render(SDL_Renderer& renderer) {
-    GameEntity::render(renderer);
-    particle->render(renderer);
-}
-
 void PlayerEntity::update(const SDL_Event& event) {
+    GameEntity::update(event);
     switch(event.type) {
         case SDL_KEYDOWN:
         case SDL_KEYUP: {
+            if(event.key.keysym.sym == SDLK_e && event.type == SDL_KEYUP) {
+                this->getComponent<PhysicsComponent>()->eventOnCollide.invoke(this);
+                break;
+            }
             PlayerInputComponent* playerInputComponent = this->getComponent<PlayerInputComponent>();
             if(playerInputComponent != nullptr) {
                 playerInputComponent->update(event);
@@ -103,11 +96,10 @@ void PlayerEntity::update(const SDL_Event& event) {
             break;
         }
     }
-    
-    particle->update(event);
 }
 
 void PlayerEntity::update(float deltaTime) {
+    GameEntity::update(deltaTime);
     PlayerInputComponent* playerInputComponent = getComponent<PlayerInputComponent>();
     if(playerInputComponent != nullptr) {
         TransformComponent* playerTransform = getComponent<TransformComponent>();
@@ -138,6 +130,4 @@ void PlayerEntity::update(float deltaTime) {
         position.y() += (velocity.y() * deltaTime);
         setPosition(position);
     }
-    
-    particle->update(deltaTime);
 }
