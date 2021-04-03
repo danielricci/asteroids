@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/GameEntity.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
@@ -17,6 +18,7 @@ public:
     inline static const std::string PLAYER_SHIP = "playerShip";
     inline static const std::string PLAYER_SHIP_EXHAUST = "playerShipExhaust";
 private:
+    void onEventCollide(Entity* sender, EventArgs args);
     void onEventHyperspace();
     void onEventShoot();
     void onEventThrust(bool isThrustActivated);

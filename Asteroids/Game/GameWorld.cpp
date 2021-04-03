@@ -6,7 +6,7 @@ GameWorld::GameWorld() {
 }
 
 GameWorld::~GameWorld() {
-    ManagerHelper::clean();
+    ManagerHelper::cleanAll();
 }
 
 float GameWorld::getDeltaTime() {

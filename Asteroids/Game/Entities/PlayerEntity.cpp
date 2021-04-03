@@ -3,7 +3,6 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
-#include "Engine/System/EventArgs.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
@@ -36,11 +35,7 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerThrust);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
-    physicsComponent->eventOnCollide.attach([this, playerShip](Entity* sender, EventArgs args) {
-        ManagerHelper::get<GameManager>()->addEntity(new PlayerExplosionParticle());
-        ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
-        ManagerHelper::clean(this);
-    });
+    physicsComponent->eventOnCollide.attach(std::bind(&PlayerEntity::onEventCollide, this, std::placeholders::_1, std::placeholders::_2));
     addComponent(physicsComponent);
 }
 
@@ -52,6 +47,22 @@ Eigen::AlignedBox2f PlayerEntity::getBounds() const {
     alignedBox.min() = this->getPosition() + Eigen::Vector2f(rectangle.x, rectangle.y);
     alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
     return alignedBox;
+}
+
+void PlayerEntity::onEventCollide(Entity* sender, EventArgs args) {
+    ManagerHelper::setFeedbackState(this, false);
+    
+    PlayerExplosionParticle* playerExplosionParticle = new PlayerExplosionParticle();
+    playerExplosionParticle->eventOnStop.attach([this](Entity* sender, EventArgs args) {
+        ManagerHelper::destroy(this);
+    });
+    playerExplosionParticle->play();
+    playerExplosionParticle->setOrientation(this->getOrientation());
+    playerExplosionParticle->setPosition(this->getPosition());
+    ManagerHelper::get<GameManager>()->addEntity(playerExplosionParticle);
+    
+    
+    ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
 }
 
 void PlayerEntity::onEventHyperspace() {

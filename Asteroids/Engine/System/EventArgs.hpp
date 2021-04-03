@@ -5,4 +5,6 @@ public:
     static EventArgs Empty() {
         return EventArgs();
     }
+    
+    bool removed = false;
 };

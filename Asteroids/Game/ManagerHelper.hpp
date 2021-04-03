@@ -10,16 +10,18 @@ class ManagerHelper {
 public:
     enum BroadcastEvent {
         EVENT_ASTEROID_HIT = 0,
-        EVENT_PLAYER_HIT = 1,
-        EVENT_SAUCER_HIT = 2
+        EVENT_PLAYER_HIT,
+        EVENT_SAUCER_HIT,
+        EVENT_SPAWN_PLAYER
     };
     
     static void broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args);
-    static void clean();
-    static void clean(Entity* obj);
+    static void cleanAll();
+    static void destroy(Entity* obj);
     static SDL_Renderer* getRenderer();
     static void initialize(const char* const title, int width, int height);
     static void render();
+    static void setFeedbackState(Entity* entity, bool feedBack);
     static void update(float deltaTime);
     static void update(const SDL_Event& event);
     

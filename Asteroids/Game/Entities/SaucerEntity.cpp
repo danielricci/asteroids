@@ -4,6 +4,7 @@
 #include "Game/ManagerHelper.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
+#include "Game/Particles/EnemyExplosionParticle.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
 
@@ -42,8 +43,14 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
+        EnemyExplosionParticle* particle = new EnemyExplosionParticle();
+        particle->setPosition(this->getPosition());
+        particle->setOrientation(this->getOrientation());
+        particle->play();
+        ManagerHelper::get<GameManager>()->addEntity(particle);
+        
         ManagerHelper::broadcast(ManagerHelper::EVENT_SAUCER_HIT, this, EventArgs());
-        ManagerHelper::clean(this);
+        ManagerHelper::destroy(this);
     });
     addComponent(physicsComponent);
 }

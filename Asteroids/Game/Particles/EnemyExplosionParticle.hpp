@@ -8,9 +8,9 @@
 #include <vector>
 #include "SDL.h"
 
-class PlayerExplosionParticle : public GameEntity {
+class EnemyExplosionParticle : public GameEntity {
 public:
-    PlayerExplosionParticle();
+    EnemyExplosionParticle();
     
     void play();
     virtual void render(SDL_Renderer& renderer) override;
@@ -18,10 +18,10 @@ public:
     
     Event<EventArgs> eventOnStop;
 private:
-    const int DURATION = 2.2;
-    const int SPEED = 14;
+    const float DURATION = .8;
+    const int SPEED = 60;
     
-    std::vector<std::pair<Eigen::Vector2f, Eigen::Vector2f>> edges;
+    std::vector<Eigen::Vector2f> points;
     float elapsedTime = 0.f;
     bool isPlaying = false;
 };

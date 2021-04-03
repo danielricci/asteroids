@@ -5,6 +5,7 @@
 #include "Game/ManagerHelper.hpp"
 #include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
+#include "Game/Particles/EnemyExplosionParticle.hpp"
 #include <SDL.h>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
@@ -32,7 +33,12 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this, stageNumeral](Entity* sender, EventArgs args) {
         if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
-            ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs());
+            EnemyExplosionParticle* particle = new EnemyExplosionParticle();
+            particle->setPosition(this->getPosition());
+            particle->setOrientation(this->getOrientation());
+            particle->play();
+            ManagerHelper::get<GameManager>()->addEntity(particle);
+            
             if(this->stage != AsteroidStage::STAGE_LAST) {
                 for(int i = 0, j = stageNumeral * 2; i < j; ++i) {
                     AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(stageNumeral + 1));
@@ -41,7 +47,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
                     ManagerHelper::get<GameManager>()->addEntity(asteroid);
                 }
             }
-            ManagerHelper::clean(this);
+            ManagerHelper::destroy(this);
         }
     });
     addComponent(physicsComponent);

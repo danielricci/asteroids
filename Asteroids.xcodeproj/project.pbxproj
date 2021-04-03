@@ -32,6 +32,7 @@
 		0368714D25F121B200D281E4 /* HighScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0368714B25F121B200D281E4 /* HighScoreEntity.cpp */; };
 		037FBA1624E3182600F984F1 /* ShapeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037FBA1424E3182600F984F1 /* ShapeComponent.cpp */; };
 		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
+		0391C6C72616C91F0001ECF8 /* EnemyExplosionParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0391C6C52616C91F0001ECF8 /* EnemyExplosionParticle.cpp */; };
 		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03B6F365256DA68000A80AF1 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6F363256DA68000A80AF1 /* WindowManager.cpp */; };
@@ -122,6 +123,8 @@
 		0387FD8F24A94C530019BE47 /* UIManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
 		0387FD9024A94C530019BE47 /* UIManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIManager.hpp; sourceTree = "<group>"; };
 		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
+		0391C6C52616C91F0001ECF8 /* EnemyExplosionParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyExplosionParticle.cpp; sourceTree = "<group>"; };
+		0391C6C62616C91F0001ECF8 /* EnemyExplosionParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemyExplosionParticle.hpp; sourceTree = "<group>"; };
 		0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManagerHelper.cpp; sourceTree = "<group>"; };
 		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
 		039ABDFB25F1130B00307A3B /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 		0308791C26121D6F00248FE9 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				0391C6C52616C91F0001ECF8 /* EnemyExplosionParticle.cpp */,
+				0391C6C62616C91F0001ECF8 /* EnemyExplosionParticle.hpp */,
 				0308791D26121D6F00248FE9 /* PlayerExplosionParticle.cpp */,
 				0308791E26121D6F00248FE9 /* PlayerExplosionParticle.hpp */,
 			);
@@ -457,6 +462,7 @@
 				034F4C3024DA54A300975181 /* Manager.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* PhysicsComponent.hpp in Sources */,
 				03F57FE325F3D5F1000F6588 /* PlayerScoreEntity.cpp in Sources */,
+				0391C6C72616C91F0001ECF8 /* EnemyExplosionParticle.cpp in Sources */,
 				03EAD8FE252EB2DA003E76B2 /* CircleComponent.cpp in Sources */,
 				03261720251ED61B00ABA175 /* SoundManager.cpp in Sources */,
 				03E25BB325CE642900B20839 /* ScoreEntity.cpp in Sources */,

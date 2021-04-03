@@ -12,8 +12,8 @@ public:
     
     void addEntity(Entity* entity);
     void clean();
-    void removeEntity(Entity* entity);
-    std::list<Entity*> purgeEntities();
+    bool setState(Entity* entity, ManagerInformation::State state);
+    std::list<Entity*> syncEntities();
     
     virtual void render(SDL_Renderer& renderer);
     virtual void update(float deltaTime);

@@ -13,7 +13,7 @@
 std::list<Manager*> ManagerHelper::managers {};
 
 ManagerHelper::~ManagerHelper() {
-    clean();
+    cleanAll();
     SDL_Quit();
 }
 
@@ -31,7 +31,7 @@ void ManagerHelper::broadcast(BroadcastEvent broadcastEvent, void* sender, const
     ManagerHelper::update(event);
 }
 
-void ManagerHelper::clean() {
+void ManagerHelper::cleanAll() {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->clean();
@@ -46,11 +46,11 @@ void ManagerHelper::clean() {
     managers.clear();
 }
 
-void ManagerHelper::clean(Entity* entity) {
+void ManagerHelper::destroy(Entity* entity) {
     if(entity != nullptr) {
         for(Manager* manager : managers) {
             if(manager != nullptr) {
-                manager->removeEntity(entity);
+                manager->setState(entity, ManagerInformation::State::Destroy);
             }
         }
     }
@@ -61,7 +61,7 @@ SDL_Renderer* ManagerHelper::getRenderer() {
 }
 
 void ManagerHelper::initialize(const char* const title, int width, int height) {
-    clean();
+    cleanAll();
     
     managers.push_back(new WindowManager(title, width, height));
     managers.push_back(new InputManager());
@@ -92,6 +92,24 @@ void ManagerHelper::render() {
     SDL_RenderPresent(renderer);
 }
 
+void ManagerHelper::setFeedbackState(Entity* entity, bool feedBack) {
+    if(entity != nullptr) {
+        ManagerInformation::State state;
+        if(feedBack) {
+            state = ManagerInformation::State::Enabled;
+        }
+        else {
+            state = ManagerInformation::State::Disabled;
+        }
+
+        for(Manager* manager : managers) {
+            if(manager != nullptr) {
+                manager->setState(entity, state);
+            }
+        }
+    }
+}
+
 void ManagerHelper::update(float deltaTime) {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
@@ -104,7 +122,7 @@ void ManagerHelper::update(float deltaTime) {
     std::set<Entity*> entitiesToDelete;
     for(Manager* manager : managers) {
         if(manager != nullptr) {
-            std::list<Entity*> flushedEntities = manager->purgeEntities();
+            std::list<Entity*> flushedEntities = manager->syncEntities();
             std::copy(flushedEntities.begin(), flushedEntities.end(), std::inserter(entitiesToDelete, entitiesToDelete.begin()));
         }
     }

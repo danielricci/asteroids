@@ -11,7 +11,7 @@ BulletEntity::BulletEntity() {
     this->addComponent(new CircleComponent(1));
     PhysicsComponent* collisionComponent = new PhysicsComponent();
     collisionComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
-        ManagerHelper::clean(this);
+        ManagerHelper::destroy(this);
     });
     this->addComponent(collisionComponent);
 }
@@ -22,7 +22,7 @@ Eigen::Vector2f BulletEntity::getDimensions() const {
 
 void BulletEntity::update(float deltaTime) {
     if(timeTravelled * SPEED >= MAX_DISTANCE) {
-        ManagerHelper::clean(this);
+        ManagerHelper::destroy(this);
         return;
     }
 

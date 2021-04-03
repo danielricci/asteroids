@@ -11,7 +11,11 @@ void GameManager::handleCollision() {
     for(auto& pair : entities) {
         std::for_each(entities.begin(), entities.end(), [&pair](const auto& thisPair) {
             // It might be too naive to not send collision messages to destroyed entities
-            if(pair.first != thisPair.first && pair.second.state != ManagerInformation::State::Destroy && thisPair.second.state != ManagerInformation::State::Destroy) {
+            if(pair.first != thisPair.first &&
+               pair.second.state != ManagerInformation::State::Destroy &&
+               pair.second.state != ManagerInformation::State::Disabled &&
+               thisPair.second.state != ManagerInformation::State::Destroy &&
+               thisPair.second.state != ManagerInformation::State::Disabled) {
                 // TODO: Instead of doing this cast, see if there is a way to change the type of the game entity at runtime (templates, generics, etc)
                 GameEntity* gameEntityFirst = dynamic_cast<GameEntity*>(pair.first);
                 GameEntity* gameEntitySecond = dynamic_cast<GameEntity*>(thisPair.first);
@@ -56,6 +60,19 @@ void GameManager::update(float deltaTime) {
 
 void GameManager::update(const SDL_Event& event) {
     switch(event.type) {
+//        case SDL_USEREVENT: {
+//            switch(event.user.code) {
+//                case ManagerHelpe {
+//                    AsteroidEntity* asteroidEntity = static_cast<AsteroidEntity*>(event.user.data1);
+//                    switch(asteroidEntity->stage) {
+//                        case AsteroidEntity::AsteroidStage::STAGE_1: {
+//                            addScore(50);
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
+//        }
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_ESCAPE) {
                 switch(gameState) {

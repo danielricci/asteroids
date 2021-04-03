@@ -1,5 +1,4 @@
 #include "Engine/Components/TransformComponent.hpp"
-#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Particles/PlayerExplosionParticle.hpp"
 
@@ -9,6 +8,10 @@ PlayerExplosionParticle::PlayerExplosionParticle() {
     edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>({{0, -1}, {-7, 6}}));
     edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>({{-2, -2}, {0, 4}}));
     edges.push_back(std::pair<Eigen::Vector2f, Eigen::Vector2f>({{-9, -5}, {9, 0}}));
+}
+
+void PlayerExplosionParticle::play() {
+    isPlaying = true;
 }
 
 void PlayerExplosionParticle::render(SDL_Renderer& renderer) {
@@ -26,7 +29,7 @@ void PlayerExplosionParticle::update(float deltaTime) {
     if(isPlaying) {
         if((elapsedTime += deltaTime) > DURATION) {
             eventOnStop.invoke(this);
-            ManagerHelper::clean(this);
+            ManagerHelper::destroy(this);
         }
         
         int angle[5];
@@ -50,20 +53,6 @@ void PlayerExplosionParticle::update(float deltaTime) {
             edge2.x() += (velocity.x() * deltaTime);
             edge2.y() += (velocity.y() * deltaTime);
             edges[i].second = edge2;
-        }
-    }
-}
-
-void PlayerExplosionParticle::update(const SDL_Event& event) {
-    if(event.type == SDL_USEREVENT) {
-        switch(event.user.code) {
-            case ManagerHelper::EVENT_PLAYER_HIT: {
-                PlayerEntity* playerEntity = static_cast<PlayerEntity*>(event.user.data1);
-                setPosition(playerEntity->getPosition());
-                setOrientation(playerEntity->getOrientation());
-                isPlaying = true;
-                break;
-            }
         }
     }
 }
