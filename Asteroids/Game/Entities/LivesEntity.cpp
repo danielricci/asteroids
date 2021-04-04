@@ -64,7 +64,9 @@ void LivesEntity::update(const SDL_Event& event) {
                 break;
             }
             case ManagerHelper::EVENT_SPAWN_PLAYER: {
-                ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+                if(lives > 0) {
+                    ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+                }
                 break;
             }
         }
