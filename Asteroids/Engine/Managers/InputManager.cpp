@@ -22,18 +22,3 @@ InputManager::~InputManager() {
     
     SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }
-
-
-void InputManager::update(const SDL_Event& event) {
-    switch(event.type) {
-        case SDL_CONTROLLERAXISMOTION: {
-            if(gameController == nullptr) {
-                break;
-            }
-        }
-        case SDL_KEYDOWN:
-        case SDL_KEYUP: {
-            break;
-        }
-    }
-}

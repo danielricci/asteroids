@@ -96,12 +96,9 @@ void PlayerEntity::onEventShoot() {
 void PlayerEntity::update(const SDL_Event& event) {
     GameEntity::update(event);
     switch(event.type) {
+        case SDL_CONTROLLERAXISMOTION:
         case SDL_KEYDOWN:
         case SDL_KEYUP: {
-            if(event.key.keysym.sym == SDLK_e && event.type == SDL_KEYUP) {
-                this->getComponent<PhysicsComponent>()->eventOnCollide.invoke(this);
-                break;
-            }
             PlayerInputComponent* playerInputComponent = this->getComponent<PlayerInputComponent>();
             if(playerInputComponent != nullptr) {
                 playerInputComponent->update(event);

@@ -26,6 +26,9 @@ void PlayerInputComponent::onRotate(const SDL_Event& event) {
             rotationAction = RotationAction::NONE;
             break;
         }
+        case SDL_CONTROLLERAXISMOTION: {
+            break;
+        }
     }
 }
 
