@@ -57,6 +57,7 @@ void PlayerEntity::onEventCollide(Entity* sender, EventArgs args) {
     PlayerExplosionParticle* playerExplosionParticle = new PlayerExplosionParticle();
     playerExplosionParticle->eventOnStop.attach([this](Entity* sender, EventArgs args) {
         ManagerHelper::destroy(this);
+        ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_SPAWN_PLAYER, this, EventArgs::Empty());
     });
     playerExplosionParticle->play();
     playerExplosionParticle->setOrientation(this->getOrientation());
