@@ -26,6 +26,8 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerInputComponent);
     
     ShapeComponent* playerShip = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 5}, {-8, -5}, {-12, -10}, {12, 0}});
+    //playerShip->setColor({255, 255, 0});
+    //playerShip->setColor({0, 255, 0});
     playerShip->setName(PLAYER_SHIP);
     addComponent(playerShip);
         

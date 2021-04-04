@@ -61,5 +61,14 @@ void ShapeComponent::render(SDL_Renderer& renderer) {
         Eigen::Vector2f position = ownerEntity->getWorldPosition(vertex) + this->position;
         positions.push_back({position.x(), position.y()});
     }
+    
+    SDL_Color currentColor;
+    SDL_GetRenderDrawColor(&renderer, &currentColor.r, &currentColor.g, &currentColor.b, &currentColor.a);
+    SDL_SetRenderDrawColor(&renderer, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawLinesF(&renderer, &positions.front(), static_cast<int>(positions.size()));
+    SDL_SetRenderDrawColor(&renderer, currentColor.r, currentColor.g, currentColor.b, currentColor.a);
+}
+
+void ShapeComponent::setColor(const SDL_Color& color) {
+    this->color = color;
 }
