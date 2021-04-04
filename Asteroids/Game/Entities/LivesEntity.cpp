@@ -1,6 +1,7 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
+#include "Engine/Managers/GameManager.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
@@ -60,6 +61,10 @@ void LivesEntity::update(const SDL_Event& event) {
         switch(event.user.code) {
             case ManagerHelper::EVENT_PLAYER_HIT: {
                 addScore(-1);
+                break;
+            }
+            case ManagerHelper::EVENT_SPAWN_PLAYER: {
+                ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
                 break;
             }
         }
