@@ -52,6 +52,11 @@ Eigen::AlignedBox2f PlayerEntity::getBounds() const {
 }
 
 void PlayerEntity::onEventCollide(Entity* sender, EventArgs args) {
+    BulletEntity* bulletEntity = dynamic_cast<BulletEntity*>(sender);
+    if(bulletEntity != nullptr && bulletEntity->fromPlayer) {
+        return;
+    }
+    
     ManagerHelper::setFeedbackState(this, false);
     
     PlayerExplosionParticle* playerExplosionParticle = new PlayerExplosionParticle();
@@ -84,7 +89,7 @@ void PlayerEntity::onEventThrust(bool isThrustActivated) {
 }
 
 void PlayerEntity::onEventShoot() {
-    BulletEntity* bulletEntity = new BulletEntity();
+    BulletEntity* bulletEntity = new BulletEntity(true);
     bulletEntity->setOrientation(getOrientation());
 
     ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);

@@ -7,7 +7,7 @@
 #include "Game/ManagerHelper.hpp"
 #include <cmath>
 
-BulletEntity::BulletEntity() {
+BulletEntity::BulletEntity(bool fromPlayer) : fromPlayer(fromPlayer) {
     this->addComponent(new CircleComponent(1));
     PhysicsComponent* collisionComponent = new PhysicsComponent();
     collisionComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {

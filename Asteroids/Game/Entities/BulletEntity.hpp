@@ -4,16 +4,17 @@
 #include <Eigen/Dense>
 #include <SDL.h>
 
-class BulletEntity : public
-GameEntity {
+class BulletEntity : public GameEntity {
 public:
-    BulletEntity();
+    BulletEntity(bool fromPlayer);
     virtual Eigen::Vector2f getDimensions() const override;
     virtual void update(float deltaTime) override;
+    
+    const bool fromPlayer = false;
 private:
     const int SPEED = 925;
     const int MAX_DISTANCE = 600;
-
+    
     float timeTravelled = 0;
 };
 
