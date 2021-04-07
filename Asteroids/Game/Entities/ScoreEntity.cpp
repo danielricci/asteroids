@@ -22,6 +22,6 @@ void ScoreEntity::setPrecision(int precision) {
 
 std::string ScoreEntity::toString() const {
     std::stringstream ss;
-    ss << std::setw(precision) << std::setfill('0') << score;
+    ss << std::setw(std::max(2, static_cast<int>(std::to_string(score).length()))) << std::setfill('0') << score;
     return ss.str();
 }

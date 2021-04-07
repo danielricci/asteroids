@@ -12,11 +12,9 @@ protected:
     void addScore(int score);
     void setMaxScore(int maxScore);
     void setPrecision(int precision);
-    
     virtual std::string toString() const;
 private:
-    int score = 0;
-    
     int maxScore = 999999;
-    int precision = 9;
+    int precision = 2;
+    int score = 0;
 };
