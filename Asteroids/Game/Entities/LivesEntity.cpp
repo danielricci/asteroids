@@ -53,7 +53,6 @@ void LivesEntity::render(SDL_Renderer& renderer) {
     else {
         getComponent<TextComponent>()->render(renderer);
     }
-    
 }
 
 void LivesEntity::update(const SDL_Event& event) {
@@ -65,6 +64,7 @@ void LivesEntity::update(const SDL_Event& event) {
             }
             case ManagerHelper::EVENT_SPAWN_PLAYER: {
                 if(lives > 0) {
+                    // TODO: Should be executing from somewhere else, not here
                     ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
                 }
                 break;

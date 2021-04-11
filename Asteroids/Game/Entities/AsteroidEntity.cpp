@@ -47,6 +47,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
                     ManagerHelper::get<GameManager>()->addEntity(asteroid);
                 }
             }
+            ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs::Empty());
             ManagerHelper::destroy(this);
         }
     });

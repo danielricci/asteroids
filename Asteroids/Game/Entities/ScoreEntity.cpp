@@ -4,7 +4,13 @@
 #include <sstream>
 
 void ScoreEntity::addScore(int score) {
-    this->score = std::min(this->score + score, maxScore);
+    int oldScore = this->score;
+    this->score = std::min(oldScore + score, maxScore);
+    
+    int count = static_cast<int>(std::to_string(this->score).length() - std::to_string(oldScore).length());
+    if(count > 0) {
+        this->setPosition(this->getPosition() + (count * OFFSET_POSITION_TEXT));
+    }
     getComponent<TextComponent>()->setText(toString());
 }
 
@@ -22,6 +28,6 @@ void ScoreEntity::setPrecision(int precision) {
 
 std::string ScoreEntity::toString() const {
     std::stringstream ss;
-    ss << std::setw(std::max(2, static_cast<int>(std::to_string(score).length()))) << std::setfill('0') << score;
+    ss << std::setw(std::max(precision, static_cast<int>(std::to_string(score).length()))) << std::setfill('0') << score;
     return ss.str();
 }

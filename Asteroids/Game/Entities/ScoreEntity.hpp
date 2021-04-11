@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game/Entities/GameEntity.hpp"
+#include <Eigen/Dense>
 #include <string>
 
 class ScoreEntity : public GameEntity {
@@ -14,6 +15,8 @@ protected:
     void setPrecision(int precision);
     virtual std::string toString() const;
 private:
+    const Eigen::Vector2f OFFSET_POSITION_TEXT = Eigen::Vector2f(-20, 0);
+
     int maxScore = 999999;
     int precision = 2;
     int score = 0;

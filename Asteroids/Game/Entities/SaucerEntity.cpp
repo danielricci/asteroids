@@ -49,7 +49,7 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
         particle->play();
         ManagerHelper::get<GameManager>()->addEntity(particle);
         
-        ManagerHelper::broadcast(ManagerHelper::EVENT_SAUCER_HIT, this, EventArgs());
+        ManagerHelper::broadcast(ManagerHelper::EVENT_SAUCER_HIT, this, EventArgs::Empty());
         ManagerHelper::destroy(this);
     });
     addComponent(physicsComponent);
