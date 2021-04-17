@@ -1,15 +1,15 @@
-#include "Engine/Components/TextComponent.hpp"
+#include "Engine/Components/FontComponent.hpp"
 #include <Eigen/Dense>
 #include <iostream>
 
-TextComponent::TextComponent(const std::string& fontPath) : fontPath(fontPath) {
+FontComponent::FontComponent(const std::string& fontPath) : fontPath(fontPath) {
 }
 
-TextComponent::~TextComponent() {
+FontComponent::~FontComponent() {
     clean();
 }
 
-void TextComponent::clean() {
+void FontComponent::clean() {
     if(font != nullptr) {
         TTF_CloseFont(font);
         font = nullptr;
@@ -28,17 +28,17 @@ void TextComponent::clean() {
     isDirty = true;
 }
 
-void TextComponent::setSize(int size) {
+void FontComponent::setSize(int size) {
     this->size = size;
     isDirty = true;
 }
 
-void TextComponent::setText(std::string text) {
+void FontComponent::setText(std::string text) {
     this->text = text;
     isDirty = true;
 }
 
-void TextComponent::render(SDL_Renderer& renderer) {
+void FontComponent::render(SDL_Renderer& renderer) {
     if(isDirty) {
         clean();
         isDirty = false;

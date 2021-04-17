@@ -5,10 +5,10 @@
 #include <SDL_ttf.h>
 #include <string>
 
-class TextComponent : public Component {
+class FontComponent : public Component {
 public:
-    TextComponent(const std::string& fontPath);
-    ~TextComponent();
+    FontComponent(const std::string& fontPath);
+    ~FontComponent();
 
     virtual void render(SDL_Renderer& renderer) override;
     void setSize(int size);

@@ -1,5 +1,5 @@
+#include "Engine/Components/FontComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
-#include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/ManagerHelper.hpp"
@@ -11,7 +11,7 @@ LivesEntity::LivesEntity() {
     setOrientation(TransformComponent::ROTATION_TOP);
     setPosition(Eigen::Vector2f(310, 90));
 
-    TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
+    FontComponent* textComponent = new FontComponent("Hyperspace.ttf");
     textComponent->setSize(32);
     addComponent(textComponent);
     
@@ -26,7 +26,7 @@ LivesEntity::LivesEntity() {
 void LivesEntity::addScore(int lives) {
     this->lives = std::max(0, std::min(this->lives + lives, MAX_LIVES));
     
-    TextComponent* textComponent = getComponent<TextComponent>();
+    FontComponent* textComponent = getComponent<FontComponent>();
     textComponent->setPosition(OFFSET_POSITION_TEXT * std::to_string(this->lives).length());
     textComponent->setText(toString());
 }
@@ -51,7 +51,7 @@ void LivesEntity::render(SDL_Renderer& renderer) {
         shapeComponent->setPosition(originalPosition);
     }
     else {
-        getComponent<TextComponent>()->render(renderer);
+        getComponent<FontComponent>()->render(renderer);
     }
 }
 

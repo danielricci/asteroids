@@ -1,4 +1,4 @@
-#include "Engine/Components/TextComponent.hpp"
+#include "Engine/Components/FontComponent.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
@@ -7,7 +7,7 @@
 PlayerScoreEntity::PlayerScoreEntity() {
     setPosition(Eigen::Vector2f(310, 50));
     setPrecision(1);
-    TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
+    FontComponent* textComponent = new FontComponent("Hyperspace.ttf");
     textComponent->setSize(32);
     textComponent->setText(toString());
     addComponent(textComponent);
