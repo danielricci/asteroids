@@ -8,14 +8,12 @@ class InputComponent : public Component {
 
 public:
     InputComponent() = default;
-    void update(const SDL_Event& event);
-    
-protected:
-    virtual int getDeadZone() const;
-    
+
     void addBinding(SDL_Keycode keyCode, std::function<void(const SDL_Event&)> functor);
     void addBinding(SDL_GameControllerAxis axis, std::function<void(const SDL_Event&)> functor);
-    
+    void update(const SDL_Event& event);
+protected:
+    virtual int getDeadZone() const;
 private:
     typedef std::unordered_multimap<SDL_Keycode, std::function<void(const SDL_Event&)>> InputBindings;
     InputBindings inputBindings;

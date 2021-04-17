@@ -3,18 +3,27 @@
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
-#include "Game/Entities/CopyrightEntity.hpp"
-#include "Game/Entities/HighScoreEntity.hpp"
-#include "Game/Entities/LivesEntity.hpp"
-#include "Game/Entities/PlayerScoreEntity.hpp"
 #include <SDL.h>
 #include <set>
 
 std::list<Manager*> ManagerHelper::managers {};
+bool ManagerHelper::isReset = false;
 
 ManagerHelper::~ManagerHelper() {
-    cleanAll();
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            delete manager;
+            manager = nullptr;
+        }
+    }
     SDL_Quit();
+}
+
+void ManagerHelper::beforeUpdate() {
+    if(isReset) {
+        isReset = false;
+        clean();
+    }
 }
 
 void ManagerHelper::broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args) {
@@ -31,19 +40,13 @@ void ManagerHelper::broadcast(BroadcastEvent broadcastEvent, void* sender, const
     ManagerHelper::update(event);
 }
 
-void ManagerHelper::cleanAll() {
+void ManagerHelper::clean() {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->clean();
+            manager->initialize();
         }
     }
-    for(Manager* manager : managers) {
-        if(manager != nullptr) {
-            delete manager;
-            manager = nullptr;
-        }
-    }
-    managers.clear();
 }
 
 void ManagerHelper::destroy(Entity* entity) {
@@ -56,26 +59,17 @@ void ManagerHelper::destroy(Entity* entity) {
     }
 }
 
+
+
 SDL_Renderer* ManagerHelper::getRenderer() {
     return get<WindowManager>()->getRenderer();
 }
 
-void ManagerHelper::initialize(const char* const title, int width, int height) {
-    cleanAll();
-    
-    managers.push_back(new WindowManager(title, width, height));
+void ManagerHelper::initialize() {
+    managers.push_back(new WindowManager());
     managers.push_back(new InputManager());
-    
-    UIManager* uiManager = new UIManager();
-    uiManager->addEntity(new HighScoreEntity());
-    uiManager->addEntity(new LivesEntity());
-    uiManager->addEntity(new PlayerScoreEntity());
-    uiManager->addEntity(new CopyrightEntity());
-    managers.push_back(uiManager);
-    
-    GameManager* gameManager = new GameManager();
-    gameManager->setGameState(GameManager::GameState::STARTED);
-    managers.push_back(gameManager);
+    managers.push_back(new UIManager());
+    managers.push_back(new GameManager());
 }
 
 void ManagerHelper::render() {
@@ -90,6 +84,10 @@ void ManagerHelper::render() {
     }
     
     SDL_RenderPresent(renderer);
+}
+
+void ManagerHelper::reset() {
+    isReset = true;
 }
 
 void ManagerHelper::setFeedbackState(Entity* entity, bool feedBack) {

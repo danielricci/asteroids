@@ -12,15 +12,18 @@ public:
         EVENT_ASTEROID_HIT = 0,
         EVENT_PLAYER_HIT,
         EVENT_SAUCER_HIT,
-        EVENT_SPAWN_PLAYER
+        EVENT_SPAWN_PLAYER,
+        EVENT_GAME_OVER
     };
     
+    static void beforeUpdate();
     static void broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args);
-    static void cleanAll();
+    static void clean();
     static void destroy(Entity* obj);
     static SDL_Renderer* getRenderer();
-    static void initialize(const char* const title, int width, int height);
+    static void initialize();
     static void render();
+    static void reset();
     static void setFeedbackState(Entity* entity, bool feedBack);
     static void update(float deltaTime);
     static void update(const SDL_Event& event);
@@ -38,5 +41,6 @@ private:
     ManagerHelper() = default;
     ~ManagerHelper();
     
+    static bool isReset;
     static std::list<Manager*> managers;
 };

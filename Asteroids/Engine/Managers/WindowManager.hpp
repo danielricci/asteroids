@@ -5,7 +5,7 @@
 
 class WindowManager final : public Manager {
 public:
-    WindowManager(const char* const title, int width, int height);
+    WindowManager();
     ~WindowManager();
     
     SDL_Rect getWindowSize();

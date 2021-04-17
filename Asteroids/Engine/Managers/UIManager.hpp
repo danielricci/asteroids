@@ -6,4 +6,5 @@ class UIManager : public Manager {
 public:
     UIManager();
     virtual ~UIManager();
+    virtual void initialize() override;
 };

@@ -20,7 +20,7 @@ LivesEntity::LivesEntity() {
     addComponent(shapeComponent);
     
     // Note: Must be at the end after all the components have been initialized/added
-    addScore(3);
+    addScore(1);
 }
 
 void LivesEntity::addScore(int lives) {
@@ -66,6 +66,9 @@ void LivesEntity::update(const SDL_Event& event) {
                 if(lives > 0) {
                     // TODO: Should be executing from somewhere else, not here
                     ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+                }
+                else {
+                    ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_GAME_OVER, this, EventArgs::Empty());
                 }
                 break;
             }

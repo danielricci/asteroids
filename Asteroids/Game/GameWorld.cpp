@@ -2,11 +2,7 @@
 #include "Game/ManagerHelper.hpp"
 
 GameWorld::GameWorld() {
-    ManagerHelper::initialize("Asteroids", 1280, 800);
-}
-
-GameWorld::~GameWorld() {
-    ManagerHelper::cleanAll();
+    ManagerHelper::initialize();
 }
 
 float GameWorld::getDeltaTime() {
@@ -21,6 +17,7 @@ float GameWorld::getDeltaTime() {
 void GameWorld::run() {
     isRunning = true;
     while(isRunning) {
+        ManagerHelper::beforeUpdate();
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
             update(event);

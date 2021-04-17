@@ -3,6 +3,10 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 
+GameManager::GameManager() {
+    initialize();
+}
+
 GameManager::GameState GameManager::getGameState() const {
     return this->gameState;
 }
@@ -27,6 +31,11 @@ void GameManager::handleCollision() {
     }
 }
 
+void GameManager::initialize() {
+    setGameState(GameManager::GameState::STOPPED);
+    setGameState(GameManager::GameState::STARTED);
+}
+
 void GameManager::render(SDL_Renderer& renderer) {
     Manager::render(renderer);
 }
@@ -47,6 +56,10 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 AsteroidEntity* asteroidEntity = new AsteroidEntity();
                 asteroidEntity->setPosition({40, 550});
                 addEntity(asteroidEntity);
+                
+                AsteroidEntity* asteroidEntity2 = new AsteroidEntity();
+                asteroidEntity2->setPosition({40, 450});
+                addEntity(asteroidEntity2);
                 
                 SaucerEntity* saucerEntityLarge = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_LARGE);
                 saucerEntityLarge->setPosition({40, 350});

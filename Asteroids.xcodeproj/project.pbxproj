@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300323B262A897000D055CC /* GameOverEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0300323A262A897000D055CC /* GameOverEntity.cpp */; };
 		0308791F26121D6F00248FE9 /* PlayerExplosionParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0308791D26121D6F00248FE9 /* PlayerExplosionParticle.cpp */; };
 		0308792226121D9A00248FE9 /* CopyrightEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0308792026121D9A00248FE9 /* CopyrightEntity.cpp */; };
 		030B2D9A25256735003F89B5 /* thrust.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030B2D982525671F003F89B5 /* thrust.wav */; };
@@ -75,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03003239262A897000D055CC /* GameOverEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameOverEntity.hpp; sourceTree = "<group>"; };
+		0300323A262A897000D055CC /* GameOverEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverEntity.cpp; sourceTree = "<group>"; };
 		0308791D26121D6F00248FE9 /* PlayerExplosionParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerExplosionParticle.cpp; sourceTree = "<group>"; };
 		0308791E26121D6F00248FE9 /* PlayerExplosionParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerExplosionParticle.hpp; sourceTree = "<group>"; };
 		0308792026121D9A00248FE9 /* CopyrightEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyrightEntity.cpp; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 		03EFD235237E48BA006EF2A5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				0300323A262A897000D055CC /* GameOverEntity.cpp */,
+				03003239262A897000D055CC /* GameOverEntity.hpp */,
 				0308792026121D9A00248FE9 /* CopyrightEntity.cpp */,
 				0308792126121D9A00248FE9 /* CopyrightEntity.hpp */,
 				03571954255B1873004D09BB /* AsteroidEntity.cpp */,
@@ -472,6 +477,7 @@
 				032BB7C1257BD5B800846004 /* GameEntity.cpp in Sources */,
 				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
 				033CD2D424EB72EB00EBA382 /* PlayerInputComponent.cpp in Sources */,
+				0300323B262A897000D055CC /* GameOverEntity.cpp in Sources */,
 				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
 				03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */,

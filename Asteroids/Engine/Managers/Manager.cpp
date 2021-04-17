@@ -1,5 +1,9 @@
 #include "Engine/Managers/Manager.hpp"
 
+Manager::~Manager() {
+    clean();
+}
+
 void Manager::addEntity(Entity* entity) {
     entities.insert(std::pair<Entity*, ManagerInformation>(entity, ManagerInformation()));
 }
@@ -9,6 +13,9 @@ void Manager::clean() {
         delete pair.first;
     });
     entities.clear();
+}
+
+void Manager::initialize() {
 }
 
 bool Manager::setState(Entity* entity, ManagerInformation::State state) {
