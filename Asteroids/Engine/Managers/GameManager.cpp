@@ -3,10 +3,6 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 
-GameManager::GameManager() {
-    initialize();
-}
-
 GameManager::GameState GameManager::getGameState() const {
     return this->gameState;
 }

@@ -41,6 +41,8 @@ private:
     ManagerHelper() = default;
     ~ManagerHelper();
     
+    static void add(Manager* manager);
+    
     static bool isReset;
     static std::list<Manager*> managers;
 };

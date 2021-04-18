@@ -5,7 +5,7 @@
 
 class GameManager final : public Manager {
 public:
-    GameManager();
+    GameManager() = default;
     
     enum class GameState : char {
         STOPPED,

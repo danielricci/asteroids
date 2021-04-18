@@ -200,6 +200,8 @@
 				03EAD8FF252EB2E8003E76B2 /* CircleComponent.hpp */,
 				031956AC2572BE2D00FFF34E /* Component.cpp */,
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
+				032589BB245D19240047CF7D /* FontComponent.cpp */,
+				032589BC245D19240047CF7D /* FontComponent.hpp */,
 				03EE9C6824CC784600302287 /* InputComponent.cpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
 				03EE9C6624CC760400302287 /* PhysicsComponent.cpp */,
@@ -208,8 +210,6 @@
 				037FBA1524E3182600F984F1 /* ShapeComponent.hpp */,
 				0364021B246A3B11008684B8 /* SoundComponent.cpp */,
 				0364021C246A3B11008684B8 /* SoundComponent.hpp */,
-				032589BB245D19240047CF7D /* FontComponent.cpp */,
-				032589BC245D19240047CF7D /* FontComponent.hpp */,
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
 			);
 			path = Components;
@@ -263,8 +263,8 @@
 		0325031425999CE0008BF227 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				032503192599A362008BF227 /* EventArgs.hpp */,
 				0325031725999CFB008BF227 /* Event.hpp */,
+				032503192599A362008BF227 /* EventArgs.hpp */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -340,16 +340,16 @@
 		03EFD235237E48BA006EF2A5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				0300323A262A897000D055CC /* GameOverEntity.cpp */,
-				03003239262A897000D055CC /* GameOverEntity.hpp */,
-				0308792026121D9A00248FE9 /* CopyrightEntity.cpp */,
-				0308792126121D9A00248FE9 /* CopyrightEntity.hpp */,
 				03571954255B1873004D09BB /* AsteroidEntity.cpp */,
 				03571955255B1873004D09BB /* AsteroidEntity.hpp */,
 				03EAD8FA252DE5A7003E76B2 /* BulletEntity.cpp */,
 				03EAD8FB252DE5A7003E76B2 /* BulletEntity.hpp */,
+				0308792026121D9A00248FE9 /* CopyrightEntity.cpp */,
+				0308792126121D9A00248FE9 /* CopyrightEntity.hpp */,
 				032BB7BF257BD5B800846004 /* GameEntity.cpp */,
 				032BB7C0257BD5B800846004 /* GameEntity.hpp */,
+				0300323A262A897000D055CC /* GameOverEntity.cpp */,
+				03003239262A897000D055CC /* GameOverEntity.hpp */,
 				0368714B25F121B200D281E4 /* HighScoreEntity.cpp */,
 				0368714C25F121B200D281E4 /* HighScoreEntity.hpp */,
 				035804F625E0D0D700EC9AF6 /* LivesEntity.cpp */,

@@ -19,6 +19,13 @@ ManagerHelper::~ManagerHelper() {
     SDL_Quit();
 }
 
+void ManagerHelper::add(Manager* manager) {
+    if(manager != nullptr) {
+        managers.push_back(manager);
+        manager->initialize();
+    }
+}
+
 void ManagerHelper::beforeUpdate() {
     if(isReset) {
         isReset = false;
@@ -59,17 +66,15 @@ void ManagerHelper::destroy(Entity* entity) {
     }
 }
 
-
-
 SDL_Renderer* ManagerHelper::getRenderer() {
     return get<WindowManager>()->getRenderer();
 }
 
 void ManagerHelper::initialize() {
-    managers.push_back(new WindowManager());
-    managers.push_back(new InputManager());
-    managers.push_back(new UIManager());
-    managers.push_back(new GameManager());
+    add(new WindowManager());
+    add(new InputManager());
+    add(new UIManager());
+    add(new GameManager());
 }
 
 void ManagerHelper::render() {

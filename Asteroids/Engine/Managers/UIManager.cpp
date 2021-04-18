@@ -1,4 +1,3 @@
-
 #include "Engine/Managers/UIManager.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/GameOverEntity.hpp"
@@ -12,8 +11,6 @@ UIManager::UIManager() {
     if(TTF_Init() < 0) {
         std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
     }
-    
-    initialize();
 }
 
 UIManager::~UIManager() {
@@ -21,9 +18,9 @@ UIManager::~UIManager() {
 }
 
 void UIManager::initialize() {  
+    addEntity(new CopyrightEntity());
     addEntity(new GameOverEntity());
     addEntity(new HighScoreEntity());
     addEntity(new LivesEntity());
     addEntity(new PlayerScoreEntity());
-    addEntity(new CopyrightEntity());
 }

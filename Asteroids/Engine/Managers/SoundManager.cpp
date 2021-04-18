@@ -1,7 +1,7 @@
 #include "Engine/Managers/SoundManager.hpp"
+#include <iostream>
 #include <SDL.h>
 #include <SDL_mixer.h>
-#include <iostream>
 
 SoundManager::SoundManager() {
     if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
