@@ -20,7 +20,7 @@ LivesEntity::LivesEntity() {
     addComponent(shapeComponent);
     
     // Note: Must be at the end after all the components have been initialized/added
-    addScore(1);
+    addScore(3);
 }
 
 void LivesEntity::addScore(int lives) {
