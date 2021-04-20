@@ -1,6 +1,7 @@
 #include "Engine/Components/CircleComponent.hpp"
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
+#include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
@@ -14,6 +15,12 @@ BulletEntity::BulletEntity(bool fromPlayer) : fromPlayer(fromPlayer) {
         ManagerHelper::destroy(this);
     });
     this->addComponent(collisionComponent);
+    
+    if(fromPlayer) {
+        SoundComponent* soundComponent = new SoundComponent("fire.wav");
+        this->addComponent(soundComponent);
+        soundComponent->play();
+    }
 }
 
 Eigen::Vector2f BulletEntity::getDimensions() const {

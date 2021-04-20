@@ -1,5 +1,6 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
+#include "Engine/Managers/SoundManager.hpp"
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
@@ -73,6 +74,7 @@ SDL_Renderer* ManagerHelper::getRenderer() {
 void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
+    add(new SoundManager());
     add(new UIManager());
     add(new GameManager());
 }

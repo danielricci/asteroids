@@ -20,6 +20,7 @@
 		03261720251ED61B00ABA175 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0326171E251ED61B00ABA175 /* SoundManager.cpp */; };
 		03261723251EDAED00ABA175 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03261722251EDAED00ABA175 /* libSDL2.a */; };
 		032BB7C1257BD5B800846004 /* GameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032BB7BF257BD5B800846004 /* GameEntity.cpp */; };
+		0332D16D262F0B8200CC371F /* fire.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0332D16C262F0AAF00CC371F /* fire.wav */; };
 		033CD2D424EB72EB00EBA382 /* PlayerInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033CD2D224EB72EB00EBA382 /* PlayerInputComponent.cpp */; };
 		034F4C3024DA54A300975181 /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034F4C2F24DA54A300975181 /* Manager.cpp */; };
 		0350F2B223A324FB0038A52E /* PhysicsComponent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 0350F2B123A324FB0038A52E /* PhysicsComponent.hpp */; };
@@ -58,6 +59,7 @@
 			files = (
 				03261717251ED10500ABA175 /* Verdana.ttf in CopyFiles */,
 				03E25BB625CE6C4F00B20839 /* Hyperspace.ttf in CopyFiles */,
+				0332D16D262F0B8200CC371F /* fire.wav in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +99,7 @@
 		03261722251EDAED00ABA175 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../usr/local/Cellar/sdl2/2.0.12_1/lib/libSDL2.a; sourceTree = "<group>"; };
 		032BB7BF257BD5B800846004 /* GameEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameEntity.cpp; sourceTree = "<group>"; };
 		032BB7C0257BD5B800846004 /* GameEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameEntity.hpp; sourceTree = "<group>"; };
+		0332D16C262F0AAF00CC371F /* fire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire.wav; sourceTree = "<group>"; };
 		033CD2D224EB72EB00EBA382 /* PlayerInputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInputComponent.cpp; sourceTree = "<group>"; };
 		033CD2D324EB72EB00EBA382 /* PlayerInputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerInputComponent.hpp; sourceTree = "<group>"; };
 		034F4C2F24DA54A300975181 /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
@@ -269,6 +272,7 @@
 		0326170A251ECA7800ABA175 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				0332D16C262F0AAF00CC371F /* fire.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";

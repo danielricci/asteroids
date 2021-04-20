@@ -12,9 +12,8 @@ public:
     
     const bool fromPlayer = false;
 private:
-    const int SPEED = 925;
     const int MAX_DISTANCE = 600;
-    
+    const int SPEED = 925;
     float timeTravelled = 0;
 };
 

@@ -4,7 +4,7 @@
 SoundComponent::SoundComponent(const std::string& path) : path(path) {
     chunk = Mix_LoadWAV(path.c_str());
     if(chunk == nullptr) {
-        std::cerr << "Mix_LoadWav: " << Mix_GetError() << std::endl;
+        std::cerr << "Mix_LoadWav: Could not load sound " << path << ": " << Mix_GetError() << std::endl;
     }
 }
 
