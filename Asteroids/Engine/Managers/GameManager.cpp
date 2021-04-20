@@ -10,7 +10,7 @@ GameManager::GameState GameManager::getGameState() const {
 void GameManager::handleCollision() {
     for(auto& pair : entities) {
         std::for_each(entities.begin(), entities.end(), [&pair](const auto& thisPair) {
-            // It might be too naive to not send collision messages to destroyed entities
+            // It might be naive to not send collision messages to destroyed entities
             if(pair.first != thisPair.first &&
                pair.second.state != ManagerInformation::State::Destroy &&
                pair.second.state != ManagerInformation::State::Disabled &&

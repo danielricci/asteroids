@@ -10,7 +10,6 @@
 		0300323B262A897000D055CC /* GameOverEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0300323A262A897000D055CC /* GameOverEntity.cpp */; };
 		0308791F26121D6F00248FE9 /* PlayerExplosionParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0308791D26121D6F00248FE9 /* PlayerExplosionParticle.cpp */; };
 		0308792226121D9A00248FE9 /* CopyrightEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0308792026121D9A00248FE9 /* CopyrightEntity.cpp */; };
-		030B2D9A25256735003F89B5 /* thrust.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 030B2D982525671F003F89B5 /* thrust.wav */; };
 		031956AD2572BE2D00FFF34E /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031956AC2572BE2D00FFF34E /* Component.cpp */; };
 		03219D472406B5F70050588A /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03219D452406B5F70050588A /* InputManager.cpp */; };
 		0325031A2599A363008BF227 /* EventArgs.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 032503192599A362008BF227 /* EventArgs.hpp */; };
@@ -59,7 +58,6 @@
 			files = (
 				03261717251ED10500ABA175 /* Verdana.ttf in CopyFiles */,
 				03E25BB625CE6C4F00B20839 /* Hyperspace.ttf in CopyFiles */,
-				030B2D9A25256735003F89B5 /* thrust.wav in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +80,6 @@
 		0308791E26121D6F00248FE9 /* PlayerExplosionParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerExplosionParticle.hpp; sourceTree = "<group>"; };
 		0308792026121D9A00248FE9 /* CopyrightEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyrightEntity.cpp; sourceTree = "<group>"; };
 		0308792126121D9A00248FE9 /* CopyrightEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CopyrightEntity.hpp; sourceTree = "<group>"; };
-		030B2D982525671F003F89B5 /* thrust.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thrust.wav; sourceTree = "<group>"; };
 		0317C67F2352500C00D43455 /* Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		031956AC2572BE2D00FFF34E /* Component.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
 		03219D452406B5F70050588A /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
@@ -272,7 +269,6 @@
 		0326170A251ECA7800ABA175 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				030B2D982525671F003F89B5 /* thrust.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
