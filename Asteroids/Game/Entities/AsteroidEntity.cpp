@@ -3,13 +3,11 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Game/ManagerHelper.hpp"
-#include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
 #include <SDL.h>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
-    
     int stageNumeral = static_cast<int>(stage);
     float stageSizeScalar = 1.f / stageNumeral;
     addComponent(new ShapeComponent({
@@ -31,26 +29,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     speed *= stageNumeral + 1;
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
-    physicsComponent->eventOnCollide.attach([this, stageNumeral](Entity* sender, EventArgs args) {
-        if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
-            EnemyExplosionParticle* particle = new EnemyExplosionParticle();
-            particle->setPosition(this->getPosition());
-            particle->setOrientation(this->getOrientation());
-            particle->play();
-            ManagerHelper::get<GameManager>()->addEntity(particle);
-            
-            if(this->stage != AsteroidStage::STAGE_LAST) {
-                for(int i = 0, j = stageNumeral * 2; i < j; ++i) {
-                    AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(stageNumeral + 1));
-                    asteroid->setPosition(this->getPosition());
-                    asteroid->setOrientation(TransformComponent::getRandomRotation());
-                    ManagerHelper::get<GameManager>()->addEntity(asteroid);
-                }
-            }
-            ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs::Empty());
-            ManagerHelper::destroy(this);
-        }
-    });
+    physicsComponent->eventOnCollide.attach(std::bind(&AsteroidEntity::onEventCollide, this, std::placeholders::_1, std::placeholders::_2));
     addComponent(physicsComponent);
 }
 
@@ -62,6 +41,28 @@ Eigen::AlignedBox2f AsteroidEntity::getBounds() const {
     alignedBox.min() = this->getPosition() + Eigen::Vector2f(rectangle.x, rectangle.y);
     alignedBox.max() = Eigen::Vector2f(alignedBox.min().x() + rectangle.w, alignedBox.min().y() + rectangle.h);
     return alignedBox;
+}
+
+void AsteroidEntity::onEventCollide(Entity* sender, EventArgs args) {
+    if(dynamic_cast<AsteroidEntity*>(sender) == nullptr) {
+        EnemyExplosionParticle* particle = new EnemyExplosionParticle();
+        particle->setPosition(this->getPosition());
+        particle->setOrientation(this->getOrientation());
+        particle->play();
+        ManagerHelper::get<GameManager>()->addEntity(particle);
+        
+        int stageNumeral = static_cast<int>(stage);
+        if(this->stage != AsteroidStage::STAGE_LAST) {
+            for(int i = 0, j = stageNumeral * 2; i < j; ++i) {
+                AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(stageNumeral + 1));
+                asteroid->setPosition(this->getPosition());
+                asteroid->setOrientation(TransformComponent::getRandomRotation());
+                ManagerHelper::get<GameManager>()->addEntity(asteroid);
+            }
+        }
+        ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs::Empty());
+        ManagerHelper::destroy(this);
+    }
 }
 
 void AsteroidEntity::update(float deltaTime) {

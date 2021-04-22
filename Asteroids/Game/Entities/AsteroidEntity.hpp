@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/GameEntity.hpp"
 #include <Eigen/Dense>
 
@@ -18,5 +19,7 @@ public:
     
     const AsteroidStage stage;
 private:
+    void onEventCollide(Entity* sender, EventArgs args);
+    
     int speed = 50;
 };
