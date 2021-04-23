@@ -162,6 +162,7 @@
 		03FF68BF2632766B008676CB /* bangLarge.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bangLarge.wav; sourceTree = "<group>"; };
 		03FF68C02632766B008676CB /* saucerSmall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucerSmall.wav; sourceTree = "<group>"; };
 		03FF68C12632766B008676CB /* saucerBig.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucerBig.wav; sourceTree = "<group>"; };
+		03FF68C2263276F3008676CB /* thrust.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thrust.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +281,7 @@
 		0326170A251ECA7800ABA175 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				03FF68C2263276F3008676CB /* thrust.wav */,
 				03FF68BF2632766B008676CB /* bangLarge.wav */,
 				03FF68BC2632766B008676CB /* bangMedium.wav */,
 				03FF68BA2632766B008676CB /* bangSmall.wav */,
