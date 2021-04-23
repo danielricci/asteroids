@@ -11,13 +11,7 @@ std::list<Manager*> ManagerHelper::managers {};
 bool ManagerHelper::isReset = false;
 
 ManagerHelper::~ManagerHelper() {
-    for(Manager* manager : managers) {
-        if(manager != nullptr) {
-            delete manager;
-            manager = nullptr;
-        }
-    }
-    SDL_Quit();
+    clean();
 }
 
 void ManagerHelper::add(Manager* manager) {
@@ -30,7 +24,7 @@ void ManagerHelper::add(Manager* manager) {
 void ManagerHelper::beforeUpdate() {
     if(isReset) {
         isReset = false;
-        clean();
+        reload();
     }
 }
 
@@ -49,6 +43,16 @@ void ManagerHelper::broadcast(BroadcastEvent broadcastEvent, void* sender, const
 }
 
 void ManagerHelper::clean() {
+    for(Manager* manager : managers) {
+        if(manager != nullptr) {
+            delete manager;
+            manager = nullptr;
+        }
+    }
+    SDL_Quit();
+}
+
+void ManagerHelper::reload() {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->clean();
@@ -74,7 +78,11 @@ SDL_Renderer* ManagerHelper::getRenderer() {
 void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
-    add(new SoundManager());
+    SoundManager* soundManager = new SoundManager();
+    soundManager->loadSounds({
+        "fire.wav"
+    });
+    add(soundManager);
     add(new UIManager());
     add(new GameManager());
 }

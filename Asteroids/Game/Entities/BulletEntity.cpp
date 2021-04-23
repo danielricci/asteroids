@@ -1,9 +1,9 @@
 #include "Engine/Components/CircleComponent.hpp"
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
-#include "Engine/Components/SoundComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/ManagerHelper.hpp"
 #include <cmath>
@@ -17,9 +17,7 @@ BulletEntity::BulletEntity(bool fromPlayer) : fromPlayer(fromPlayer) {
     this->addComponent(collisionComponent);
     
     if(fromPlayer) {
-        SoundComponent* soundComponent = new SoundComponent("fire.wav");
-        this->addComponent(soundComponent);
-        soundComponent->play();
+        ManagerHelper::get<SoundManager>()->getSound("fire.wav")->play();
     }
 }
 

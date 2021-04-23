@@ -1,4 +1,5 @@
 #include "Engine/Managers/SoundManager.hpp"
+#include <algorithm>
 #include <iostream>
 #include <SDL.h>
 #include <SDL_mixer.h>
@@ -18,20 +19,38 @@ SoundManager::SoundManager() {
 }
 
 SoundManager::~SoundManager() {
+    std::for_each(chunks.begin(), chunks.end(), [this](auto& thisPair) {
+        if(thisPair.second != nullptr) {
+            delete thisPair.second;
+            thisPair.second = nullptr;
+        }
+    });
+    chunks.clear();
     Mix_Quit();
 }
 
-void SoundManager::toggleSound() const {
-    Mix_Volume(-1, Mix_Volume(-1, -1) != 0 ? 0 : MIX_MAX_VOLUME);
+SoundEntity* SoundManager::getSound(const std::string& name) const {
+    return chunks.at(name);
+}
+
+
+void SoundManager::loadSounds(const std::vector<std::string>& names) {
+    for(const std::string& name : names) {
+        chunks.insert_or_assign(name, new SoundEntity(name));
+    }
 }
 
 void SoundManager::allocateSoundChannels(int size) {
     int allocatedChannels = Mix_AllocateChannels(size);
     if(allocatedChannels > -1) {
-        soundChannelsCount = allocatedChannels;
+        channels = allocatedChannels;
     }
 }
 
 int SoundManager::getAllocatedChannelCount() const {
-    return soundChannelsCount;
+    return channels;
+}
+
+void SoundManager::toggleSound() const {
+    Mix_Volume(-1, Mix_Volume(-1, -1) != 0 ? 0 : MIX_MAX_VOLUME);
 }

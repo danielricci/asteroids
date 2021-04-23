@@ -14,6 +14,8 @@ UIManager::UIManager() {
 }
 
 UIManager::~UIManager() {
+    // Hack: Prevent the base class from having anything to clea, TTF_QUIT must be called last
+    clean();
     TTF_Quit();
 }
 

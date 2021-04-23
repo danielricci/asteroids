@@ -1,35 +1,35 @@
-#include "Engine/Components/SoundComponent.hpp"
+#include "Engine/Entities/SoundEntity.hpp"
 #include <iostream>
 
-SoundComponent::SoundComponent(const std::string& path) : path(path) {
+SoundEntity::SoundEntity(const std::string& path) : path(path) {
     chunk = Mix_LoadWAV(path.c_str());
     if(chunk == nullptr) {
         std::cerr << "Mix_LoadWav: Could not load sound " << path << ": " << Mix_GetError() << std::endl;
     }
 }
 
-SoundComponent::~SoundComponent() {
+SoundEntity::~SoundEntity() {
     if(chunk != nullptr) {
         Mix_FreeChunk(chunk);
         chunk = nullptr;
     }
 }
 
-bool SoundComponent::isPlaying() const {
+bool SoundEntity::isPlaying() const {
     return this->channel != NO_CHANNEL && Mix_Playing(this->channel);
 }
 
-void SoundComponent::stop() {
+void SoundEntity::stop() {
     if(this->channel != NO_CHANNEL) {
         Mix_HaltChannel(this->channel);
         this->channel = NO_CHANNEL;
     }
 }
 
-void SoundComponent::play(int loops) {
+void SoundEntity::play(int loops) {
     if(chunk != nullptr) {
         if(this->isPlaying()) {
-            return;
+            //return;
         }
         
         int mixChannel = Mix_PlayChannel(-1, chunk, loops);

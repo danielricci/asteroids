@@ -5,6 +5,10 @@ GameWorld::GameWorld() {
     ManagerHelper::initialize();
 }
 
+GameWorld::~GameWorld() {
+    ManagerHelper::clean();
+}
+
 float GameWorld::getDeltaTime() {
     static long long int lastTime = 0;
     static long long int nowTime = SDL_GetPerformanceCounter();

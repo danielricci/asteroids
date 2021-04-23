@@ -5,6 +5,7 @@
 class GameWorld {
 public:
     GameWorld();
+    ~GameWorld();
     
     void run();
 private:

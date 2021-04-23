@@ -19,6 +19,7 @@ public:
     static void beforeUpdate();
     static void broadcast(BroadcastEvent broadcastEvent, void* sender, const EventArgs& args);
     static void clean();
+    static void reload();
     static void destroy(Entity* obj);
     static SDL_Renderer* getRenderer();
     static void initialize();
