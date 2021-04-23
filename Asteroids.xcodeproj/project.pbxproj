@@ -154,6 +154,14 @@
 		03F006D524D3056700260594 /* PlayerEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerEntity.hpp; sourceTree = "<group>"; };
 		03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerScoreEntity.cpp; sourceTree = "<group>"; };
 		03F57FE225F3D5F1000F6588 /* PlayerScoreEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerScoreEntity.hpp; sourceTree = "<group>"; };
+		03FF68BA2632766B008676CB /* bangSmall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bangSmall.wav; sourceTree = "<group>"; };
+		03FF68BB2632766B008676CB /* beat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beat1.wav; sourceTree = "<group>"; };
+		03FF68BC2632766B008676CB /* bangMedium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bangMedium.wav; sourceTree = "<group>"; };
+		03FF68BD2632766B008676CB /* extraShip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = extraShip.wav; sourceTree = "<group>"; };
+		03FF68BE2632766B008676CB /* beat2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beat2.wav; sourceTree = "<group>"; };
+		03FF68BF2632766B008676CB /* bangLarge.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bangLarge.wav; sourceTree = "<group>"; };
+		03FF68C02632766B008676CB /* saucerSmall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucerSmall.wav; sourceTree = "<group>"; };
+		03FF68C12632766B008676CB /* saucerBig.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucerBig.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +280,14 @@
 		0326170A251ECA7800ABA175 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				03FF68BF2632766B008676CB /* bangLarge.wav */,
+				03FF68BC2632766B008676CB /* bangMedium.wav */,
+				03FF68BA2632766B008676CB /* bangSmall.wav */,
+				03FF68BB2632766B008676CB /* beat1.wav */,
+				03FF68BE2632766B008676CB /* beat2.wav */,
+				03FF68BD2632766B008676CB /* extraShip.wav */,
+				03FF68C12632766B008676CB /* saucerBig.wav */,
+				03FF68C02632766B008676CB /* saucerSmall.wav */,
 				0332D16C262F0AAF00CC371F /* fire.wav */,
 			);
 			path = Sounds;
