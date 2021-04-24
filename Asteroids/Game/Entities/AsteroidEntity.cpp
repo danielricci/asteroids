@@ -30,11 +30,11 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
     
     switch(stageNumeral) {
         case 2: {
-            speed = 155;
+            speed = 250;
             break;
         }
         case 3: {
-            speed = 225;
+            speed = 300;
             break;
         }
     }
@@ -64,7 +64,7 @@ void AsteroidEntity::onEventCollide(Entity* sender, EventArgs args) {
         
         int stageNumeral = static_cast<int>(stage);
         if(this->stage != AsteroidStage::STAGE_LAST) {
-            for(int i = 0, j = stageNumeral * 2; i < j; ++i) {
+            for(int i = 0; i < (this->stage == AsteroidStage::STAGE_1 ? 2 : 3); ++i) {
                 AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(stageNumeral + 1));
                 asteroid->setPosition(this->getPosition());
                 asteroid->setOrientation(TransformComponent::getRandomRotation());
