@@ -28,7 +28,16 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
         stageSizeScalar * Eigen::Vector2f(-20, -50)
     }));
     
-    speed *= (stageNumeral + 1);
+    switch(stageNumeral) {
+        case 2: {
+            speed = 155;
+            break;
+        }
+        case 3: {
+            speed = 225;
+            break;
+        }
+    }
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach(std::bind(&AsteroidEntity::onEventCollide, this, std::placeholders::_1, std::placeholders::_2));

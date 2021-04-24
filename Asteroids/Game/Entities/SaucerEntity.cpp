@@ -1,15 +1,14 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
 
 SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
-    
     float scaleFactor = 1.f;
     switch(saucerType) {
         case SaucerType::SAUCER_SMALL: {
