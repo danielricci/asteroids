@@ -9,6 +9,7 @@
 #include <SDL.h>
 
 AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
+    this->setOrientation(TransformComponent::getRandomRotation());
     int stageNumeral = static_cast<int>(stage);
     float stageSizeScalar = 1.f / stageNumeral;
     addComponent(new ShapeComponent({
@@ -27,7 +28,7 @@ AsteroidEntity::AsteroidEntity(AsteroidStage stage) : stage(stage) {
         stageSizeScalar * Eigen::Vector2f(-20, -50)
     }));
     
-    speed *= stageNumeral + 1;
+    speed *= (stageNumeral + 1);
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach(std::bind(&AsteroidEntity::onEventCollide, this, std::placeholders::_1, std::placeholders::_2));

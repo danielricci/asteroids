@@ -21,5 +21,5 @@ public:
 private:
     void onEventCollide(Entity* sender, EventArgs args);
     
-    int speed = 50;
+    int speed = 30;
 };
