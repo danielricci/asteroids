@@ -2,6 +2,7 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/SoundManager.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
@@ -18,21 +19,17 @@ LivesEntity::LivesEntity() {
     ShapeComponent* shapeComponent = new ShapeComponent({{12, 0}, {-12, 10}, {-8, 5}, {-8, -5}, {-12, -10}, {12, 0}});
     shapeComponent->setPosition(INITIAL_POSITION_SHAPE);
     addComponent(shapeComponent);
-    
-    // Note: Must be at the end after all the components have been initialized/added
-    addScore(3);
 }
 
-void LivesEntity::addScore(int lives) {
-    this->lives = std::max(0, std::min(this->lives + lives, MAX_LIVES));
-    
-    FontComponent* textComponent = getComponent<FontComponent>();
-    textComponent->setPosition(OFFSET_POSITION_TEXT * std::to_string(this->lives).length());
-    textComponent->setText(toString());
+void LivesEntity::add(int points) {
+    this->lives = std::max(0, std::min(this->lives + points, MAX_LIVES));
+    if(points > 0) {
+        ManagerHelper::get<SoundManager>()->getSound("extraShip")->play();
+    }
 }
 
 void LivesEntity::reset() {
-    addScore(-lives);
+    add(-lives);
 }
 
 std::string LivesEntity::toString() const {
@@ -59,7 +56,7 @@ void LivesEntity::update(const SDL_Event& event) {
     if(event.type == SDL_USEREVENT) {
         switch(event.user.code) {
             case ManagerHelper::EVENT_PLAYER_HIT: {
-                addScore(-1);
+                add(-1);
                 break;
             }
             case ManagerHelper::EVENT_SPAWN_PLAYER: {
@@ -72,6 +69,13 @@ void LivesEntity::update(const SDL_Event& event) {
                 }
                 break;
             }
+        }
+        
+        if(hasChanged) {
+            hasChanged = false;
+            FontComponent* textComponent = getComponent<FontComponent>();
+            textComponent->setPosition(OFFSET_POSITION_TEXT * std::to_string(this->lives).length());
+            textComponent->setText(toString());
         }
     }
 }

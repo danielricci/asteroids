@@ -2,6 +2,7 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/SoundManager.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
@@ -61,6 +62,21 @@ void AsteroidEntity::onEventCollide(Entity* sender, EventArgs args) {
             }
         }
         ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs::Empty());
+        switch(stageNumeral) {
+            case static_cast<int>(AsteroidStage::STAGE_1): {
+                ManagerHelper::get<SoundManager>()->getSound("asteroid_l")->play();
+                break;
+            }
+            case static_cast<int>(AsteroidStage::STAGE_2): {
+                ManagerHelper::get<SoundManager>()->getSound("asteroid_m")->play();
+                break;
+            }
+            case static_cast<int>(AsteroidStage::STAGE_LAST): {
+                ManagerHelper::get<SoundManager>()->getSound("asteroid_s")->play();
+                break;
+            }
+        }
+        
         ManagerHelper::destroy(this);
     }
 }
