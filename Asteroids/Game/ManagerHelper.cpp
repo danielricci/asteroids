@@ -4,6 +4,8 @@
 #include "Engine/Managers/UIManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
+#include <iostream>
+#include <filesystem>
 #include <SDL.h>
 #include <set>
 
@@ -79,9 +81,12 @@ void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
     SoundManager* soundManager = new SoundManager();
-    soundManager->loadSounds({
-        "fire.wav"
-    });
+    
+    for(const auto& entry : std::filesystem::directory_iterator(std::string(std::filesystem::current_path()) + "/Resources")) {
+        //std::cout << entry. << std::endl;
+    }
+    
+    soundManager->loadSounds({"fire.wav"});
     add(soundManager);
     add(new UIManager());
     add(new GameManager());

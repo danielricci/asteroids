@@ -2,7 +2,7 @@
 #include <Eigen/Dense>
 #include <iostream>
 
-FontComponent::FontComponent(const std::string& fontPath) : fontPath(fontPath) {
+FontComponent::FontComponent(const std::string& fontPath) : fontPath("Resources/" + fontPath) {
 }
 
 FontComponent::~FontComponent() {

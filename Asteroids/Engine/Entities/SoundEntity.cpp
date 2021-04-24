@@ -2,7 +2,7 @@
 #include <iostream>
 
 SoundEntity::SoundEntity(const std::string& path) : path(path) {
-    chunk = Mix_LoadWAV(path.c_str());
+    chunk = Mix_LoadWAV(("Resources/" + path).c_str());
     if(chunk == nullptr) {
         std::cerr << "Mix_LoadWav: Could not load sound " << path << ": " << Mix_GetError() << std::endl;
     }
