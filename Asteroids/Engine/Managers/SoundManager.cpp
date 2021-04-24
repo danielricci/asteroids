@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <iostream>
 #include <SDL.h>
-#include <SDL_mixer.h>
 
 SoundManager::SoundManager() {
     if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
@@ -33,10 +32,11 @@ SoundEntity* SoundManager::getSound(const std::string& name) const {
     return chunks.at(name);
 }
 
-
-void SoundManager::loadSounds(const std::vector<std::string>& names) {
-    for(const std::string& name : names) {
-        chunks.insert_or_assign(name, new SoundEntity(name));
+void SoundManager::loadSound(const std::string& path) {
+    if(path.size() > WAV_EXTENSION.size() && path.compare(path.size() - WAV_EXTENSION.size(), WAV_EXTENSION.size(), WAV_EXTENSION) == 0) {
+        std::string filename = path.substr(path.find_last_of("/\\") + 1);
+        std::string::size_type const p(filename.find_last_of('.'));
+        chunks.insert_or_assign(filename.substr(0, p), new SoundEntity(path));
     }
 }
 

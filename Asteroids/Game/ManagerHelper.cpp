@@ -83,10 +83,8 @@ void ManagerHelper::initialize() {
     SoundManager* soundManager = new SoundManager();
     
     for(const auto& entry : std::filesystem::directory_iterator(std::string(std::filesystem::current_path()) + "/Resources")) {
-        //std::cout << entry. << std::endl;
+        soundManager->loadSound(entry.path());
     }
-    
-    soundManager->loadSounds({"fire.wav"});
     add(soundManager);
     add(new UIManager());
     add(new GameManager());

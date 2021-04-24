@@ -17,7 +17,7 @@ BulletEntity::BulletEntity(bool fromPlayer) : fromPlayer(fromPlayer) {
     this->addComponent(collisionComponent);
     
     if(fromPlayer) {
-        ManagerHelper::get<SoundManager>()->getSound("fire.wav")->play();
+        ManagerHelper::get<SoundManager>()->getSound("fire")->play();
     }
 }
 

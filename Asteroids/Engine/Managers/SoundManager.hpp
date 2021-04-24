@@ -3,9 +3,7 @@
 #include "Engine/Entities/SoundEntity.hpp"
 #include "Engine/Managers/Manager.hpp"
 #include <map>
-#include <SDL_mixer.h>
 #include <string>
-#include <vector>
 
 class SoundManager : public Manager {
 public:
@@ -15,9 +13,10 @@ public:
     void allocateSoundChannels(int size);
     int getAllocatedChannelCount() const;
     SoundEntity* getSound(const std::string& name) const;
-    void loadSounds(const std::vector<std::string>& names);
+    void loadSound(const std::string& name);
     void toggleSound() const;
 private:
+    const std::string WAV_EXTENSION = ".wav";
     std::map<std::string, SoundEntity*> chunks;
     int channels = 0;
 };
