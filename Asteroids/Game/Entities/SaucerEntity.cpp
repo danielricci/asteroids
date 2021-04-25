@@ -9,6 +9,10 @@
 #include <SDL.h>
 
 SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
+    this->setPosition(Eigen::Vector2f(0, 200));
+    velocity = pathfinding.front() - getPosition();
+    pathfinding.pop();
+    
     float scaleFactor = 1.f;
     switch(saucerType) {
         case SaucerType::SAUCER_SMALL: {
@@ -65,12 +69,19 @@ Eigen::AlignedBox2f SaucerEntity::getBounds() const {
 }
 
 void SaucerEntity::update(float deltaTime) {
-    double radians = TransformComponent::toRadians(getOrientation());
-    velocity.x() = (speed * std::cos(radians));
-    velocity.y() = (speed * std::sin(radians));
-
+    //Eigen::Vector2f trajectory = velocity - getPosition();
+    
     Eigen::Vector2f position = getPosition();
-    position.x() += (velocity.x() * deltaTime);
-    position.y() += (velocity.y() * deltaTime);
+    position.x() += (velocity.x() * deltaTime * speed);
+    position.y() += (velocity.y() * deltaTime * speed);
     setPosition(position);
+    
+//    double radians = TransformComponent::toRadians(getOrientation());
+//    velocity.x() = (speed * std::cos(radians));
+//    velocity.y() = (speed * std::sin(radians));
+//
+//    Eigen::Vector2f position = getPosition();
+//    position.x() += (velocity.x() * deltaTime);
+//    position.y() += (velocity.y() * deltaTime);
+//    setPosition(position);
 }

@@ -75,9 +75,8 @@ void GameManager::setGameState(GameManager::GameState gameState) {
 //                saucerEntityLarge->setPosition({40, 350});
 //                addEntity(saucerEntityLarge);
 //
-//                SaucerEntity* saucerEntitySmall = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL);
-//                saucerEntitySmall->setPosition({40, 250});
-//                addEntity(saucerEntitySmall);
+//                  SaucerEntity* saucerEntitySmall = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL);
+//                  addEntity(saucerEntitySmall);
            }
             break;
         }
