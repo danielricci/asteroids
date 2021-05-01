@@ -18,7 +18,7 @@ SoundManager::SoundManager() {
     for(const auto& entry : std::filesystem::directory_iterator(std::string(std::filesystem::current_path()) + "/Resources")) {
         loadSound(entry.path());
     }
-    std::cout << "[Sound] - Total Loaded: " << chunks.size() << std::endl;
+    std::cout << "[Sound] - Resources Loaded: " << chunks.size() << std::endl;
     
     Mix_Volume(-1, MIX_MAX_VOLUME);
 }
