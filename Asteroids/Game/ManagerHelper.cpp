@@ -5,7 +5,6 @@
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
 #include <iostream>
-#include <filesystem>
 #include <SDL.h>
 #include <set>
 
@@ -80,12 +79,7 @@ SDL_Renderer* ManagerHelper::getRenderer() {
 void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
-    SoundManager* soundManager = new SoundManager();
-    
-    for(const auto& entry : std::filesystem::directory_iterator(std::string(std::filesystem::current_path()) + "/Resources")) {
-        soundManager->loadSound(entry.path());
-    }
-    add(soundManager);
+    add(new SoundManager());
     add(new UIManager());
     add(new GameManager());
 }

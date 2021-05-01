@@ -18,12 +18,7 @@ public:
     
     const SaucerType saucerType;
 private:
-    int speed = 1;
-    std::queue<Eigen::Vector2f> pathfinding {{
-        Eigen::Vector2f(800, 200),
-        //Eigen::Vector2f(600, 500),
-        //Eigen::Vector2f(300, 900),
-        //Eigen::Vector2f(1200, 900),
-    }};
-    Eigen::Vector2f path = pathfinding.front();
+    int speed = 10;
+    std::queue<Eigen::Vector2f> waypoints;
+    Eigen::Vector2f waypoint = Eigen::Vector2f::Zero();
 };

@@ -2,6 +2,7 @@
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/SoundManager.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
@@ -9,9 +10,16 @@
 #include <SDL.h>
 
 SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
-    this->setPosition(Eigen::Vector2f(0, 200));
-    velocity = pathfinding.front() - getPosition();
-    pathfinding.pop();
+    setPosition(Eigen::Vector2f(0, 200));
+    velocity = Eigen::Vector2f(1, 1);
+    
+    // TODO: Configure the proper waypoints for the saucer
+    waypoints.push(Eigen::Vector2f(800, 200));
+    waypoints.push(Eigen::Vector2f(600, 500));
+    waypoints.push(Eigen::Vector2f(300, 700));
+    waypoints.push(Eigen::Vector2f(1200, 700));
+    waypoint = waypoints.front();
+    
     
     float scaleFactor = 1.f;
     switch(saucerType) {
@@ -53,6 +61,7 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
         ManagerHelper::get<GameManager>()->addEntity(particle);
         
         ManagerHelper::broadcast(ManagerHelper::EVENT_SAUCER_HIT, this, EventArgs::Empty());
+        ManagerHelper::get<SoundManager>()->getSound("saucer_explosion")->play();
         ManagerHelper::destroy(this);
     });
     addComponent(physicsComponent);
@@ -69,19 +78,18 @@ Eigen::AlignedBox2f SaucerEntity::getBounds() const {
 }
 
 void SaucerEntity::update(float deltaTime) {
-    //Eigen::Vector2f trajectory = velocity - getPosition();
-    
     Eigen::Vector2f position = getPosition();
-    position.x() += (velocity.x() * deltaTime * speed);
-    position.y() += (velocity.y() * deltaTime * speed);
-    setPosition(position);
+    Eigen::Vector2f distance = waypoint - position;
+    if(distance.norm() <= 10) {
+        // snap the player to the position and ready the next one
+        setPosition(waypoint);
+        waypoints.pop();
+        waypoint = waypoints.front();
+        return;
+    }
     
-//    double radians = TransformComponent::toRadians(getOrientation());
-//    velocity.x() = (speed * std::cos(radians));
-//    velocity.y() = (speed * std::sin(radians));
-//
-//    Eigen::Vector2f position = getPosition();
-//    position.x() += (velocity.x() * deltaTime);
-//    position.y() += (velocity.y() * deltaTime);
-//    setPosition(position);
+    Eigen::Vector2f direction = distance/distance.norm();
+    position.x() += (direction.x() * speed * deltaTime);
+    position.y() += (direction.y() * speed * deltaTime);
+    setPosition(position);
 }

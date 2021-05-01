@@ -1,5 +1,6 @@
 #include "Engine/Managers/SoundManager.hpp"
 #include <algorithm>
+#include <filesystem>
 #include <iostream>
 #include <SDL.h>
 
@@ -14,6 +15,11 @@ SoundManager::SoundManager() {
         return;
     }
 
+    for(const auto& entry : std::filesystem::directory_iterator(std::string(std::filesystem::current_path()) + "/Resources")) {
+        loadSound(entry.path());
+    }
+    std::cout << "[Sound] - Total Loaded: " << chunks.size() << std::endl;
+    
     Mix_Volume(-1, MIX_MAX_VOLUME);
 }
 
@@ -34,21 +40,11 @@ SoundEntity* SoundManager::getSound(const std::string& name) const {
 
 void SoundManager::loadSound(const std::string& path) {
     if(path.size() > WAV_EXTENSION.size() && path.compare(path.size() - WAV_EXTENSION.size(), WAV_EXTENSION.size(), WAV_EXTENSION) == 0) {
+        std::cout << "[Sound] - Loading resource " << path<< std::endl;
         std::string filename = path.substr(path.find_last_of("/\\") + 1);
         std::string::size_type const p(filename.find_last_of('.'));
         chunks.insert_or_assign(filename.substr(0, p), new SoundEntity(path));
     }
-}
-
-void SoundManager::allocateSoundChannels(int size) {
-    int allocatedChannels = Mix_AllocateChannels(size);
-    if(allocatedChannels > -1) {
-        channels = allocatedChannels;
-    }
-}
-
-int SoundManager::getAllocatedChannelCount() const {
-    return channels;
 }
 
 void SoundManager::toggleSound() const {

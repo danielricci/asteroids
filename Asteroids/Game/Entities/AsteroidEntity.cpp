@@ -74,15 +74,15 @@ void AsteroidEntity::onEventCollide(Entity* sender, EventArgs args) {
         ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs::Empty());
         switch(stageNumeral) {
             case static_cast<int>(AsteroidStage::STAGE_1): {
-                ManagerHelper::get<SoundManager>()->getSound("asteroid_l")->play();
+                ManagerHelper::get<SoundManager>()->getSound("asteroid_l_explosion")->play();
                 break;
             }
             case static_cast<int>(AsteroidStage::STAGE_2): {
-                ManagerHelper::get<SoundManager>()->getSound("asteroid_m")->play();
+                ManagerHelper::get<SoundManager>()->getSound("asteroid_m_explosion")->play();
                 break;
             }
             case static_cast<int>(AsteroidStage::STAGE_LAST): {
-                ManagerHelper::get<SoundManager>()->getSound("asteroid_s")->play();
+                ManagerHelper::get<SoundManager>()->getSound("asteroid_s_explosion")->play();
                 break;
             }
         }

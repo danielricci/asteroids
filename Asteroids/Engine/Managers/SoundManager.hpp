@@ -13,10 +13,10 @@ public:
     void allocateSoundChannels(int size);
     int getAllocatedChannelCount() const;
     SoundEntity* getSound(const std::string& name) const;
-    void loadSound(const std::string& name);
     void toggleSound() const;
 private:
+    void loadSound(const std::string& name);
+    
     const std::string WAV_EXTENSION = ".wav";
     std::map<std::string, SoundEntity*> chunks;
-    int channels = 0;
 };

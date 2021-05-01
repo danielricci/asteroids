@@ -49,31 +49,28 @@ void GameManager::setGameState(GameManager::GameState gameState) {
                 PlayerEntity* playerEntity = new PlayerEntity();
                 addEntity(playerEntity);
                 
-                AsteroidEntity* asteroidEntity = new AsteroidEntity();
-                asteroidEntity->setPosition({300, 550});
-                addEntity(asteroidEntity);
-                
-                AsteroidEntity* asteroidEntity1 = new AsteroidEntity();
-                asteroidEntity1->setPosition({325, 275});
-                addEntity(asteroidEntity1);
-                
-                AsteroidEntity* asteroidEntity2 = new AsteroidEntity();
-                asteroidEntity2->setPosition({650, 650});
-                addEntity(asteroidEntity2);
-                
-                AsteroidEntity* asteroidEntity3 = new AsteroidEntity();
-                asteroidEntity3->setPosition({955, 450});
-                addEntity(asteroidEntity3);
-                
-                AsteroidEntity* asteroidEntity4 = new AsteroidEntity();
-                asteroidEntity4->setPosition({800, 200});
-                addEntity(asteroidEntity4);
-                
+//                AsteroidEntity* asteroidEntity = new AsteroidEntity();
+//                asteroidEntity->setPosition({300, 550});
+//                addEntity(asteroidEntity);
+//                
+//                AsteroidEntity* asteroidEntity1 = new AsteroidEntity();
+//                asteroidEntity1->setPosition({325, 275});
+//                addEntity(asteroidEntity1);
+//                
+//                AsteroidEntity* asteroidEntity2 = new AsteroidEntity();
+//                asteroidEntity2->setPosition({650, 650});
+//                addEntity(asteroidEntity2);
+//                
+//                AsteroidEntity* asteroidEntity3 = new AsteroidEntity();
+//                asteroidEntity3->setPosition({955, 450});
+//                addEntity(asteroidEntity3);
+//                
+//                AsteroidEntity* asteroidEntity4 = new AsteroidEntity();
+//                asteroidEntity4->setPosition({800, 200});
+//                addEntity(asteroidEntity4);
 
-                
-//                SaucerEntity* saucerEntityLarge = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_LARGE);
-//                saucerEntityLarge->setPosition({40, 350});
-//                addEntity(saucerEntityLarge);
+                SaucerEntity* saucerEntityLarge = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_LARGE);
+                addEntity(saucerEntityLarge);
 //
 //                  SaucerEntity* saucerEntitySmall = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL);
 //                  addEntity(saucerEntitySmall);

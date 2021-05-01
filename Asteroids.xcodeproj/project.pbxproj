@@ -29,15 +29,15 @@
 		03571956255B1873004D09BB /* AsteroidEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03571954255B1873004D09BB /* AsteroidEntity.cpp */; };
 		035804F825E0D0D700EC9AF6 /* LivesEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035804F625E0D0D700EC9AF6 /* LivesEntity.cpp */; };
 		035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* Entity.cpp */; };
-		036051F92633CCA000634BB9 /* asteroid_l.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BF2632766B008676CB /* asteroid_l.wav */; };
+		036051F92633CCA000634BB9 /* asteroid_l_explosion.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BF2632766B008676CB /* asteroid_l_explosion.wav */; };
 		036051FA2633CD3600634BB9 /* thrust.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68C2263276F3008676CB /* thrust.wav */; };
-		036051FB2633CD3600634BB9 /* asteroid_m.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BC2632766B008676CB /* asteroid_m.wav */; };
-		036051FC2633CD3600634BB9 /* asteroid_s.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BA2632766B008676CB /* asteroid_s.wav */; };
+		036051FB2633CD3600634BB9 /* asteroid_m_explosion.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BC2632766B008676CB /* asteroid_m_explosion.wav */; };
+		036051FC2633CD3600634BB9 /* asteroid_s_explosion.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BA2632766B008676CB /* asteroid_s_explosion.wav */; };
 		036051FD2633CD3600634BB9 /* beat1.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BB2632766B008676CB /* beat1.wav */; };
 		036051FE2633CD3600634BB9 /* beat2.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BE2632766B008676CB /* beat2.wav */; };
 		036051FF2633CD3600634BB9 /* extraShip.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68BD2632766B008676CB /* extraShip.wav */; };
-		036052002633CD3600634BB9 /* saucerBig.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68C12632766B008676CB /* saucerBig.wav */; };
-		036052012633CD3600634BB9 /* saucerSmall.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68C02632766B008676CB /* saucerSmall.wav */; };
+		036052002633CD3600634BB9 /* saucer_b_movement.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68C12632766B008676CB /* saucer_b_movement.wav */; };
+		036052012633CD3600634BB9 /* saucer_s_movement.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FF68C02632766B008676CB /* saucer_s_movement.wav */; };
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
 		0368714D25F121B200D281E4 /* HighScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0368714B25F121B200D281E4 /* HighScoreEntity.cpp */; };
 		037FBA1624E3182600F984F1 /* ShapeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037FBA1424E3182600F984F1 /* ShapeComponent.cpp */; };
@@ -45,6 +45,7 @@
 		0391C6C72616C91F0001ECF8 /* EnemyExplosionParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0391C6C52616C91F0001ECF8 /* EnemyExplosionParticle.cpp */; };
 		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
+		03B37026263D1C5100D51993 /* saucer_explosion.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03B37025263D1B8100D51993 /* saucer_explosion.wav */; };
 		03B6F365256DA68000A80AF1 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6F363256DA68000A80AF1 /* WindowManager.cpp */; };
 		03CAE902260449B200ACC701 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03CAE900260449B200ACC701 /* GameView.cpp */; };
 		03E25BB325CE642900B20839 /* ScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E25BB125CE642900B20839 /* ScoreEntity.cpp */; };
@@ -66,18 +67,19 @@
 			dstPath = Resources;
 			dstSubfolderSpec = 16;
 			files = (
-				036051FA2633CD3600634BB9 /* thrust.wav in CopyFiles */,
-				036051FB2633CD3600634BB9 /* asteroid_m.wav in CopyFiles */,
-				036051FC2633CD3600634BB9 /* asteroid_s.wav in CopyFiles */,
+				036051F92633CCA000634BB9 /* asteroid_l_explosion.wav in CopyFiles */,
+				036051FB2633CD3600634BB9 /* asteroid_m_explosion.wav in CopyFiles */,
+				036051FC2633CD3600634BB9 /* asteroid_s_explosion.wav in CopyFiles */,
 				036051FD2633CD3600634BB9 /* beat1.wav in CopyFiles */,
 				036051FE2633CD3600634BB9 /* beat2.wav in CopyFiles */,
 				036051FF2633CD3600634BB9 /* extraShip.wav in CopyFiles */,
-				036052002633CD3600634BB9 /* saucerBig.wav in CopyFiles */,
-				036052012633CD3600634BB9 /* saucerSmall.wav in CopyFiles */,
-				036051F92633CCA000634BB9 /* asteroid_l.wav in CopyFiles */,
-				03261717251ED10500ABA175 /* Verdana.ttf in CopyFiles */,
-				03E25BB625CE6C4F00B20839 /* Hyperspace.ttf in CopyFiles */,
 				0332D16D262F0B8200CC371F /* fire.wav in CopyFiles */,
+				036052002633CD3600634BB9 /* saucer_b_movement.wav in CopyFiles */,
+				03B37026263D1C5100D51993 /* saucer_explosion.wav in CopyFiles */,
+				036052012633CD3600634BB9 /* saucer_s_movement.wav in CopyFiles */,
+				036051FA2633CD3600634BB9 /* thrust.wav in CopyFiles */,
+				03E25BB625CE6C4F00B20839 /* Hyperspace.ttf in CopyFiles */,
+				03261717251ED10500ABA175 /* Verdana.ttf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +152,7 @@
 		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
 		039ABDFB25F1130B00307A3B /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		03B37025263D1B8100D51993 /* saucer_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucer_explosion.wav; sourceTree = "<group>"; };
 		03B6F363256DA68000A80AF1 /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
 		03B6F364256DA68000A80AF1 /* WindowManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WindowManager.hpp; sourceTree = "<group>"; };
 		03CAE900260449B200ACC701 /* GameView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = "<group>"; };
@@ -172,14 +175,14 @@
 		03F006D524D3056700260594 /* PlayerEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerEntity.hpp; sourceTree = "<group>"; };
 		03F57FE125F3D5F1000F6588 /* PlayerScoreEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerScoreEntity.cpp; sourceTree = "<group>"; };
 		03F57FE225F3D5F1000F6588 /* PlayerScoreEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerScoreEntity.hpp; sourceTree = "<group>"; };
-		03FF68BA2632766B008676CB /* asteroid_s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = asteroid_s.wav; sourceTree = "<group>"; };
+		03FF68BA2632766B008676CB /* asteroid_s_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = asteroid_s_explosion.wav; sourceTree = "<group>"; };
 		03FF68BB2632766B008676CB /* beat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beat1.wav; sourceTree = "<group>"; };
-		03FF68BC2632766B008676CB /* asteroid_m.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = asteroid_m.wav; sourceTree = "<group>"; };
+		03FF68BC2632766B008676CB /* asteroid_m_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = asteroid_m_explosion.wav; sourceTree = "<group>"; };
 		03FF68BD2632766B008676CB /* extraShip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = extraShip.wav; sourceTree = "<group>"; };
 		03FF68BE2632766B008676CB /* beat2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beat2.wav; sourceTree = "<group>"; };
-		03FF68BF2632766B008676CB /* asteroid_l.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = asteroid_l.wav; sourceTree = "<group>"; };
-		03FF68C02632766B008676CB /* saucerSmall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucerSmall.wav; sourceTree = "<group>"; };
-		03FF68C12632766B008676CB /* saucerBig.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucerBig.wav; sourceTree = "<group>"; };
+		03FF68BF2632766B008676CB /* asteroid_l_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = asteroid_l_explosion.wav; sourceTree = "<group>"; };
+		03FF68C02632766B008676CB /* saucer_s_movement.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucer_s_movement.wav; sourceTree = "<group>"; };
+		03FF68C12632766B008676CB /* saucer_b_movement.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucer_b_movement.wav; sourceTree = "<group>"; };
 		03FF68C2263276F3008676CB /* thrust.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thrust.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,16 +302,17 @@
 		0326170A251ECA7800ABA175 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				03FF68C2263276F3008676CB /* thrust.wav */,
-				03FF68BF2632766B008676CB /* asteroid_l.wav */,
-				03FF68BC2632766B008676CB /* asteroid_m.wav */,
-				03FF68BA2632766B008676CB /* asteroid_s.wav */,
 				03FF68BB2632766B008676CB /* beat1.wav */,
+				03FF68BF2632766B008676CB /* asteroid_l_explosion.wav */,
+				03FF68BC2632766B008676CB /* asteroid_m_explosion.wav */,
+				03FF68BA2632766B008676CB /* asteroid_s_explosion.wav */,
 				03FF68BE2632766B008676CB /* beat2.wav */,
 				03FF68BD2632766B008676CB /* extraShip.wav */,
-				03FF68C12632766B008676CB /* saucerBig.wav */,
-				03FF68C02632766B008676CB /* saucerSmall.wav */,
 				0332D16C262F0AAF00CC371F /* fire.wav */,
+				03FF68C12632766B008676CB /* saucer_b_movement.wav */,
+				03B37025263D1B8100D51993 /* saucer_explosion.wav */,
+				03FF68C02632766B008676CB /* saucer_s_movement.wav */,
+				03FF68C2263276F3008676CB /* thrust.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
