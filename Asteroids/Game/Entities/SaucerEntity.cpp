@@ -17,9 +17,8 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
     waypoints.push(Eigen::Vector2f(800, 200));
     waypoints.push(Eigen::Vector2f(600, 500));
     waypoints.push(Eigen::Vector2f(300, 700));
-    waypoints.push(Eigen::Vector2f(1200, 700));
+    waypoints.push(Eigen::Vector2f(1280, 700));
     waypoint = waypoints.front();
-    
     
     float scaleFactor = 1.f;
     switch(saucerType) {
@@ -81,11 +80,15 @@ void SaucerEntity::update(float deltaTime) {
     Eigen::Vector2f position = getPosition();
     Eigen::Vector2f distance = waypoint - position;
     if(distance.norm() <= 10) {
-        // snap the player to the position and ready the next one
         setPosition(waypoint);
         waypoints.pop();
-        waypoint = waypoints.front();
-        return;
+        
+        if(waypoints.empty()) {
+            ManagerHelper::destroy(this);
+        }
+        else {
+            waypoint = waypoints.front();
+        }
     }
     
     Eigen::Vector2f direction = distance/distance.norm();

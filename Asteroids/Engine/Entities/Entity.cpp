@@ -59,10 +59,10 @@ void Entity::setDimensions(const Eigen::Vector2f& dimensions) {
     getComponent<TransformComponent>()->dimensions = dimensions;
 }
 
-void Entity::setPosition(const Eigen::Vector2f& position) {
-    getComponent<TransformComponent>()->position = position;
-}
-
 void Entity::setOrientation(int orientation) {
     getComponent<TransformComponent>()->orientation = orientation;
+}
+
+void Entity::setPosition(const Eigen::Vector2f& position) {
+    getComponent<TransformComponent>()->position = position;
 }

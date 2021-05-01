@@ -7,6 +7,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <set>
+#include <typeinfo>
 
 std::list<Manager*> ManagerHelper::managers {};
 bool ManagerHelper::isReset = false;
@@ -121,14 +122,20 @@ void ManagerHelper::setFeedbackState(Entity* entity, bool feedBack) {
 }
 
 void ManagerHelper::update(float deltaTime) {
+    // Delta time update on all resources held by the managers
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->update(deltaTime);
         }
     }
     
+    // Collision detection
+    // Note: for now its done with the game manager
     get<GameManager>()->handleCollision();
     
+    // Cleanup of objects. This cleanup goes through all
+    // the managers to come up with the final list before
+    // properly removing them
     std::set<Entity*> entitiesToDelete;
     for(Manager* manager : managers) {
         if(manager != nullptr) {
@@ -137,6 +144,7 @@ void ManagerHelper::update(float deltaTime) {
         }
     }
     std::for_each(entitiesToDelete.begin(), entitiesToDelete.end(), [](Entity* entity) {
+        std::cout << "[Game] - Deleting Resource: " << typeid(*entity).name()  << std::endl;
         delete entity;
     });
 }

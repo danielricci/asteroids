@@ -40,7 +40,7 @@ SoundEntity* SoundManager::getSound(const std::string& name) const {
 
 void SoundManager::loadSound(const std::string& path) {
     if(path.size() > WAV_EXTENSION.size() && path.compare(path.size() - WAV_EXTENSION.size(), WAV_EXTENSION.size(), WAV_EXTENSION) == 0) {
-        std::cout << "[Sound] - Loading resource " << path<< std::endl;
+        std::cout << "[Sound] - Loading Resource: " << path << std::endl;
         std::string filename = path.substr(path.find_last_of("/\\") + 1);
         std::string::size_type const p(filename.find_last_of('.'));
         chunks.insert_or_assign(filename.substr(0, p), new SoundEntity(path));

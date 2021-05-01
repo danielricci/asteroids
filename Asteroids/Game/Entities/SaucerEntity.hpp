@@ -18,7 +18,7 @@ public:
     
     const SaucerType saucerType;
 private:
-    int speed = 10;
+    int speed = 175;
     std::queue<Eigen::Vector2f> waypoints;
     Eigen::Vector2f waypoint = Eigen::Vector2f::Zero();
 };
