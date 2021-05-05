@@ -1,9 +1,11 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
-#include "Engine/Managers/UIManager.hpp"
+#include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
+#include "Game/Views/GameView.hpp"
+#include "Game/Views/HomeView.hpp"
 #include <iostream>
 #include <SDL.h>
 #include <set>
@@ -81,8 +83,11 @@ void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
     add(new SoundManager());
-    add(new UIManager());
     add(new GameManager());
+    add(new ViewManager({
+        new HomeView(),
+        new GameView(),
+    }));
 }
 
 void ManagerHelper::render() {

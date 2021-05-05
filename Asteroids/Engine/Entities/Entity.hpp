@@ -12,13 +12,18 @@ public:
     virtual ~Entity();
     
     // TODO: Put into the game entity ================
-    virtual Eigen::AlignedBox2f getBounds() const = 0;
+    virtual Eigen::AlignedBox2f getBounds() const {
+        return Eigen::AlignedBox2f();
+    }
     // ===============================================
 
     // TODO: Put this into its own interface ==========
-    virtual void render(SDL_Renderer& renderer) = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void update(const SDL_Event& event) = 0;
+    virtual void render(SDL_Renderer& renderer) {
+    }
+    virtual void update(float deltaTime) {
+    }
+    virtual void update(const SDL_Event& event) {
+    }
     // ================================================
 
     void addComponent(Component* Component);

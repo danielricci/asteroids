@@ -9,19 +9,6 @@ class SoundEntity : public Entity {
 public:
     SoundEntity(const std::string& path);
     virtual ~SoundEntity();
-    
-    /**
-                Entity.hpp Implementation
-     */
-    virtual Eigen::AlignedBox2f getBounds() const override {
-        return {0,0};
-    }
-    virtual void render(SDL_Renderer& renderer) override {
-    }
-    virtual void update(float deltaTime) override {
-    }
-    virtual void update(const SDL_Event& event) override {
-    }
 
     void play(int loops = 0);
     void stop();

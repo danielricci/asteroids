@@ -2,7 +2,7 @@
 
 #include "Engine/System/View.hpp"
 
-class GameView : public View {
+class HomeView : public View {
 public:
-    GameView();
+    HomeView();
 };

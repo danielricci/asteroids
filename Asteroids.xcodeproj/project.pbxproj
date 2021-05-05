@@ -41,13 +41,15 @@
 		0364021F246A3C13008684B8 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364021E246A3BE7008684B8 /* libSDL2_mixer.a */; };
 		0368714D25F121B200D281E4 /* HighScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0368714B25F121B200D281E4 /* HighScoreEntity.cpp */; };
 		037FBA1624E3182600F984F1 /* ShapeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037FBA1424E3182600F984F1 /* ShapeComponent.cpp */; };
-		0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* UIManager.cpp */; };
+		038339E8263E6CD700D2F06D /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038339E6263E6CD700D2F06D /* GameView.cpp */; };
+		038339EB2642CB7000D2F06D /* HomeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038339E92642CB7000D2F06D /* HomeView.cpp */; };
+		0387FD9124A94C530019BE47 /* ViewManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0387FD8F24A94C530019BE47 /* ViewManager.cpp */; };
 		0391C6C72616C91F0001ECF8 /* EnemyExplosionParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0391C6C52616C91F0001ECF8 /* EnemyExplosionParticle.cpp */; };
 		0395405B24A9B98D00DE8FC3 /* ManagerHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03B37026263D1C5100D51993 /* saucer_explosion.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03B37025263D1B8100D51993 /* saucer_explosion.wav */; };
 		03B6F365256DA68000A80AF1 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B6F363256DA68000A80AF1 /* WindowManager.cpp */; };
-		03CAE902260449B200ACC701 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03CAE900260449B200ACC701 /* GameView.cpp */; };
+		03CAE902260449B200ACC701 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03CAE900260449B200ACC701 /* View.cpp */; };
 		03E25BB325CE642900B20839 /* ScoreEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E25BB125CE642900B20839 /* ScoreEntity.cpp */; };
 		03E25BB625CE6C4F00B20839 /* Hyperspace.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03E25BB525CE664900B20839 /* Hyperspace.ttf */; };
 		03EAD8F7252C1414003E76B2 /* libSDL2_gfx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EAD8F6252C1414003E76B2 /* libSDL2_gfx.dylib */; };
@@ -143,20 +145,23 @@
 		037FBA1424E3182600F984F1 /* ShapeComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeComponent.cpp; sourceTree = "<group>"; };
 		037FBA1524E3182600F984F1 /* ShapeComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShapeComponent.hpp; sourceTree = "<group>"; };
 		03830797243597E100F39FC0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		0387FD8F24A94C530019BE47 /* UIManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
-		0387FD9024A94C530019BE47 /* UIManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIManager.hpp; sourceTree = "<group>"; };
+		038339E6263E6CD700D2F06D /* GameView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = "<group>"; };
+		038339E7263E6CD700D2F06D /* GameView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameView.hpp; sourceTree = "<group>"; };
+		038339E92642CB7000D2F06D /* HomeView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HomeView.cpp; sourceTree = "<group>"; };
+		038339EA2642CB7000D2F06D /* HomeView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HomeView.hpp; sourceTree = "<group>"; };
+		0387FD8F24A94C530019BE47 /* ViewManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewManager.cpp; sourceTree = "<group>"; };
+		0387FD9024A94C530019BE47 /* ViewManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewManager.hpp; sourceTree = "<group>"; };
 		0387FD9324A96AC60019BE47 /* Manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Manager.hpp; sourceTree = "<group>"; };
 		0391C6C52616C91F0001ECF8 /* EnemyExplosionParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyExplosionParticle.cpp; sourceTree = "<group>"; };
 		0391C6C62616C91F0001ECF8 /* EnemyExplosionParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemyExplosionParticle.hpp; sourceTree = "<group>"; };
 		0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManagerHelper.cpp; sourceTree = "<group>"; };
 		0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ManagerHelper.hpp; sourceTree = "<group>"; };
-		039ABDFB25F1130B00307A3B /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03B37025263D1B8100D51993 /* saucer_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = saucer_explosion.wav; sourceTree = "<group>"; };
 		03B6F363256DA68000A80AF1 /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
 		03B6F364256DA68000A80AF1 /* WindowManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WindowManager.hpp; sourceTree = "<group>"; };
-		03CAE900260449B200ACC701 /* GameView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = "<group>"; };
-		03CAE901260449B200ACC701 /* GameView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameView.hpp; sourceTree = "<group>"; };
+		03CAE900260449B200ACC701 /* View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
+		03CAE901260449B200ACC701 /* View.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = View.hpp; sourceTree = "<group>"; };
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
 		03E25BB125CE642900B20839 /* ScoreEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreEntity.cpp; sourceTree = "<group>"; };
 		03E25BB225CE642900B20839 /* ScoreEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScoreEntity.hpp; sourceTree = "<group>"; };
@@ -266,8 +271,8 @@
 				037ACE68258DC7570031C069 /* ManagerInformation.hpp */,
 				0326171E251ED61B00ABA175 /* SoundManager.cpp */,
 				0326171F251ED61B00ABA175 /* SoundManager.hpp */,
-				0387FD8F24A94C530019BE47 /* UIManager.cpp */,
-				0387FD9024A94C530019BE47 /* UIManager.hpp */,
+				0387FD8F24A94C530019BE47 /* ViewManager.cpp */,
+				0387FD9024A94C530019BE47 /* ViewManager.hpp */,
 				03B6F363256DA68000A80AF1 /* WindowManager.cpp */,
 				03B6F364256DA68000A80AF1 /* WindowManager.hpp */,
 			);
@@ -295,6 +300,8 @@
 			children = (
 				0325031725999CFB008BF227 /* Event.hpp */,
 				032503192599A362008BF227 /* EventArgs.hpp */,
+				03CAE900260449B200ACC701 /* View.cpp */,
+				03CAE901260449B200ACC701 /* View.hpp */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -350,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				03830797243597E100F39FC0 /* .gitignore */,
-				039ABDFB25F1130B00307A3B /* Assets */,
 				0317C67F2352500C00D43455 /* Asteroids */,
 				039E6C15234E30B0004CCD78 /* Asteroids */,
 				0389AD7E2396F4CA005EEC22 /* Frameworks */,
@@ -371,8 +377,10 @@
 		03CAE8FF260448EF00ACC701 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				03CAE900260449B200ACC701 /* GameView.cpp */,
-				03CAE901260449B200ACC701 /* GameView.hpp */,
+				038339E6263E6CD700D2F06D /* GameView.cpp */,
+				038339E7263E6CD700D2F06D /* GameView.hpp */,
+				038339E92642CB7000D2F06D /* HomeView.cpp */,
+				038339EA2642CB7000D2F06D /* HomeView.hpp */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,6 +516,7 @@
 				03F57FE325F3D5F1000F6588 /* PlayerScoreEntity.cpp in Sources */,
 				0391C6C72616C91F0001ECF8 /* EnemyExplosionParticle.cpp in Sources */,
 				03EAD8FE252EB2DA003E76B2 /* CircleComponent.cpp in Sources */,
+				038339EB2642CB7000D2F06D /* HomeView.cpp in Sources */,
 				03261720251ED61B00ABA175 /* SoundManager.cpp in Sources */,
 				03E25BB325CE642900B20839 /* ScoreEntity.cpp in Sources */,
 				0308791F26121D6F00248FE9 /* PlayerExplosionParticle.cpp in Sources */,
@@ -517,8 +526,9 @@
 				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
 				033CD2D424EB72EB00EBA382 /* PlayerInputComponent.cpp in Sources */,
 				0300323B262A897000D055CC /* GameOverEntity.cpp in Sources */,
-				0387FD9124A94C530019BE47 /* UIManager.cpp in Sources */,
+				0387FD9124A94C530019BE47 /* ViewManager.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* Entity.cpp in Sources */,
+				038339E8263E6CD700D2F06D /* GameView.cpp in Sources */,
 				0332D174263268C800CC371F /* SoundEntity.cpp in Sources */,
 				03F006D624D3056700260594 /* PlayerEntity.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* GameWorld.cpp in Sources */,
@@ -528,7 +538,7 @@
 				03EE9C6924CC784600302287 /* InputComponent.cpp in Sources */,
 				035804F825E0D0D700EC9AF6 /* LivesEntity.cpp in Sources */,
 				03B6F365256DA68000A80AF1 /* WindowManager.cpp in Sources */,
-				03CAE902260449B200ACC701 /* GameView.cpp in Sources */,
+				03CAE902260449B200ACC701 /* View.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

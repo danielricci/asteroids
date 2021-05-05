@@ -32,8 +32,9 @@ void GameManager::initialize() {
     setGameState(GameManager::GameState::STARTED);
 }
 
+// TODO: Remove me
 void GameManager::render(SDL_Renderer& renderer) {
-    Manager::render(renderer);
+    //Manager::render(renderer);
 }
 
 void GameManager::setGameState(GameManager::GameState gameState) {
@@ -46,8 +47,8 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         }
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
-                PlayerEntity* playerEntity = new PlayerEntity();
-                addEntity(playerEntity);
+//                PlayerEntity* playerEntity = new PlayerEntity();
+//                addEntity(playerEntity);
                 
 //                AsteroidEntity* asteroidEntity = new AsteroidEntity();
 //                asteroidEntity->setPosition({300, 550});
@@ -69,8 +70,8 @@ void GameManager::setGameState(GameManager::GameState gameState) {
 //                asteroidEntity4->setPosition({800, 200});
 //                addEntity(asteroidEntity4);
 
-                SaucerEntity* saucerEntityLarge = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_LARGE);
-                addEntity(saucerEntityLarge);
+//                SaucerEntity* saucerEntityLarge = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_LARGE);
+//                addEntity(saucerEntityLarge);
 //
 //                  SaucerEntity* saucerEntitySmall = new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL);
 //                  addEntity(saucerEntitySmall);

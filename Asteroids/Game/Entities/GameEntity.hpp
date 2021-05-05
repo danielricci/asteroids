@@ -7,7 +7,7 @@
 class GameEntity : public Entity {
 public:
     void collisionCheck(Entity& entity);
-    Eigen::AlignedBox2f getBounds() const override;
+    virtual Eigen::AlignedBox2f getBounds() const override;
     virtual void render(SDL_Renderer& renderer) override;
     virtual void setPosition(const Eigen::Vector2f& position) override;
     virtual void update(float deltaTime) override;
