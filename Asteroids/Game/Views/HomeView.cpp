@@ -6,3 +6,13 @@
 void HomeView::render(SDL_Renderer& renderer) {
     
 }
+
+void HomeView::update(const SDL_Event& event) {
+    switch(event.type) {
+        case SDL_KEYUP: {
+            if(event.key.keysym.sym == SDLK_RETURN) {
+                break;
+            }
+        }
+    }
+}

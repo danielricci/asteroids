@@ -18,4 +18,14 @@ ViewManager::~ViewManager() {
     TTF_Quit();
 }
 
+void ViewManager::update(const SDL_Event& event) {
+    for(auto& pair : entities) {
+        // TODO: Instead of doing this cast, see if there is a way to change the type of the game entity at runtime (templates, generics, etc)
+        if(dynamic_cast<View*>(pair.first)->getIsVisible()) {
+            pair.first->update(event);
+        }
+    }
+}
+
+
 

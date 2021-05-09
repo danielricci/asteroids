@@ -16,10 +16,9 @@ public:
     GameManager::GameState getGameState() const;
     
     void handleCollision();
-    virtual void initialize() override;
     void setGameState(GameManager::GameState gameState);
     virtual void update(float deltaTime) override;
-    virtual void update(const SDL_Event& event) override;
+    //virtual void update(const SDL_Event& event) override;
     
     template<typename T> T* get() {
         for(auto& pair : entities) {
