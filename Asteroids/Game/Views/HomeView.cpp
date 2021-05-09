@@ -3,5 +3,6 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Views/HomeView.hpp"
 
-HomeView::HomeView() {
+void HomeView::render(SDL_Renderer& renderer) {
+    
 }

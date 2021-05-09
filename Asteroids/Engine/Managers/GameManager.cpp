@@ -32,11 +32,6 @@ void GameManager::initialize() {
     setGameState(GameManager::GameState::STARTED);
 }
 
-// TODO: Remove me
-void GameManager::render(SDL_Renderer& renderer) {
-    //Manager::render(renderer);
-}
-
 void GameManager::setGameState(GameManager::GameState gameState) {
     GameManager::GameState oldState = this->gameState;
     this->gameState = gameState;
@@ -47,8 +42,7 @@ void GameManager::setGameState(GameManager::GameState gameState) {
         }
         case GameState::STARTED: {
             if(oldState == GameState::STOPPED) {
-//                PlayerEntity* playerEntity = new PlayerEntity();
-//                addEntity(playerEntity);
+                addEntity(new PlayerEntity());
                 
 //                AsteroidEntity* asteroidEntity = new AsteroidEntity();
 //                asteroidEntity->setPosition({300, 550});

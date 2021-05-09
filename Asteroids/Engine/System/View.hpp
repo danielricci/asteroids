@@ -2,10 +2,12 @@
 
 #include "Engine/Entities/Entity.hpp"
 #include <vector>
+#include <SDL.h>
 
-class View : Entity {
+class View : public Entity {
 public:
-    virtual void render(SDL_Renderer& renderer) override;
+    virtual ~View();
+    virtual void render(SDL_Renderer& renderer);
 protected:
     std::vector<Entity*> entities;
     bool isVisible = true;
