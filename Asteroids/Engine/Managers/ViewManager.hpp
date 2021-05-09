@@ -3,7 +3,6 @@
 #include "Engine/Managers/Manager.hpp"
 #include "Engine/System/View.hpp"
 #include <SDL.h>
-#include <vector>
 
 class ViewManager : public Manager {
 public:

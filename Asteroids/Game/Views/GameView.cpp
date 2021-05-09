@@ -11,12 +11,11 @@
 GameView::GameView() {
     this->isVisible = false;
     
-    entities.push_back(new CopyrightEntity());
-    entities.push_back(new CopyrightEntity());
-    entities.push_back(new GameOverEntity());
-    entities.push_back(new HighScoreEntity());
-    entities.push_back(new LivesEntity());
-    entities.push_back(new PlayerScoreEntity());
+    //entities.push_back(new CopyrightEntity());
+    //entities.push_back(new GameOverEntity());
+    //entities.push_back(new HighScoreEntity());
+    //entities.push_back(new LivesEntity());
+    //entities.push_back(new PlayerScoreEntity());
 }
 
 void GameView::render(SDL_Renderer& renderer) {
