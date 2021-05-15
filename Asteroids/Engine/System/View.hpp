@@ -14,5 +14,5 @@ public:
     }
 protected:
     std::vector<Entity*> entities;
-    bool isVisible = true;
+    bool isVisible = false;
 };

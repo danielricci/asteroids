@@ -4,9 +4,9 @@
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 
-PlayerScoreEntity::PlayerScoreEntity() {
-    setPosition(Eigen::Vector2f(310, 50));
-    setPrecision(1);
+PlayerScoreEntity::PlayerScoreEntity(const Eigen::Vector2f& position) {
+    setPosition(position);
+    setPrecision(2);
     FontComponent* textComponent = new FontComponent("Hyperspace.ttf");
     textComponent->setSize(32);
     textComponent->setText(toString());
