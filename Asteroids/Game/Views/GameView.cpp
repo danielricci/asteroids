@@ -11,11 +11,11 @@
 GameView::GameView() {
     this->isVisible = false;
     
-    //entities.push_back(new CopyrightEntity());
-    //entities.push_back(new GameOverEntity());
-    //entities.push_back(new HighScoreEntity());
-    //entities.push_back(new LivesEntity());
-    //entities.push_back(new PlayerScoreEntity());
+    entities.push_back(new CopyrightEntity());
+    entities.push_back(new GameOverEntity());
+    entities.push_back(new HighScoreEntity());
+    entities.push_back(new LivesEntity());
+    entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(210, 50)));
 }
 
 void GameView::render(SDL_Renderer& renderer) {
@@ -24,11 +24,17 @@ void GameView::render(SDL_Renderer& renderer) {
     ((Manager*)ManagerHelper::get<GameManager>())->render(renderer);
 }
 
+std::string GameView::getViewName() const {
+    return "game_view";
+}
+
 void GameView::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_ESCAPE) {
-                this->isVisible = false;
+                if(ManagerHelper::get<ViewManager>()->setActiveView("home_view")) {
+                    this->isVisible = false;
+                }
                 break;
             }
         }

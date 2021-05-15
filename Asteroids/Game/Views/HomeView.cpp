@@ -1,5 +1,6 @@
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/ManagerHelper.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
@@ -24,11 +25,17 @@ HomeView::HomeView() {
     this->addComponent(textComponent);
 }
 
+std::string HomeView::getViewName() const {
+    return "home_view";
+}
+
 void HomeView::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_RETURN) {
-                //TODO: Transition to game view
+                if(ManagerHelper::get<ViewManager>()->setActiveView("game_view")) {
+                    this->isVisible = false;
+                }
                 break;
             }
         }

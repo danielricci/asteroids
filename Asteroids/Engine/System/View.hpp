@@ -8,11 +8,9 @@ class View : public Entity {
 public:
     virtual ~View();
     virtual void render(SDL_Renderer& renderer);
-    
-    bool getIsVisible() const {
-        return isVisible;
-    }
 protected:
     std::vector<Entity*> entities;
+public:
     bool isVisible = false;
+    virtual std::string getViewName() const = 0;
 };
