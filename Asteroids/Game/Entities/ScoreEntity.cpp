@@ -1,4 +1,4 @@
-#include "Engine/Components/FontComponent.hpp"
+#include "Engine/Components/TextComponent.hpp"
 #include "Game/Entities/ScoreEntity.hpp"
 #include <iomanip>
 #include <sstream>
@@ -11,7 +11,7 @@ void ScoreEntity::addScore(int score) {
     if(count > 0) {
         this->setPosition(this->getPosition() + (count * OFFSET_POSITION_TEXT));
     }
-    getComponent<FontComponent>()->setText(toString());
+    getComponent<TextComponent>()->setText(toString());
 }
 
 void ScoreEntity::reset() {

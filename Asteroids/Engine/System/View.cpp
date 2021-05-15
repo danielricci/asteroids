@@ -1,3 +1,4 @@
+#include "Engine/Components/Component.hpp"
 #include "Engine/System/View.hpp"
 
 View::~View() {
@@ -18,6 +19,9 @@ void View::render(SDL_Renderer& renderer) {
             if(entity != nullptr) {
                 entity->render(renderer);
             }
+        }
+        for(Component* component : getComponents()) {
+            component->render(renderer);
         }
     }
 }
