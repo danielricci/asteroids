@@ -8,7 +8,9 @@ ViewManager::ViewManager(const std::initializer_list<View*>& views) {
     }
     
     for(auto& view : views) {
-        this->addEntity(view);
+        if(view != nullptr) {
+            this->addEntity(view);
+        }
     }
 }
 
@@ -25,6 +27,10 @@ void ViewManager::render(SDL_Renderer& renderer) {
 }
 
 void ViewManager::setActiveView(const std::string& viewName) {
+    if(activeView != nullptr && activeView->getViewName() == viewName) {
+        return;
+    }
+    
     for(auto& pair : entities) {
         View* view = dynamic_cast<View*>(pair.first);
         if(view != nullptr && view->getViewName() == viewName) {
