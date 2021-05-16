@@ -9,7 +9,7 @@ public:
     
     enum class GameState : char {
         STOPPED,
-        STARTED,
+        RUNNING,
         PAUSED
     };
     

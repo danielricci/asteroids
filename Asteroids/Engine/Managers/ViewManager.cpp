@@ -18,26 +18,30 @@ ViewManager::~ViewManager() {
     TTF_Quit();
 }
 
-bool ViewManager::setActiveView(const std::string& viewName) {
+void ViewManager::render(SDL_Renderer& renderer) {
+    if(activeView != nullptr) {
+        activeView->render(renderer);
+    }
+}
+
+void ViewManager::setActiveView(const std::string& viewName) {
     for(auto& pair : entities) {
         View* view = dynamic_cast<View*>(pair.first);
         if(view != nullptr && view->getViewName() == viewName) {
-            view->isVisible = true;
-            return true;
+            activeView = view;
+            break;
         }
     }
-    
-    return false;
+}
+
+void ViewManager::update(float deltaTime) {
+    if(activeView != nullptr) {
+        activeView->update(deltaTime);
+    }
 }
 
 void ViewManager::update(const SDL_Event& event) {
-    for(auto& pair : entities) {
-        // TODO: Instead of doing this cast, see if there is a way to change the type of the game entity at runtime (templates, generics, etc)
-        if(dynamic_cast<View*>(pair.first)->isVisible) {
-            pair.first->update(event);
-        }
+    if(activeView != nullptr) {
+        activeView->update(event);
     }
 }
-
-
-

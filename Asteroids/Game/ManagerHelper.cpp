@@ -21,7 +21,6 @@ ManagerHelper::~ManagerHelper() {
 void ManagerHelper::add(Manager* manager) {
     if(manager != nullptr) {
         managers.push_back(manager);
-        manager->initialize();
     }
 }
 
@@ -60,7 +59,6 @@ void ManagerHelper::reload() {
     for(Manager* manager : managers) {
         if(manager != nullptr) {
             manager->clean();
-            manager->initialize();
         }
     }
 }
@@ -84,10 +82,11 @@ void ManagerHelper::initialize() {
     add(new InputManager());
     add(new SoundManager());
     add(new GameManager());
-    add(new ViewManager({
-        new HomeView(),
-        new GameView(),
-    }));
+    
+    HomeView* homeView = new HomeView();
+    ViewManager* viewManager = new ViewManager({homeView, new GameView()});
+    add(viewManager);
+    viewManager->setActiveView(homeView->getViewName());
 }
 
 void ManagerHelper::render() {

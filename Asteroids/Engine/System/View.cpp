@@ -2,8 +2,6 @@
 #include "Engine/System/View.hpp"
 
 View::~View() {
-    isVisible = false;
-    
     for(Entity* entity : entities) {
         if(entity != nullptr) {
             delete entity;
@@ -14,14 +12,12 @@ View::~View() {
 }
 
 void View::render(SDL_Renderer& renderer) {
-    if(isVisible) {
-        for(Entity* entity : entities) {
-            if(entity != nullptr) {
-                entity->render(renderer);
-            }
+    for(Entity* entity : entities) {
+        if(entity != nullptr) {
+            entity->render(renderer);
         }
-        for(Component* component : getComponents()) {
-            component->render(renderer);
-        }
+    }
+    for(Component* component : getComponents()) {
+        component->render(renderer);
     }
 }

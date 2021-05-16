@@ -12,7 +12,6 @@ public:
     
     void addEntity(Entity* entity);
     void clean();
-    virtual void initialize();
     bool setState(Entity* entity, ManagerInformation::State state);
     std::list<Entity*> syncEntities();
     

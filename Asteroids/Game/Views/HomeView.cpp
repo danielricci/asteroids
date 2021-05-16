@@ -11,8 +11,6 @@
 #include "Game/Views/HomeView.hpp"
 
 HomeView::HomeView() {
-    this->isVisible = true;
-    
     entities.push_back(new CopyrightEntity());
     entities.push_back(new GameOverEntity());
     entities.push_back(new HighScoreEntity());
@@ -33,9 +31,7 @@ void HomeView::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_RETURN) {
-                if(ManagerHelper::get<ViewManager>()->setActiveView("game_view")) {
-                    this->isVisible = false;
-                }
+                ManagerHelper::get<ViewManager>()->setActiveView("game_view");
                 break;
             }
         }

@@ -11,6 +11,5 @@ public:
 protected:
     std::vector<Entity*> entities;
 public:
-    bool isVisible = false;
     virtual std::string getViewName() const = 0;
 };

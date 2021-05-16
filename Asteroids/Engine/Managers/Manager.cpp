@@ -15,9 +15,6 @@ void Manager::clean() {
     entities.clear();
 }
 
-void Manager::initialize() {
-}
-
 bool Manager::setState(Entity* entity, ManagerInformation::State state) {
     if(entity != nullptr) {
         const auto iterator = entities.find(entity);

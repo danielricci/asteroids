@@ -9,8 +9,6 @@
 #include "Game/Views/GameView.hpp"
 
 GameView::GameView() {
-    this->isVisible = false;
-    
     entities.push_back(new CopyrightEntity());
     entities.push_back(new GameOverEntity());
     entities.push_back(new HighScoreEntity());
@@ -32,9 +30,7 @@ void GameView::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_ESCAPE) {
-                if(ManagerHelper::get<ViewManager>()->setActiveView("home_view")) {
-                    this->isVisible = false;
-                }
+                ManagerHelper::get<ViewManager>()->setActiveView("home_view");
                 break;
             }
         }
