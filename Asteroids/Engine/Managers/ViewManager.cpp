@@ -3,6 +3,7 @@
 #include <SDL_ttf.h>
 
 ViewManager::ViewManager(const std::initializer_list<View*>& views) {
+    // TODO: Move this to a more subsystem-centric part of the engine
     if(TTF_Init() < 0) {
         std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
     }
@@ -15,7 +16,6 @@ ViewManager::ViewManager(const std::initializer_list<View*>& views) {
 }
 
 ViewManager::~ViewManager() {
-    // Hack: Prevent the base class from having anything to clear, TTF_QUIT must be called last
     clean();
     TTF_Quit();
 }

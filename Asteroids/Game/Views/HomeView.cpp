@@ -6,7 +6,6 @@
 #include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/GameOverEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
-#include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Views/HomeView.hpp"
 
