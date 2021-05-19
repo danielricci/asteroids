@@ -290,12 +290,9 @@
 				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
 				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
 				039E6C16234E30B0004CCD78 /* main.cpp */,
-				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
-				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+				03FCDE092655920A0034D8FC /* Managers */,
 				0308791C26121D6F00248FE9 /* Particles */,
 				03CAE8FF260448EF00ACC701 /* Views */,
-				03FCDE00265591480034D8FC /* StageManager.cpp */,
-				03FCDE01265591480034D8FC /* StageManager.hpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -426,6 +423,17 @@
 				033CD2D324EB72EB00EBA382 /* PlayerInputComponent.hpp */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		03FCDE092655920A0034D8FC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0395405924A9B98D00DE8FC3 /* ManagerHelper.cpp */,
+				0395405A24A9B98D00DE8FC3 /* ManagerHelper.hpp */,
+				03FCDE00265591480034D8FC /* StageManager.cpp */,
+				03FCDE01265591480034D8FC /* StageManager.hpp */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

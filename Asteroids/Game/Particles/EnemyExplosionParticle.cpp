@@ -1,5 +1,5 @@
 #include "Engine/Components/TransformComponent.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
 
 EnemyExplosionParticle::EnemyExplosionParticle() {

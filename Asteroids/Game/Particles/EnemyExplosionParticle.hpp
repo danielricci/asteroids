@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Game/Entities/GameEntity.hpp"
-#include "Game/ManagerHelper.hpp"
-#include <Eigen/Dense>
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Engine/System/Event.hpp"
 #include "Engine/System/EventArgs.hpp"
+#include <Eigen/Dense>
 #include <vector>
 #include "SDL.h"
 

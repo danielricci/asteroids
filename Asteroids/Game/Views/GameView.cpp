@@ -1,11 +1,11 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ViewManager.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/GameOverEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Views/GameView.hpp"
 
 GameView::GameView() {

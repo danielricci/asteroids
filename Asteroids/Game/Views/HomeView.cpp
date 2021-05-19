@@ -2,11 +2,11 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/GameOverEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Views/HomeView.hpp"
 
 HomeView::HomeView() {

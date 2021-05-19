@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Entities/GameEntity.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
 #include "Engine/System/Event.hpp"
 #include "Engine/System/EventArgs.hpp"

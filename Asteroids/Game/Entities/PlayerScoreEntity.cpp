@@ -1,8 +1,8 @@
 #include "Engine/Components/TextComponent.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 
 PlayerScoreEntity::PlayerScoreEntity(const Eigen::Vector2f& position) {
     setPosition(position);

@@ -1,7 +1,7 @@
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Managers/WindowManager.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>
 

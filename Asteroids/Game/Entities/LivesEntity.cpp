@@ -3,9 +3,9 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 
 LivesEntity::LivesEntity() {
     // TODO: Calculate the coordinates with the rotation applied so this doesnt have to be done every frame

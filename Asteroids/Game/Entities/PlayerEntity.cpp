@@ -6,7 +6,7 @@
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Particles/PlayerExplosionParticle.hpp"
 #include <cmath>
 #include <random>

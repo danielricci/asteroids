@@ -3,8 +3,8 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
-#include "Game/ManagerHelper.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
 #include <Eigen/Dense>
 #include <SDL.h>

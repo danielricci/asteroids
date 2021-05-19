@@ -1,5 +1,5 @@
 #include "Game/Entities/GameOverEntity.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/InputComponent.hpp"
 #include "Engine/Managers/WindowManager.hpp"

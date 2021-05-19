@@ -3,7 +3,7 @@
 #include "Engine/Managers/SoundManager.hpp"
 #include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Views/GameView.hpp"
 #include "Game/Views/HomeView.hpp"
 #include <iostream>

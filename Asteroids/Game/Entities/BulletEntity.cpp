@@ -5,7 +5,7 @@
 #include "Engine/Managers/GameManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 #include <cmath>
 
 BulletEntity::BulletEntity(bool fromPlayer) : fromPlayer(fromPlayer) {

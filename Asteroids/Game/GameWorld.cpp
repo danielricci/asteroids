@@ -1,5 +1,5 @@
 #include "Game/GameWorld.hpp"
-#include "Game/ManagerHelper.hpp"
+#include "Game/Managers/ManagerHelper.hpp"
 
 GameWorld::GameWorld() {
     ManagerHelper::initialize();
