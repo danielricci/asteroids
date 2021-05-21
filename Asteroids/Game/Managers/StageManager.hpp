@@ -5,4 +5,6 @@
 class StageManager : public Manager {
 public:
     StageManager() = default;
+private:
+    int stage = 1;
 };

@@ -82,11 +82,7 @@ void ManagerHelper::initialize() {
     add(new InputManager());
     add(new SoundManager());
     add(new GameManager());
-    
-    HomeView* homeView = new HomeView();
-    ViewManager* viewManager = new ViewManager({homeView, new GameView()});
-    add(viewManager);
-    viewManager->setActiveView(homeView->getViewName());
+    add(new ViewManager({new HomeView(), new GameView()}));
 }
 
 void ManagerHelper::render() {

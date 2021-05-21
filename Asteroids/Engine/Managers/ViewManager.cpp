@@ -11,6 +11,9 @@ ViewManager::ViewManager(const std::initializer_list<View*>& views) {
     for(auto& view : views) {
         if(view != nullptr) {
             this->addEntity(view);
+            if(activeView == nullptr) {
+                setActiveView(view->getViewName());
+            }
         }
     }
 }
