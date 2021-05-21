@@ -4,6 +4,7 @@
 #include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
+#include "Game/Managers/StageManager.hpp"
 #include "Game/Views/GameView.hpp"
 #include "Game/Views/HomeView.hpp"
 #include <iostream>
@@ -83,6 +84,7 @@ void ManagerHelper::initialize() {
     add(new SoundManager());
     add(new GameManager());
     add(new ViewManager({new HomeView(), new GameView()}));
+    add(new StageManager());
 }
 
 void ManagerHelper::render() {
