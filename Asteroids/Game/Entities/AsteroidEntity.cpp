@@ -1,7 +1,7 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/AsteroidEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
@@ -60,7 +60,7 @@ void AsteroidEntity::onEventCollide(Entity* sender, EventArgs args) {
         particle->setPosition(this->getPosition());
         particle->setOrientation(this->getOrientation());
         particle->play();
-        ManagerHelper::get<GameManager>()->addEntity(particle);
+        ManagerHelper::get<WorldManager>()->addEntity(particle);
         
         int stageNumeral = static_cast<int>(stage);
         if(this->stage != AsteroidStage::STAGE_LAST) {
@@ -68,7 +68,7 @@ void AsteroidEntity::onEventCollide(Entity* sender, EventArgs args) {
                 AsteroidEntity* asteroid = new AsteroidEntity(static_cast<AsteroidStage>(stageNumeral + 1));
                 asteroid->setPosition(this->getPosition());
                 asteroid->setOrientation(TransformComponent::getRandomRotation());
-                ManagerHelper::get<GameManager>()->addEntity(asteroid);
+                ManagerHelper::get<WorldManager>()->addEntity(asteroid);
             }
         }
         ManagerHelper::broadcast(ManagerHelper::EVENT_ASTEROID_HIT, this, EventArgs::Empty());

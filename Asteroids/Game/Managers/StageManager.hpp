@@ -4,7 +4,9 @@
 
 class StageManager : public Manager {
 public:
-    StageManager() = default;
+    StageManager();
+    void nextStage();
+    void reset();
 private:
     int stage = 1;
 };

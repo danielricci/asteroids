@@ -2,7 +2,7 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"

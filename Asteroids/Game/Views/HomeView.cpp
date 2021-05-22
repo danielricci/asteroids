@@ -1,5 +1,5 @@
 #include "Engine/Components/TextComponent.hpp"
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
@@ -7,6 +7,7 @@
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
+#include "Game/Managers/StageManager.hpp"
 #include "Game/Views/HomeView.hpp"
 
 HomeView::HomeView() {

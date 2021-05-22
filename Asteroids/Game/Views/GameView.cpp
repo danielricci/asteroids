@@ -1,4 +1,4 @@
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/ViewManager.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/GameOverEntity.hpp"
@@ -19,7 +19,7 @@ GameView::GameView() {
 void GameView::render(SDL_Renderer& renderer) {
     View::render(renderer);
     // TODO: remove the notion of rendering in the game manager
-    ((Manager*)ManagerHelper::get<GameManager>())->render(renderer);
+    ((Manager*)ManagerHelper::get<WorldManager>())->render(renderer);
 }
 
 std::string GameView::getViewName() const {

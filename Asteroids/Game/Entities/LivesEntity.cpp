@@ -1,7 +1,7 @@
 #include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
@@ -62,7 +62,7 @@ void LivesEntity::update(const SDL_Event& event) {
             case ManagerHelper::EVENT_SPAWN_PLAYER: {
                 if(lives > 0) {
                     // TODO: Should be executing from somewhere else, not here
-                    ManagerHelper::get<GameManager>()->addEntity(new PlayerEntity());
+                    ManagerHelper::get<WorldManager>()->addEntity(new PlayerEntity());
                 }
                 else {
                     ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_GAME_OVER, this, EventArgs::Empty());

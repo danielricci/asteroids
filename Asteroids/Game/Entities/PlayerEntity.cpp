@@ -1,7 +1,7 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Components/PlayerInputComponent.hpp"
 #include "Game/Entities/BulletEntity.hpp"
@@ -67,7 +67,7 @@ void PlayerEntity::onEventCollide(Entity* sender, EventArgs args) {
     playerExplosionParticle->play();
     playerExplosionParticle->setOrientation(this->getOrientation());
     playerExplosionParticle->setPosition(this->getPosition());
-    ManagerHelper::get<GameManager>()->addEntity(playerExplosionParticle);
+    ManagerHelper::get<WorldManager>()->addEntity(playerExplosionParticle);
     
     
     ManagerHelper::broadcast(ManagerHelper::BroadcastEvent::EVENT_PLAYER_HIT, this, EventArgs::Empty());
@@ -96,7 +96,7 @@ void PlayerEntity::onEventShoot() {
     Eigen::Vector2f finalFinalPosition = getWorldPosition((*playerShapeComponent)[0]);
     bulletEntity->setPosition({finalFinalPosition.x(), finalFinalPosition.y()});
     
-    ManagerHelper::get<GameManager>()->addEntity(bulletEntity);
+    ManagerHelper::get<WorldManager>()->addEntity(bulletEntity);
 }
 
 void PlayerEntity::update(const SDL_Event& event) {

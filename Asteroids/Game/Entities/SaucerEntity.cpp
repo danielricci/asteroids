@@ -1,7 +1,7 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
@@ -57,7 +57,7 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
         particle->setPosition(this->getPosition());
         particle->setOrientation(this->getOrientation());
         particle->play();
-        ManagerHelper::get<GameManager>()->addEntity(particle);
+        ManagerHelper::get<WorldManager>()->addEntity(particle);
         
         ManagerHelper::broadcast(ManagerHelper::EVENT_SAUCER_HIT, this, EventArgs::Empty());
         ManagerHelper::get<SoundManager>()->getSound("saucer_explosion")->play();

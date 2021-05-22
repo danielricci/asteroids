@@ -1,4 +1,4 @@
-#include "Engine/Managers/GameManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/InputManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Engine/Managers/ViewManager.hpp"
@@ -82,7 +82,7 @@ void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
     add(new SoundManager());
-    add(new GameManager());
+    add(new WorldManager());
     add(new ViewManager({new HomeView(), new GameView()}));
     add(new StageManager());
 }
@@ -133,7 +133,7 @@ void ManagerHelper::update(float deltaTime) {
     
     // Collision detection
     // Note: for now its done with the game manager
-    get<GameManager>()->handleCollision();
+    get<WorldManager>()->handleCollision();
     
     // Cleanup of objects. This cleanup goes through all
     // the managers to come up with the final list before
