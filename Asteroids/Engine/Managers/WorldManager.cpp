@@ -3,8 +3,8 @@
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 
-WorldManager::GameState WorldManager::getGameState() const {
-    return this->gameState;
+WorldManager::WorldState WorldManager::getWorldState() const {
+    return this->worldState;
 }
 
 void WorldManager::handleCollision() {
@@ -27,20 +27,12 @@ void WorldManager::handleCollision() {
     }
 }
 
-void WorldManager::setGameState(WorldManager::GameState gameState) {
-    this->gameState = gameState;
-//    switch(gameState) {
-//        case GameState::STOPPED: {
-//            break;
-//        }
-//        case GameState::STARTED: {
-//            if(oldState == GameState::STOPPED) {
-//                addEntity(new PlayerEntity());
-//           }
-//            break;
-//        }
-//        case GameState::PAUSED: {
-//            break;
-//        }
-//    }
+void WorldManager::setGameState(WorldManager::WorldState worldState) {
+    this->worldState = worldState;
+}
+
+void WorldManager::update(float deltaTime) {
+    if(this->worldState == WorldState::RUNNING) {
+        Manager::update(deltaTime);
+    }
 }

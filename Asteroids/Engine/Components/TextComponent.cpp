@@ -68,6 +68,10 @@ void TextComponent::render(SDL_Renderer& renderer) {
         }
     }
     
+    if(!getIsVisible()) {
+        return;
+    }
+    
     Eigen::Vector2f position = ownerEntity->getPosition() + this->position;
 
     SDL_Rect rectangle;

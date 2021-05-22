@@ -34,7 +34,7 @@ void HomeView::onViewActivated() {
 void HomeView::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {
-            if(event.key.keysym.sym == SDLK_RETURN) {
+            if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_ESCAPE) {
                 ManagerHelper::get<ViewManager>()->setActiveView("game_view");
                 break;
             }

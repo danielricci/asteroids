@@ -7,16 +7,17 @@ class WorldManager final : public Manager {
 public:
     WorldManager() = default;
     
-    enum class GameState : char {
+    enum class WorldState : char {
         STOPPED,
         RUNNING,
         PAUSED
     };
     
-    WorldManager::GameState getGameState() const;
+    WorldManager::WorldState getWorldState() const;
     
     void handleCollision();
-    void setGameState(WorldManager::GameState gameState);
+    void setGameState(WorldManager::WorldState worldState);
+    virtual void update(float deltaTime) override;
     
     template<typename T> T* get() {
         for(auto& pair : entities) {
@@ -29,5 +30,5 @@ public:
         return nullptr;
     }
 private:
-    GameState gameState = GameState::STOPPED;
+    WorldState worldState = WorldState::RUNNING;
 };
