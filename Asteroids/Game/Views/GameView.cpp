@@ -2,7 +2,6 @@
 #include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Engine/Managers/WorldManager.hpp"
-#include "Game/Entities/CopyrightEntity.hpp"
 #include "Game/Entities/GameOverEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/LivesEntity.hpp"
@@ -14,7 +13,6 @@
 #include <Eigen/Dense>
 
 GameView::GameView() {
-    entities.push_back(new CopyrightEntity());
     entities.push_back(new GameOverEntity());
     entities.push_back(new HighScoreEntity());
     entities.push_back(new LivesEntity());
