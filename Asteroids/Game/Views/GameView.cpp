@@ -6,6 +6,7 @@
 #include "Game/Entities/GameOverEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/LivesEntity.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Managers/StageManager.hpp"
@@ -18,7 +19,6 @@ GameView::GameView() {
     entities.push_back(new HighScoreEntity());
     entities.push_back(new LivesEntity());
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(210, 50)));
-    
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf", "GAME PAUSED", 42);
     textComponent->setIsVisible(false);
@@ -33,6 +33,7 @@ std::string GameView::getViewName() const {
 
 void GameView::onViewActivated() {
     ManagerHelper::get<StageManager>()->reset();
+    ManagerHelper::get<WorldManager>()->addEntity(new PlayerEntity());
 }
 
 void GameView::render(SDL_Renderer& renderer) {
