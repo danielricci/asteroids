@@ -8,6 +8,8 @@ class View : public Entity {
 public:
     virtual ~View();
     virtual void render(SDL_Renderer& renderer);
+    
+    virtual void onViewActivated();
 protected:
     std::vector<Entity*> entities;
 public:

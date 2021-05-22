@@ -44,10 +44,3 @@ void WorldManager::setGameState(WorldManager::GameState gameState) {
 //        }
 //    }
 }
-
-void WorldManager::update(float deltaTime) {
-    // TODO fixme
-//    if(this->gameState == GameState::STARTED) {
-//        Manager::update(deltaTime);
-//    }
-}

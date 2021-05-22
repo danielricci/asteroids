@@ -38,6 +38,7 @@ void ViewManager::setActiveView(const std::string& viewName) {
         View* view = dynamic_cast<View*>(pair.first);
         if(view != nullptr && view->getViewName() == viewName) {
             activeView = view;
+            activeView->onViewActivated();
             break;
         }
     }

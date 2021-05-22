@@ -21,3 +21,6 @@ void View::render(SDL_Renderer& renderer) {
         component->render(renderer);
     }
 }
+
+void View::onViewActivated() {
+}

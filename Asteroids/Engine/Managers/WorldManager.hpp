@@ -17,7 +17,6 @@ public:
     
     void handleCollision();
     void setGameState(WorldManager::GameState gameState);
-    virtual void update(float deltaTime) override;
     
     template<typename T> T* get() {
         for(auto& pair : entities) {

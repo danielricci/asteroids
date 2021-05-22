@@ -27,6 +27,10 @@ std::string HomeView::getViewName() const {
     return "home_view";
 }
 
+void HomeView::onViewActivated() {
+    ManagerHelper::get<StageManager>()->reset();
+}
+
 void HomeView::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYUP: {

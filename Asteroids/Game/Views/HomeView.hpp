@@ -10,4 +10,6 @@ public:
 
     virtual std::string getViewName() const override;
     virtual void update(const SDL_Event& event) override;
+    
+    virtual void onViewActivated() override;
 };

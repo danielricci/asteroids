@@ -82,9 +82,13 @@ void ManagerHelper::initialize() {
     add(new WindowManager());
     add(new InputManager());
     add(new SoundManager());
+    
     add(new WorldManager());
-    add(new ViewManager({new HomeView(), new GameView()}));
     add(new StageManager());
+    add(new ViewManager({
+        new HomeView(),
+        new GameView()
+    }));
 }
 
 void ManagerHelper::render() {
