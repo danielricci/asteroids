@@ -7,9 +7,9 @@
 class View : public Entity {
 public:
     virtual ~View();
-    virtual void render(SDL_Renderer& renderer);
-    
+
     virtual void onViewActivated();
+    virtual void render(SDL_Renderer& renderer) override;
 protected:
     std::vector<Entity*> entities;
 public:

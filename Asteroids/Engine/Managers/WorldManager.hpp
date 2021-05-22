@@ -18,6 +18,7 @@ public:
     void handleCollision();
     void setGameState(WorldManager::WorldState worldState);
     virtual void update(float deltaTime) override;
+    virtual void update(const SDL_Event& event) override;
     
     template<typename T> T* get() {
         for(auto& pair : entities) {

@@ -3,7 +3,6 @@
 #include "Engine/Managers/ViewManager.hpp"
 #include "Engine/Managers/WindowManager.hpp"
 #include "Game/Entities/CopyrightEntity.hpp"
-#include "Game/Entities/GameOverEntity.hpp"
 #include "Game/Entities/HighScoreEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
@@ -12,7 +11,6 @@
 
 HomeView::HomeView() {
     entities.push_back(new CopyrightEntity());
-    entities.push_back(new GameOverEntity());
     entities.push_back(new HighScoreEntity());
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(210, 50)));
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(1010, 50)));

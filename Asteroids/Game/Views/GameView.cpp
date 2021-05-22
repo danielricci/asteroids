@@ -22,7 +22,7 @@ GameView::GameView() {
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf", "GAME PAUSED", 42);
     textComponent->setIsVisible(false);
-    textComponent->setPosition(Eigen::Vector2f(.37 * windowSize.w, .47 * windowSize.h));
+    textComponent->setPosition(Eigen::Vector2f(.39 * windowSize.w, .47 * windowSize.h));
     this->addComponent(textComponent);
 }
 
@@ -65,6 +65,14 @@ void GameView::update(const SDL_Event& event) {
                 }
                 break;
             }
+        }
+        default: {
+            for(Entity* entity : entities) {
+                if(entity != nullptr) {
+                    entity->update(event);
+                }
+            }
+            break;
         }
     }
 }

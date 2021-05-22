@@ -1,7 +1,5 @@
 #include "Engine/Managers/WorldManager.hpp"
-#include "Game/Entities/AsteroidEntity.hpp"
-#include "Game/Entities/PlayerEntity.hpp"
-#include "Game/Entities/SaucerEntity.hpp"
+#include "Game/Entities/GameEntity.hpp"
 
 WorldManager::WorldState WorldManager::getWorldState() const {
     return this->worldState;
@@ -34,5 +32,11 @@ void WorldManager::setGameState(WorldManager::WorldState worldState) {
 void WorldManager::update(float deltaTime) {
     if(this->worldState == WorldState::RUNNING) {
         Manager::update(deltaTime);
+    }
+}
+
+void WorldManager::update(const SDL_Event& event) {
+    if(this->worldState == WorldState::RUNNING) {
+        Manager::update(event);
     }
 }
