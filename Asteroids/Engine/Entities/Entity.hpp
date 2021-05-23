@@ -20,8 +20,8 @@ public:
     // TODO: Put this into its own interface ==========
     virtual void render(SDL_Renderer& renderer) {
     }
-    virtual void update(float deltaTime) {
-    }
+    virtual void update(float deltaTime);
+    
     virtual void update(const SDL_Event& event) {
     }
     // ================================================

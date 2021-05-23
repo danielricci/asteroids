@@ -14,6 +14,10 @@ void ScoreEntity::addScore(int score) {
     getComponent<TextComponent>()->setText(toString());
 }
 
+int ScoreEntity::getScore() const {
+    return score;
+}
+
 void ScoreEntity::reset() {
     addScore(-score);
 }
@@ -24,6 +28,16 @@ void ScoreEntity::setMaxScore(int maxScore) {
 
 void ScoreEntity::setPrecision(int precision) {
     this->precision = std::max(0, precision);
+}
+
+void ScoreEntity::setScore(int score) {
+    this->score = std::min(score, maxScore);
+    
+    int count = static_cast<int>(std::to_string(this->score).length());
+    if(count > 0) {
+        this->setPosition(this->getPosition() + (count * OFFSET_POSITION_TEXT));
+    }
+    getComponent<TextComponent>()->setText(toString());
 }
 
 std::string ScoreEntity::toString() const {

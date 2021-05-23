@@ -66,3 +66,7 @@ void Entity::setOrientation(int orientation) {
 void Entity::setPosition(const Eigen::Vector2f& position) {
     getComponent<TransformComponent>()->position = position;
 }
+
+void Entity::update(float deltaTime) {
+    
+}

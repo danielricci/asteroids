@@ -11,7 +11,7 @@
 
 HomeView::HomeView() {
     entities.push_back(new CopyrightEntity());
-    entities.push_back(new HighScoreEntity());
+    shared_entities.push_back(new HighScoreEntity());
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(210, 50)));
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(1010, 50)));
     

@@ -15,12 +15,17 @@
 GameView::GameView() {
     
     GameOverEntity* gameOverEntity = new GameOverEntity();
-    gameOverEntity->eventOnConfirmation.attach([](Entity* sender, EventArgs args) {
+    gameOverEntity->eventOnConfirmation.attach([this](Entity* sender, EventArgs args) {
+        HighScoreEntity* highScoreEntity = getEntity<HighScoreEntity>(true);
+        int currentScore = getEntity<PlayerScoreEntity>()->getScore();
+        if(currentScore > highScoreEntity->getScore()) {
+            highScoreEntity->setScore(currentScore);
+        }
+                                                       
         ManagerHelper::get<ViewManager>()->setActiveView("home_view");
     });
     
     entities.push_back(gameOverEntity);
-    entities.push_back(new HighScoreEntity());
     entities.push_back(new LivesEntity());
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(210, 50)));
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
@@ -36,8 +41,6 @@ std::string GameView::getViewName() const {
 }
 
 void GameView::onViewActivated() {
-    //getEntity<HighScoreEntity())->...
-    //for(Entity*)
     getEntity<LivesEntity>()->reset();
     getEntity<PlayerScoreEntity>()->reset();
     ManagerHelper::get<StageManager>()->reset();
@@ -46,11 +49,11 @@ void GameView::onViewActivated() {
 
 void GameView::render(SDL_Renderer& renderer) {
     View::render(renderer);
-    // TODO: remove the notion of rendering in the game manager
     ((Manager*)ManagerHelper::get<WorldManager>())->render(renderer);
 }
 
 void GameView::update(const SDL_Event& event) {
+    View::update(event);
     switch(event.type) {
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_ESCAPE) {
@@ -73,14 +76,6 @@ void GameView::update(const SDL_Event& event) {
                 }
                 break;
             }
-        }
-        default: {
-            for(Entity* entity : entities) {
-                if(entity != nullptr) {
-                    entity->update(event);
-                }
-            }
-            break;
         }
     }
 }
