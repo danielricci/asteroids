@@ -13,12 +13,13 @@ GameOverEntity::GameOverEntity() {
     textComponent->setSize(42);
     textComponent->setText("GAME OVER");
     addComponent(textComponent);
-    textComponent->setIsVisible(false);
+    textComponent->setVisible(false);
     
     InputComponent* inputComponent = new InputComponent();
-    inputComponent->addBinding(SDLK_RETURN, [this](const SDL_Event& event) -> void {
+    inputComponent->addBinding(SDLK_RETURN, [this, textComponent](const SDL_Event& event) -> void {
         if(isGameOver) {
-            ManagerHelper::reset();
+            textComponent->setVisible(false);
+            eventOnConfirmation.invoke(this);
         }
     });
     
@@ -36,7 +37,7 @@ void GameOverEntity::update(const SDL_Event& event) {
             switch(event.user.code) {
                 case ManagerHelper::EVENT_GAME_OVER: {
                     isGameOver = true;
-                    getComponent<TextComponent>()->setIsVisible(true);
+                    getComponent<TextComponent>()->setVisible(true);
                     break;
                 }
             }

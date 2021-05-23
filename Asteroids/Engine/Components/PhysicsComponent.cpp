@@ -3,7 +3,7 @@
 #include <SDL.h>
 
 PhysicsComponent::PhysicsComponent() {
-    setIsVisible(false);
+    setVisible(false);
 }
 
 bool PhysicsComponent::isCollidedWith(const Entity& entity) const {
@@ -25,7 +25,7 @@ bool PhysicsComponent::isCollidedWith(const Entity& entity) const {
 }
 
 void PhysicsComponent::render(SDL_Renderer& renderer) {
-    if(!getIsVisible()) {
+    if(!getVisible()) {
         return;
     }
     

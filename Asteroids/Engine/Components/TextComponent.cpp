@@ -68,7 +68,7 @@ void TextComponent::render(SDL_Renderer& renderer) {
         }
     }
     
-    if(!getIsVisible()) {
+    if(!getVisible()) {
         return;
     }
     

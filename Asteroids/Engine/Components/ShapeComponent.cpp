@@ -52,7 +52,7 @@ unsigned long ShapeComponent::getSize() const {
 }
 
 void ShapeComponent::render(SDL_Renderer& renderer) {
-    if(!getIsVisible()) {
+    if(!getVisible()) {
         return;
     }
     

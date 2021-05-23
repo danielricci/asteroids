@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Engine/System/Event.hpp"
+#include "Engine/System/EventArgs.hpp"
 #include "Game/Entities/GameEntity.hpp"
 #include "SDL.h"
 
@@ -8,6 +10,8 @@ public:
     GameOverEntity();
     
     virtual void update(const SDL_Event& event) override;
+    Event<EventArgs> eventOnConfirmation;
+
 private:
     bool isGameOver = false;
 };

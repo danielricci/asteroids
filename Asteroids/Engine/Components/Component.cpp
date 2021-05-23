@@ -1,6 +1,6 @@
 #include "Engine/Components/Component.hpp"
 
-bool Component::getIsVisible() const {
+bool Component::getVisible() const {
     return isVisible;
 }
 
@@ -15,7 +15,7 @@ Eigen::Vector2f Component::getPosition() const {
 void Component::render(SDL_Renderer& renderer) {
 }
 
-void Component::setIsVisible(bool isVisible) {
+void Component::setVisible(bool isVisible) {
     this->isVisible = isVisible;
 }
 

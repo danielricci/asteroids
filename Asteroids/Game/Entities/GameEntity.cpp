@@ -20,7 +20,7 @@ Eigen::AlignedBox2f GameEntity::getBounds() const {
 
 void GameEntity::render(SDL_Renderer& renderer) {
     for(Component* component : getComponents()) {
-        if(component->getIsVisible()) {
+        if(component->getVisible()) {
             component->render(renderer);
         }
     }

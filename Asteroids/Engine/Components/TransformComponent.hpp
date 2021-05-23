@@ -8,7 +8,7 @@
 class TransformComponent final : public Component {
 public:
     TransformComponent() {
-        setIsVisible(false);
+        setVisible(false);
     }
     
     static float toRadians(float degrees) {
@@ -23,7 +23,7 @@ public:
     }
     
     virtual void render(SDL_Renderer& renderer) override {
-        if(!getIsVisible()) {
+        if(!getVisible()) {
             return;
         }
         

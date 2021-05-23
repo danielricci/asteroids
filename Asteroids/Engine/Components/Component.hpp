@@ -12,11 +12,11 @@ class Component {
 public:
     virtual ~Component() = default;
 
-    bool getIsVisible() const;
+    bool getVisible() const;
     std::string getName() const;
     Eigen::Vector2f getPosition() const;
     virtual void render(SDL_Renderer& renderer);
-    void setIsVisible(bool isVisible);
+    void setVisible(bool isVisible);
     void setName(const std::string& name);
     void setOwnerEntity(Entity* entityOwner);
     void setPosition(const Eigen::Vector2f& position);

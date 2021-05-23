@@ -13,15 +13,21 @@
 #include <Eigen/Dense>
 
 GameView::GameView() {
-    entities.push_back(new GameOverEntity());
+    
+    GameOverEntity* gameOverEntity = new GameOverEntity();
+    gameOverEntity->eventOnConfirmation.attach([](Entity* sender, EventArgs args) {
+        ManagerHelper::get<ViewManager>()->setActiveView("home_view");
+    });
+    
+    entities.push_back(gameOverEntity);
     entities.push_back(new HighScoreEntity());
     entities.push_back(new LivesEntity());
     entities.push_back(new PlayerScoreEntity(Eigen::Vector2f(210, 50)));
     SDL_Rect windowSize = ManagerHelper::get<WindowManager>()->getWindowSize();
-    TextComponent* textComponent = new TextComponent("Hyperspace.ttf", "GAME PAUSED", 42);
-    textComponent->setIsVisible(false);
-    textComponent->setPosition(Eigen::Vector2f(.39 * windowSize.w, .47 * windowSize.h));
-    this->addComponent(textComponent);
+    TextComponent* gamePausedTextComponent = new TextComponent("Hyperspace.ttf", "GAME PAUSED", 42);
+    gamePausedTextComponent->setPosition(Eigen::Vector2f(.39 * windowSize.w, .47 * windowSize.h));
+    gamePausedTextComponent->setVisible(false);
+    addComponent(gamePausedTextComponent);
 }
 
 
@@ -30,6 +36,10 @@ std::string GameView::getViewName() const {
 }
 
 void GameView::onViewActivated() {
+    //getEntity<HighScoreEntity())->...
+    //for(Entity*)
+    getEntity<LivesEntity>()->reset();
+    getEntity<PlayerScoreEntity>()->reset();
     ManagerHelper::get<StageManager>()->reset();
     ManagerHelper::get<WorldManager>()->addEntity(new PlayerEntity());
 }
@@ -48,12 +58,12 @@ void GameView::update(const SDL_Event& event) {
                 switch(worldManager->getWorldState()) {
                     case WorldManager::WorldState::RUNNING: {
                         worldManager->setGameState(WorldManager::WorldState::PAUSED);
-                        this->getComponent<TextComponent>()->setIsVisible(true);
+                        this->getComponent<TextComponent>()->setVisible(true);
                         break;
                     }
                     case WorldManager::WorldState::PAUSED: {
                         worldManager->setGameState(WorldManager::WorldState::RUNNING);
-                        this->getComponent<TextComponent>()->setIsVisible(false);
+                        this->getComponent<TextComponent>()->setVisible(false);
                         break;
                     }
                     case WorldManager::WorldState::STOPPED:

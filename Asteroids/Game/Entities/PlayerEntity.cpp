@@ -32,7 +32,7 @@ PlayerEntity::PlayerEntity() {
     addComponent(playerShip);
         
     ShapeComponent* playerThrust = new ShapeComponent({{-11, -3}, {-20, 0}, {-10, 3}});
-    playerThrust->setIsVisible(false);
+    playerThrust->setVisible(false);
     playerThrust->setName(PLAYER_SHIP_EXHAUST);
     addComponent(playerThrust);
     
@@ -85,7 +85,7 @@ void PlayerEntity::onEventHyperspace() {
 }
 
 void PlayerEntity::onEventThrust(bool isThrustActivated) {
-    getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setIsVisible(isThrustActivated);
+    getComponent<ShapeComponent>(PLAYER_SHIP_EXHAUST)->setVisible(isThrustActivated);
 }
 
 void PlayerEntity::onEventShoot() {
