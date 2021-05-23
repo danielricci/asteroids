@@ -29,7 +29,7 @@ void LivesEntity::add(int points) {
 }
 
 void LivesEntity::reset() {
-    add(-lives);
+    add(-lives + START_LIVES);
 }
 
 std::string LivesEntity::toString() const {
