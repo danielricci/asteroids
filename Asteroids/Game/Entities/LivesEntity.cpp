@@ -1,8 +1,8 @@
-#include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
+#include "Engine/Components/TextComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
@@ -29,7 +29,7 @@ void LivesEntity::add(int points) {
 }
 
 void LivesEntity::reset() {
-    add(-lives + START_LIVES);
+    this->lives = START_LIVES;
 }
 
 std::string LivesEntity::toString() const {

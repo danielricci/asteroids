@@ -9,8 +9,8 @@ public:
     virtual ~View();
 
     virtual void onViewActivated();
-    virtual void update(const SDL_Event& event) override;
     virtual void render(SDL_Renderer& renderer) override;
+    virtual void update(const SDL_Event& event) override;
 protected:
     std::vector<Entity*> entities;
     static std::vector<Entity*> shared_entities;
