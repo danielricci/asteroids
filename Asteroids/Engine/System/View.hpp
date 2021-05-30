@@ -10,6 +10,7 @@ public:
 
     virtual void onViewActivated();
     virtual void render(SDL_Renderer& renderer) override;
+    virtual void update(float deltaTime) override;
     virtual void update(const SDL_Event& event) override;
 protected:
     std::vector<Entity*> entities;

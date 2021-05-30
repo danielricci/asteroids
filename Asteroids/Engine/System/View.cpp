@@ -38,6 +38,14 @@ void View::render(SDL_Renderer& renderer) {
     }
 }
 
+void View::update(float deltaTime) {
+    for(Entity* entity : entities) {
+        if(entity != nullptr) {
+            entity->update(deltaTime);
+        }
+    }
+}
+
 void View::update(const SDL_Event& event) {
     for(Entity* entity : shared_entities) {
         if(entity != nullptr) {

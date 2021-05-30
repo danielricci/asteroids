@@ -46,7 +46,7 @@ void ViewManager::setActiveView(const std::string& viewName) {
 
 void ViewManager::update(float deltaTime) {
     if(activeView != nullptr) {
-        activeView->Entity::update(deltaTime);
+        activeView->update(deltaTime);
     }
 }
 

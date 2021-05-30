@@ -8,10 +8,10 @@
 class GameOverEntity : public GameEntity {
 public:
     GameOverEntity();
-    
+
+    bool getIsGameOver() const { return isGameOver; }
     virtual void update(const SDL_Event& event) override;
     Event<EventArgs> eventOnConfirmation;
-
 private:
     bool isGameOver = false;
 };

@@ -1,8 +1,8 @@
 #include "Engine/Components/PhysicsComponent.hpp"
 #include "Engine/Components/ShapeComponent.hpp"
 #include "Engine/Components/TransformComponent.hpp"
-#include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
+#include "Engine/Managers/WorldManager.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
@@ -10,15 +10,8 @@
 #include <SDL.h>
 
 SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
-    setPosition(Eigen::Vector2f(0, 200));
+    setPosition(Eigen::Vector2f(0, 400));
     velocity = Eigen::Vector2f(1, 1);
-    
-    // TODO: Configure the proper waypoints for the saucer
-    waypoints.push(Eigen::Vector2f(800, 200));
-    waypoints.push(Eigen::Vector2f(600, 500));
-    waypoints.push(Eigen::Vector2f(300, 700));
-    waypoints.push(Eigen::Vector2f(1280, 700));
-    waypoint = waypoints.front();
     
     float scaleFactor = 1.f;
     switch(saucerType) {
@@ -64,6 +57,10 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
         ManagerHelper::destroy(this);
     });
     addComponent(physicsComponent);
+    
+    // Note: Harcoded waypoints for the time being
+    waypoints.push(Eigen::Vector2f(1280, 400));
+    waypoint = waypoints.front();
 }
 
 Eigen::AlignedBox2f SaucerEntity::getBounds() const {

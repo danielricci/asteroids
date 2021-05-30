@@ -7,6 +7,7 @@
 #include "Game/Entities/LivesEntity.hpp"
 #include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/PlayerScoreEntity.hpp"
+#include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Managers/StageManager.hpp"
 #include "Game/Views/GameView.hpp"
@@ -41,6 +42,7 @@ std::string GameView::getViewName() const {
 }
 
 void GameView::onViewActivated() {
+    spawnTimerSaucer = 0;
     getEntity<LivesEntity>()->reset();
     getEntity<PlayerScoreEntity>()->reset();
     ManagerHelper::get<StageManager>()->reset();
@@ -52,11 +54,26 @@ void GameView::render(SDL_Renderer& renderer) {
     ((Manager*)ManagerHelper::get<WorldManager>())->render(renderer);
 }
 
+void GameView::update(float deltaTime) {
+    View::Entity::update(deltaTime);
+    spawnTimerSaucer += deltaTime;
+    if(spawnTimerSaucer >= 12) {
+        spawnTimerSaucer = 0;
+        if(ManagerHelper::get<WorldManager>()->get<PlayerEntity>() != nullptr) {
+            ManagerHelper::get<WorldManager>()->addEntity(new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL));
+        }
+    }
+}
+
 void GameView::update(const SDL_Event& event) {
     View::update(event);
     switch(event.type) {
         case SDL_KEYUP: {
             if(event.key.keysym.sym == SDLK_ESCAPE) {
+                if(getEntity<GameOverEntity>()->getIsGameOver()) {
+                    return;
+                }
+                
                 WorldManager* worldManager = ManagerHelper::get<WorldManager>();
                 switch(worldManager->getWorldState()) {
                     case WorldManager::WorldState::RUNNING: {
