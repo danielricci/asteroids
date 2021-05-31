@@ -9,5 +9,8 @@ class PlayerScoreEntity : public ScoreEntity {
 public:
     PlayerScoreEntity(const Eigen::Vector2f& position);
     
+    virtual void reset() override;
     virtual void update(const SDL_Event& event) override;
+private:
+    const Eigen::Vector2f initialPosition;
 };

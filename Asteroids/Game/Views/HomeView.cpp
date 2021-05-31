@@ -27,9 +27,6 @@ std::string HomeView::getViewName() const {
 
 void HomeView::onViewActivated() {
     ManagerHelper::get<StageManager>()->reset();
-    // TODO: Reset highscore text
-    //this->getEntity<HighScoreEntity>()....
-    
 }
 
 void HomeView::update(const SDL_Event& event) {

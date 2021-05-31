@@ -10,7 +10,7 @@
 LivesEntity::LivesEntity() {
     // TODO: Calculate the coordinates with the rotation applied so this doesnt have to be done every frame
     setOrientation(TransformComponent::ROTATION_TOP);
-    setPosition(Eigen::Vector2f(310, 90));
+    setPosition(Eigen::Vector2f(210, 90));
 
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
     textComponent->setSize(32);

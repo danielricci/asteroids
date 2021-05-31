@@ -7,7 +7,7 @@
 class ScoreEntity : public GameEntity {
 public:
     int getScore() const;
-    void reset();
+    virtual void reset();
     void setScore(int score);
     
 protected:

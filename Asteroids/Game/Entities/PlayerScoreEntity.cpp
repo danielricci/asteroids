@@ -4,13 +4,18 @@
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 
-PlayerScoreEntity::PlayerScoreEntity(const Eigen::Vector2f& position) {
+PlayerScoreEntity::PlayerScoreEntity(const Eigen::Vector2f& position) : initialPosition(position) {
     setPosition(position);
-    setPrecision(2);
+    setPrecision(1);
     TextComponent* textComponent = new TextComponent("Hyperspace.ttf");
     textComponent->setSize(32);
     textComponent->setText(toString());
     addComponent(textComponent);
+}
+
+void PlayerScoreEntity::reset() {
+    ScoreEntity::reset();
+    this->setPosition(initialPosition);
 }
 
 void PlayerScoreEntity::update(const SDL_Event& event) {
