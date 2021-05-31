@@ -2,7 +2,7 @@
 
 ### Description
 
-Classic arcade inspired asteroids demo
+This game is a remake of the Atari Asteroid arcade game.
 
 
-https://user-images.githubusercontent.com/615440/120196869-58230780-c1ee-11eb-89d7-18925f2b1cac.mov
+https://user-images.githubusercontent.com/615440/120197117-a3d5b100-c1ee-11eb-93e3-cdef0f4a3967.mov
