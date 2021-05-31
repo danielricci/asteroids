@@ -16,4 +16,5 @@ public:
     virtual void update(const SDL_Event& event) override;
 private:
     float spawnTimerSaucer = 0.f;
+    const int SPAWN_SAUCER_TIMER = 10;
 };

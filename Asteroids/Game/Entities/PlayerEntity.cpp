@@ -89,7 +89,7 @@ void PlayerEntity::onEventThrust(bool isThrustActivated) {
 }
 
 void PlayerEntity::onEventShoot() {
-    BulletEntity* bulletEntity = new BulletEntity(true);
+    BulletEntity* bulletEntity = new BulletEntity(this);
     bulletEntity->setOrientation(getOrientation());
 
     ShapeComponent* playerShapeComponent = getComponent<ShapeComponent>(PLAYER_SHIP);

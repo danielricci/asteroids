@@ -63,8 +63,11 @@ public:
     template<typename T> bool hasComponent(const std::string& name = std::string()) const {
         return this->getComponent<T>(name) != nullptr;
     }
+    
+    const unsigned long long int entityId;
 protected:
     Entity();
 private:
     std::list<Component*> components;
+    static unsigned long long int entityIdCounter;
 };

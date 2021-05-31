@@ -1,7 +1,9 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Entities/Entity.hpp"
 
-Entity::Entity() {
+unsigned long long int Entity::entityIdCounter = 0;
+
+Entity::Entity() : entityId(++entityIdCounter) {
     addComponent(new TransformComponent());
 }
 

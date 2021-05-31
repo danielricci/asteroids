@@ -57,7 +57,7 @@ void GameView::render(SDL_Renderer& renderer) {
 void GameView::update(float deltaTime) {
     View::Entity::update(deltaTime);
     spawnTimerSaucer += deltaTime;
-    if(spawnTimerSaucer >= 12) {
+    if(spawnTimerSaucer >= SPAWN_SAUCER_TIMER) {
         spawnTimerSaucer = 0;
         if(ManagerHelper::get<WorldManager>()->get<PlayerEntity>() != nullptr) {
             ManagerHelper::get<WorldManager>()->addEntity(new SaucerEntity(SaucerEntity::SaucerType::SAUCER_SMALL));

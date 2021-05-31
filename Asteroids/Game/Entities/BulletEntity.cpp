@@ -5,20 +5,20 @@
 #include "Engine/Managers/WorldManager.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Game/Entities/BulletEntity.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include <cmath>
 
-BulletEntity::BulletEntity(bool fromPlayer) : fromPlayer(fromPlayer) {
+BulletEntity::BulletEntity(GameEntity* owner) : fromPlayer(dynamic_cast<PlayerEntity*>(owner) != nullptr), ownerId(owner->entityId) {
     this->addComponent(new CircleComponent(1));
+    
     PhysicsComponent* collisionComponent = new PhysicsComponent();
     collisionComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
-        ManagerHelper::destroy(this);
+        if(sender->entityId != this->ownerId) {
+            ManagerHelper::destroy(this);
+        }
     });
     this->addComponent(collisionComponent);
-    
-    if(fromPlayer) {
-        ManagerHelper::get<SoundManager>()->getSound("fire")->play();
-    }
 }
 
 Eigen::Vector2f BulletEntity::getDimensions() const {
@@ -26,6 +26,10 @@ Eigen::Vector2f BulletEntity::getDimensions() const {
 }
 
 void BulletEntity::update(float deltaTime) {
+    if(timeTravelled == 0) {
+        ManagerHelper::get<SoundManager>()->getSound("fire")->play();
+    }
+    
     if(timeTravelled * SPEED >= MAX_DISTANCE) {
         ManagerHelper::destroy(this);
         return;

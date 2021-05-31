@@ -15,6 +15,10 @@ public:
         return degrees * M_PI/180;
     }
     
+    static int toDegrees(float radians) {
+        return radians * (180/M_PI);
+    }
+    
     static int getRandomRotation() {
         // TODO - spend more time on this, look also at https://stackoverflow.com/questions/39288595/why-not-just-use-random-device
         std::uniform_int_distribution<unsigned int> rotationDistribution(TransformComponent::ROTATION_RIGHT, std::abs(TransformComponent::ROTATION_FULL_UNIT));

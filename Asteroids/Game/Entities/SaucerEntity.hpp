@@ -18,6 +18,7 @@ public:
     
     const SaucerType saucerType;
 private:
+    float timerBullet = 0.f;
     int speed = 200;
     std::queue<Eigen::Vector2f> waypoints;
     Eigen::Vector2f waypoint = Eigen::Vector2f::Zero();

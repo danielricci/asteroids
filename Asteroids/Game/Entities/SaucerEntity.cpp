@@ -3,6 +3,8 @@
 #include "Engine/Components/TransformComponent.hpp"
 #include "Engine/Managers/SoundManager.hpp"
 #include "Engine/Managers/WorldManager.hpp"
+#include "Game/Entities/BulletEntity.hpp"
+#include "Game/Entities/PlayerEntity.hpp"
 #include "Game/Entities/SaucerEntity.hpp"
 #include "Game/Managers/ManagerHelper.hpp"
 #include "Game/Particles/EnemyExplosionParticle.hpp"
@@ -46,6 +48,10 @@ SaucerEntity::SaucerEntity(SaucerType saucerType) : saucerType(saucerType) {
     
     PhysicsComponent* physicsComponent = new PhysicsComponent();
     physicsComponent->eventOnCollide.attach([this](Entity* sender, EventArgs args) {
+        BulletEntity* bulletEntity = dynamic_cast<BulletEntity*>(sender);
+        if(bulletEntity != nullptr && !bulletEntity->fromPlayer) {
+            return;
+        }
         EnemyExplosionParticle* particle = new EnemyExplosionParticle();
         particle->setPosition(this->getPosition());
         particle->setOrientation(this->getOrientation());
@@ -74,8 +80,10 @@ Eigen::AlignedBox2f SaucerEntity::getBounds() const {
 }
 
 void SaucerEntity::update(float deltaTime) {
-    Eigen::Vector2f position = getPosition();
-    Eigen::Vector2f distance = waypoint - position;
+    GameEntity::update(deltaTime);
+    
+    Eigen::Vector2f saucerPosition = getPosition();
+    Eigen::Vector2f distance = waypoint - saucerPosition;
     if(distance.norm() <= 10) {
         setPosition(waypoint);
         waypoints.pop();
@@ -89,7 +97,23 @@ void SaucerEntity::update(float deltaTime) {
     }
     
     Eigen::Vector2f direction = distance/distance.norm();
-    position.x() += (direction.x() * speed * deltaTime);
-    position.y() += (direction.y() * speed * deltaTime);
-    setPosition(position);
+    saucerPosition.x() += (direction.x() * speed * deltaTime);
+    saucerPosition.y() += (direction.y() * speed * deltaTime);
+    setPosition(saucerPosition);
+    
+    timerBullet += deltaTime;
+    if(timerBullet >= .5) {
+        timerBullet = 0;
+        
+        PlayerEntity* playerEntity = ManagerHelper::get<WorldManager>()->get<PlayerEntity>();
+        if(playerEntity != nullptr) {
+            Eigen::Vector2f directionVector = playerEntity->getPosition() - saucerPosition;
+            
+            BulletEntity* bulletEntity = new BulletEntity(this);
+            bulletEntity->setOrientation(TransformComponent::toDegrees(std::atan(directionVector.y() / directionVector.x())));
+            bulletEntity->setPosition(getPosition());
+            
+            ManagerHelper::get<WorldManager>()->addEntity(bulletEntity);
+        }
+    }
 }
