@@ -12,6 +12,8 @@ public:
     bool getIsGameOver() const { return isGameOver; }
     virtual void update(const SDL_Event& event) override;
     Event<EventArgs> eventOnConfirmation;
+    void reset();
+    
 private:
     bool isGameOver = false;
 };

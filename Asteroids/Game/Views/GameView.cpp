@@ -20,7 +20,9 @@ GameView::GameView() {
         HighScoreEntity* highScoreEntity = getEntity<HighScoreEntity>(true);
         int currentScore = getEntity<PlayerScoreEntity>()->getScore();
         if(currentScore > highScoreEntity->getScore()) {
+            Eigen::Vector2f position = highScoreEntity->getPosition();
             highScoreEntity->setScore(currentScore);
+            highScoreEntity->setPosition(position);
         }
                                                        
         ManagerHelper::get<ViewManager>()->setActiveView("home_view");
@@ -45,6 +47,7 @@ void GameView::onViewActivated() {
     spawnTimerSaucer = 0;
     getEntity<LivesEntity>()->reset();
     getEntity<PlayerScoreEntity>()->reset();
+    getEntity<GameOverEntity>()->reset();
     ManagerHelper::get<StageManager>()->reset();
     ManagerHelper::get<WorldManager>()->addEntity(new PlayerEntity());
 }

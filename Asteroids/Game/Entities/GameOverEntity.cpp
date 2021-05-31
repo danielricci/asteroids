@@ -26,6 +26,10 @@ GameOverEntity::GameOverEntity() {
     addComponent(inputComponent);
 }
 
+void GameOverEntity::reset() {
+    this->isGameOver = false;
+}
+
 void GameOverEntity::update(const SDL_Event& event) {
     GameEntity::update(event);
     switch(event.type) {
